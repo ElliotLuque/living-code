@@ -1,0 +1,26 @@
+# Living Code Paper
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+palette = 0=#d2d8dd
+palette = 1=#a74541
+palette = 2=#3b7a35
+palette = 3=#8f6213
+palette = 4=#2b6991
+palette = 5=#81558e
+palette = 6=#187d6e
+palette = 7=#50565a
+palette = 8=#92999f
+palette = 9=#853532
+palette = 10=#2d6029
+palette = 11=#724d0d
+palette = 12=#1f5272
+palette = 13=#664371
+palette = 14=#116357
+palette = 15=#12171a
+background = #f4f7f9
+foreground = #12171a
+cursor-color = #187d6e
+cursor-text = #f4f7f9
+selection-background = #c2ccd3
+selection-foreground = #12171a
+split-divider-color = #d2d8dd

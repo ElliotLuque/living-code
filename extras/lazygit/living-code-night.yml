@@ -1,0 +1,33 @@
+# Living Code Night
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+gui:
+  theme:
+    activeBorderColor:
+      - "#00a692"
+      - bold
+    inactiveBorderColor:
+      - "#1d2226"
+    searchingActiveBorderColor:
+      - "#f0be6d"
+      - bold
+    optionsTextColor:
+      - "#80b6d3"
+    selectedLineBgColor:
+      - "#12171a"
+    inactiveViewSelectedLineBgColor:
+      - "#090e11"
+    cherryPickedCommitFgColor:
+      - "#05080b"
+    cherryPickedCommitBgColor:
+      - "#bf91cd"
+    markedBaseCommitFgColor:
+      - "#05080b"
+    markedBaseCommitBgColor:
+      - "#f0be6d"
+    unstagedChangesColor:
+      - "#e96560"
+    defaultFgColor:
+      - "#e2e9ee"
+    authorColors:
+      "*": "#9ae0dd"

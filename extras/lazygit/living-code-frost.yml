@@ -1,0 +1,33 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+gui:
+  theme:
+    activeBorderColor:
+      - "#43a997"
+      - bold
+    inactiveBorderColor:
+      - "#232a30"
+    searchingActiveBorderColor:
+      - "#e9c897"
+      - bold
+    optionsTextColor:
+      - "#98bacd"
+    selectedLineBgColor:
+      - "#171e24"
+    inactiveViewSelectedLineBgColor:
+      - "#10171c"
+    cherryPickedCommitFgColor:
+      - "#0a1016"
+    cherryPickedCommitBgColor:
+      - "#bc9ec6"
+    markedBaseCommitFgColor:
+      - "#0a1016"
+    markedBaseCommitBgColor:
+      - "#e9c897"
+    unstagedChangesColor:
+      - "#d68079"
+    defaultFgColor:
+      - "#e2e9ee"
+    authorColors:
+      "*": "#b6e2df"

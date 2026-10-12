@@ -1,0 +1,26 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+palette = 0=#232a30
+palette = 1=#d68079
+palette = 2=#a2cb9d
+palette = 3=#e9c897
+palette = 4=#98bacd
+palette = 5=#bc9ec6
+palette = 6=#43a997
+palette = 7=#9ba0a2
+palette = 8=#50565b
+palette = 9=#e99e97
+palette = 10=#bfe3bb
+palette = 11=#fce0b6
+palette = 12=#b6d3e3
+palette = 13=#d4b9dc
+palette = 14=#6fbfb0
+palette = 15=#e2e9ee
+background = #0a1016
+foreground = #e2e9ee
+cursor-color = #43a997
+cursor-text = #0a1016
+selection-background = #333c43
+selection-foreground = #e2e9ee
+split-divider-color = #232a30

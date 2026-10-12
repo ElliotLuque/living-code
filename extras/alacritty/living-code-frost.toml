@@ -1,0 +1,60 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+[colors.primary]
+background = "#0a1016"
+foreground = "#e2e9ee"
+dim_foreground = "#9ba0a2"
+bright_foreground = "#e2e9ee"
+
+[colors.cursor]
+text = "#0a1016"
+cursor = "#43a997"
+
+[colors.vi_mode_cursor]
+text = "#0a1016"
+cursor = "#e9c897"
+
+[colors.selection]
+text = "CellForeground"
+background = "#333c43"
+
+[colors.search.matches]
+foreground = "#0a1016"
+background = "#7d8489"
+
+[colors.search.focused_match]
+foreground = "#0a1016"
+background = "#e9c897"
+
+[colors.footer_bar]
+foreground = "#e2e9ee"
+background = "#171e24"
+
+[colors.hints.start]
+foreground = "#0a1016"
+background = "#43a997"
+
+[colors.hints.end]
+foreground = "#0a1016"
+background = "#9ba0a2"
+
+[colors.normal]
+black = "#232a30"
+red = "#d68079"
+green = "#a2cb9d"
+yellow = "#e9c897"
+blue = "#98bacd"
+magenta = "#bc9ec6"
+cyan = "#43a997"
+white = "#9ba0a2"
+
+[colors.bright]
+black = "#50565b"
+red = "#e99e97"
+green = "#bfe3bb"
+yellow = "#fce0b6"
+blue = "#b6d3e3"
+magenta = "#d4b9dc"
+cyan = "#6fbfb0"
+white = "#e2e9ee"

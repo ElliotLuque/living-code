@@ -1,0 +1,29 @@
+# Living Code Paper
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+# Append to ~/.config/starship.toml, then reference colors by name
+# (e.g. style = "bold teal").
+palette = "living_code_paper"
+
+[palettes.living_code_paper]
+crust    = "#e0e5e9"
+base     = "#f4f7f9"
+mantle   = "#ebeff2"
+surface0 = "#e3e9ed"
+surface1 = "#d2d8dd"
+surface2 = "#c2ccd3"
+overlay  = "#92999f"
+comment  = "#6b7378"
+subtext  = "#50565a"
+text2    = "#2e3437"
+text     = "#12171a"
+teal     = "#187d6e"
+mint     = "#0f695e"
+aqua     = "#1f7074"
+steel    = "#2b6991"
+amber    = "#8f6213"
+copper   = "#a04f27"
+flare    = "#a74541"
+moss     = "#3b7a35"
+orchid   = "#81558e"
+rose     = "#845b6e"

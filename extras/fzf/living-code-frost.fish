@@ -1,0 +1,4 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --color=fg:#c8cfd4,bg:#0a1016,hl:#43a997,fg+:#e2e9ee,bg+:#171e24,hl+:#8ad5c6,info:#7d8489,prompt:#43a997,pointer:#43a997,marker:#e9c897,spinner:#43a997,header:#98bacd,border:#232a30,label:#9ba0a2,query:#e2e9ee,gutter:#0a1016,selected-bg:#333c43,separator:#232a30,scrollbar:#333c43"

@@ -1,0 +1,44 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+[colors]
+foreground = "#e2e9ee"
+background = "#0a1016"
+cursor_bg = "#43a997"
+cursor_border = "#43a997"
+cursor_fg = "#0a1016"
+selection_bg = "#333c43"
+selection_fg = "#e2e9ee"
+split = "#232a30"
+scrollbar_thumb = "#232a30"
+compose_cursor = "#e9c897"
+ansi = ["#232a30", "#d68079", "#a2cb9d", "#e9c897", "#98bacd", "#bc9ec6", "#43a997", "#9ba0a2"]
+brights = ["#50565b", "#e99e97", "#bfe3bb", "#fce0b6", "#b6d3e3", "#d4b9dc", "#6fbfb0", "#e2e9ee"]
+
+[colors.tab_bar]
+background = "#050a0f"
+inactive_tab_edge = "#232a30"
+
+[colors.tab_bar.active_tab]
+bg_color = "#43a997"
+fg_color = "#0a1016"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#171e24"
+fg_color = "#9ba0a2"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#232a30"
+fg_color = "#e2e9ee"
+
+[colors.tab_bar.new_tab]
+bg_color = "#050a0f"
+fg_color = "#9ba0a2"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#171e24"
+fg_color = "#e2e9ee"
+
+[metadata]
+name = "Living Code Frost"
+origin_url = "https://github.com/ElliotLuque/living-code"

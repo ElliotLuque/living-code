@@ -1,0 +1,44 @@
+# Living Code Night
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+[colors]
+foreground = "#e2e9ee"
+background = "#05080b"
+cursor_bg = "#00a692"
+cursor_border = "#00a692"
+cursor_fg = "#05080b"
+selection_bg = "#2d3438"
+selection_fg = "#e2e9ee"
+split = "#1d2226"
+scrollbar_thumb = "#1d2226"
+compose_cursor = "#f0be6d"
+ansi = ["#1d2226", "#e96560", "#8acb83", "#f0be6d", "#80b6d3", "#bf91cd", "#00a692", "#9ba0a2"]
+brights = ["#50565b", "#fa8880", "#abe2a4", "#ffdba5", "#a1cfe8", "#d5ade2", "#1fc1ab", "#e2e9ee"]
+
+[colors.tab_bar]
+background = "#020405"
+inactive_tab_edge = "#1d2226"
+
+[colors.tab_bar.active_tab]
+bg_color = "#00a692"
+fg_color = "#05080b"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#12171a"
+fg_color = "#9ba0a2"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#1d2226"
+fg_color = "#e2e9ee"
+
+[colors.tab_bar.new_tab]
+bg_color = "#020405"
+fg_color = "#9ba0a2"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#12171a"
+fg_color = "#e2e9ee"
+
+[metadata]
+name = "Living Code Night"
+origin_url = "https://github.com/ElliotLuque/living-code"

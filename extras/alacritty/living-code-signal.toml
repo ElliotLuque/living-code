@@ -1,0 +1,60 @@
+# Living Code Signal
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+[colors.primary]
+background = "#05080b"
+foreground = "#e2e9ee"
+dim_foreground = "#9ba0a2"
+bright_foreground = "#e2e9ee"
+
+[colors.cursor]
+text = "#05080b"
+cursor = "#00a692"
+
+[colors.vi_mode_cursor]
+text = "#05080b"
+cursor = "#efb062"
+
+[colors.selection]
+text = "CellForeground"
+background = "#2d3438"
+
+[colors.search.matches]
+foreground = "#05080b"
+background = "#747c80"
+
+[colors.search.focused_match]
+foreground = "#05080b"
+background = "#efb062"
+
+[colors.footer_bar]
+foreground = "#e2e9ee"
+background = "#12171a"
+
+[colors.hints.start]
+foreground = "#05080b"
+background = "#00a692"
+
+[colors.hints.end]
+foreground = "#05080b"
+background = "#9ba0a2"
+
+[colors.normal]
+black = "#1d2226"
+red = "#e96560"
+green = "#8acb83"
+yellow = "#efb062"
+blue = "#80b6d3"
+magenta = "#bf91cd"
+cyan = "#00a692"
+white = "#9ba0a2"
+
+[colors.bright]
+black = "#50565b"
+red = "#fa8880"
+green = "#abe2a4"
+yellow = "#ffcd94"
+blue = "#a1cfe8"
+magenta = "#d5ade2"
+cyan = "#1fc1ab"
+white = "#e2e9ee"

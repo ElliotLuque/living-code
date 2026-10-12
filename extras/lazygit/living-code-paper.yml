@@ -1,0 +1,33 @@
+# Living Code Paper
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+gui:
+  theme:
+    activeBorderColor:
+      - "#187d6e"
+      - bold
+    inactiveBorderColor:
+      - "#d2d8dd"
+    searchingActiveBorderColor:
+      - "#8f6213"
+      - bold
+    optionsTextColor:
+      - "#2b6991"
+    selectedLineBgColor:
+      - "#e3e9ed"
+    inactiveViewSelectedLineBgColor:
+      - "#ebeff2"
+    cherryPickedCommitFgColor:
+      - "#f4f7f9"
+    cherryPickedCommitBgColor:
+      - "#81558e"
+    markedBaseCommitFgColor:
+      - "#f4f7f9"
+    markedBaseCommitBgColor:
+      - "#8f6213"
+    unstagedChangesColor:
+      - "#a74541"
+    defaultFgColor:
+      - "#12171a"
+    authorColors:
+      "*": "#1f7074"

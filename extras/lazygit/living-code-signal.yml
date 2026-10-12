@@ -1,0 +1,33 @@
+# Living Code Signal
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+gui:
+  theme:
+    activeBorderColor:
+      - "#00a692"
+      - bold
+    inactiveBorderColor:
+      - "#1d2226"
+    searchingActiveBorderColor:
+      - "#efb062"
+      - bold
+    optionsTextColor:
+      - "#90cacd"
+    selectedLineBgColor:
+      - "#12171a"
+    inactiveViewSelectedLineBgColor:
+      - "#090e11"
+    cherryPickedCommitFgColor:
+      - "#05080b"
+    cherryPickedCommitBgColor:
+      - "#bf91cd"
+    markedBaseCommitFgColor:
+      - "#05080b"
+    markedBaseCommitBgColor:
+      - "#efb062"
+    unstagedChangesColor:
+      - "#e96560"
+    defaultFgColor:
+      - "#e2e9ee"
+    authorColors:
+      "*": "#9ae0dd"

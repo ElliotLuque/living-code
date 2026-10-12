@@ -1,0 +1,75 @@
+/* Living Code for Tailwind v4 — Generated from palette/flavors.mjs — do not edit by hand.
+ * @import "tailwindcss"; @import "./living-code.css";
+ * Utilities: bg-lc-base, text-lc-teal, border-lc-surface1, text-lc-keyword …
+ * Flavor switches through data-theme (requires extras/css/living-code.css). */
+
+@theme inline {
+  --color-lc-crust: var(--lc-crust);
+  --color-lc-base: var(--lc-base);
+  --color-lc-mantle: var(--lc-mantle);
+  --color-lc-surface0: var(--lc-surface0);
+  --color-lc-surface1: var(--lc-surface1);
+  --color-lc-surface2: var(--lc-surface2);
+  --color-lc-overlay: var(--lc-overlay);
+  --color-lc-comment: var(--lc-comment);
+  --color-lc-subtext: var(--lc-subtext);
+  --color-lc-text2: var(--lc-text2);
+  --color-lc-text: var(--lc-text);
+  --color-lc-teal: var(--lc-teal);
+  --color-lc-mint: var(--lc-mint);
+  --color-lc-aqua: var(--lc-aqua);
+  --color-lc-steel: var(--lc-steel);
+  --color-lc-amber: var(--lc-amber);
+  --color-lc-copper: var(--lc-copper);
+  --color-lc-flare: var(--lc-flare);
+  --color-lc-moss: var(--lc-moss);
+  --color-lc-orchid: var(--lc-orchid);
+  --color-lc-rose: var(--lc-rose);
+  --color-lc-bg: var(--lc-bg);
+  --color-lc-bg-alt: var(--lc-bg-alt);
+  --color-lc-bg-deep: var(--lc-bg-deep);
+  --color-lc-fg: var(--lc-fg);
+  --color-lc-fg-alt: var(--lc-fg-alt);
+  --color-lc-fg-muted: var(--lc-fg-muted);
+  --color-lc-fg-subtle: var(--lc-fg-subtle);
+  --color-lc-accent: var(--lc-accent);
+  --color-lc-cursor: var(--lc-cursor);
+  --color-lc-selection: var(--lc-selection);
+  --color-lc-line-highlight: var(--lc-line-highlight);
+  --color-lc-border: var(--lc-border);
+  --color-lc-border-active: var(--lc-border-active);
+  --color-lc-line-number: var(--lc-line-number);
+  --color-lc-line-number-active: var(--lc-line-number-active);
+  --color-lc-match: var(--lc-match);
+  --color-lc-error: var(--lc-error);
+  --color-lc-warning: var(--lc-warning);
+  --color-lc-info: var(--lc-info);
+  --color-lc-hint: var(--lc-hint);
+  --color-lc-success: var(--lc-success);
+  --color-lc-added: var(--lc-added);
+  --color-lc-removed: var(--lc-removed);
+  --color-lc-modified: var(--lc-modified);
+  --color-lc-keyword: var(--lc-keyword);
+  --color-lc-builtin: var(--lc-builtin);
+  --color-lc-function: var(--lc-function);
+  --color-lc-string: var(--lc-string);
+  --color-lc-number: var(--lc-number);
+  --color-lc-constant: var(--lc-constant);
+  --color-lc-escape: var(--lc-escape);
+  --color-lc-regex: var(--lc-regex);
+  --color-lc-type: var(--lc-type);
+  --color-lc-namespace: var(--lc-namespace);
+  --color-lc-operator: var(--lc-operator);
+  --color-lc-punctuation: var(--lc-punctuation);
+  --color-lc-decorator: var(--lc-decorator);
+  --color-lc-tag: var(--lc-tag);
+  --color-lc-attribute: var(--lc-attribute);
+  --color-lc-property: var(--lc-property);
+  --color-lc-variable: var(--lc-variable);
+  --color-lc-parameter: var(--lc-parameter);
+  --color-lc-comment: var(--lc-comment);
+  --color-lc-heading: var(--lc-heading);
+  --color-lc-link: var(--lc-link);
+  --color-lc-code: var(--lc-code);
+  --color-lc-quote: var(--lc-quote);
+}

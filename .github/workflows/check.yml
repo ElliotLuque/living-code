@@ -1,0 +1,12 @@
+name: check
+on: [push, pull_request]
+jobs:
+  generated-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # Fails if any port is out of date with palette/flavors.mjs,
+      # or if a text role drops below WCAG AA contrast.
+      - run: node scripts/build.mjs --check

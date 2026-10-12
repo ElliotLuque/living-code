@@ -1,0 +1,29 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+# Append to ~/.config/starship.toml, then reference colors by name
+# (e.g. style = "bold teal").
+palette = "living_code_frost"
+
+[palettes.living_code_frost]
+crust    = "#050a0f"
+base     = "#0a1016"
+mantle   = "#10171c"
+surface0 = "#171e24"
+surface1 = "#232a30"
+surface2 = "#333c43"
+overlay  = "#50565b"
+comment  = "#7d8489"
+subtext  = "#9ba0a2"
+text2    = "#c8cfd4"
+text     = "#e2e9ee"
+teal     = "#43a997"
+mint     = "#8ad5c6"
+aqua     = "#b6e2df"
+steel    = "#98bacd"
+amber    = "#e9c897"
+copper   = "#d49c80"
+flare    = "#d68079"
+moss     = "#a2cb9d"
+orchid   = "#bc9ec6"
+rose     = "#d9bac8"

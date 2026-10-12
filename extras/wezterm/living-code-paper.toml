@@ -1,0 +1,44 @@
+# Living Code Paper
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+[colors]
+foreground = "#12171a"
+background = "#f4f7f9"
+cursor_bg = "#187d6e"
+cursor_border = "#187d6e"
+cursor_fg = "#f4f7f9"
+selection_bg = "#c2ccd3"
+selection_fg = "#12171a"
+split = "#d2d8dd"
+scrollbar_thumb = "#d2d8dd"
+compose_cursor = "#8f6213"
+ansi = ["#d2d8dd", "#a74541", "#3b7a35", "#8f6213", "#2b6991", "#81558e", "#187d6e", "#50565a"]
+brights = ["#92999f", "#853532", "#2d6029", "#724d0d", "#1f5272", "#664371", "#116357", "#12171a"]
+
+[colors.tab_bar]
+background = "#e0e5e9"
+inactive_tab_edge = "#d2d8dd"
+
+[colors.tab_bar.active_tab]
+bg_color = "#187d6e"
+fg_color = "#f4f7f9"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#e3e9ed"
+fg_color = "#50565a"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#d2d8dd"
+fg_color = "#12171a"
+
+[colors.tab_bar.new_tab]
+bg_color = "#e0e5e9"
+fg_color = "#50565a"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#e3e9ed"
+fg_color = "#12171a"
+
+[metadata]
+name = "Living Code Paper"
+origin_url = "https://github.com/ElliotLuque/living-code"

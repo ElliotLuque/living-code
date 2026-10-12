@@ -1,0 +1,60 @@
+# Living Code Paper
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+[colors.primary]
+background = "#f4f7f9"
+foreground = "#12171a"
+dim_foreground = "#50565a"
+bright_foreground = "#12171a"
+
+[colors.cursor]
+text = "#f4f7f9"
+cursor = "#187d6e"
+
+[colors.vi_mode_cursor]
+text = "#f4f7f9"
+cursor = "#8f6213"
+
+[colors.selection]
+text = "CellForeground"
+background = "#c2ccd3"
+
+[colors.search.matches]
+foreground = "#f4f7f9"
+background = "#6b7378"
+
+[colors.search.focused_match]
+foreground = "#f4f7f9"
+background = "#8f6213"
+
+[colors.footer_bar]
+foreground = "#12171a"
+background = "#e3e9ed"
+
+[colors.hints.start]
+foreground = "#f4f7f9"
+background = "#187d6e"
+
+[colors.hints.end]
+foreground = "#f4f7f9"
+background = "#50565a"
+
+[colors.normal]
+black = "#d2d8dd"
+red = "#a74541"
+green = "#3b7a35"
+yellow = "#8f6213"
+blue = "#2b6991"
+magenta = "#81558e"
+cyan = "#187d6e"
+white = "#50565a"
+
+[colors.bright]
+black = "#92999f"
+red = "#853532"
+green = "#2d6029"
+yellow = "#724d0d"
+blue = "#1f5272"
+magenta = "#664371"
+cyan = "#116357"
+white = "#12171a"

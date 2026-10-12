@@ -1,0 +1,23 @@
+{
+  "name": "living-code",
+  "version": "0.1.0",
+  "description": "Two temperatures, not a rainbow — a color scheme for editors, terminals and the web.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Elliot Luque",
+  "repository": { "type": "git", "url": "git+https://github.com/ElliotLuque/living-code.git" },
+  "keywords": ["theme", "colorscheme", "oklch", "neovim", "vscode", "kitty", "ghostty", "shiki"],
+  "main": "./palette.mjs",
+  "exports": {
+    ".": "./palette.mjs",
+    "./palette.json": "./palette.json",
+    "./extras/*": "./extras/*"
+  },
+  "files": ["palette.mjs", "palette.json", "extras"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "preview": "node scripts/serve.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

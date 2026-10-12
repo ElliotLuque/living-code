@@ -1,0 +1,446 @@
+/* Living Code — Generated from palette/flavors.mjs — do not edit by hand.
+ * OKLCH values are canonical; hex in comments for reference.
+ * Default is Night; switch with data-theme="living-code-<flavor>"
+ * or data-theme="living-code-auto" to follow the OS (Night / Paper). */
+
+:root,
+[data-theme="living-code-night"] {
+  color-scheme: dark;
+  --lc-crust: oklch(0.1 0.01 240); /* #020405 */
+  --lc-base: oklch(0.13 0.01 240); /* #05080b */
+  --lc-mantle: oklch(0.16 0.01 240); /* #090e11 */
+  --lc-surface0: oklch(0.2 0.01 240); /* #12171a */
+  --lc-surface1: oklch(0.25 0.01 240); /* #1d2226 */
+  --lc-surface2: oklch(0.32 0.012 240); /* #2d3438 */
+  --lc-overlay: oklch(0.45 0.012 240); /* #50565b */
+  --lc-comment: oklch(0.58 0.012 235); /* #747c80 */
+  --lc-subtext: oklch(0.7023 0.0065 223.49); /* #9ba0a2 */
+  --lc-text2: oklch(0.85 0.01 240); /* #c8cfd4 */
+  --lc-text: oklch(0.93 0.01 240); /* #e2e9ee */
+  --lc-teal: oklch(0.65 0.15 180); /* #00a692 */
+  --lc-mint: oklch(0.8 0.12 180); /* #52d7c1 */
+  --lc-aqua: oklch(0.86 0.07 192); /* #9ae0dd */
+  --lc-steel: oklch(0.75 0.07 232); /* #80b6d3 */
+  --lc-amber: oklch(0.83 0.115 78); /* #f0be6d */
+  --lc-copper: oklch(0.72 0.12 48); /* #e18c5f */
+  --lc-flare: oklch(0.67 0.165 25); /* #e96560 */
+  --lc-moss: oklch(0.78 0.12 142); /* #8acb83 */
+  --lc-orchid: oklch(0.72 0.1 318); /* #bf91cd */
+  --lc-rose: oklch(0.8 0.06 350); /* #ddaec3 */
+
+  --lc-bg: var(--lc-base);
+  --lc-bg-alt: var(--lc-mantle);
+  --lc-bg-deep: var(--lc-crust);
+  --lc-fg: var(--lc-text);
+  --lc-fg-alt: var(--lc-text2);
+  --lc-fg-muted: var(--lc-subtext);
+  --lc-fg-subtle: var(--lc-comment);
+  --lc-accent: var(--lc-teal);
+  --lc-cursor: var(--lc-teal);
+  --lc-selection: var(--lc-surface2);
+  --lc-line-highlight: var(--lc-surface0);
+  --lc-border: var(--lc-surface1);
+  --lc-border-active: var(--lc-teal);
+  --lc-line-number: var(--lc-overlay);
+  --lc-line-number-active: var(--lc-amber);
+  --lc-match: var(--lc-amber);
+  --lc-error: var(--lc-flare);
+  --lc-warning: var(--lc-amber);
+  --lc-info: var(--lc-steel);
+  --lc-hint: var(--lc-mint);
+  --lc-success: var(--lc-moss);
+  --lc-added: var(--lc-moss);
+  --lc-removed: var(--lc-flare);
+  --lc-modified: var(--lc-amber);
+  --lc-keyword: var(--lc-mint);
+  --lc-builtin: var(--lc-mint);
+  --lc-function: var(--lc-aqua);
+  --lc-string: var(--lc-amber);
+  --lc-number: var(--lc-copper);
+  --lc-constant: var(--lc-copper);
+  --lc-escape: var(--lc-copper);
+  --lc-regex: var(--lc-orchid);
+  --lc-type: var(--lc-steel);
+  --lc-namespace: var(--lc-steel);
+  --lc-operator: var(--lc-comment);
+  --lc-punctuation: var(--lc-overlay);
+  --lc-decorator: var(--lc-orchid);
+  --lc-tag: var(--lc-orchid);
+  --lc-attribute: var(--lc-text2);
+  --lc-property: var(--lc-text2);
+  --lc-variable: var(--lc-text);
+  --lc-parameter: var(--lc-text2);
+  --lc-comment: var(--lc-comment);
+  --lc-heading: var(--lc-teal);
+  --lc-link: var(--lc-aqua);
+  --lc-code: var(--lc-amber);
+  --lc-quote: var(--lc-comment);
+}
+
+[data-theme="living-code-signal"] {
+  color-scheme: dark;
+  --lc-crust: oklch(0.1 0.01 240); /* #020405 */
+  --lc-base: oklch(0.13 0.01 240); /* #05080b */
+  --lc-mantle: oklch(0.16 0.01 240); /* #090e11 */
+  --lc-surface0: oklch(0.2 0.01 240); /* #12171a */
+  --lc-surface1: oklch(0.25 0.01 240); /* #1d2226 */
+  --lc-surface2: oklch(0.32 0.012 240); /* #2d3438 */
+  --lc-overlay: oklch(0.45 0.012 240); /* #50565b */
+  --lc-comment: oklch(0.58 0.012 235); /* #747c80 */
+  --lc-subtext: oklch(0.7023 0.0065 223.49); /* #9ba0a2 */
+  --lc-text2: oklch(0.85 0.01 240); /* #c8cfd4 */
+  --lc-text: oklch(0.93 0.01 240); /* #e2e9ee */
+  --lc-teal: oklch(0.65 0.15 180); /* #00a692 */
+  --lc-mint: oklch(0.8 0.12 180); /* #52d7c1 */
+  --lc-aqua: oklch(0.86 0.07 192); /* #9ae0dd */
+  --lc-steel: oklch(0.8 0.06 200); /* #90cacd */
+  --lc-amber: oklch(0.8 0.12 70); /* #efb062 */
+  --lc-copper: oklch(0.72 0.12 48); /* #e18c5f */
+  --lc-flare: oklch(0.67 0.165 25); /* #e96560 */
+  --lc-moss: oklch(0.78 0.12 142); /* #8acb83 */
+  --lc-orchid: oklch(0.72 0.1 318); /* #bf91cd */
+  --lc-rose: oklch(0.8 0.06 350); /* #ddaec3 */
+
+  --lc-bg: var(--lc-base);
+  --lc-bg-alt: var(--lc-mantle);
+  --lc-bg-deep: var(--lc-crust);
+  --lc-fg: var(--lc-text);
+  --lc-fg-alt: var(--lc-text2);
+  --lc-fg-muted: var(--lc-subtext);
+  --lc-fg-subtle: var(--lc-comment);
+  --lc-accent: var(--lc-teal);
+  --lc-cursor: var(--lc-teal);
+  --lc-selection: var(--lc-surface2);
+  --lc-line-highlight: var(--lc-surface0);
+  --lc-border: var(--lc-surface1);
+  --lc-border-active: var(--lc-teal);
+  --lc-line-number: var(--lc-overlay);
+  --lc-line-number-active: var(--lc-amber);
+  --lc-match: var(--lc-amber);
+  --lc-error: var(--lc-flare);
+  --lc-warning: var(--lc-amber);
+  --lc-info: var(--lc-steel);
+  --lc-hint: var(--lc-mint);
+  --lc-success: var(--lc-moss);
+  --lc-added: var(--lc-moss);
+  --lc-removed: var(--lc-flare);
+  --lc-modified: var(--lc-amber);
+  --lc-keyword: var(--lc-mint);
+  --lc-builtin: var(--lc-mint);
+  --lc-function: var(--lc-text);
+  --lc-string: var(--lc-amber);
+  --lc-number: var(--lc-amber);
+  --lc-constant: var(--lc-amber);
+  --lc-escape: var(--lc-copper);
+  --lc-regex: var(--lc-amber);
+  --lc-type: var(--lc-steel);
+  --lc-namespace: var(--lc-steel);
+  --lc-operator: var(--lc-comment);
+  --lc-punctuation: var(--lc-overlay);
+  --lc-decorator: var(--lc-teal);
+  --lc-tag: var(--lc-teal);
+  --lc-attribute: var(--lc-text2);
+  --lc-property: var(--lc-text2);
+  --lc-variable: var(--lc-text);
+  --lc-parameter: var(--lc-text2);
+  --lc-comment: var(--lc-comment);
+  --lc-heading: var(--lc-teal);
+  --lc-link: var(--lc-steel);
+  --lc-code: var(--lc-amber);
+  --lc-quote: var(--lc-comment);
+}
+
+[data-theme="living-code-frost"] {
+  color-scheme: dark;
+  --lc-crust: oklch(0.14 0.015 245); /* #050a0f */
+  --lc-base: oklch(0.17 0.015 245); /* #0a1016 */
+  --lc-mantle: oklch(0.2 0.015 245); /* #10171c */
+  --lc-surface0: oklch(0.23 0.015 245); /* #171e24 */
+  --lc-surface1: oklch(0.28 0.015 245); /* #232a30 */
+  --lc-surface2: oklch(0.35 0.018 245); /* #333c43 */
+  --lc-overlay: oklch(0.45 0.012 240); /* #50565b */
+  --lc-comment: oklch(0.61 0.012 235); /* #7d8489 */
+  --lc-subtext: oklch(0.7023 0.0065 223.49); /* #9ba0a2 */
+  --lc-text2: oklch(0.85 0.01 240); /* #c8cfd4 */
+  --lc-text: oklch(0.93 0.01 240); /* #e2e9ee */
+  --lc-teal: oklch(0.67 0.0975 180); /* #43a997 */
+  --lc-mint: oklch(0.82 0.078 180); /* #8ad5c6 */
+  --lc-aqua: oklch(0.88 0.0455 192); /* #b6e2df */
+  --lc-steel: oklch(0.77 0.0455 232); /* #98bacd */
+  --lc-amber: oklch(0.85 0.0748 78); /* #e9c897 */
+  --lc-copper: oklch(0.74 0.078 48); /* #d49c80 */
+  --lc-flare: oklch(0.69 0.1073 25); /* #d68079 */
+  --lc-moss: oklch(0.8 0.078 142); /* #a2cb9d */
+  --lc-orchid: oklch(0.74 0.065 318); /* #bc9ec6 */
+  --lc-rose: oklch(0.82 0.039 350); /* #d9bac8 */
+
+  --lc-bg: var(--lc-base);
+  --lc-bg-alt: var(--lc-mantle);
+  --lc-bg-deep: var(--lc-crust);
+  --lc-fg: var(--lc-text);
+  --lc-fg-alt: var(--lc-text2);
+  --lc-fg-muted: var(--lc-subtext);
+  --lc-fg-subtle: var(--lc-comment);
+  --lc-accent: var(--lc-teal);
+  --lc-cursor: var(--lc-teal);
+  --lc-selection: var(--lc-surface2);
+  --lc-line-highlight: var(--lc-surface0);
+  --lc-border: var(--lc-surface1);
+  --lc-border-active: var(--lc-teal);
+  --lc-line-number: var(--lc-overlay);
+  --lc-line-number-active: var(--lc-amber);
+  --lc-match: var(--lc-amber);
+  --lc-error: var(--lc-flare);
+  --lc-warning: var(--lc-amber);
+  --lc-info: var(--lc-steel);
+  --lc-hint: var(--lc-mint);
+  --lc-success: var(--lc-moss);
+  --lc-added: var(--lc-moss);
+  --lc-removed: var(--lc-flare);
+  --lc-modified: var(--lc-amber);
+  --lc-keyword: var(--lc-mint);
+  --lc-builtin: var(--lc-mint);
+  --lc-function: var(--lc-aqua);
+  --lc-string: var(--lc-amber);
+  --lc-number: var(--lc-copper);
+  --lc-constant: var(--lc-copper);
+  --lc-escape: var(--lc-copper);
+  --lc-regex: var(--lc-orchid);
+  --lc-type: var(--lc-steel);
+  --lc-namespace: var(--lc-steel);
+  --lc-operator: var(--lc-comment);
+  --lc-punctuation: var(--lc-overlay);
+  --lc-decorator: var(--lc-orchid);
+  --lc-tag: var(--lc-orchid);
+  --lc-attribute: var(--lc-text2);
+  --lc-property: var(--lc-text2);
+  --lc-variable: var(--lc-text);
+  --lc-parameter: var(--lc-text2);
+  --lc-comment: var(--lc-comment);
+  --lc-heading: var(--lc-teal);
+  --lc-link: var(--lc-aqua);
+  --lc-code: var(--lc-amber);
+  --lc-quote: var(--lc-comment);
+}
+
+[data-theme="living-code-paper"] {
+  color-scheme: light;
+  --lc-crust: oklch(0.92 0.008 240); /* #e0e5e9 */
+  --lc-base: oklch(0.975 0.004 240); /* #f4f7f9 */
+  --lc-mantle: oklch(0.95 0.006 240); /* #ebeff2 */
+  --lc-surface0: oklch(0.93 0.008 240); /* #e3e9ed */
+  --lc-surface1: oklch(0.88 0.01 240); /* #d2d8dd */
+  --lc-surface2: oklch(0.84 0.015 240); /* #c2ccd3 */
+  --lc-overlay: oklch(0.68 0.012 240); /* #92999f */
+  --lc-comment: oklch(0.55 0.012 235); /* #6b7378 */
+  --lc-subtext: oklch(0.45 0.01 240); /* #50565a */
+  --lc-text2: oklch(0.32 0.01 240); /* #2e3437 */
+  --lc-text: oklch(0.2 0.01 240); /* #12171a */
+  --lc-teal: oklch(0.53 0.09 180); /* #187d6e */
+  --lc-mint: oklch(0.47 0.08 182); /* #0f695e */
+  --lc-aqua: oklch(0.5 0.075 200); /* #1f7074 */
+  --lc-steel: oklch(0.5 0.09 240); /* #2b6991 */
+  --lc-amber: oklch(0.53 0.105 75); /* #8f6213 */
+  --lc-copper: oklch(0.52 0.12 45); /* #a04f27 */
+  --lc-flare: oklch(0.52 0.13 25); /* #a74541 */
+  --lc-moss: oklch(0.52 0.12 142); /* #3b7a35 */
+  --lc-orchid: oklch(0.52 0.1 318); /* #81558e */
+  --lc-rose: oklch(0.52 0.06 350); /* #845b6e */
+
+  --lc-bg: var(--lc-base);
+  --lc-bg-alt: var(--lc-mantle);
+  --lc-bg-deep: var(--lc-crust);
+  --lc-fg: var(--lc-text);
+  --lc-fg-alt: var(--lc-text2);
+  --lc-fg-muted: var(--lc-subtext);
+  --lc-fg-subtle: var(--lc-comment);
+  --lc-accent: var(--lc-teal);
+  --lc-cursor: var(--lc-teal);
+  --lc-selection: var(--lc-surface2);
+  --lc-line-highlight: var(--lc-surface0);
+  --lc-border: var(--lc-surface1);
+  --lc-border-active: var(--lc-teal);
+  --lc-line-number: var(--lc-overlay);
+  --lc-line-number-active: var(--lc-amber);
+  --lc-match: var(--lc-amber);
+  --lc-error: var(--lc-flare);
+  --lc-warning: var(--lc-amber);
+  --lc-info: var(--lc-steel);
+  --lc-hint: var(--lc-mint);
+  --lc-success: var(--lc-moss);
+  --lc-added: var(--lc-moss);
+  --lc-removed: var(--lc-flare);
+  --lc-modified: var(--lc-amber);
+  --lc-keyword: var(--lc-mint);
+  --lc-builtin: var(--lc-mint);
+  --lc-function: var(--lc-aqua);
+  --lc-string: var(--lc-amber);
+  --lc-number: var(--lc-copper);
+  --lc-constant: var(--lc-copper);
+  --lc-escape: var(--lc-copper);
+  --lc-regex: var(--lc-orchid);
+  --lc-type: var(--lc-steel);
+  --lc-namespace: var(--lc-steel);
+  --lc-operator: var(--lc-comment);
+  --lc-punctuation: var(--lc-overlay);
+  --lc-decorator: var(--lc-orchid);
+  --lc-tag: var(--lc-orchid);
+  --lc-attribute: var(--lc-text2);
+  --lc-property: var(--lc-text2);
+  --lc-variable: var(--lc-text);
+  --lc-parameter: var(--lc-text2);
+  --lc-comment: var(--lc-comment);
+  --lc-heading: var(--lc-teal);
+  --lc-link: var(--lc-aqua);
+  --lc-code: var(--lc-amber);
+  --lc-quote: var(--lc-comment);
+}
+
+/* data-theme="living-code-auto": Night or Paper following the OS. */
+[data-theme="living-code-auto"] {
+  color-scheme: dark;
+  --lc-crust: oklch(0.1 0.01 240); /* #020405 */
+  --lc-base: oklch(0.13 0.01 240); /* #05080b */
+  --lc-mantle: oklch(0.16 0.01 240); /* #090e11 */
+  --lc-surface0: oklch(0.2 0.01 240); /* #12171a */
+  --lc-surface1: oklch(0.25 0.01 240); /* #1d2226 */
+  --lc-surface2: oklch(0.32 0.012 240); /* #2d3438 */
+  --lc-overlay: oklch(0.45 0.012 240); /* #50565b */
+  --lc-comment: oklch(0.58 0.012 235); /* #747c80 */
+  --lc-subtext: oklch(0.7023 0.0065 223.49); /* #9ba0a2 */
+  --lc-text2: oklch(0.85 0.01 240); /* #c8cfd4 */
+  --lc-text: oklch(0.93 0.01 240); /* #e2e9ee */
+  --lc-teal: oklch(0.65 0.15 180); /* #00a692 */
+  --lc-mint: oklch(0.8 0.12 180); /* #52d7c1 */
+  --lc-aqua: oklch(0.86 0.07 192); /* #9ae0dd */
+  --lc-steel: oklch(0.75 0.07 232); /* #80b6d3 */
+  --lc-amber: oklch(0.83 0.115 78); /* #f0be6d */
+  --lc-copper: oklch(0.72 0.12 48); /* #e18c5f */
+  --lc-flare: oklch(0.67 0.165 25); /* #e96560 */
+  --lc-moss: oklch(0.78 0.12 142); /* #8acb83 */
+  --lc-orchid: oklch(0.72 0.1 318); /* #bf91cd */
+  --lc-rose: oklch(0.8 0.06 350); /* #ddaec3 */
+
+  --lc-bg: var(--lc-base);
+  --lc-bg-alt: var(--lc-mantle);
+  --lc-bg-deep: var(--lc-crust);
+  --lc-fg: var(--lc-text);
+  --lc-fg-alt: var(--lc-text2);
+  --lc-fg-muted: var(--lc-subtext);
+  --lc-fg-subtle: var(--lc-comment);
+  --lc-accent: var(--lc-teal);
+  --lc-cursor: var(--lc-teal);
+  --lc-selection: var(--lc-surface2);
+  --lc-line-highlight: var(--lc-surface0);
+  --lc-border: var(--lc-surface1);
+  --lc-border-active: var(--lc-teal);
+  --lc-line-number: var(--lc-overlay);
+  --lc-line-number-active: var(--lc-amber);
+  --lc-match: var(--lc-amber);
+  --lc-error: var(--lc-flare);
+  --lc-warning: var(--lc-amber);
+  --lc-info: var(--lc-steel);
+  --lc-hint: var(--lc-mint);
+  --lc-success: var(--lc-moss);
+  --lc-added: var(--lc-moss);
+  --lc-removed: var(--lc-flare);
+  --lc-modified: var(--lc-amber);
+  --lc-keyword: var(--lc-mint);
+  --lc-builtin: var(--lc-mint);
+  --lc-function: var(--lc-aqua);
+  --lc-string: var(--lc-amber);
+  --lc-number: var(--lc-copper);
+  --lc-constant: var(--lc-copper);
+  --lc-escape: var(--lc-copper);
+  --lc-regex: var(--lc-orchid);
+  --lc-type: var(--lc-steel);
+  --lc-namespace: var(--lc-steel);
+  --lc-operator: var(--lc-comment);
+  --lc-punctuation: var(--lc-overlay);
+  --lc-decorator: var(--lc-orchid);
+  --lc-tag: var(--lc-orchid);
+  --lc-attribute: var(--lc-text2);
+  --lc-property: var(--lc-text2);
+  --lc-variable: var(--lc-text);
+  --lc-parameter: var(--lc-text2);
+  --lc-comment: var(--lc-comment);
+  --lc-heading: var(--lc-teal);
+  --lc-link: var(--lc-aqua);
+  --lc-code: var(--lc-amber);
+  --lc-quote: var(--lc-comment);
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="living-code-auto"] {
+    color-scheme: light;
+    --lc-crust: oklch(0.92 0.008 240); /* #e0e5e9 */
+    --lc-base: oklch(0.975 0.004 240); /* #f4f7f9 */
+    --lc-mantle: oklch(0.95 0.006 240); /* #ebeff2 */
+    --lc-surface0: oklch(0.93 0.008 240); /* #e3e9ed */
+    --lc-surface1: oklch(0.88 0.01 240); /* #d2d8dd */
+    --lc-surface2: oklch(0.84 0.015 240); /* #c2ccd3 */
+    --lc-overlay: oklch(0.68 0.012 240); /* #92999f */
+    --lc-comment: oklch(0.55 0.012 235); /* #6b7378 */
+    --lc-subtext: oklch(0.45 0.01 240); /* #50565a */
+    --lc-text2: oklch(0.32 0.01 240); /* #2e3437 */
+    --lc-text: oklch(0.2 0.01 240); /* #12171a */
+    --lc-teal: oklch(0.53 0.09 180); /* #187d6e */
+    --lc-mint: oklch(0.47 0.08 182); /* #0f695e */
+    --lc-aqua: oklch(0.5 0.075 200); /* #1f7074 */
+    --lc-steel: oklch(0.5 0.09 240); /* #2b6991 */
+    --lc-amber: oklch(0.53 0.105 75); /* #8f6213 */
+    --lc-copper: oklch(0.52 0.12 45); /* #a04f27 */
+    --lc-flare: oklch(0.52 0.13 25); /* #a74541 */
+    --lc-moss: oklch(0.52 0.12 142); /* #3b7a35 */
+    --lc-orchid: oklch(0.52 0.1 318); /* #81558e */
+    --lc-rose: oklch(0.52 0.06 350); /* #845b6e */
+  
+    --lc-bg: var(--lc-base);
+    --lc-bg-alt: var(--lc-mantle);
+    --lc-bg-deep: var(--lc-crust);
+    --lc-fg: var(--lc-text);
+    --lc-fg-alt: var(--lc-text2);
+    --lc-fg-muted: var(--lc-subtext);
+    --lc-fg-subtle: var(--lc-comment);
+    --lc-accent: var(--lc-teal);
+    --lc-cursor: var(--lc-teal);
+    --lc-selection: var(--lc-surface2);
+    --lc-line-highlight: var(--lc-surface0);
+    --lc-border: var(--lc-surface1);
+    --lc-border-active: var(--lc-teal);
+    --lc-line-number: var(--lc-overlay);
+    --lc-line-number-active: var(--lc-amber);
+    --lc-match: var(--lc-amber);
+    --lc-error: var(--lc-flare);
+    --lc-warning: var(--lc-amber);
+    --lc-info: var(--lc-steel);
+    --lc-hint: var(--lc-mint);
+    --lc-success: var(--lc-moss);
+    --lc-added: var(--lc-moss);
+    --lc-removed: var(--lc-flare);
+    --lc-modified: var(--lc-amber);
+    --lc-keyword: var(--lc-mint);
+    --lc-builtin: var(--lc-mint);
+    --lc-function: var(--lc-aqua);
+    --lc-string: var(--lc-amber);
+    --lc-number: var(--lc-copper);
+    --lc-constant: var(--lc-copper);
+    --lc-escape: var(--lc-copper);
+    --lc-regex: var(--lc-orchid);
+    --lc-type: var(--lc-steel);
+    --lc-namespace: var(--lc-steel);
+    --lc-operator: var(--lc-comment);
+    --lc-punctuation: var(--lc-overlay);
+    --lc-decorator: var(--lc-orchid);
+    --lc-tag: var(--lc-orchid);
+    --lc-attribute: var(--lc-text2);
+    --lc-property: var(--lc-text2);
+    --lc-variable: var(--lc-text);
+    --lc-parameter: var(--lc-text2);
+    --lc-comment: var(--lc-comment);
+    --lc-heading: var(--lc-teal);
+    --lc-link: var(--lc-aqua);
+    --lc-code: var(--lc-amber);
+    --lc-quote: var(--lc-comment);
+  }
+}

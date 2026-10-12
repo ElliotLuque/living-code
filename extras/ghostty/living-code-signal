@@ -1,0 +1,26 @@
+# Living Code Signal
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+palette = 0=#1d2226
+palette = 1=#e96560
+palette = 2=#8acb83
+palette = 3=#efb062
+palette = 4=#80b6d3
+palette = 5=#bf91cd
+palette = 6=#00a692
+palette = 7=#9ba0a2
+palette = 8=#50565b
+palette = 9=#fa8880
+palette = 10=#abe2a4
+palette = 11=#ffcd94
+palette = 12=#a1cfe8
+palette = 13=#d5ade2
+palette = 14=#1fc1ab
+palette = 15=#e2e9ee
+background = #05080b
+foreground = #e2e9ee
+cursor-color = #00a692
+cursor-text = #05080b
+selection-background = #2d3438
+selection-foreground = #e2e9ee
+split-divider-color = #1d2226

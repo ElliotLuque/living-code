@@ -1,0 +1,42 @@
+{
+  "name": "living-code",
+  "displayName": "Living Code",
+  "description": "Two temperatures, not a rainbow — teal structure, amber data, on dark slate.",
+  "version": "0.1.0",
+  "publisher": "elliotluque",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElliotLuque/living-code"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Living Code Night",
+        "uiTheme": "vs-dark",
+        "path": "./themes/living-code-night-color-theme.json"
+      },
+      {
+        "label": "Living Code Signal",
+        "uiTheme": "vs-dark",
+        "path": "./themes/living-code-signal-color-theme.json"
+      },
+      {
+        "label": "Living Code Frost",
+        "uiTheme": "vs-dark",
+        "path": "./themes/living-code-frost-color-theme.json"
+      },
+      {
+        "label": "Living Code Paper",
+        "uiTheme": "vs",
+        "path": "./themes/living-code-paper-color-theme.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+# Living Code Frost
+# Generated from palette/flavors.mjs — do not edit by hand.
+
+"attribute" = { fg = "orchid" }
+"type" = { fg = "steel" }
+"type.builtin" = { fg = "steel" }
+"type.enum.variant" = { fg = "copper" }
+"constructor" = { fg = "steel" }
+"constant" = { fg = "copper" }
+"constant.builtin" = { fg = "copper" }
+"constant.numeric" = { fg = "copper" }
+"constant.character.escape" = { fg = "copper" }
+"string" = { fg = "amber" }
+"string.regexp" = { fg = "orchid" }
+"string.special" = { fg = "copper" }
+"string.special.url" = { fg = "aqua", modifiers = ["underlined"] }
+"string.special.symbol" = { fg = "copper" }
+"comment" = { fg = "comment", modifiers = ["italic"] }
+"variable" = { fg = "text" }
+"variable.parameter" = { fg = "text2", modifiers = ["italic"] }
+"variable.builtin" = { fg = "mint", modifiers = ["italic"] }
+"variable.other.member" = { fg = "text2" }
+"label" = { fg = "orchid" }
+"punctuation" = { fg = "overlay" }
+"punctuation.special" = { fg = "mint" }
+"keyword" = { fg = "mint" }
+"keyword.directive" = { fg = "orchid" }
+"operator" = { fg = "comment" }
+"function" = { fg = "aqua" }
+"function.builtin" = { fg = "aqua" }
+"function.macro" = { fg = "orchid" }
+"tag" = { fg = "orchid" }
+"namespace" = { fg = "steel" }
+"special" = { fg = "teal" }
+"markup.heading" = { fg = "teal", modifiers = ["bold"] }
+"markup.list" = { fg = "teal" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "aqua", modifiers = ["underlined"] }
+"markup.link.text" = { fg = "aqua", modifiers = ["underlined"] }
+"markup.quote" = { fg = "comment", modifiers = ["italic"] }
+"markup.raw" = { fg = "amber" }
+"diff.plus" = { fg = "moss" }
+"diff.minus" = { fg = "flare" }
+"diff.delta" = { fg = "amber" }
+"ui.background" = { bg = "base" }
+"ui.text" = { fg = "text" }
+"ui.text.focus" = { fg = "text", bg = "surface0" }
+"ui.text.inactive" = { fg = "comment" }
+"ui.linenr" = { fg = "overlay" }
+"ui.linenr.selected" = { fg = "amber", modifiers = ["bold"] }
+"ui.cursorline.primary" = { bg = "surface0" }
+"ui.cursor" = { fg = "base", bg = "subtext" }
+"ui.cursor.primary" = { fg = "base", bg = "teal" }
+"ui.cursor.match" = { fg = "teal", modifiers = ["bold", "underlined"] }
+"ui.cursor.primary.insert" = { fg = "base", bg = "amber" }
+"ui.cursor.primary.select" = { fg = "base", bg = "orchid" }
+"ui.selection" = { bg = "surface1" }
+"ui.selection.primary" = { bg = "surface2" }
+"ui.statusline" = { fg = "subtext", bg = "crust" }
+"ui.statusline.inactive" = { fg = "overlay", bg = "crust" }
+"ui.statusline.normal" = { fg = "base", bg = "teal", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "base", bg = "amber", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "base", bg = "orchid", modifiers = ["bold"] }
+"ui.bufferline" = { fg = "subtext", bg = "crust" }
+"ui.bufferline.active" = { fg = "text", bg = "base", underline = { color = "teal", style = "line" } }
+"ui.popup" = { fg = "text", bg = "mantle" }
+"ui.popup.info" = { fg = "text", bg = "mantle" }
+"ui.window" = { fg = "surface1" }
+"ui.help" = { fg = "text", bg = "mantle" }
+"ui.menu" = { fg = "text", bg = "mantle" }
+"ui.menu.selected" = { fg = "text", bg = "surface1" }
+"ui.menu.scroll" = { fg = "surface2", bg = "mantle" }
+"ui.picker.header" = { fg = "teal", modifiers = ["bold"] }
+"ui.virtual.whitespace" = { fg = "surface1" }
+"ui.virtual.ruler" = { bg = "surface0" }
+"ui.virtual.indent-guide" = { fg = "surface0" }
+"ui.virtual.inlay-hint" = { fg = "comment", bg = "surface0" }
+"ui.virtual.jump-label" = { fg = "teal", modifiers = ["bold"] }
+"ui.highlight" = { bg = "surface0" }
+"ui.gutter" = { bg = "base" }
+"error" = { fg = "flare" }
+"warning" = { fg = "amber" }
+"info" = { fg = "steel" }
+"hint" = { fg = "mint" }
+"diagnostic.error" = { underline = { color = "flare", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "amber", style = "curl" } }
+"diagnostic.info" = { underline = { color = "steel", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "mint", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+[palette]
+crust = "#050a0f"
+base = "#0a1016"
+mantle = "#10171c"
+surface0 = "#171e24"
+surface1 = "#232a30"
+surface2 = "#333c43"
+overlay = "#50565b"
+comment = "#7d8489"
+subtext = "#9ba0a2"
+text2 = "#c8cfd4"
+text = "#e2e9ee"
+teal = "#43a997"
+mint = "#8ad5c6"
+aqua = "#b6e2df"
+steel = "#98bacd"
+amber = "#e9c897"
+copper = "#d49c80"
+flare = "#d68079"
+moss = "#a2cb9d"
+orchid = "#bc9ec6"
+rose = "#d9bac8"
