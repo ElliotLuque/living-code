@@ -239,6 +239,8 @@ Full role map (UI, diagnostics, markup) in [`palette/flavors.mjs`](palette/flavo
 
 **Web & code** — [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
 
+**Theme systems** — [base16 · Stylix · tinted-theming](#base16)
+
 Every file in `extras/`, `colors/` and `lua/living-code/palettes/` is generated — install instructions below.
 
 ## Installation
@@ -421,6 +423,28 @@ palette.night.roles.keyword;                     // "mint"
 ```
 
 Or read `palette.json` from any language.
+
+### Theme systems
+
+<a id="base16"></a>
+#### [base16 · Stylix · tinted-theming](https://github.com/tinted-theming/home)
+
+**Stylix (NixOS / home-manager)**
+
+```nix
+# flake.nix
+inputs.living-code = { url = "github:ElliotLuque/living-code"; flake = false; };
+
+# configuration
+stylix.base16Scheme = "${inputs.living-code}/extras/base16/living-code-night.yaml";
+stylix.polarity = "dark";   # "light" with living-code-paper
+```
+
+base16 has 16 slots shared between ANSI and syntax, so Stylix-generated themes get Living Code *colors* with base16 *roles*
+(teal accents, but strings green and keywords purple). For apps where the native port exists, disable the Stylix target and
+use the port for exact Living Code syntax — e.g. `stylix.targets.kitty.enable = false` + `programs.kitty.extraConfig = "include ${inputs.living-code}/extras/kitty/living-code-night.conf"`, and the same for `neovim`, `vscode`, `bat`, `helix`, `zed`.
+
+Also works with **tinted-theming** tools (`tinty`, `flavours`, base16-shell) — copy the YAML into their schemes directory.
 
 
 ## Using the palette in something else
