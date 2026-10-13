@@ -14,7 +14,6 @@ export const groups = [
 
 export const ports = groups.flatMap((g) => g.ports);
 
-/** All generated files for a set of resolved flavors. */
 export function generate(flavors) {
   const files = [];
   for (const p of ports) {

@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// Generates every port, palette.json, swatches and the README from
-// palette/flavors.mjs.   node scripts/build.mjs [--check]
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,7 +10,6 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
 const flavors = resolveAll();
 
-// ── Contrast audit: every text role must reach WCAG AA (4.5:1) on bg ────────
 const TEXT_ROLES = ["fg", "fgAlt", "fgMuted", "fgSubtle", "keyword", "function", "string", "number", "constant", "type", "decorator", "tag", "property", "parameter", "comment", "operator", "error", "warning", "info", "hint", "success", "link", "heading", "lineNumberActive"];
 const audit = [];
 for (const f of flavors) {
@@ -22,7 +19,6 @@ for (const f of flavors) {
   }
 }
 
-// ── README ───────────────────────────────────────────────────────────────────
 const USES = {
   crust: "sidebars, tab bars, status lines", base: "background", mantle: "floats, cards, popups",
   surface0: "line highlight, inactive tabs", surface1: "borders, ANSI black", surface2: "selection",
@@ -52,13 +48,13 @@ const roleTable = [
   ...SYNTAX.map((role) => `| ${role} | ${flavors.map((f) => `${sw(f.r(role))} \`${f.roles[role]}\``).join(" | ")} |`),
 ].join("\n");
 
-const portTables = groups.map((g) => `**${g.title}** — ${g.ports.map((p) => `[${p.name}](#${p.id})`).join(" · ")}`).join("\n\n");
+const portTables = groups.map((g) => `**${g.title}:** ${g.ports.map((p) => `[${p.name}](#${p.id})`).join(" · ")}`).join("\n\n");
 const installs = groups.map((g) => `### ${g.title}\n\n${g.ports.map((p) => `<a id="${p.id}"></a>\n#### [${p.name}](${p.homepage})\n\n${p.install}\n`).join("\n")}`).join("\n");
 
 const readme = `<h1 align="center">Living Code</h1>
 
 <p align="center"><b>Two temperatures, not a rainbow.</b><br>
-A color scheme for editors, terminals and the web — teal structure, amber data, on dark slate.</p>
+A color scheme for editors, terminals and the web. Teal structure, amber data, on dark slate.</p>
 
 <p align="center">
 ${flavors.map((f) => `<img src="assets/preview-${f.id}.png" width="49%" alt="${f.name}">`).join("\n")}
@@ -110,7 +106,7 @@ Full role map (UI, diagnostics, markup) in [\`palette/flavors.mjs\`](palette/fla
 
 ${portTables}
 
-Every file in \`extras/\`, \`colors/\` and \`lua/living-code/palettes/\` is generated — install instructions below.
+Every file in \`extras/\`, \`colors/\` and \`lua/living-code/palettes/\` is generated. Install instructions are below.
 
 ## Installation
 
@@ -132,20 +128,19 @@ or map these semantic roles onto the app's own color slots:
 
 ## Contributing a port
 
-1. Add a generator to \`scripts/ports/\` — a pure function from a resolved flavor to files.
+1. Add a generator to \`scripts/ports/\`: a pure function from a resolved flavor to files.
 2. Register it in \`scripts/ports/index.mjs\`.
 3. \`node scripts/build.mjs\` regenerates everything, including this README.
 
 Live preview with sliders and every port's output: \`node scripts/serve.mjs\` → <http://localhost:4173/preview/>.
 
-To change a color, edit [\`palette/flavors.mjs\`](palette/flavors.mjs) and rebuild — never edit generated files.
+To change a color, edit [\`palette/flavors.mjs\`](palette/flavors.mjs) and rebuild. Do not edit generated files directly.
 
 ## License
 
 [MIT](LICENSE) © Elliot Luque
 `;
 
-// ── Assets ───────────────────────────────────────────────────────────────────
 const swatches = new Set(flavors.flatMap((f) => [...Object.values(f.colors).map((c) => c.hex), ...f.ansi.normal, ...f.ansi.bright]));
 const files = [
   ...generate(flavors),
@@ -156,7 +151,6 @@ const files = [
   })),
 ];
 
-// ── Write / check ────────────────────────────────────────────────────────────
 let stale = 0;
 if (!check) await rm(join(root, "assets/swatches"), { recursive: true, force: true });
 for (const { path, content } of files) {
@@ -176,6 +170,6 @@ if (audit.length) {
   process.exitCode = 1;
 }
 if (stale) {
-  console.error(`\n${stale} generated files out of date — run node scripts/build.mjs`);
+  console.error(`\n${stale} generated files out of date. Run node scripts/build.mjs`);
   process.exitCode = 1;
 }

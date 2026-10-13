@@ -1,14 +1,10 @@
-// CLI / TUI tools.
-const header = (f, c = "#") => `${c} ${f.name}\n${c} Generated from palette/flavors.mjs — do not edit by hand.\n`;
-
 export const tmux = {
   id: "tmux",
   name: "tmux",
   homepage: "https://github.com/tmux/tmux",
   files: (f) => [{
     path: `extras/tmux/${f.slug}.conf`,
-    content: `${header(f)}
-set -g status-style "bg=${f.r("bgDeep")},fg=${f.r("fgMuted")}"
+    content: `set -g status-style "bg=${f.r("bgDeep")},fg=${f.r("fgMuted")}"
 set -g status-left-length 40
 set -g status-left "#[bg=${f.r("accent")},fg=${f.r("bg")},bold] #S #[default] "
 set -g status-right "#[fg=${f.r("fgSubtle")}]%H:%M #[bg=${f.c("surface0")},fg=${f.r("fg")}] #h "
@@ -27,7 +23,6 @@ setw -g window-status-bell-style "fg=${f.r("warning")},bold"
 `,
   }],
   install: `\`\`\`tmux
-# ~/.config/tmux/tmux.conf
 source-file ~/.config/tmux/living-code-night.conf
 \`\`\``,
 };
@@ -47,8 +42,8 @@ export const fzf = {
       `scrollbar:${f.c("surface2")}`,
     ].join(",");
     return [
-      { path: `extras/fzf/${f.slug}.sh`, content: `${header(f)}\nexport FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=${opts}"\n` },
-      { path: `extras/fzf/${f.slug}.fish`, content: `${header(f)}\nset -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --color=${opts}"\n` },
+      { path: `extras/fzf/${f.slug}.sh`, content: `export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=${opts}"\n` },
+      { path: `extras/fzf/${f.slug}.fish`, content: `set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --color=${opts}"\n` },
     ];
   },
   install: `Source the file for your shell from \`~/.bashrc\` / \`~/.zshrc\` (\`.sh\`) or \`config.fish\` (\`.fish\`).`,
@@ -63,10 +58,7 @@ export const starship = {
     const names = Object.keys(f.colors);
     return [{
       path: `extras/starship/${f.slug}.toml`,
-      content: `${header(f)}
-# Append to ~/.config/starship.toml, then reference colors by name
-# (e.g. style = "bold teal").
-palette = "${key}"
+      content: `palette = "${key}"
 
 [palettes.${key}]
 ${names.map((n) => `${n.padEnd(9)}= "${f.c(n)}"`).join("\n")}
@@ -99,7 +91,7 @@ export const btop = {
     };
     return [{
       path: `extras/btop/${f.slug}.theme`,
-      content: `${header(f)}\n${Object.entries(t).map(([k, v]) => `theme[${k}]="${v}"`).join("\n")}\n`,
+      content: `${Object.entries(t).map(([k, v]) => `theme[${k}]="${v}"`).join("\n")}\n`,
     }];
   },
   install: `Copy to \`~/.config/btop/themes/\` and pick it under *Options → Color theme*.`,
@@ -111,8 +103,7 @@ export const lazygit = {
   homepage: "https://github.com/jesseduffield/lazygit",
   files: (f) => [{
     path: `extras/lazygit/${f.slug}.yml`,
-    content: `${header(f)}
-gui:
+    content: `gui:
   theme:
     activeBorderColor:
       - "${f.r("borderActive")}"

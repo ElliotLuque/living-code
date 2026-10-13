@@ -1,5 +1,3 @@
-// Live preview: renders the resolved palette and every generated port.
-// Imports the exact modules the build uses, so what you see is what ships.
 import { contrast, css } from "../scripts/color.mjs";
 import { ACCENT_ORDER, ANSI_ORDER, NEUTRAL_ORDER, flavorOrder, flavors, resolveAll, resolveFlavor } from "../scripts/resolve.mjs";
 import { generate } from "../scripts/ports/index.mjs";
@@ -10,9 +8,7 @@ const initial = params.get("shot") || location.hash.slice(1);
 const state = { flavor: flavorOrder.includes(initial) ? initial : "night", file: null };
 if (params.has("shot")) document.body.classList.add("shot");
 
-// Colors that must read as text on base (WCAG AA 4.5:1).
 const TEXT = new Set(["comment", "subtext", "text2", "text", "mint", "aqua", "steel", "amber", "copper", "flare", "moss", "orchid", "rose"]);
-// Viewer syntax classes → roles.
 const CLASS_ROLES = {
   keyword: "keyword", function: "function", string: "string", number: "number", type: "type",
   operator: "punctuation", decorator: "decorator", property: "property",
@@ -33,7 +29,6 @@ function render() {
     root.setProperty(`--a-bright${n}`, css(f.ansiRaw.bright[i]));
   });
 
-  // swatches
   const card = (n) => {
     const c = f.colors[n];
     const ratio = contrast(c.oklch, f.raw.base);
@@ -52,7 +47,6 @@ function render() {
   $("kthemeName").textContent = f.slug;
   $("idea").innerHTML = `<b>${f.name}.</b> ${f.description}`;
 
-  // exports: every port, regenerated with the current sliders
   const all = resolveAll(adjust());
   const files = generate(all).filter((x) => !x.path.startsWith("assets/") && (x.path.includes(f.slug) || x.path.includes(`/${f.id}.lua`) || !all.some((g) => x.path.includes(g.slug))));
   const sel = $("exportFile");

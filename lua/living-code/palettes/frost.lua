@@ -1,5 +1,3 @@
--- Living Code Frost
--- Generated from palette/flavors.mjs — do not edit by hand.
 return {
   name = "Living Code Frost",
   light = false,

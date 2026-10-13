@@ -1,8 +1,3 @@
-# Living Code Signal
-# Generated from palette/flavors.mjs — do not edit by hand.
-
-# Append to ~/.config/starship.toml, then reference colors by name
-# (e.g. style = "bold teal").
 palette = "living_code_signal"
 
 [palettes.living_code_signal]

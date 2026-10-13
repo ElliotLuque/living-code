@@ -1,4 +1,1 @@
-# Living Code Paper
-# Generated from palette/flavors.mjs — do not edit by hand.
-
 set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --color=fg:#2e3437,bg:#f4f7f9,hl:#187d6e,fg+:#12171a,bg+:#e3e9ed,hl+:#0f695e,info:#6b7378,prompt:#187d6e,pointer:#187d6e,marker:#8f6213,spinner:#187d6e,header:#2b6991,border:#d2d8dd,label:#50565a,query:#12171a,gutter:#f4f7f9,selected-bg:#c2ccd3,separator:#d2d8dd,scrollbar:#c2ccd3"

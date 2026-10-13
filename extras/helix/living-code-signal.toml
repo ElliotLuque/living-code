@@ -1,6 +1,3 @@
-# Living Code Signal
-# Generated from palette/flavors.mjs — do not edit by hand.
-
 "attribute" = { fg = "teal" }
 "type" = { fg = "steel" }
 "type.builtin" = { fg = "steel" }

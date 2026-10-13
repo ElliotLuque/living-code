@@ -1,5 +1,3 @@
-# Generated from palette/flavors.mjs — do not edit by hand.
-# Hue-faithful mapping: base08 red · 09 orange · 0A yellow · 0B green · 0C cyan (teal) · 0D blue · 0E magenta
 system: "base16"
 name: "Living Code Paper"
 slug: "living-code-paper"

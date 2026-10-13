@@ -1,4 +1,3 @@
--- lualine: options = { theme = "living-code" }
 local lc = require("living-code")
 local flavor = (vim.g.colors_name or ""):match("^living%-code%-(%w+)$") or lc.config.flavor
 local p = lc.palette(flavor)

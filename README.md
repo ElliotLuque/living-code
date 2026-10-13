@@ -1,7 +1,7 @@
 <h1 align="center">Living Code</h1>
 
 <p align="center"><b>Two temperatures, not a rainbow.</b><br>
-A color scheme for editors, terminals and the web — teal structure, amber data, on dark slate.</p>
+A color scheme for editors, terminals and the web. Teal structure, amber data, on dark slate.</p>
 
 <p align="center">
 <img src="assets/preview-night.png" width="49%" alt="Living Code Night">
@@ -231,17 +231,17 @@ Full role map (UI, diagnostics, markup) in [`palette/flavors.mjs`](palette/flavo
 
 ## Ports
 
-**Editors** — [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [bat · delta · Sublime Text (tmTheme)](#tmtheme)
+**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [bat · delta · Sublime Text (tmTheme)](#tmtheme)
 
-**Terminals** — [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
+**Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
 
-**CLI & TUI** — [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit)
+**CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit)
 
-**Web & code** — [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
+**Web & code:** [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
 
-**Theme systems** — [base16 · Stylix · tinted-theming](#base16)
+**Theme systems:** [base16 · Stylix · tinted-theming](#base16)
 
-Every file in `extras/`, `colors/` and `lua/living-code/palettes/` is generated — install instructions below.
+Every file in `extras/`, `colors/` and `lua/living-code/palettes/` is generated. Install instructions are below.
 
 ## Installation
 
@@ -253,13 +253,12 @@ Every file in `extras/`, `colors/` and `lua/living-code/palettes/` is generated 
 This repo is a Neovim plugin.
 
 ```lua
--- lazy.nvim
 {
   "ElliotLuque/living-code",
   priority = 1000,
   config = function()
     require("living-code").setup({
-      flavor = "night",        -- night | signal | frost | paper
+      flavor = "night",
       transparent = false,
       italic_comments = true,
     })
@@ -275,10 +274,9 @@ Or pick a flavor directly: `:colorscheme living-code-signal`. Covers Tree-sitter
 
 Local install: `cd extras/vscode && npx @vscode/vsce package` and install the `.vsix`, or symlink the folder into `~/.vscode/extensions/living-code`. Then pick **Living Code Night** in *Preferences: Color Theme*.
 
-The same JSON works anywhere that reads VS Code themes — **Shiki**, **Expressive Code** / Astro, **Cursor**, **VSCodium**:
+The same JSON works anywhere that reads VS Code themes: **Shiki**, **Expressive Code** / Astro, **VSCodium**:
 
 ```ts
-// astro.config.ts
 import livingCode from "living-code/extras/vscode/themes/living-code-night-color-theme.json";
 expressiveCode({ themes: [livingCode] });
 ```
@@ -307,7 +305,7 @@ bat --list-themes | grep living-code
 
 Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-theme = living-code-night` under `[delta]` in `~/.gitconfig`.
 
-**Sublime Text** — copy the `.tmTheme` into `Packages/User/` and select it in *UI: Select Color Scheme*.
+**Sublime Text:** copy the `.tmTheme` into `Packages/User/` and select it in *UI: Select Color Scheme*.
 
 ### Terminals
 
@@ -317,7 +315,6 @@ Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-
 Copy a theme into `~/.config/kitty/themes/` and run `kitten themes`, or include it directly:
 
 ```conf
-# ~/.config/kitty/kitty.conf
 include themes/living-code-night.conf
 ```
 
@@ -327,7 +324,6 @@ include themes/living-code-night.conf
 Copy the files to `~/.config/ghostty/themes/`, then:
 
 ```conf
-# ~/.config/ghostty/config
 theme = dark:living-code-night,light:living-code-paper
 ```
 
@@ -337,7 +333,6 @@ theme = dark:living-code-night,light:living-code-paper
 Copy the file to `~/.config/alacritty/themes/` and import it:
 
 ```toml
-# ~/.config/alacritty/alacritty.toml
 [general]
 import = ["~/.config/alacritty/themes/living-code-night.toml"]
 ```
@@ -355,7 +350,6 @@ config.color_scheme = "Living Code Night"
 #### [foot](https://codeberg.org/dnkl/foot)
 
 ```ini
-# ~/.config/foot/foot.ini
 [main]
 include=~/.config/foot/living-code-night.ini
 ```
@@ -366,7 +360,6 @@ include=~/.config/foot/living-code-night.ini
 #### [tmux](https://github.com/tmux/tmux)
 
 ```tmux
-# ~/.config/tmux/tmux.conf
 source-file ~/.config/tmux/living-code-night.conf
 ```
 
@@ -417,9 +410,9 @@ Then `bg-lc-base text-lc-text border-lc-surface1`, `text-lc-keyword`, etc.
 #### [JSON / JavaScript](https://github.com/ElliotLuque/living-code)
 
 ```js
-import { palette } from "living-code";          // palette.mjs
-palette.night.colors.teal.hex;                   // "#00a692"
-palette.night.roles.keyword;                     // "mint"
+import { palette } from "living-code";
+palette.night.colors.teal.hex;
+palette.night.roles.keyword;
 ```
 
 Or read `palette.json` from any language.
@@ -432,19 +425,17 @@ Or read `palette.json` from any language.
 **Stylix (NixOS / home-manager)**
 
 ```nix
-# flake.nix
 inputs.living-code = { url = "github:ElliotLuque/living-code"; flake = false; };
 
-# configuration
 stylix.base16Scheme = "${inputs.living-code}/extras/base16/living-code-night.yaml";
-stylix.polarity = "dark";   # "light" with living-code-paper
+stylix.polarity = "dark";
 ```
 
 base16 has 16 slots shared between ANSI and syntax, so Stylix-generated themes get Living Code *colors* with base16 *roles*
 (teal accents, but strings green and keywords purple). For apps where the native port exists, disable the Stylix target and
-use the port for exact Living Code syntax — e.g. `stylix.targets.kitty.enable = false` + `programs.kitty.extraConfig = "include ${inputs.living-code}/extras/kitty/living-code-night.conf"`, and the same for `neovim`, `vscode`, `bat`, `helix`, `zed`.
+use the port for exact Living Code syntax. For example, `stylix.targets.kitty.enable = false` + `programs.kitty.extraConfig = "include ${inputs.living-code}/extras/kitty/living-code-night.conf"`, and the same for `neovim`, `vscode`, `bat`, `helix`, `zed`.
 
-Also works with **tinted-theming** tools (`tinty`, `flavours`, base16-shell) — copy the YAML into their schemes directory.
+Also works with **tinted-theming** tools (`tinty`, `flavours`, base16-shell): copy the YAML into their schemes directory.
 
 
 ## Using the palette in something else
@@ -463,13 +454,13 @@ or map these semantic roles onto the app's own color slots:
 
 ## Contributing a port
 
-1. Add a generator to `scripts/ports/` — a pure function from a resolved flavor to files.
+1. Add a generator to `scripts/ports/`: a pure function from a resolved flavor to files.
 2. Register it in `scripts/ports/index.mjs`.
 3. `node scripts/build.mjs` regenerates everything, including this README.
 
 Live preview with sliders and every port's output: `node scripts/serve.mjs` → <http://localhost:4173/preview/>.
 
-To change a color, edit [`palette/flavors.mjs`](palette/flavors.mjs) and rebuild — never edit generated files.
+To change a color, edit [`palette/flavors.mjs`](palette/flavors.mjs) and rebuild. Do not edit generated files directly.
 
 ## License
 

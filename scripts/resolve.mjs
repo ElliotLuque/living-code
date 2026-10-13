@@ -1,5 +1,3 @@
-// Turns a flavor source into a resolved palette that every port consumes.
-// Pure — shared by the Node build and the browser preview.
 import { css, hex, mix, rgb, toGamut } from "./color.mjs";
 import { defaultAnsi, defaultRoles, flavors, flavorOrder, roleStyles } from "../palette/flavors.mjs";
 
@@ -7,10 +5,6 @@ export const ANSI_ORDER = ["black", "red", "green", "yellow", "blue", "magenta",
 export const NEUTRAL_ORDER = ["crust", "base", "mantle", "surface0", "surface1", "surface2", "overlay", "comment", "subtext", "text2", "text"];
 export const ACCENT_ORDER = ["teal", "mint", "aqua", "steel", "amber", "copper", "flare", "moss", "orchid", "rose"];
 
-/**
- * @param {string} id flavor id
- * @param {{chroma?: number, light?: number, hue?: number}} [adjust] preview sliders
- */
 export function resolveFlavor(id, adjust = {}) {
   const src = flavors[id];
   const { chroma = 1, light = 0, hue = 0 } = adjust;
@@ -43,16 +37,11 @@ export function resolveFlavor(id, adjust = {}) {
     styles: roleStyles,
     ansiRaw: { normal: normalRaw, bright: brightRaw },
     ansi: { normal: normalRaw.map(hex), bright: brightRaw.map(hex) },
-    /** palette color → hex */
     c: (name) => colors[name].hex,
-    /** role → hex */
     r: (role) => colors[roles[role]].hex,
-    /** role → raw OKLCH */
     rr: (role) => raw[roles[role]],
-    /** blend two colors (names, roles or OKLCH) in OKLab → hex */
     mix: (a, b, t) => hex(mix(f.resolve(a), f.resolve(b), t)),
     resolve: (x) => (Array.isArray(x) ? x : raw[x] ?? raw[roles[x]]),
-    /** ANSI by name: ansi16("red"), ansi16("brightred") */
     ansi16: (n) => (n.startsWith("bright") ? f.ansi.bright[ANSI_ORDER.indexOf(n.slice(6))] : f.ansi.normal[ANSI_ORDER.indexOf(n)]),
   };
   return f;

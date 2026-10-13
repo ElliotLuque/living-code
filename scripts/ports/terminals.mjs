@@ -1,7 +1,5 @@
-// Terminal emulators. Each port: { id, name, homepage, files(f) → [{path, content}], install }
 import { ANSI_ORDER } from "../resolve.mjs";
 
-const header = (f, c = "#") => `${c} ${f.name}\n${c} Generated from palette/flavors.mjs — do not edit by hand.\n`;
 const nohash = (h) => h.slice(1);
 
 export const kitty = {
@@ -10,11 +8,9 @@ export const kitty = {
   homepage: "https://sw.kovidgoyal.net/kitty/",
   files: (f) => [{
     path: `extras/kitty/${f.slug}.conf`,
-    content: `# vim:ft=kitty
-## name: ${f.name}
+    content: `## name: ${f.name}
 ## license: MIT
 ## upstream: https://github.com/ElliotLuque/living-code
-${header(f)}
 foreground              ${f.r("fg")}
 background              ${f.r("bg")}
 selection_foreground    none
@@ -44,17 +40,14 @@ mark2_background ${f.c("orchid")}
 mark3_foreground ${f.r("bg")}
 mark3_background ${f.c("copper")}
 
-# ${ANSI_ORDER.join(", ")}
 ${ANSI_ORDER.map((n, i) => `color${String(i).padEnd(3)} ${f.ansi.normal[i]}`).join("\n")}
 
-# bright
 ${ANSI_ORDER.map((n, i) => `color${String(i + 8).padEnd(3)} ${f.ansi.bright[i]}`).join("\n")}
 `,
   }],
   install: `Copy a theme into \`~/.config/kitty/themes/\` and run \`kitten themes\`, or include it directly:
 
 \`\`\`conf
-# ~/.config/kitty/kitty.conf
 include themes/living-code-night.conf
 \`\`\``,
 };
@@ -65,8 +58,7 @@ export const ghostty = {
   homepage: "https://ghostty.org",
   files: (f) => [{
     path: `extras/ghostty/${f.slug}`,
-    content: `${header(f)}
-${f.ansi.normal.map((c, i) => `palette = ${i}=${c}`).join("\n")}
+    content: `${f.ansi.normal.map((c, i) => `palette = ${i}=${c}`).join("\n")}
 ${f.ansi.bright.map((c, i) => `palette = ${i + 8}=${c}`).join("\n")}
 background = ${f.r("bg")}
 foreground = ${f.r("fg")}
@@ -80,7 +72,6 @@ split-divider-color = ${f.r("border")}
   install: `Copy the files to \`~/.config/ghostty/themes/\`, then:
 
 \`\`\`conf
-# ~/.config/ghostty/config
 theme = dark:living-code-night,light:living-code-paper
 \`\`\``,
 };
@@ -93,8 +84,7 @@ export const alacritty = {
     const block = (arr) => ANSI_ORDER.map((n, i) => `${n} = "${arr[i]}"`).join("\n");
     return [{
       path: `extras/alacritty/${f.slug}.toml`,
-      content: `${header(f)}
-[colors.primary]
+      content: `[colors.primary]
 background = "${f.r("bg")}"
 foreground = "${f.r("fg")}"
 dim_foreground = "${f.r("fgMuted")}"
@@ -143,7 +133,6 @@ ${block(f.ansi.bright)}
   install: `Copy the file to \`~/.config/alacritty/themes/\` and import it:
 
 \`\`\`toml
-# ~/.config/alacritty/alacritty.toml
 [general]
 import = ["~/.config/alacritty/themes/living-code-night.toml"]
 \`\`\``,
@@ -155,8 +144,7 @@ export const wezterm = {
   homepage: "https://wezterm.org",
   files: (f) => [{
     path: `extras/wezterm/${f.slug}.toml`,
-    content: `${header(f)}
-[colors]
+    content: `[colors]
 foreground = "${f.r("fg")}"
 background = "${f.r("bg")}"
 cursor_bg = "${f.r("cursor")}"
@@ -212,8 +200,7 @@ export const foot = {
   homepage: "https://codeberg.org/dnkl/foot",
   files: (f) => [{
     path: `extras/foot/${f.slug}.ini`,
-    content: `${header(f)}
-[cursor]
+    content: `[cursor]
 color=${nohash(f.r("bg"))} ${nohash(f.r("cursor"))}
 
 [colors]
@@ -230,7 +217,6 @@ urls=${nohash(f.r("link"))}
 `,
   }],
   install: `\`\`\`ini
-# ~/.config/foot/foot.ini
 [main]
 include=~/.config/foot/living-code-night.ini
 \`\`\``,

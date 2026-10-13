@@ -1,9 +1,5 @@
--- Highlight groups, expressed only in terms of palette colors and roles so
--- every flavor (and any future one) gets the same structure.
 local M = {}
 
----@param p table palette from living-code.palettes.<flavor>
----@param cfg table
 function M.get(p, cfg)
   local c, r, b = p.colors, p.roles, p.blend
   local bg = cfg.transparent and "NONE" or r.bg
@@ -11,7 +7,6 @@ function M.get(p, cfg)
   local italic = cfg.italic_comments
 
   local hl = {
-    -- ── Editor UI ──────────────────────────────────────────────────────────
     Normal = { fg = r.fg, bg = bg },
     NormalNC = { fg = r.fg, bg = cfg.dim_inactive and r.bgDeep or bg },
     NormalFloat = { fg = r.fg, bg = bg_alt },
@@ -75,7 +70,6 @@ function M.get(p, cfg)
     SpellLocal = { sp = r.info, undercurl = true },
     SpellRare = { sp = r.hint, undercurl = true },
 
-    -- ── Legacy syntax ──────────────────────────────────────────────────────
     Comment = { fg = r.comment, italic = italic },
     Constant = { fg = r.constant },
     String = { fg = r.string },
@@ -116,7 +110,6 @@ function M.get(p, cfg)
     Removed = { fg = r.removed },
     Changed = { fg = r.modified },
 
-    -- ── Tree-sitter ────────────────────────────────────────────────────────
     ["@variable"] = { fg = r.variable },
     ["@variable.builtin"] = { fg = r.builtin, italic = true },
     ["@variable.parameter"] = { fg = r.parameter, italic = true },
@@ -204,7 +197,6 @@ function M.get(p, cfg)
     ["@tag.attribute"] = { fg = r.attribute },
     ["@tag.delimiter"] = { fg = r.punctuation },
 
-    -- ── LSP ────────────────────────────────────────────────────────────────
     ["@lsp.type.class"] = { link = "@type" },
     ["@lsp.type.decorator"] = { link = "@attribute" },
     ["@lsp.type.enum"] = { link = "@type" },
@@ -245,7 +237,6 @@ function M.get(p, cfg)
     DiagnosticUnnecessary = { fg = r.fgSubtle },
     DiagnosticDeprecated = { strikethrough = true },
 
-    -- ── Diff ───────────────────────────────────────────────────────────────
     DiffAdd = { bg = b.added },
     DiffDelete = { bg = b.removed },
     DiffChange = { bg = b.modified },
@@ -256,7 +247,6 @@ function M.get(p, cfg)
     diffFile = { fg = r.accent, bold = true },
     diffLine = { fg = r.fgSubtle },
 
-    -- ── Plugins ────────────────────────────────────────────────────────────
     GitSignsAdd = { fg = r.added },
     GitSignsChange = { fg = r.modified },
     GitSignsDelete = { fg = r.removed },

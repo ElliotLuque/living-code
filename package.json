@@ -1,7 +1,7 @@
 {
   "name": "living-code",
   "version": "0.1.0",
-  "description": "Two temperatures, not a rainbow — a color scheme for editors, terminals and the web.",
+  "description": "A color scheme for editors, terminals and the web.",
   "type": "module",
   "license": "MIT",
   "author": "Elliot Luque",

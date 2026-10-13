@@ -1,5 +1,3 @@
-// Pure OKLCH color math (no Node APIs — also imported by the browser preview).
-
 const rad = (d) => (d * Math.PI) / 180;
 
 export function oklchToOklab([L, C, h]) {
@@ -27,7 +25,6 @@ export function oklchToLinearRgb(c) {
 const EPS = 1e-4;
 export const inGamut = (c) => oklchToLinearRgb(c).every((x) => x > -EPS && x < 1 + EPS);
 
-/** Map into sRGB by reducing chroma (keeps lightness and hue, like CSS Color 4). */
 export function toGamut([L, C, h]) {
   if (inGamut([L, C, h])) return [L, C, h];
   let lo = 0, hi = C;
@@ -61,7 +58,6 @@ const round = (n, d) => +n.toFixed(d);
 export const css = ([L, C, h]) =>
   `oklch(${round(L, 4)} ${round(C, 4)} ${round(((h % 360) + 360) % 360, 2)})`;
 
-/** Interpolate in OKLab. t = 0 → a, t = 1 → b. */
 export function mix(a, b, t) {
   const A = oklchToOklab(a), B = oklchToOklab(b);
   return oklabToOklch(A.map((v, i) => v + (B[i] - v) * t));

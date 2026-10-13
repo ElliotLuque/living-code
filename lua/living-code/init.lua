@@ -1,16 +1,13 @@
--- Living Code for Neovim.
--- Palettes in lua/living-code/palettes/ are generated; this file is hand-written.
 local M = {}
 
 M.flavors = { "night", "signal", "frost", "paper" }
 
 M.config = {
-  flavor = "night", -- night | signal | frost | paper
-  light_flavor = "paper", -- used by :colorscheme living-code when background=light
+  flavor = "night",
+  light_flavor = "paper",
   transparent = false,
   italic_comments = true,
   dim_inactive = false,
-  ---@type fun(hl: table<string, table>, p: table)|nil
   on_highlights = nil,
 }
 
@@ -18,14 +15,10 @@ function M.setup(opts)
   M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 end
 
----@param flavor? string
 function M.palette(flavor)
   return require("living-code.palettes." .. (flavor or M.config.flavor))
 end
 
---- Load a flavor. Without an argument (`:colorscheme living-code`) the flavor
---- follows 'background': config.flavor when dark, config.light_flavor when light.
----@param flavor? string
 function M.load(flavor)
   local name = flavor and ("living-code-" .. flavor) or "living-code"
   flavor = flavor or (vim.o.background == "light" and M.config.light_flavor or M.config.flavor)

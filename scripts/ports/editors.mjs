@@ -1,12 +1,5 @@
-// Editors: VS Code (also Shiki / Expressive Code), TextMate (bat, delta,
-// Sublime), Helix, Neovim palettes, Zed.
 import { ANSI_ORDER } from "../resolve.mjs";
 
-const gen = "Generated from palette/flavors.mjs — do not edit by hand.";
-
-// ── Shared TextMate scope → role map ─────────────────────────────────────────
-// `role: null` = style-only rule. TextMate picks the most specific selector,
-// so broad scopes (keyword) and narrow ones (keyword.operator) can coexist.
 export const SCOPES = [
   { role: "comment", scope: ["comment", "punctuation.definition.comment", "string.quoted.docstring"] },
   { role: "keyword", scope: ["keyword", "storage.type", "storage.modifier", "keyword.control", "keyword.operator.new", "keyword.operator.expression", "keyword.operator.logical.python", "keyword.operator.wordlike", "keyword.other", "punctuation.definition.template-expression", "punctuation.section.embedded"] },
@@ -52,7 +45,6 @@ const scopeRules = (f) =>
     return { scope, settings };
   });
 
-// ── VS Code ──────────────────────────────────────────────────────────────────
 const alpha = (hex, a) => hex + Math.round(a * 255).toString(16).padStart(2, "0");
 
 function vscodeTheme(f) {
@@ -302,7 +294,7 @@ export const vscode = {
       content: JSON.stringify({
         name: "living-code",
         displayName: "Living Code",
-        description: "Two temperatures, not a rainbow — teal structure, amber data, on dark slate.",
+        description: "Teal structure, amber data, on dark slate.",
         version: "0.1.0",
         publisher: "elliotluque",
         license: "MIT",
@@ -317,16 +309,14 @@ export const vscode = {
   ],
   install: `Local install: \`cd extras/vscode && npx @vscode/vsce package\` and install the \`.vsix\`, or symlink the folder into \`~/.vscode/extensions/living-code\`. Then pick **Living Code Night** in *Preferences: Color Theme*.
 
-The same JSON works anywhere that reads VS Code themes — **Shiki**, **Expressive Code** / Astro, **Cursor**, **VSCodium**:
+The same JSON works anywhere that reads VS Code themes: **Shiki**, **Expressive Code** / Astro, **VSCodium**:
 
 \`\`\`ts
-// astro.config.ts
 import livingCode from "living-code/extras/vscode/themes/living-code-night-color-theme.json";
 expressiveCode({ themes: [livingCode] });
 \`\`\``,
 };
 
-// ── TextMate (.tmTheme) for bat, delta, Sublime Text ─────────────────────────
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 function plistDict(obj, indent) {
   const pad = "\t".repeat(indent);
@@ -354,7 +344,6 @@ ${plistDict(settings, 3)}
     return [{
       path: `extras/tmtheme/${f.slug}.tmTheme`,
       content: `<?xml version="1.0" encoding="UTF-8"?>
-<!-- ${f.name} · ${gen} -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -386,7 +375,7 @@ bat --list-themes | grep living-code
 
 Then \`--theme="living-code-night"\` in \`$(bat --config-dir)/config\`, and \`syntax-theme = living-code-night\` under \`[delta]\` in \`~/.gitconfig\`.
 
-**Sublime Text** — copy the \`.tmTheme\` into \`Packages/User/\` and select it in *UI: Select Color Scheme*.`,
+**Sublime Text:** copy the \`.tmTheme\` into \`Packages/User/\` and select it in *UI: Select Color Scheme*.`,
 };
 
 function uuid(seed) {
@@ -401,7 +390,6 @@ function uuid(seed) {
   return `${s.slice(0, 8)}-${s.slice(8, 12)}-4${s.slice(13, 16)}-a${s.slice(17, 20)}-${s.slice(20, 32)}`;
 }
 
-// ── Helix ────────────────────────────────────────────────────────────────────
 export const helix = {
   id: "helix",
   name: "Helix",
@@ -473,13 +461,12 @@ export const helix = {
           : `{ ${Object.entries(v).map(([k, x]) => `${k} = ${toml(x)}`).join(", ")} }`;
     return [{
       path: `extras/helix/${f.slug}.toml`,
-      content: `# ${f.name}\n# ${gen}\n\n${Object.entries(t).map(([k, v]) => `"${k}" = ${toml(v)}`).join("\n")}\n\n[palette]\n${Object.keys(f.colors).map((n) => `${n} = "${f.c(n)}"`).join("\n")}\n`,
+      content: `${Object.entries(t).map(([k, v]) => `"${k}" = ${toml(v)}`).join("\n")}\n\n[palette]\n${Object.keys(f.colors).map((n) => `${n} = "${f.c(n)}"`).join("\n")}\n`,
     }];
   },
   install: `Copy to \`~/.config/helix/themes/\`, then \`theme = "living-code-night"\` in \`config.toml\`.`,
 };
 
-// ── Neovim palettes (the plugin itself lives in lua/ + colors/) ─────────────
 export const neovim = {
   id: "neovim",
   name: "Neovim",
@@ -489,22 +476,21 @@ export const neovim = {
     return [
       {
         path: `lua/living-code/palettes/${f.id}.lua`,
-        content: `-- ${f.name}\n-- ${gen}\nreturn {\n  name = "${f.name}",\n  light = ${f.light},\n  colors = {\n${lua(Object.fromEntries(Object.keys(f.colors).map((n) => [n, f.c(n)])))}\n  },\n  roles = {\n${lua(Object.fromEntries(Object.keys(f.roles).map((k) => [k, f.r(k)])))}\n  },\n  ansi = {\n${[...f.ansi.normal, ...f.ansi.bright].map((c) => `    "${c}",`).join("\n")}\n  },\n  blend = {\n    added = "${f.mix("bg", "added", 0.14)}",\n    removed = "${f.mix("bg", "removed", 0.14)}",\n    modified = "${f.mix("bg", "modified", 0.12)}",\n    error = "${f.mix("bg", "error", 0.12)}",\n    warning = "${f.mix("bg", "warning", 0.12)}",\n    info = "${f.mix("bg", "info", 0.12)}",\n    hint = "${f.mix("bg", "hint", 0.12)}",\n    accent = "${f.mix("bg", "accent", 0.18)}",\n  },\n}\n`,
+        content: `return {\n  name = "${f.name}",\n  light = ${f.light},\n  colors = {\n${lua(Object.fromEntries(Object.keys(f.colors).map((n) => [n, f.c(n)])))}\n  },\n  roles = {\n${lua(Object.fromEntries(Object.keys(f.roles).map((k) => [k, f.r(k)])))}\n  },\n  ansi = {\n${[...f.ansi.normal, ...f.ansi.bright].map((c) => `    "${c}",`).join("\n")}\n  },\n  blend = {\n    added = "${f.mix("bg", "added", 0.14)}",\n    removed = "${f.mix("bg", "removed", 0.14)}",\n    modified = "${f.mix("bg", "modified", 0.12)}",\n    error = "${f.mix("bg", "error", 0.12)}",\n    warning = "${f.mix("bg", "warning", 0.12)}",\n    info = "${f.mix("bg", "info", 0.12)}",\n    hint = "${f.mix("bg", "hint", 0.12)}",\n    accent = "${f.mix("bg", "accent", 0.18)}",\n  },\n}\n`,
       },
-      { path: `colors/${f.slug}.lua`, content: `-- ${gen}\nrequire("living-code").load("${f.id}")\n` },
+      { path: `colors/${f.slug}.lua`, content: `require("living-code").load("${f.id}")\n` },
     ];
   },
-  all: () => [{ path: "colors/living-code.lua", content: `-- ${gen}\nrequire("living-code").load()\n` }],
+  all: () => [{ path: "colors/living-code.lua", content: `require("living-code").load()\n` }],
   install: `This repo is a Neovim plugin.
 
 \`\`\`lua
--- lazy.nvim
 {
   "ElliotLuque/living-code",
   priority = 1000,
   config = function()
     require("living-code").setup({
-      flavor = "night",        -- night | signal | frost | paper
+      flavor = "night",
       transparent = false,
       italic_comments = true,
     })
@@ -516,7 +502,6 @@ export const neovim = {
 Or pick a flavor directly: \`:colorscheme living-code-signal\`. Covers Tree-sitter, LSP semantic tokens, diagnostics, gitsigns, telescope, nvim-cmp / blink.cmp, which-key, mini.*, lualine (\`theme = "living-code"\`).`,
 };
 
-// ── Zed ──────────────────────────────────────────────────────────────────────
 export const zed = {
   id: "zed",
   name: "Zed",

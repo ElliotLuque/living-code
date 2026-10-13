@@ -1,8 +1,3 @@
-/* Living Code for Tailwind v4 — Generated from palette/flavors.mjs — do not edit by hand.
- * @import "tailwindcss"; @import "./living-code.css";
- * Utilities: bg-lc-base, text-lc-teal, border-lc-surface1, text-lc-keyword …
- * Flavor switches through data-theme (requires extras/css/living-code.css). */
-
 @theme inline {
   --color-lc-crust: var(--lc-crust);
   --color-lc-base: var(--lc-base);

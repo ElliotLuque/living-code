@@ -1,5 +1,3 @@
--- Living Code Signal
--- Generated from palette/flavors.mjs — do not edit by hand.
 return {
   name = "Living Code Signal",
   light = false,

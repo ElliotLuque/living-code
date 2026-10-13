@@ -1,18 +1,3 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// Living Code — the single source of truth.
-// Every port in extras/, the Neovim plugin, palette.json and the preview are
-// generated from this file by `node scripts/build.mjs`. Edit here, never there.
-//
-// Values are OKLCH [lightness 0–1, chroma, hue°]. Hex is derived (gamut-mapped
-// by chroma reduction), so the OKLCH numbers stay canonical.
-//
-// Design rule — two temperatures, not a rainbow:
-//   cool (teal → mint → aqua → steel) = structure: keywords, functions, types
-//   warm (amber → copper)             = data: strings, numbers, constants
-//   flare (red) is reserved for errors; punctuation sinks into the slate.
-//   moss / orchid / rose exist for terminals, diffs and markup.
-// ─────────────────────────────────────────────────────────────────────────────
-
 const N = (L, C = 0.01, h = 240) => [L, C, h];
 
 const nightNeutrals = {
@@ -30,16 +15,16 @@ const nightNeutrals = {
 };
 
 const nightAccents = {
-  teal: [0.65, 0.15, 180], // the brand — UI accent, cursor, focus
-  mint: [0.8, 0.12, 180], // keywords
-  aqua: [0.86, 0.07, 192], // functions — teal washed toward text
-  steel: [0.75, 0.07, 232], // types — the slate hue with a little chroma
-  amber: [0.83, 0.115, 78], // strings
-  copper: [0.72, 0.12, 48], // numbers, constants
-  flare: [0.67, 0.165, 25], // errors only
-  moss: [0.78, 0.12, 142], // success, diff add
-  orchid: [0.72, 0.1, 318], // decorators, tags, ANSI magenta
-  rose: [0.8, 0.06, 350], // rare
+  teal: [0.65, 0.15, 180],
+  mint: [0.8, 0.12, 180],
+  aqua: [0.86, 0.07, 192],
+  steel: [0.75, 0.07, 232],
+  amber: [0.83, 0.115, 78],
+  copper: [0.72, 0.12, 48],
+  flare: [0.67, 0.165, 25],
+  moss: [0.78, 0.12, 142],
+  orchid: [0.72, 0.1, 318],
+  rose: [0.8, 0.06, 350],
 };
 
 export const flavors = {
@@ -86,7 +71,7 @@ export const flavors = {
       surface0: N(0.23, 0.015, 245),
       surface1: N(0.28, 0.015, 245),
       surface2: N(0.35, 0.018, 245),
-      comment: N(0.61, 0.012, 235), // lifted for AA on the lighter base
+      comment: N(0.61, 0.012, 235),
     },
     accents: Object.fromEntries(
       Object.entries(nightAccents).map(([k, [L, C, h]]) => [k, [Math.min(L + 0.02, 0.9), C * 0.65, h]]),
@@ -128,9 +113,7 @@ export const flavors = {
 
 export const flavorOrder = ["night", "signal", "frost", "paper"];
 
-// Semantic roles → palette color names. Flavors override via `roles`.
 export const defaultRoles = {
-  // surfaces & text
   bg: "base",
   bgAlt: "mantle",
   bgDeep: "crust",
@@ -138,7 +121,6 @@ export const defaultRoles = {
   fgAlt: "text2",
   fgMuted: "subtext",
   fgSubtle: "comment",
-  // UI
   accent: "teal",
   cursor: "teal",
   selection: "surface2",
@@ -148,7 +130,6 @@ export const defaultRoles = {
   lineNumber: "overlay",
   lineNumberActive: "amber",
   match: "amber",
-  // states
   error: "flare",
   warning: "amber",
   info: "steel",
@@ -157,7 +138,6 @@ export const defaultRoles = {
   added: "moss",
   removed: "flare",
   modified: "amber",
-  // syntax
   keyword: "mint",
   builtin: "mint",
   function: "aqua",
@@ -177,14 +157,12 @@ export const defaultRoles = {
   variable: "text",
   parameter: "text2",
   comment: "comment",
-  // markup
   heading: "teal",
   link: "aqua",
   code: "amber",
   quote: "comment",
 };
 
-// Font styles per role (ports that support them).
 export const roleStyles = {
   comment: "italic",
   parameter: "italic",
@@ -194,8 +172,6 @@ export const roleStyles = {
   link: "underline",
 };
 
-// ANSI 16. Strings are palette names; arrays are literal OKLCH. Missing bright
-// colors are derived: dark flavors +0.08 lightness, light flavors −0.08.
 export const defaultAnsi = {
   black: "surface1",
   red: "flare",

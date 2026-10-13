@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// Zero-dependency static server for the preview (ES modules need http://).
-//   node scripts/serve.mjs [port]   →   http://localhost:4173/preview/
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { dirname, extname, join, normalize } from "node:path";

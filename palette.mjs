@@ -1,4 +1,3 @@
-// Generated from palette/flavors.mjs — do not edit by hand.
 export const palette = {
   "night": {
     "name": "Living Code Night",
