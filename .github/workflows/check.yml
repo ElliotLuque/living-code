@@ -9,4 +9,5 @@ jobs:
         with: { node-version: 22 }
       # Fails if any port is out of date with palette/flavors.mjs,
       # or if a text role drops below WCAG AA contrast.
-      - run: node scripts/build.mjs --check
+      - name: Check generated ports and palette contrast
+        run: npm run check

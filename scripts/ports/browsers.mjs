@@ -1,5 +1,3 @@
-import { themeIcon } from "../icons.mjs";
-
 export const supportsFirefox = (f) => f.id === "night" || f.id === "paper";
 
 export function firefoxTheme(f) {
@@ -72,10 +70,6 @@ export const firefox = {
     {
       path: `extras/firefox/${f.slug}/manifest.json`,
       content: JSON.stringify(firefoxTheme(f), null, 2) + "\n",
-    },
-    {
-      path: `extras/firefox/${f.slug}/icons/icon.svg`,
-      content: themeIcon(f),
     },
   ] : [],
   install: `Choose **Night** for a dark browser or **Paper** for a light one.
