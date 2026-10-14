@@ -26,7 +26,7 @@ Living Code clusters them instead:
 
 ### Living Code Night
 
-The default. Dark slate ground, teal structure, amber data. Cool hues clustered around the brand teal carry structure; warm amber and copper carry data.
+The default. Dark slate ground, teal structure, green strings and gray comments. Amber warnings and copper numbers keep their warm contrast.
 
 <details open>
 <summary>Palette</summary>
@@ -73,7 +73,7 @@ The default. Dark slate ground, teal structure, amber data. Cool hues clustered 
 
 ### Living Code Signal
 
-Restraint. Teal keywords and one warm signal for every literal; everything else is carried by the slate ramp. Code reads like prose with highlights.
+One accent. Teal keywords, tags and focus; everything else uses the existing slate foreground and background ramp. No warm literals or multicolor diagnostics.
 
 <details>
 <summary>Palette</summary>
@@ -99,22 +99,22 @@ Restraint. Teal keywords and one warm signal for every literal; everything else 
 | | Name | Hex | OKLCH | Used for |
 |:-:|---|---|---|---|
 | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `teal` | `#00a692` | `oklch(0.65 0.15 180)` | accent · cursor · focus · ANSI cyan |
-| <img src="assets/swatches/52d7c1.svg" width="18" height="18" alt="#52d7c1"> | `mint` | `#52d7c1` | `oklch(0.8 0.12 180)` | keywords |
-| <img src="assets/swatches/9ae0dd.svg" width="18" height="18" alt="#9ae0dd"> | `aqua` | `#9ae0dd` | `oklch(0.86 0.07 192)` | functions |
-| <img src="assets/swatches/90cacd.svg" width="18" height="18" alt="#90cacd"> | `steel` | `#90cacd` | `oklch(0.8 0.06 200)` | types · info · ANSI blue |
-| <img src="assets/swatches/efb062.svg" width="18" height="18" alt="#efb062"> | `amber` | `#efb062` | `oklch(0.8 0.12 70)` | strings · warnings |
-| <img src="assets/swatches/e18c5f.svg" width="18" height="18" alt="#e18c5f"> | `copper` | `#e18c5f` | `oklch(0.72 0.12 48)` | numbers · constants |
-| <img src="assets/swatches/e96560.svg" width="18" height="18" alt="#e96560"> | `flare` | `#e96560` | `oklch(0.67 0.165 25)` | errors only |
-| <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> | `moss` | `#8acb83` | `oklch(0.78 0.12 142)` | success · diff add |
-| <img src="assets/swatches/bf91cd.svg" width="18" height="18" alt="#bf91cd"> | `orchid` | `#bf91cd` | `oklch(0.72 0.1 318)` | decorators · tags · ANSI magenta |
-| <img src="assets/swatches/ddaec3.svg" width="18" height="18" alt="#ddaec3"> | `rose` | `#ddaec3` | `oklch(0.8 0.06 350)` | rare accents |
+| <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `mint` | `#00a692` | `oklch(0.65 0.15 180)` | keywords |
+| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `aqua` | `#e2e9ee` | `oklch(0.93 0.01 240)` | functions |
+| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `steel` | `#c8cfd4` | `oklch(0.85 0.01 240)` | types · info · ANSI blue |
+| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `amber` | `#e2e9ee` | `oklch(0.93 0.01 240)` | strings · warnings |
+| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `copper` | `#e2e9ee` | `oklch(0.93 0.01 240)` | numbers · constants |
+| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `flare` | `#e2e9ee` | `oklch(0.93 0.01 240)` | errors only |
+| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `moss` | `#c8cfd4` | `oklch(0.85 0.01 240)` | success · diff add |
+| <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `orchid` | `#00a692` | `oklch(0.65 0.15 180)` | decorators · tags · ANSI magenta |
+| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `rose` | `#c8cfd4` | `oklch(0.85 0.01 240)` | rare accents |
 
 **ANSI**
 
 | | black | red | green | yellow | blue | magenta | cyan | white |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| normal | <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | <img src="assets/swatches/e96560.svg" width="18" height="18" alt="#e96560"> | <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> | <img src="assets/swatches/efb062.svg" width="18" height="18" alt="#efb062"> | <img src="assets/swatches/80b6d3.svg" width="18" height="18" alt="#80b6d3"> | <img src="assets/swatches/bf91cd.svg" width="18" height="18" alt="#bf91cd"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> |
-| bright | <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | <img src="assets/swatches/fa8880.svg" width="18" height="18" alt="#fa8880"> | <img src="assets/swatches/abe2a4.svg" width="18" height="18" alt="#abe2a4"> | <img src="assets/swatches/ffcd94.svg" width="18" height="18" alt="#ffcd94"> | <img src="assets/swatches/a1cfe8.svg" width="18" height="18" alt="#a1cfe8"> | <img src="assets/swatches/d5ade2.svg" width="18" height="18" alt="#d5ade2"> | <img src="assets/swatches/1fc1ab.svg" width="18" height="18" alt="#1fc1ab"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> |
+| normal | <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> |
+| bright | <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> |
 
 </details>
 
@@ -217,11 +217,11 @@ Daylight. Same two temperatures on near-white slate, lightness inverted so every
 
 | Role | Night | Signal | Frost | Paper |
 |---|---|---|---|---|
-| keyword | <img src="assets/swatches/52d7c1.svg" width="18" height="18" alt="#52d7c1"> `mint` | <img src="assets/swatches/52d7c1.svg" width="18" height="18" alt="#52d7c1"> `mint` | <img src="assets/swatches/8ad5c6.svg" width="18" height="18" alt="#8ad5c6"> `mint` | <img src="assets/swatches/0f695e.svg" width="18" height="18" alt="#0f695e"> `mint` |
+| keyword | <img src="assets/swatches/52d7c1.svg" width="18" height="18" alt="#52d7c1"> `mint` | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> `teal` | <img src="assets/swatches/8ad5c6.svg" width="18" height="18" alt="#8ad5c6"> `mint` | <img src="assets/swatches/0f695e.svg" width="18" height="18" alt="#0f695e"> `mint` |
 | function | <img src="assets/swatches/9ae0dd.svg" width="18" height="18" alt="#9ae0dd"> `aqua` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` | <img src="assets/swatches/b6e2df.svg" width="18" height="18" alt="#b6e2df"> `aqua` | <img src="assets/swatches/1f7074.svg" width="18" height="18" alt="#1f7074"> `aqua` |
-| type | <img src="assets/swatches/80b6d3.svg" width="18" height="18" alt="#80b6d3"> `steel` | <img src="assets/swatches/90cacd.svg" width="18" height="18" alt="#90cacd"> `steel` | <img src="assets/swatches/98bacd.svg" width="18" height="18" alt="#98bacd"> `steel` | <img src="assets/swatches/2b6991.svg" width="18" height="18" alt="#2b6991"> `steel` |
-| string | <img src="assets/swatches/f0be6d.svg" width="18" height="18" alt="#f0be6d"> `amber` | <img src="assets/swatches/efb062.svg" width="18" height="18" alt="#efb062"> `amber` | <img src="assets/swatches/e9c897.svg" width="18" height="18" alt="#e9c897"> `amber` | <img src="assets/swatches/8f6213.svg" width="18" height="18" alt="#8f6213"> `amber` |
-| number | <img src="assets/swatches/e18c5f.svg" width="18" height="18" alt="#e18c5f"> `copper` | <img src="assets/swatches/efb062.svg" width="18" height="18" alt="#efb062"> `amber` | <img src="assets/swatches/d49c80.svg" width="18" height="18" alt="#d49c80"> `copper` | <img src="assets/swatches/a04f27.svg" width="18" height="18" alt="#a04f27"> `copper` |
+| type | <img src="assets/swatches/80b6d3.svg" width="18" height="18" alt="#80b6d3"> `steel` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/98bacd.svg" width="18" height="18" alt="#98bacd"> `steel` | <img src="assets/swatches/2b6991.svg" width="18" height="18" alt="#2b6991"> `steel` |
+| string | <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> `moss` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` | <img src="assets/swatches/e9c897.svg" width="18" height="18" alt="#e9c897"> `amber` | <img src="assets/swatches/8f6213.svg" width="18" height="18" alt="#8f6213"> `amber` |
+| number | <img src="assets/swatches/e18c5f.svg" width="18" height="18" alt="#e18c5f"> `copper` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` | <img src="assets/swatches/d49c80.svg" width="18" height="18" alt="#d49c80"> `copper` | <img src="assets/swatches/a04f27.svg" width="18" height="18" alt="#a04f27"> `copper` |
 | decorator | <img src="assets/swatches/bf91cd.svg" width="18" height="18" alt="#bf91cd"> `orchid` | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> `teal` | <img src="assets/swatches/bc9ec6.svg" width="18" height="18" alt="#bc9ec6"> `orchid` | <img src="assets/swatches/81558e.svg" width="18" height="18" alt="#81558e"> `orchid` |
 | property | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/2e3437.svg" width="18" height="18" alt="#2e3437"> `text2` |
 | operator | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/7d8489.svg" width="18" height="18" alt="#7d8489"> `comment` | <img src="assets/swatches/6b7378.svg" width="18" height="18" alt="#6b7378"> `comment` |

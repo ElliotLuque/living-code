@@ -7,7 +7,7 @@
 "constant.builtin" = { fg = "copper" }
 "constant.numeric" = { fg = "copper" }
 "constant.character.escape" = { fg = "copper" }
-"string" = { fg = "amber" }
+"string" = { fg = "moss" }
 "string.regexp" = { fg = "orchid" }
 "string.special" = { fg = "copper" }
 "string.special.url" = { fg = "aqua", modifiers = ["underlined"] }

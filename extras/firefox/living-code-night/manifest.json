@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Living Code Night",
   "version": "0.1.0",
-  "description": "The default. Dark slate ground, teal structure, amber data. Cool hues clustered around the brand teal carry structure; warm amber and copper carry data.",
+  "description": "The default. Dark slate ground, teal structure, green strings and gray comments. Amber warnings and copper numbers keep their warm contrast.",
   "author": "Elliot Luque",
   "homepage_url": "https://github.com/ElliotLuque/living-code",
   "icons": {

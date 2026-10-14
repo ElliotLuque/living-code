@@ -1,52 +1,52 @@
 "attribute" = { fg = "teal" }
-"type" = { fg = "steel" }
-"type.builtin" = { fg = "steel" }
-"type.enum.variant" = { fg = "amber" }
-"constructor" = { fg = "steel" }
-"constant" = { fg = "amber" }
-"constant.builtin" = { fg = "amber" }
-"constant.numeric" = { fg = "amber" }
-"constant.character.escape" = { fg = "copper" }
-"string" = { fg = "amber" }
-"string.regexp" = { fg = "amber" }
-"string.special" = { fg = "copper" }
-"string.special.url" = { fg = "steel", modifiers = ["underlined"] }
-"string.special.symbol" = { fg = "amber" }
+"type" = { fg = "text2" }
+"type.builtin" = { fg = "text2" }
+"type.enum.variant" = { fg = "text" }
+"constructor" = { fg = "text2" }
+"constant" = { fg = "text" }
+"constant.builtin" = { fg = "text" }
+"constant.numeric" = { fg = "text" }
+"constant.character.escape" = { fg = "text" }
+"string" = { fg = "text" }
+"string.regexp" = { fg = "text" }
+"string.special" = { fg = "text" }
+"string.special.url" = { fg = "teal", modifiers = ["underlined"] }
+"string.special.symbol" = { fg = "text" }
 "comment" = { fg = "comment", modifiers = ["italic"] }
 "variable" = { fg = "text" }
 "variable.parameter" = { fg = "text2", modifiers = ["italic"] }
-"variable.builtin" = { fg = "mint", modifiers = ["italic"] }
+"variable.builtin" = { fg = "teal", modifiers = ["italic"] }
 "variable.other.member" = { fg = "text2" }
 "label" = { fg = "teal" }
 "punctuation" = { fg = "overlay" }
-"punctuation.special" = { fg = "mint" }
-"keyword" = { fg = "mint" }
+"punctuation.special" = { fg = "teal" }
+"keyword" = { fg = "teal" }
 "keyword.directive" = { fg = "teal" }
 "operator" = { fg = "comment" }
 "function" = { fg = "text" }
 "function.builtin" = { fg = "text" }
 "function.macro" = { fg = "teal" }
 "tag" = { fg = "teal" }
-"namespace" = { fg = "steel" }
+"namespace" = { fg = "text2" }
 "special" = { fg = "teal" }
 "markup.heading" = { fg = "teal", modifiers = ["bold"] }
 "markup.list" = { fg = "teal" }
 "markup.bold" = { modifiers = ["bold"] }
 "markup.italic" = { modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
-"markup.link.url" = { fg = "steel", modifiers = ["underlined"] }
-"markup.link.text" = { fg = "steel", modifiers = ["underlined"] }
+"markup.link.url" = { fg = "teal", modifiers = ["underlined"] }
+"markup.link.text" = { fg = "teal", modifiers = ["underlined"] }
 "markup.quote" = { fg = "comment", modifiers = ["italic"] }
-"markup.raw" = { fg = "amber" }
-"diff.plus" = { fg = "moss" }
-"diff.minus" = { fg = "flare" }
-"diff.delta" = { fg = "amber" }
+"markup.raw" = { fg = "text" }
+"diff.plus" = { fg = "text2" }
+"diff.minus" = { fg = "text" }
+"diff.delta" = { fg = "teal" }
 "ui.background" = { bg = "base" }
 "ui.text" = { fg = "text" }
 "ui.text.focus" = { fg = "text", bg = "surface0" }
 "ui.text.inactive" = { fg = "comment" }
 "ui.linenr" = { fg = "overlay" }
-"ui.linenr.selected" = { fg = "amber", modifiers = ["bold"] }
+"ui.linenr.selected" = { fg = "text2", modifiers = ["bold"] }
 "ui.cursorline.primary" = { bg = "surface0" }
 "ui.cursor" = { fg = "base", bg = "subtext" }
 "ui.cursor.primary" = { fg = "base", bg = "teal" }
@@ -77,14 +77,14 @@
 "ui.virtual.jump-label" = { fg = "teal", modifiers = ["bold"] }
 "ui.highlight" = { bg = "surface0" }
 "ui.gutter" = { bg = "base" }
-"error" = { fg = "flare" }
-"warning" = { fg = "amber" }
-"info" = { fg = "steel" }
-"hint" = { fg = "mint" }
-"diagnostic.error" = { underline = { color = "flare", style = "curl" } }
-"diagnostic.warning" = { underline = { color = "amber", style = "curl" } }
-"diagnostic.info" = { underline = { color = "steel", style = "curl" } }
-"diagnostic.hint" = { underline = { color = "mint", style = "curl" } }
+"error" = { fg = "text" }
+"warning" = { fg = "text2" }
+"info" = { fg = "text2" }
+"hint" = { fg = "text2" }
+"diagnostic.error" = { underline = { color = "text", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "text2", style = "curl" } }
+"diagnostic.info" = { underline = { color = "text2", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "text2", style = "curl" } }
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
@@ -101,12 +101,12 @@ subtext = "#9ba0a2"
 text2 = "#c8cfd4"
 text = "#e2e9ee"
 teal = "#00a692"
-mint = "#52d7c1"
-aqua = "#9ae0dd"
-steel = "#90cacd"
-amber = "#efb062"
-copper = "#e18c5f"
-flare = "#e96560"
-moss = "#8acb83"
-orchid = "#bf91cd"
-rose = "#ddaec3"
+mint = "#00a692"
+aqua = "#e2e9ee"
+steel = "#c8cfd4"
+amber = "#e2e9ee"
+copper = "#e2e9ee"
+flare = "#e2e9ee"
+moss = "#c8cfd4"
+orchid = "#00a692"
+rose = "#c8cfd4"

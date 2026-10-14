@@ -52,7 +52,7 @@ return {
     ["keyword"] = "#52d7c1",
     ["builtin"] = "#52d7c1",
     ["function"] = "#9ae0dd",
-    ["string"] = "#f0be6d",
+    ["string"] = "#8acb83",
     ["number"] = "#e18c5f",
     ["constant"] = "#e18c5f",
     ["escape"] = "#e18c5f",

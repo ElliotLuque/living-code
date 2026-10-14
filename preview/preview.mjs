@@ -11,7 +11,7 @@ if (params.has("shot")) document.body.classList.add("shot");
 const TEXT = new Set(["comment", "subtext", "text2", "text", "mint", "aqua", "steel", "amber", "copper", "flare", "moss", "orchid", "rose"]);
 const CLASS_ROLES = {
   keyword: "keyword", function: "function", string: "string", number: "number", type: "type",
-  operator: "punctuation", decorator: "decorator", property: "property",
+  operator: "punctuation", decorator: "decorator", property: "property", comment: "comment",
 };
 
 const adjust = () => ({ chroma: +$("chroma").value, light: +$("light").value, hue: +$("hue").value });

@@ -221,7 +221,7 @@ export const palette = {
       "keyword": "mint",
       "builtin": "mint",
       "function": "aqua",
-      "string": "amber",
+      "string": "moss",
       "number": "copper",
       "constant": "copper",
       "escape": "copper",
@@ -378,84 +378,84 @@ export const palette = {
         ]
       },
       "mint": {
-        "hex": "#52d7c1",
-        "oklch": "oklch(0.8 0.12 180)",
+        "hex": "#00a692",
+        "oklch": "oklch(0.65 0.15 180)",
         "rgb": [
-          82,
-          215,
-          193
+          0,
+          166,
+          146
         ]
       },
       "aqua": {
-        "hex": "#9ae0dd",
-        "oklch": "oklch(0.86 0.07 192)",
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
         "rgb": [
-          154,
-          224,
-          221
+          226,
+          233,
+          238
         ]
       },
       "steel": {
-        "hex": "#90cacd",
-        "oklch": "oklch(0.8 0.06 200)",
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
         "rgb": [
-          144,
-          202,
-          205
+          200,
+          207,
+          212
         ]
       },
       "amber": {
-        "hex": "#efb062",
-        "oklch": "oklch(0.8 0.12 70)",
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
         "rgb": [
-          239,
-          176,
-          98
+          226,
+          233,
+          238
         ]
       },
       "copper": {
-        "hex": "#e18c5f",
-        "oklch": "oklch(0.72 0.12 48)",
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
         "rgb": [
-          225,
-          140,
-          95
+          226,
+          233,
+          238
         ]
       },
       "flare": {
-        "hex": "#e96560",
-        "oklch": "oklch(0.67 0.165 25)",
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
         "rgb": [
+          226,
           233,
-          101,
-          96
+          238
         ]
       },
       "moss": {
-        "hex": "#8acb83",
-        "oklch": "oklch(0.78 0.12 142)",
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
         "rgb": [
-          138,
-          203,
-          131
+          200,
+          207,
+          212
         ]
       },
       "orchid": {
-        "hex": "#bf91cd",
-        "oklch": "oklch(0.72 0.1 318)",
+        "hex": "#00a692",
+        "oklch": "oklch(0.65 0.15 180)",
         "rgb": [
-          191,
-          145,
-          205
+          0,
+          166,
+          146
         ]
       },
       "rose": {
-        "hex": "#ddaec3",
-        "oklch": "oklch(0.8 0.06 350)",
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
         "rgb": [
-          221,
-          174,
-          195
+          200,
+          207,
+          212
         ]
       }
     },
@@ -474,26 +474,26 @@ export const palette = {
       "border": "surface1",
       "borderActive": "teal",
       "lineNumber": "overlay",
-      "lineNumberActive": "amber",
-      "match": "amber",
-      "error": "flare",
-      "warning": "amber",
-      "info": "steel",
-      "hint": "mint",
-      "success": "moss",
-      "added": "moss",
-      "removed": "flare",
-      "modified": "amber",
-      "keyword": "mint",
-      "builtin": "mint",
+      "lineNumberActive": "text2",
+      "match": "teal",
+      "error": "text",
+      "warning": "text2",
+      "info": "text2",
+      "hint": "text2",
+      "success": "text2",
+      "added": "text2",
+      "removed": "text",
+      "modified": "teal",
+      "keyword": "teal",
+      "builtin": "teal",
       "function": "text",
-      "string": "amber",
-      "number": "amber",
-      "constant": "amber",
-      "escape": "copper",
-      "regex": "amber",
-      "type": "steel",
-      "namespace": "steel",
+      "string": "text",
+      "number": "text",
+      "constant": "text",
+      "escape": "text",
+      "regex": "text",
+      "type": "text2",
+      "namespace": "text2",
       "operator": "comment",
       "punctuation": "overlay",
       "decorator": "teal",
@@ -504,29 +504,29 @@ export const palette = {
       "parameter": "text2",
       "comment": "comment",
       "heading": "teal",
-      "link": "steel",
-      "code": "amber",
+      "link": "teal",
+      "code": "text",
       "quote": "comment"
     },
     "ansi": {
       "normal": [
         "#1d2226",
-        "#e96560",
-        "#8acb83",
-        "#efb062",
-        "#80b6d3",
-        "#bf91cd",
+        "#e2e9ee",
+        "#c8cfd4",
+        "#e2e9ee",
+        "#c8cfd4",
+        "#c8cfd4",
         "#00a692",
         "#9ba0a2"
       ],
       "bright": [
         "#50565b",
-        "#fa8880",
-        "#abe2a4",
-        "#ffcd94",
-        "#a1cfe8",
-        "#d5ade2",
-        "#1fc1ab",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#00a692",
         "#e2e9ee"
       ]
     }
