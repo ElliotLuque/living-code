@@ -126,6 +126,27 @@ or map these semantic roles onto the app's own color slots:
 | borders | \`border\` / \`borderActive\` | \`${flavors[0].r("border")}\` / \`${flavors[0].r("borderActive")}\` |
 | error / warning / info / success | \`error\` … | \`${flavors[0].r("error")}\` \`${flavors[0].r("warning")}\` \`${flavors[0].r("info")}\` \`${flavors[0].r("success")}\` |
 
+## Recolor images
+
+Turn any image, such as a wallpaper, into a Living Code version. Requires [ImageMagick 7](https://imagemagick.org).
+
+\`\`\`sh
+node scripts/recolor.mjs wallpaper.jpg --flavor night --mode lut
+\`\`\`
+
+| Mode | Result |
+|---|---|
+| \`lut\` | Starts with the theme's slate ramp. Shadows and muted areas stay neutral; colorful midtones receive teal or amber accents over that base. Lightness is fitted to the theme's range. Tune the accent amount with \`--color\` (default: 0.65). Core accents are teal, mint, aqua, steel, amber and copper; \`--accents all\` includes the remaining accents. |
+| \`gradient\` | Maps brightness onto dark slate, an accent and light text. Pick the accent with \`--accent amber\`. |
+| \`remap\` | Posterizes to the exact palette colors. Add \`--no-dither\` for flat areas. |
+| \`all\` | Writes one file per mode. |
+
+In \`lut\` mode, \`--color 0\` uses only the slate ramp; \`--color 1\` allows stronger accents while still protecting shadows and muted areas.
+Unlike \`--strength\`, lowering \`--color\` does not bring back the original photo's colors. It controls accent blending, not a fixed percentage of the image's area.
+Other controls are \`--spread\` (hue blending), \`--keep-light\` (brightness preservation) and \`--smooth\` (color-noise smoothing).
+
+Output defaults to \`<image>-<flavor>-<mode>.png\` next to the input. Run with \`--help\` for every option.
+
 ## Contributing a port
 
 1. Add a generator to \`scripts/ports/\`: a pure function from a resolved flavor to files.

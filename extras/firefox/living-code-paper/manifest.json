@@ -1,0 +1,64 @@
+{
+  "manifest_version": 2,
+  "name": "Living Code Paper",
+  "version": "0.1.0",
+  "description": "Daylight. Same two temperatures on near-white slate, lightness inverted so every syntax color keeps WCAG AA contrast.",
+  "author": "Elliot Luque",
+  "homepage_url": "https://github.com/ElliotLuque/living-code",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "living-code-paper@elliotluque",
+      "strict_min_version": "106.0"
+    }
+  },
+  "theme": {
+    "colors": {
+      "frame": "#e0e5e9",
+      "frame_inactive": "#e0e5e9",
+      "tab_background_text": "#50565a",
+      "tab_background_separator": "#d2d8dd",
+      "tab_selected": "#f4f7f9",
+      "tab_text": "#12171a",
+      "tab_line": "#187d6e",
+      "tab_loading": "#187d6e",
+      "toolbar": "#f4f7f9",
+      "toolbar_text": "#12171a",
+      "toolbar_top_separator": "#e0e5e9",
+      "toolbar_bottom_separator": "#d2d8dd",
+      "toolbar_vertical_separator": "#d2d8dd",
+      "toolbar_field": "#e0e5e9",
+      "toolbar_field_text": "#12171a",
+      "toolbar_field_border": "#d2d8dd",
+      "toolbar_field_focus": "#ebeff2",
+      "toolbar_field_text_focus": "#12171a",
+      "toolbar_field_border_focus": "#187d6e",
+      "toolbar_field_highlight": "#c2ccd3",
+      "toolbar_field_highlight_text": "#12171a",
+      "bookmark_text": "#2e3437",
+      "button_background_hover": "#e3e9ed",
+      "button_background_active": "#d2d8dd",
+      "icons": "#50565a",
+      "icons_attention": "#187d6e",
+      "popup": "#ebeff2",
+      "popup_text": "#12171a",
+      "popup_border": "#d2d8dd",
+      "popup_highlight": "#e3e9ed",
+      "popup_highlight_text": "#12171a",
+      "sidebar": "#e0e5e9",
+      "sidebar_text": "#2e3437",
+      "sidebar_border": "#d2d8dd",
+      "sidebar_highlight": "#e3e9ed",
+      "sidebar_highlight_text": "#12171a",
+      "ntp_background": "#f4f7f9",
+      "ntp_text": "#12171a",
+      "ntp_card_background": "#ebeff2"
+    },
+    "properties": {
+      "color_scheme": "light"
+    }
+  }
+}

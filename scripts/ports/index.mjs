@@ -1,6 +1,7 @@
 import { alacritty, foot, ghostty, kitty, wezterm } from "./terminals.mjs";
 import { btop, fzf, lazygit, starship, tmux } from "./cli.mjs";
 import { helix, neovim, tmtheme, vscode, zed } from "./editors.mjs";
+import { firefox } from "./browsers.mjs";
 import { css, json, tailwind } from "./web.mjs";
 import { base16Port } from "./base16.mjs";
 
@@ -8,6 +9,7 @@ export const groups = [
   { title: "Editors", ports: [neovim, vscode, zed, helix, tmtheme] },
   { title: "Terminals", ports: [kitty, ghostty, alacritty, wezterm, foot] },
   { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit] },
+  { title: "Browsers", ports: [firefox] },
   { title: "Web & code", ports: [css, tailwind, json] },
   { title: "Theme systems", ports: [base16Port] },
 ];

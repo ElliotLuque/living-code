@@ -1,0 +1,64 @@
+{
+  "manifest_version": 2,
+  "name": "Living Code Night",
+  "version": "0.1.0",
+  "description": "The default. Dark slate ground, teal structure, amber data. Cool hues clustered around the brand teal carry structure; warm amber and copper carry data.",
+  "author": "Elliot Luque",
+  "homepage_url": "https://github.com/ElliotLuque/living-code",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "living-code-night@elliotluque",
+      "strict_min_version": "106.0"
+    }
+  },
+  "theme": {
+    "colors": {
+      "frame": "#020405",
+      "frame_inactive": "#020405",
+      "tab_background_text": "#9ba0a2",
+      "tab_background_separator": "#1d2226",
+      "tab_selected": "#05080b",
+      "tab_text": "#e2e9ee",
+      "tab_line": "#00a692",
+      "tab_loading": "#00a692",
+      "toolbar": "#05080b",
+      "toolbar_text": "#e2e9ee",
+      "toolbar_top_separator": "#020405",
+      "toolbar_bottom_separator": "#1d2226",
+      "toolbar_vertical_separator": "#1d2226",
+      "toolbar_field": "#020405",
+      "toolbar_field_text": "#e2e9ee",
+      "toolbar_field_border": "#1d2226",
+      "toolbar_field_focus": "#090e11",
+      "toolbar_field_text_focus": "#e2e9ee",
+      "toolbar_field_border_focus": "#00a692",
+      "toolbar_field_highlight": "#2d3438",
+      "toolbar_field_highlight_text": "#e2e9ee",
+      "bookmark_text": "#c8cfd4",
+      "button_background_hover": "#12171a",
+      "button_background_active": "#1d2226",
+      "icons": "#9ba0a2",
+      "icons_attention": "#00a692",
+      "popup": "#090e11",
+      "popup_text": "#e2e9ee",
+      "popup_border": "#1d2226",
+      "popup_highlight": "#12171a",
+      "popup_highlight_text": "#e2e9ee",
+      "sidebar": "#020405",
+      "sidebar_text": "#c8cfd4",
+      "sidebar_border": "#1d2226",
+      "sidebar_highlight": "#12171a",
+      "sidebar_highlight_text": "#e2e9ee",
+      "ntp_background": "#05080b",
+      "ntp_text": "#e2e9ee",
+      "ntp_card_background": "#090e11"
+    },
+    "properties": {
+      "color_scheme": "dark"
+    }
+  }
+}

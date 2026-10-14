@@ -16,8 +16,11 @@
   "files": ["palette.mjs", "palette.json", "extras"],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:icons": "node scripts/build.mjs && node scripts/build-icons.mjs",
     "check": "node scripts/build.mjs --check",
-    "preview": "node scripts/serve.mjs"
+    "preview": "node scripts/serve.mjs",
+    "recolor": "node scripts/recolor.mjs",
+    "test": "node --test scripts/recolor.test.mjs scripts/icons.test.mjs"
   },
   "engines": { "node": ">=18" }
 }
