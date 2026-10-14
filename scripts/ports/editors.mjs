@@ -36,7 +36,7 @@ export const SCOPES = [
   { role: "warning", scope: ["invalid.deprecated"] },
 ];
 
-const scopeRules = (f) =>
+export const scopeRules = (f) =>
   SCOPES.map(({ role, scope, fontStyle }) => {
     const settings = {};
     if (role) settings.foreground = f.r(role);
@@ -307,14 +307,9 @@ export const vscode = {
       }, null, 2) + "\n",
     },
   ],
-  install: `Local install: \`cd extras/vscode && npx @vscode/vsce package\` and install the \`.vsix\`, or symlink the folder into \`~/.vscode/extensions/living-code\`. Then pick **Living Code Night** in *Preferences: Color Theme*.
+  install: `Local install: \`cd extras/vscode && pnpm dlx @vscode/vsce package\` and install the \`.vsix\`, or symlink the folder into \`~/.vscode/extensions/living-code\`. Then pick **Living Code Night** in *Preferences: Color Theme*.
 
-The same JSON works anywhere that reads VS Code themes: **Shiki**, **Expressive Code** / Astro, **VSCodium**:
-
-\`\`\`ts
-import livingCode from "living-code/extras/vscode/themes/living-code-night-color-theme.json";
-expressiveCode({ themes: [livingCode] });
-\`\`\``,
+The same JSON works with **Shiki** and **VSCodium**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).`,
 };
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");

@@ -1,5 +1,7 @@
 {
   "name": "living-code",
+  "private": true,
+  "packageManager": "pnpm@12.9.0",
   "version": "0.1.0",
   "description": "A color scheme for editors, terminals and the web.",
   "type": "module",
@@ -7,19 +9,14 @@
   "author": "Elliot Luque",
   "repository": { "type": "git", "url": "git+https://github.com/ElliotLuque/living-code.git" },
   "keywords": ["theme", "colorscheme", "oklch", "neovim", "vscode", "kitty", "ghostty", "shiki"],
-  "main": "./palette.mjs",
-  "exports": {
-    ".": "./palette.mjs",
-    "./palette.json": "./palette.json",
-    "./extras/*": "./extras/*"
-  },
-  "files": ["palette.mjs", "palette.json", "extras"],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:packages": "pnpm run build && node scripts/build-packages.mjs",
+    "test:packages": "node --test scripts/npm-packages.test.mjs",
     "check": "node scripts/build.mjs --check",
     "preview": "node scripts/serve.mjs",
     "recolor": "node scripts/recolor.mjs",
-    "test": "node --test scripts/recolor.test.mjs"
+    "test": "node --test scripts/recolor.test.mjs scripts/expressive-code.test.mjs scripts/npm-packages.test.mjs"
   },
   "engines": { "node": ">=18" }
 }

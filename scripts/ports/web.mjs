@@ -25,7 +25,19 @@ ${block(fs.find((f) => f.light), `  [data-theme="living-code-auto"]`).replace(/\
 }
 `,
   }],
-  install: `\`\`\`html
+  install: `\`\`\`sh
+pnpm add @living-code/css
+\`\`\`
+
+Import the stylesheet in your app:
+
+\`\`\`css
+@import "@living-code/css/living-code.css";
+\`\`\`
+
+Or load it directly in HTML:
+
+\`\`\`html
 <link rel="stylesheet" href="living-code.css" />
 <html data-theme="living-code-night">
 \`\`\`
@@ -46,10 +58,14 @@ ${Object.keys(fs[0].roles).map((r) => `  --color-lc-${kebab(r)}: var(--lc-${keba
 }
 `,
   }],
-  install: `\`\`\`css
+  install: `\`\`\`sh
+pnpm add @living-code/css @living-code/tailwind
+\`\`\`
+
+\`\`\`css
 @import "tailwindcss";
-@import "living-code/extras/css/living-code.css";
-@import "living-code/extras/tailwind/living-code.css";
+@import "@living-code/css/living-code.css";
+@import "@living-code/tailwind/living-code.css";
 \`\`\`
 
 Then \`bg-lc-base text-lc-text border-lc-surface1\`, \`text-lc-keyword\`, etc.`,
@@ -74,8 +90,12 @@ export const json = {
       { path: "palette.mjs", content: `export const palette = ${body};\nexport default palette;\n` },
     ];
   },
-  install: `\`\`\`js
-import { palette } from "living-code";
+  install: `\`\`\`sh
+pnpm add @living-code/palette
+\`\`\`
+
+\`\`\`js
+import { palette } from "@living-code/palette";
 palette.night.colors.teal.hex;
 palette.night.roles.keyword;
 \`\`\`

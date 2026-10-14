@@ -3,6 +3,7 @@ import { btop, fzf, lazygit, starship, tmux } from "./cli.mjs";
 import { helix, neovim, tmtheme, vscode, zed } from "./editors.mjs";
 import { firefox } from "./browsers.mjs";
 import { css, json, tailwind } from "./web.mjs";
+import { expressiveCode } from "./expressive-code.mjs";
 import { base16Port } from "./base16.mjs";
 
 export const groups = [
@@ -10,7 +11,7 @@ export const groups = [
   { title: "Terminals", ports: [kitty, ghostty, alacritty, wezterm, foot] },
   { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit] },
   { title: "Browsers", ports: [firefox] },
-  { title: "Web & code", ports: [css, tailwind, json] },
+  { title: "Web & code", ports: [expressiveCode, css, tailwind, json] },
   { title: "Theme systems", ports: [base16Port] },
 ];
 

@@ -239,13 +239,47 @@ Full role map (UI, diagnostics, markup) in [`palette/flavors.mjs`](palette/flavo
 
 **Browsers:** [Firefox](#firefox)
 
-**Web & code:** [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
+**Web & code:** [Expressive Code](#expressive-code) · [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
 
 **Theme systems:** [base16 · Stylix · tinted-theming](#base16)
 
 Every file in `extras/`, `colors/` and `lua/living-code/palettes/` is generated. Install instructions are below.
 
 ## Installation
+
+### npm packages
+
+Install only the port you need. Each `@living-code/<port>` package contains that port’s themes, not the entire ecosystem.
+
+```sh
+pnpm add @living-code/expressive-code
+```
+
+| Port | Package |
+|---|---|
+| [Neovim](#neovim) | `@living-code/neovim` |
+| [VS Code](#vscode) | `@living-code/vscode` |
+| [Zed](#zed) | `@living-code/zed` |
+| [Helix](#helix) | `@living-code/helix` |
+| [bat · delta · Sublime Text (tmTheme)](#tmtheme) | `@living-code/tmtheme` |
+| [kitty](#kitty) | `@living-code/kitty` |
+| [Ghostty](#ghostty) | `@living-code/ghostty` |
+| [Alacritty](#alacritty) | `@living-code/alacritty` |
+| [WezTerm](#wezterm) | `@living-code/wezterm` |
+| [foot](#foot) | `@living-code/foot` |
+| [tmux](#tmux) | `@living-code/tmux` |
+| [fzf](#fzf) | `@living-code/fzf` |
+| [Starship](#starship) | `@living-code/starship` |
+| [btop](#btop) | `@living-code/btop` |
+| [lazygit](#lazygit) | `@living-code/lazygit` |
+| [Firefox](#firefox) | `@living-code/firefox` |
+| [Expressive Code](#expressive-code) | `@living-code/expressive-code` |
+| [CSS variables](#css) | `@living-code/css` |
+| [Tailwind CSS v4](#tailwind) | `@living-code/tailwind` |
+| [JSON / JavaScript](#json) | `@living-code/palette` |
+| [base16 · Stylix · tinted-theming](#base16) | `@living-code/base16` |
+
+For native apps, the theme files are installed under `node_modules/@living-code/<port>/`; apply them using the app-specific instructions below. VS Code’s extension is in the package’s `extension/` directory. Neovim’s package includes its full `lua/` and `colors/` plugin directories.
 
 ### Editors
 
@@ -274,14 +308,9 @@ Or pick a flavor directly: `:colorscheme living-code-signal`. Covers Tree-sitter
 <a id="vscode"></a>
 #### [VS Code](https://code.visualstudio.com)
 
-Local install: `cd extras/vscode && npx @vscode/vsce package` and install the `.vsix`, or symlink the folder into `~/.vscode/extensions/living-code`. Then pick **Living Code Night** in *Preferences: Color Theme*.
+Local install: `cd extras/vscode && pnpm dlx @vscode/vsce package` and install the `.vsix`, or symlink the folder into `~/.vscode/extensions/living-code`. Then pick **Living Code Night** in *Preferences: Color Theme*.
 
-The same JSON works anywhere that reads VS Code themes: **Shiki**, **Expressive Code** / Astro, **VSCodium**:
-
-```ts
-import livingCode from "living-code/extras/vscode/themes/living-code-night-color-theme.json";
-expressiveCode({ themes: [livingCode] });
-```
+The same JSON works with **Shiki** and **VSCodium**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).
 
 <a id="zed"></a>
 #### [Zed](https://zed.dev)
@@ -399,8 +428,48 @@ To switch themes, open **Add-ons and themes → Themes** (`about:addons`) and en
 
 ### Web & code
 
+<a id="expressive-code"></a>
+#### [Expressive Code](https://expressive-code.com)
+
+Use the dedicated themes for syntax highlighting, editor and terminal frames, copy buttons, line numbers, and highlighted or diff lines.
+
+For Astro:
+
+```sh
+pnpm add @living-code/expressive-code astro-expressive-code
+```
+
+Add the integration to `astro.config.mjs`:
+
+```js
+import { defineConfig } from "astro/config";
+import expressiveCode from "astro-expressive-code";
+import night from "@living-code/expressive-code/living-code-night.json" with { type: "json" };
+import paper from "@living-code/expressive-code/living-code-paper.json" with { type: "json" };
+
+export default defineConfig({
+  integrations: [expressiveCode({ themes: [night, paper] })],
+});
+```
+
+Night and Paper follow the visitor’s dark/light preference by default. Replace Night with `living-code-frost.json` or `living-code-signal.json` for another dark flavor, or pass a single theme for a fixed appearance.
+
+**Starlight:** pass the same `themes` array to `starlight({ expressiveCode: { themes: [night, paper] } })` instead of adding a separate integration. For other integrations, pass these JSON objects to their Expressive Code `themes` option. When using the `ExpressiveCode` JavaScript API directly, wrap each JSON object in `new ExpressiveCodeTheme(theme)` (imported from `expressive-code`).
+
 <a id="css"></a>
 #### [CSS variables](https://developer.mozilla.org/docs/Web/CSS/color_value/oklch)
+
+```sh
+pnpm add @living-code/css
+```
+
+Import the stylesheet in your app:
+
+```css
+@import "@living-code/css/living-code.css";
+```
+
+Or load it directly in HTML:
 
 ```html
 <link rel="stylesheet" href="living-code.css" />
@@ -412,10 +481,14 @@ Use palette names (`var(--lc-teal)`) or semantic roles (`var(--lc-keyword)`, `va
 <a id="tailwind"></a>
 #### [Tailwind CSS v4](https://tailwindcss.com)
 
+```sh
+pnpm add @living-code/css @living-code/tailwind
+```
+
 ```css
 @import "tailwindcss";
-@import "living-code/extras/css/living-code.css";
-@import "living-code/extras/tailwind/living-code.css";
+@import "@living-code/css/living-code.css";
+@import "@living-code/tailwind/living-code.css";
 ```
 
 Then `bg-lc-base text-lc-text border-lc-surface1`, `text-lc-keyword`, etc.
@@ -423,8 +496,12 @@ Then `bg-lc-base text-lc-text border-lc-surface1`, `text-lc-keyword`, etc.
 <a id="json"></a>
 #### [JSON / JavaScript](https://github.com/ElliotLuque/living-code)
 
+```sh
+pnpm add @living-code/palette
+```
+
 ```js
-import { palette } from "living-code";
+import { palette } from "@living-code/palette";
 palette.night.colors.teal.hex;
 palette.night.roles.keyword;
 ```
@@ -492,6 +569,8 @@ Output defaults to `<image>-<flavor>-<mode>.png` next to the input. Run with `--
 1. Add a generator to `scripts/ports/`: a pure function from a resolved flavor to files.
 2. Register it in `scripts/ports/index.mjs`.
 3. `node scripts/build.mjs` regenerates everything, including this README.
+
+Scoped npm packages are built from the registered ports with `pnpm run build:packages`. Release instructions: [Publishing](docs/PUBLISHING.md).
 
 Live preview with sliders and every port's output: `node scripts/serve.mjs` → <http://localhost:4173/preview/>.
 

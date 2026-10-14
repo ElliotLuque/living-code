@@ -4,7 +4,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { contrast } from "./color.mjs";
 import { ACCENT_ORDER, NEUTRAL_ORDER, resolveAll } from "./resolve.mjs";
-import { generate, groups } from "./ports/index.mjs";
+import { generate, groups, ports } from "./ports/index.mjs";
+import { packageId } from "./npm-packages.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
@@ -110,6 +111,20 @@ Every file in \`extras/\`, \`colors/\` and \`lua/living-code/palettes/\` is gene
 
 ## Installation
 
+### npm packages
+
+Install only the port you need. Each \`@living-code/<port>\` package contains that port’s themes, not the entire ecosystem.
+
+\`\`\`sh
+pnpm add @living-code/expressive-code
+\`\`\`
+
+| Port | Package |
+|---|---|
+${ports.map((p) => `| [${p.name}](#${p.id}) | \`@living-code/${packageId(p)}\` |`).join("\n")}
+
+For native apps, the theme files are installed under \`node_modules/@living-code/<port>/\`; apply them using the app-specific instructions below. VS Code’s extension is in the package’s \`extension/\` directory. Neovim’s package includes its full \`lua/\` and \`colors/\` plugin directories.
+
 ${installs}
 
 ## Using the palette in something else
@@ -152,6 +167,8 @@ Output defaults to \`<image>-<flavor>-<mode>.png\` next to the input. Run with \
 1. Add a generator to \`scripts/ports/\`: a pure function from a resolved flavor to files.
 2. Register it in \`scripts/ports/index.mjs\`.
 3. \`node scripts/build.mjs\` regenerates everything, including this README.
+
+Scoped npm packages are built from the registered ports with \`pnpm run build:packages\`. Release instructions: [Publishing](docs/PUBLISHING.md).
 
 Live preview with sliders and every port's output: \`node scripts/serve.mjs\` → <http://localhost:4173/preview/>.
 
