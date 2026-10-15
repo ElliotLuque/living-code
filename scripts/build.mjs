@@ -10,6 +10,7 @@ import { packageId } from "./npm-packages.mjs";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
 const flavors = resolveAll();
+const signal = flavors.find((f) => f.id === "signal");
 
 const TEXT_ROLES = ["fg", "fgAlt", "fgMuted", "fgSubtle", "keyword", "function", "string", "number", "constant", "type", "decorator", "tag", "property", "parameter", "comment", "operator", "error", "warning", "info", "hint", "success", "link", "heading", "lineNumberActive"];
 const audit = [];
@@ -25,15 +26,21 @@ const USES = {
   surface0: "line highlight, inactive tabs", surface1: "borders, ANSI black", surface2: "selection",
   overlay: "line numbers, punctuation", comment: "comments, operators", subtext: "muted text, ANSI white",
   text2: "properties, parameters", text: "foreground",
-  teal: "accent · cursor · focus · ANSI cyan", mint: "keywords", aqua: "functions", steel: "types · info · ANSI blue",
-  amber: "strings · warnings", copper: "numbers · constants", flare: "errors only", moss: "success · diff add",
-  orchid: "decorators · tags · ANSI magenta", rose: "rare accents",
 };
 const sw = (hex) => `<img src="assets/swatches/${hex.slice(1)}.svg" width="18" height="18" alt="${hex}">`;
+const uses = (f, name) => {
+  if (USES[name]) return USES[name];
+  const roles = Object.entries(f.roles).filter(([, color]) => color === name).map(([role]) => role);
+  if (f.id === "signal" && name !== "teal") {
+    const alias = [...NEUTRAL_ORDER, "teal"].find((n) => f.c(n) === f.c(name));
+    return `Compatibility alias of \`${alias}\`; no additional hue`;
+  }
+  return roles.length ? roles.join(" · ") : "Available for custom accents";
+};
 const table = (f, names) => [
   "| | Name | Hex | OKLCH | Used for |",
   "|:-:|---|---|---|---|",
-  ...names.map((n) => `| ${sw(f.c(n))} | \`${n}\` | \`${f.c(n)}\` | \`${f.colors[n].css}\` | ${USES[n]} |`),
+  ...names.map((n) => `| ${sw(f.c(n))} | \`${n}\` | \`${f.c(n)}\` | \`${f.colors[n].css}\` | ${uses(f, n)} |`),
 ].join("\n");
 const ansiTable = (f) => [
   "| | " + ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"].join(" | ") + " |",
@@ -54,24 +61,43 @@ const installs = groups.map((g) => `### ${g.title}\n\n${g.ports.map((p) => `<a i
 
 const readme = `<h1 align="center">Living Code</h1>
 
-<p align="center"><b>Two temperatures, not a rainbow.</b><br>
-A color scheme for editors, terminals and the web. Teal structure, amber data, on dark slate.</p>
+<p align="center"><b>Slate first. Color with purpose.</b><br>
+A color scheme for editors, terminals, browsers and the web.</p>
 
 <p align="center">
-${flavors.map((f) => `<img src="assets/preview-${f.id}.png" width="49%" alt="${f.name}">`).join("\n")}
+<img src="assets/preview-signal.png" width="100%" alt="Living Code Signal preview: teal keywords and focus, gray syntax and diagnostics, dark slate surfaces">
 </p>
 
-## Philosophy
+<p align="center"><b>Living Code Signal</b> · One teal accent. The rest is slate.</p>
 
-Most themes spread hues evenly around the color wheel and give each syntax role its own color.
-Living Code clusters them instead:
+## Choose a flavor
 
-- **Cool = structure.** Keywords, functions and types live in one family around the brand teal
-  (${sw(flavors[0].c("mint"))} mint → ${sw(flavors[0].c("aqua"))} aqua → ${sw(flavors[0].c("steel"))} steel).
-- **Warm = data.** Strings and numbers are ${sw(flavors[0].c("amber"))} amber and ${sw(flavors[0].c("copper"))} copper.
-- **Red means wrong.** ${sw(flavors[0].c("flare"))} flare is reserved for errors and deletions.
-- **Punctuation recedes** into the slate ramp, so the shape of the code reads first.
-- **OKLCH is canonical.** Every value is defined in OKLCH and checked for WCAG AA (≥ 4.5:1) on its background; hex is derived.
+All four flavors share a slate foundation and semantic roles. Signal pares the colors down to a single accent;
+Night, Frost and Paper keep broader palettes. Night remains the default.
+
+| Flavor | Appearance | Syntax and accents |
+|---|---|---|
+| [Signal](#living-code-signal) | Dark slate, one accent | Teal keywords, builtins, decorators and tags. Neutral functions, literals and diagnostics. |
+| [Night](#living-code-night) | Dark slate, full palette | Cool structure, green strings, copper numbers and amber warnings. The default. |
+| [Frost](#living-code-frost) | Lifted, bluer slate | Lower-chroma accents with amber strings and copper numbers. |
+| [Paper](#living-code-paper) | Near-white slate | Darker accents with amber strings and copper numbers. |
+
+## Signal: one accent, not a rainbow
+
+Signal uses ${sw(signal.c("teal"))} teal for structure and interaction,
+not a separate hue for every syntax category. It keeps the same neutral ramp as Night.
+
+- **Teal marks structure and focus.** Keywords, builtins, decorators, tags, links, cursors and active borders use the same accent.
+- **Literals read as text.** Functions, strings, numbers, constants, escapes and regular expressions use the main foreground. Types and parameters use a softer gray.
+- **Surfaces stay slate.** Backgrounds, panels, selections, punctuation and comments use the existing neutral ramp.
+- **Diagnostics stay neutral.** Errors, warnings, info and hints use foreground shades rather than red, amber, blue and green. Labels, signs and underlines distinguish their meaning.
+- **Terminals follow the same rule.** ANSI cyan and bright cyan are teal. The other ANSI slots resolve to neutral shades, including the bright variants.
+
+The named slots \`amber\`, \`copper\`, \`moss\` and the other accent names remain available for port compatibility,
+but in Signal they are aliases of teal or neutral colors. They do not introduce warm literals or additional accent hues.
+
+Every palette value is defined in OKLCH; hex and RGB are derived. The build checks text roles for WCAG AA contrast
+(≥ 4.5:1) against each flavor's main background.
 
 ## Flavors
 
@@ -79,14 +105,16 @@ ${flavors.map((f) => `### ${f.name}
 
 ${f.description}
 
-<details${f.id === "night" ? " open" : ""}>
+${f.id === "signal" ? "The preview at the top shows Signal in the same editor and terminal scene as the other flavors." : `<img src="assets/preview-${f.id}.png" width="100%" alt="${f.name}: editor syntax, terminal output and ANSI palette">`}
+
+<details${f.id === "signal" ? " open" : ""}>
 <summary>Palette</summary>
 
 **Neutrals**
 
 ${table(f, NEUTRAL_ORDER)}
 
-**Accents**
+**${f.id === "signal" ? "Accent and compatibility aliases" : "Accents"}**
 
 ${table(f, ACCENT_ORDER)}
 
@@ -101,7 +129,11 @@ ${ansiTable(f)}
 
 ${roleTable}
 
-Full role map (UI, diagnostics, markup) in [\`palette/flavors.mjs\`](palette/flavors.mjs) → \`defaultRoles\`.
+The table shows resolved roles for every flavor. The full role map (UI, diagnostics, markup) is in
+[\`palette/flavors.mjs\`](palette/flavors.mjs): \`defaultRoles\` plus each flavor's \`roles\` overrides.
+
+To try Signal in Neovim, use \`:colorscheme living-code-signal\` or set \`flavor = "signal"\` in the [plugin setup](#neovim).
+For other apps, choose the \`living-code-signal\` file in the relevant [port](#ports). Firefox currently provides Night and Paper only.
 
 ## Ports
 
@@ -132,14 +164,14 @@ ${installs}
 Any app can follow the theme: read [\`palette.json\`](palette.json) (hex, OKLCH, RGB, roles and ANSI for every flavor),
 or map these semantic roles onto the app's own color slots:
 
-| Slot | Role | Night |
+| Slot | Role | Signal |
 |---|---|---|
-| background / foreground | \`bg\` / \`fg\` | \`${flavors[0].r("bg")}\` / \`${flavors[0].r("fg")}\` |
-| panels, sidebars | \`bgDeep\`, \`bgAlt\` | \`${flavors[0].r("bgDeep")}\`, \`${flavors[0].r("bgAlt")}\` |
-| accent, cursor, focus ring | \`accent\` | \`${flavors[0].r("accent")}\` |
-| selection | \`selection\` | \`${flavors[0].r("selection")}\` |
-| borders | \`border\` / \`borderActive\` | \`${flavors[0].r("border")}\` / \`${flavors[0].r("borderActive")}\` |
-| error / warning / info / success | \`error\` … | \`${flavors[0].r("error")}\` \`${flavors[0].r("warning")}\` \`${flavors[0].r("info")}\` \`${flavors[0].r("success")}\` |
+| background / foreground | \`bg\` / \`fg\` | \`${signal.r("bg")}\` / \`${signal.r("fg")}\` |
+| panels, sidebars | \`bgDeep\`, \`bgAlt\` | \`${signal.r("bgDeep")}\`, \`${signal.r("bgAlt")}\` |
+| accent, cursor, focus ring | \`accent\` | \`${signal.r("accent")}\` |
+| selection | \`selection\` | \`${signal.r("selection")}\` |
+| borders | \`border\` / \`borderActive\` | \`${signal.r("border")}\` / \`${signal.r("borderActive")}\` |
+| error / warning / info / success | \`error\` … | \`${signal.r("error")}\` \`${signal.r("warning")}\` \`${signal.r("info")}\` \`${signal.r("success")}\` |
 
 ## Recolor images
 
@@ -151,7 +183,7 @@ node scripts/recolor.mjs wallpaper.jpg --flavor night --mode lut
 
 | Mode | Result |
 |---|---|
-| \`lut\` | Starts with the theme's slate ramp. Shadows and muted areas stay neutral; colorful midtones receive teal or amber accents over that base. Lightness is fitted to the theme's range. Tune the accent amount with \`--color\` (default: 0.65). Core accents are teal, mint, aqua, steel, amber and copper; \`--accents all\` includes the remaining accents. |
+| \`lut\` | Starts with the theme's slate ramp. Shadows and muted areas stay neutral; colorful midtones receive the selected flavor's accents over that base. Lightness is fitted to the theme's range. Tune the accent amount with \`--color\` (default: 0.65). Core accents are teal, mint, aqua, steel, amber and copper; \`--accents all\` includes the remaining accents. |
 | \`gradient\` | Maps brightness onto dark slate, an accent and light text. Pick the accent with \`--accent amber\`. |
 | \`remap\` | Posterizes to the exact palette colors. Add \`--no-dither\` for flat areas. |
 | \`all\` | Writes one file per mode. |
@@ -159,6 +191,7 @@ node scripts/recolor.mjs wallpaper.jpg --flavor night --mode lut
 In \`lut\` mode, \`--color 0\` uses only the slate ramp; \`--color 1\` allows stronger accents while still protecting shadows and muted areas.
 Unlike \`--strength\`, lowering \`--color\` does not bring back the original photo's colors. It controls accent blending, not a fixed percentage of the image's area.
 Other controls are \`--spread\` (hue blending), \`--keep-light\` (brightness preservation) and \`--smooth\` (color-noise smoothing).
+Use \`--flavor signal\` for slate and teal only; compatibility names such as \`amber\` do not add warm hues in Signal.
 
 Output defaults to \`<image>-<flavor>-<mode>.png\` next to the input. Run with \`--help\` for every option.
 
@@ -169,6 +202,10 @@ Output defaults to \`<image>-<flavor>-<mode>.png\` next to the input. Run with \
 3. \`node scripts/build.mjs\` regenerates everything, including this README.
 
 Scoped npm packages are built from the registered ports with \`pnpm run build:packages\`. Release instructions: [Publishing](docs/PUBLISHING.md).
+
+Regenerate the README preview images with \`pnpm run screenshots\`. This uses headless Chrome (\`google-chrome\` by default;
+set \`CHROME_BIN\` for another Chromium executable) and captures all four flavors from the live preview at 1280×720.
+The scenes are illustrative editor and terminal previews, not screenshots of installed applications.
 
 Live preview with sliders and every port's output: \`node scripts/serve.mjs\` → <http://localhost:4173/preview/>.
 

@@ -152,8 +152,12 @@
   .exportbar select { flex: 1; background: var(--crust); color: var(--text); border: 1px solid var(--surface1); font: 12px "JetBrains Mono", monospace; padding: 8px; }
   .exportbar .btn { padding: 8px 14px; }
   body.shot header, body.shot main > :not(.shot-keep) { display: none !important; }
+  body.shot { background: var(--crust); }
   body.shot main { padding: 24px; max-width: none; }
   body.shot .shot-keep h2 { display: none; }
+  body.shot .kitty { min-height: calc(100vh - 48px); }
+  body.shot .kpanes { flex: 1; }
+  body.shot *, body.shot *::before, body.shot *::after { animation: none !important; transition: none !important; }
   textarea#export {
     width: 100%; height: 420px; background: var(--crust); color: var(--text2);
     border: 1px solid var(--surface1); padding: 12px; font: 12px/1.6 "JetBrains Mono", monospace;
