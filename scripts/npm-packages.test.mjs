@@ -14,11 +14,7 @@ test("scoped npm packages contain only their own port and support public imports
   const out = join(temp, "packages");
   const packages = await buildPackages(out);
   const byId = new Map(packages.map((pkg) => [pkg.id, pkg]));
-  assert.deepEqual([...byId.keys()].sort(), [
-    "alacritty", "base16", "btop", "css", "expressive-code", "firefox", "foot", "fzf",
-    "ghostty", "helix", "kitty", "lazygit", "neovim", "palette", "starship", "tailwind",
-    "tmtheme", "tmux", "vscode", "wezterm", "zed",
-  ]);
+  assert.deepEqual([...byId.keys()].sort(), ["css", "expressive-code", "palette", "tailwind"]);
   const rootMeta = await json(new URL("../package.json", import.meta.url));
   assert.equal(rootMeta.private, true);
   for (const pkg of packages) {
@@ -45,21 +41,6 @@ test("scoped npm packages contain only their own port and support public imports
   assert.deepEqual(ec.payload, ["frost", "night", "paper", "signal"].map((f) => `living-code-${f}.json`));
   const packed = JSON.parse(execFileSync("pnpm", ["pack", "--dry-run", "--json"], { cwd: ec.dir, encoding: "utf8" }));
   assert.deepEqual(packed.files.map((file) => file.path).sort(), ["LICENSE", "README.md", "package.json", ...ec.payload].sort());
-  assert.ok(byId.get("neovim").payload.includes("lua/living-code/init.lua"));
-  assert.ok(byId.get("neovim").payload.includes("lua/living-code/highlights.lua"));
-  assert.ok(byId.get("neovim").payload.includes("lua/lualine/themes/living-code.lua"));
-  const vscode = await json(join(byId.get("vscode").dir, "extension/package.json"));
-  assert.equal(vscode.name, "living-code");
-  for (const theme of vscode.contributes.themes) {
-    await readFile(join(byId.get("vscode").dir, "extension", theme.path));
-  }
-  const firefox = byId.get("firefox");
-  assert.ok(!firefox.payload.some((path) => /frost|signal/.test(path)));
-  for (const variant of ["night", "paper"]) {
-    const dir = join(firefox.dir, `living-code-${variant}`);
-    const manifest = await json(join(dir, "manifest.json"));
-    for (const path of Object.values(manifest.icons)) await readFile(join(dir, path));
-  }
 
   // Install the actual tarballs, not the staging directories, to test exports and isolation.
   const consumer = join(temp, "consumer");

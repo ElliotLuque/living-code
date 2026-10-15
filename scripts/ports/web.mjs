@@ -10,6 +10,7 @@ ${Object.entries(f.roles).map(([role, n]) => `  --lc-${kebab(role)}: var(--lc-${
 export const css = {
   id: "css",
   name: "CSS variables",
+  npm: "css",
   homepage: "https://developer.mozilla.org/docs/Web/CSS/color_value/oklch",
   files: () => [],
   all: (fs) => [{
@@ -48,6 +49,7 @@ Use palette names (\`var(--lc-teal)\`) or semantic roles (\`var(--lc-keyword)\`,
 export const tailwind = {
   id: "tailwind",
   name: "Tailwind CSS v4",
+  npm: "tailwind",
   homepage: "https://tailwindcss.com",
   files: () => [],
   all: (fs) => [{
@@ -74,6 +76,7 @@ Then \`bg-lc-base text-lc-text border-lc-surface1\`, \`text-lc-keyword\`, etc.`,
 export const json = {
   id: "json",
   name: "JSON / JavaScript",
+  npm: "palette",
   homepage: "https://github.com/ElliotLuque/living-code",
   files: () => [],
   all: (fs) => {

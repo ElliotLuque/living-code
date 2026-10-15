@@ -17,7 +17,7 @@ test("README shows only Signal's teal accent, not compatibility slots", () => {
   assert.deepEqual(names, ["teal"]);
   assert.ok(accents.includes(`\`${signal.c("teal")}\``));
   assert.doesNotMatch(section, /Compatibility alias/);
-  assert.match(readme, /Night remains the default/);
+  assert.match(readme, /Night is the default/);
   assert.doesNotMatch(readme, /\u2014/);
 });
 

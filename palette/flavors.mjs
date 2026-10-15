@@ -45,7 +45,7 @@ export const flavors = {
     name: "Living Code Signal",
     light: false,
     description:
-      "One accent. Teal keywords, tags and focus; everything else uses the existing slate foreground and background ramp. No warm literals or multicolor diagnostics.",
+      "A minimal variant of Night with a single accent. Teal marks keywords, tags and focus; everything else stays on the slate ramp. No warm literals or multicolor diagnostics.",
     neutrals: nightNeutrals,
     // Keep named slots for ports that consume palette colors directly.
     accents: {
@@ -155,7 +155,7 @@ export const flavors = {
   },
 };
 
-export const flavorOrder = ["night", "signal", "frost", "paper"];
+export const flavorOrder = ["night", "frost", "paper", "signal"];
 
 export const defaultRoles = {
   bg: "base",

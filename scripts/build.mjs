@@ -4,13 +4,13 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { contrast } from "./color.mjs";
 import { ACCENT_ORDER, NEUTRAL_ORDER, resolveAll } from "./resolve.mjs";
-import { generate, groups, ports } from "./ports/index.mjs";
-import { packageId } from "./npm-packages.mjs";
+import { generate, groups } from "./ports/index.mjs";
+import { npmPorts } from "./npm-packages.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
 const flavors = resolveAll();
-const signal = flavors.find((f) => f.id === "signal");
+const night = flavors.find((f) => f.id === "night");
 
 const TEXT_ROLES = ["fg", "fgAlt", "fgMuted", "fgSubtle", "keyword", "function", "string", "number", "constant", "type", "decorator", "tag", "property", "parameter", "comment", "operator", "error", "warning", "info", "hint", "success", "link", "heading", "lineNumberActive"];
 const audit = [];
@@ -57,8 +57,9 @@ const installs = groups.map((g) => `### ${g.title}\n\n${g.ports.map((p) => `<a i
 
 const readme = `<h1 align="center">Living Code</h1>
 
-<p align="center"><b>Slate first. Color with purpose.</b><br>
-A color scheme for editors, terminals, browsers and the web.</p>
+<p align="center"><b>Calm slate. Living color.</b><br>
+A color scheme where the background stays quiet and the code comes alive.<br>
+For editors, terminals, browsers and the web.</p>
 
 <p align="center">
 ${flavors.map((f) => `<img src="assets/preview-${f.id}.png" width="49%" alt="${f.name}">`).join("\n")}
@@ -66,32 +67,21 @@ ${flavors.map((f) => `<img src="assets/preview-${f.id}.png" width="49%" alt="${f
 
 ## Choose a flavor
 
-All four flavors share a slate foundation and semantic roles. Signal pares the colors down to a single accent;
-Night, Frost and Paper keep broader palettes. Night remains the default.
+Every flavor shares the same slate foundation and semantic roles. Night is the default.
 
 | Flavor | Appearance | Syntax and accents |
 |---|---|---|
-| [Signal](#living-code-signal) | Dark slate, one accent | Teal keywords, builtins, decorators and tags. Neutral functions, literals and diagnostics. |
 | [Night](#living-code-night) | Dark slate, full palette | Cool structure, green strings, copper numbers and amber warnings. The default. |
 | [Frost](#living-code-frost) | Lifted, bluer slate | Lower-chroma accents with amber strings and copper numbers. |
 | [Paper](#living-code-paper) | Near-white slate | Darker accents with amber strings and copper numbers. |
+| [Signal](#living-code-signal) | Dark slate, one accent | Minimal variant of Night: teal keywords and tags, everything else neutral. |
 
-## Signal: one accent, not a rainbow
+## Design
 
-Signal uses ${sw(signal.c("teal"))} teal for structure and interaction,
-not a separate hue for every syntax category. It keeps the same neutral ramp as Night.
-
-- **Teal marks structure and focus.** Keywords, builtins, decorators, tags, links, cursors and active borders use the same accent.
-- **Literals read as text.** Functions, strings, numbers, constants, escapes and regular expressions use the main foreground. Types and parameters use a softer gray.
-- **Surfaces stay slate.** Backgrounds, panels, selections, punctuation and comments use the existing neutral ramp.
-- **Diagnostics stay neutral.** Errors, warnings, info and hints use foreground shades rather than red, amber, blue and green. Labels, signs and underlines distinguish their meaning.
-- **Terminals follow the same rule.** ANSI cyan and bright cyan are teal. The other ANSI slots resolve to neutral shades, including the bright variants.
-
-The named slots \`amber\`, \`copper\`, \`moss\` and the other accent names remain available for port compatibility,
-but in Signal they are aliases of teal or neutral colors. They do not introduce warm literals or additional accent hues.
-
-Every palette value is defined in OKLCH; hex and RGB are derived. The build checks text roles for WCAG AA contrast
-(≥ 4.5:1) against each flavor's main background.
+- **The ground stays calm.** Backgrounds, panels, selections, punctuation and comments live on one slate ramp, so the eye goes to the code, not the chrome.
+- **Cool for structure, warm for data.** ${sw(night.c("teal"))} Teal, aqua and steel mark keywords, functions and types; ${sw(night.c("moss"))} moss, ${sw(night.c("amber"))} amber and ${sw(night.c("copper"))} copper mark strings, numbers and warnings.
+- **Same roles everywhere.** Each port maps the same semantic roles (keyword, string, error, border...), so a theme feels the same in your editor, terminal and browser.
+- **Built in OKLCH.** Every palette value is defined in OKLCH; hex and RGB are derived. The build checks text roles for WCAG AA contrast (≥ 4.5:1) against each flavor's background.
 
 ## Flavors
 
@@ -101,7 +91,10 @@ ${f.description}
 
 <img src="assets/preview-${f.id}.png" width="100%" alt="${f.name}: editor syntax, terminal output and ANSI palette">
 
-<details${f.id === "signal" ? " open" : ""}>
+${f.id === "signal" ? `Accent names such as \`amber\`, \`copper\` and \`moss\` remain available for port compatibility,
+but in Signal they are aliases of teal or neutral colors. Diagnostics are told apart by labels, signs and underlines instead of hue.
+
+` : ""}<details${f.id === "night" ? " open" : ""}>
 <summary>Palette</summary>
 
 **Neutrals**
@@ -126,8 +119,8 @@ ${roleTable}
 The table shows resolved roles for every flavor. The full role map (UI, diagnostics, markup) is in
 [\`palette/flavors.mjs\`](palette/flavors.mjs): \`defaultRoles\` plus each flavor's \`roles\` overrides.
 
-To try Signal in Neovim, use \`:colorscheme living-code-signal\` or set \`flavor = "signal"\` in the [plugin setup](#neovim).
-For other apps, choose the \`living-code-signal\` file in the relevant [port](#ports). Firefox currently provides Night and Paper only.
+Every port ships every flavor: pick the \`living-code-<flavor>\` file, or in Neovim use \`:colorscheme living-code-frost\`
+or set \`flavor = "frost"\` in the [plugin setup](#neovim). Firefox currently provides Night and Paper only.
 
 ## Ports
 
@@ -139,17 +132,14 @@ Every file in \`extras/\`, \`colors/\` and \`lua/living-code/palettes/\` is gene
 
 ### npm packages
 
-Install only the port you need. Each \`@living-code/<port>\` package contains that port’s themes, not the entire ecosystem.
-
-\`\`\`sh
-pnpm add @living-code/expressive-code
-\`\`\`
+Ports used from JavaScript or CSS tooling are published to npm. Each package contains only that port's files.
 
 | Port | Package |
 |---|---|
-${ports.map((p) => `| [${p.name}](#${p.id}) | \`@living-code/${packageId(p)}\` |`).join("\n")}
+${npmPorts.map((p) => `| [${p.name}](#${p.id}) | \`@living-code/${p.npm}\` |`).join("\n")}
 
-For native apps, the theme files are installed under \`node_modules/@living-code/<port>/\`; apply them using the app-specific instructions below. VS Code’s extension is in the package’s \`extension/\` directory. Neovim’s package includes its full \`lua/\` and \`colors/\` plugin directories.
+Native apps (editors, terminals, CLI tools, Firefox) don't need a package: copy their files from [\`extras/\`](extras)
+or use the app's own install route, as described below.
 
 ${installs}
 
@@ -158,14 +148,14 @@ ${installs}
 Any app can follow the theme: read [\`palette.json\`](palette.json) (hex, OKLCH, RGB, roles and ANSI for every flavor),
 or map these semantic roles onto the app's own color slots:
 
-| Slot | Role | Signal |
+| Slot | Role | Night |
 |---|---|---|
-| background / foreground | \`bg\` / \`fg\` | \`${signal.r("bg")}\` / \`${signal.r("fg")}\` |
-| panels, sidebars | \`bgDeep\`, \`bgAlt\` | \`${signal.r("bgDeep")}\`, \`${signal.r("bgAlt")}\` |
-| accent, cursor, focus ring | \`accent\` | \`${signal.r("accent")}\` |
-| selection | \`selection\` | \`${signal.r("selection")}\` |
-| borders | \`border\` / \`borderActive\` | \`${signal.r("border")}\` / \`${signal.r("borderActive")}\` |
-| error / warning / info / success | \`error\` … | \`${signal.r("error")}\` \`${signal.r("warning")}\` \`${signal.r("info")}\` \`${signal.r("success")}\` |
+| background / foreground | \`bg\` / \`fg\` | \`${night.r("bg")}\` / \`${night.r("fg")}\` |
+| panels, sidebars | \`bgDeep\`, \`bgAlt\` | \`${night.r("bgDeep")}\`, \`${night.r("bgAlt")}\` |
+| accent, cursor, focus ring | \`accent\` | \`${night.r("accent")}\` |
+| selection | \`selection\` | \`${night.r("selection")}\` |
+| borders | \`border\` / \`borderActive\` | \`${night.r("border")}\` / \`${night.r("borderActive")}\` |
+| error / warning / info / success | \`error\` … | \`${night.r("error")}\` \`${night.r("warning")}\` \`${night.r("info")}\` \`${night.r("success")}\` |
 
 ## Recolor images
 
@@ -195,7 +185,8 @@ Output defaults to \`<image>-<flavor>-<mode>.png\` next to the input. Run with \
 2. Register it in \`scripts/ports/index.mjs\`.
 3. \`node scripts/build.mjs\` regenerates everything, including this README.
 
-Scoped npm packages are built from the registered ports with \`pnpm run build:packages\`. Release instructions: [Publishing](docs/PUBLISHING.md).
+If the port is consumed from JavaScript or CSS, set \`npm: "<name>"\` on it to publish it as \`@living-code/<name>\`.
+Packages are built with \`pnpm run build:packages\`. Release instructions: [Publishing](docs/PUBLISHING.md).
 
 Regenerate the README preview images with \`pnpm run screenshots\`. This uses headless Chrome (\`google-chrome\` by default;
 set \`CHROME_BIN\` for another Chromium executable) and captures all four flavors from the live preview at 1280×720.

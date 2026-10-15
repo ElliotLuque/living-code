@@ -1,43 +1,33 @@
 <h1 align="center">Living Code</h1>
 
-<p align="center"><b>Slate first. Color with purpose.</b><br>
-A color scheme for editors, terminals, browsers and the web.</p>
+<p align="center"><b>Calm slate. Living color.</b><br>
+A color scheme where the background stays quiet and the code comes alive.<br>
+For editors, terminals, browsers and the web.</p>
 
 <p align="center">
 <img src="assets/preview-night.png" width="49%" alt="Living Code Night">
-<img src="assets/preview-signal.png" width="49%" alt="Living Code Signal">
 <img src="assets/preview-frost.png" width="49%" alt="Living Code Frost">
 <img src="assets/preview-paper.png" width="49%" alt="Living Code Paper">
+<img src="assets/preview-signal.png" width="49%" alt="Living Code Signal">
 </p>
 
 ## Choose a flavor
 
-All four flavors share a slate foundation and semantic roles. Signal pares the colors down to a single accent;
-Night, Frost and Paper keep broader palettes. Night remains the default.
+Every flavor shares the same slate foundation and semantic roles. Night is the default.
 
 | Flavor | Appearance | Syntax and accents |
 |---|---|---|
-| [Signal](#living-code-signal) | Dark slate, one accent | Teal keywords, builtins, decorators and tags. Neutral functions, literals and diagnostics. |
 | [Night](#living-code-night) | Dark slate, full palette | Cool structure, green strings, copper numbers and amber warnings. The default. |
 | [Frost](#living-code-frost) | Lifted, bluer slate | Lower-chroma accents with amber strings and copper numbers. |
 | [Paper](#living-code-paper) | Near-white slate | Darker accents with amber strings and copper numbers. |
+| [Signal](#living-code-signal) | Dark slate, one accent | Minimal variant of Night: teal keywords and tags, everything else neutral. |
 
-## Signal: one accent, not a rainbow
+## Design
 
-Signal uses <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> teal for structure and interaction,
-not a separate hue for every syntax category. It keeps the same neutral ramp as Night.
-
-- **Teal marks structure and focus.** Keywords, builtins, decorators, tags, links, cursors and active borders use the same accent.
-- **Literals read as text.** Functions, strings, numbers, constants, escapes and regular expressions use the main foreground. Types and parameters use a softer gray.
-- **Surfaces stay slate.** Backgrounds, panels, selections, punctuation and comments use the existing neutral ramp.
-- **Diagnostics stay neutral.** Errors, warnings, info and hints use foreground shades rather than red, amber, blue and green. Labels, signs and underlines distinguish their meaning.
-- **Terminals follow the same rule.** ANSI cyan and bright cyan are teal. The other ANSI slots resolve to neutral shades, including the bright variants.
-
-The named slots `amber`, `copper`, `moss` and the other accent names remain available for port compatibility,
-but in Signal they are aliases of teal or neutral colors. They do not introduce warm literals or additional accent hues.
-
-Every palette value is defined in OKLCH; hex and RGB are derived. The build checks text roles for WCAG AA contrast
-(≥ 4.5:1) against each flavor's main background.
+- **The ground stays calm.** Backgrounds, panels, selections, punctuation and comments live on one slate ramp, so the eye goes to the code, not the chrome.
+- **Cool for structure, warm for data.** <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> Teal, aqua and steel mark keywords, functions and types; <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> moss, <img src="assets/swatches/f0be6d.svg" width="18" height="18" alt="#f0be6d"> amber and <img src="assets/swatches/e18c5f.svg" width="18" height="18" alt="#e18c5f"> copper mark strings, numbers and warnings.
+- **Same roles everywhere.** Each port maps the same semantic roles (keyword, string, error, border...), so a theme feels the same in your editor, terminal and browser.
+- **Built in OKLCH.** Every palette value is defined in OKLCH; hex and RGB are derived. The build checks text roles for WCAG AA contrast (≥ 4.5:1) against each flavor's background.
 
 ## Flavors
 
@@ -47,7 +37,7 @@ The default. Dark slate ground, teal structure, green strings and gray comments.
 
 <img src="assets/preview-night.png" width="100%" alt="Living Code Night: editor syntax, terminal output and ANSI palette">
 
-<details>
+<details open>
 <summary>Palette</summary>
 
 **Neutrals**
@@ -87,46 +77,6 @@ The default. Dark slate ground, teal structure, green strings and gray comments.
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | normal | <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | <img src="assets/swatches/e96560.svg" width="18" height="18" alt="#e96560"> | <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> | <img src="assets/swatches/f0be6d.svg" width="18" height="18" alt="#f0be6d"> | <img src="assets/swatches/80b6d3.svg" width="18" height="18" alt="#80b6d3"> | <img src="assets/swatches/bf91cd.svg" width="18" height="18" alt="#bf91cd"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> |
 | bright | <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | <img src="assets/swatches/fa8880.svg" width="18" height="18" alt="#fa8880"> | <img src="assets/swatches/abe2a4.svg" width="18" height="18" alt="#abe2a4"> | <img src="assets/swatches/ffdba5.svg" width="18" height="18" alt="#ffdba5"> | <img src="assets/swatches/a1cfe8.svg" width="18" height="18" alt="#a1cfe8"> | <img src="assets/swatches/d5ade2.svg" width="18" height="18" alt="#d5ade2"> | <img src="assets/swatches/1fc1ab.svg" width="18" height="18" alt="#1fc1ab"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> |
-
-</details>
-
-### Living Code Signal
-
-One accent. Teal keywords, tags and focus; everything else uses the existing slate foreground and background ramp. No warm literals or multicolor diagnostics.
-
-<img src="assets/preview-signal.png" width="100%" alt="Living Code Signal: editor syntax, terminal output and ANSI palette">
-
-<details open>
-<summary>Palette</summary>
-
-**Neutrals**
-
-| | Name | Hex | OKLCH | Used for |
-|:-:|---|---|---|---|
-| <img src="assets/swatches/020405.svg" width="18" height="18" alt="#020405"> | `crust` | `#020405` | `oklch(0.1 0.01 240)` | sidebars, tab bars, status lines |
-| <img src="assets/swatches/05080b.svg" width="18" height="18" alt="#05080b"> | `base` | `#05080b` | `oklch(0.13 0.01 240)` | background |
-| <img src="assets/swatches/090e11.svg" width="18" height="18" alt="#090e11"> | `mantle` | `#090e11` | `oklch(0.16 0.01 240)` | floats, cards, popups |
-| <img src="assets/swatches/12171a.svg" width="18" height="18" alt="#12171a"> | `surface0` | `#12171a` | `oklch(0.2 0.01 240)` | line highlight, inactive tabs |
-| <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | `surface1` | `#1d2226` | `oklch(0.25 0.01 240)` | borders, ANSI black |
-| <img src="assets/swatches/2d3438.svg" width="18" height="18" alt="#2d3438"> | `surface2` | `#2d3438` | `oklch(0.32 0.012 240)` | selection |
-| <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | `overlay` | `#50565b` | `oklch(0.45 0.012 240)` | line numbers, punctuation |
-| <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> | `comment` | `#747c80` | `oklch(0.58 0.012 235)` | comments, operators |
-| <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> | `subtext` | `#9ba0a2` | `oklch(0.7023 0.0065 223.49)` | muted text, ANSI white |
-| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `text2` | `#c8cfd4` | `oklch(0.85 0.01 240)` | properties, parameters |
-| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `text` | `#e2e9ee` | `oklch(0.93 0.01 240)` | foreground |
-
-**Accent**
-
-| | Name | Hex | OKLCH | Used for |
-|:-:|---|---|---|---|
-| <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `teal` | `#00a692` | `oklch(0.65 0.15 180)` | accent · cursor · borderActive · match · modified · keyword · builtin · decorator · tag · heading · link |
-
-**ANSI**
-
-| | black | red | green | yellow | blue | magenta | cyan | white |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| normal | <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> |
-| bright | <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> |
 
 </details>
 
@@ -228,26 +178,69 @@ Daylight. Same two temperatures on near-white slate, lightness inverted so every
 
 </details>
 
+### Living Code Signal
+
+A minimal variant of Night with a single accent. Teal marks keywords, tags and focus; everything else stays on the slate ramp. No warm literals or multicolor diagnostics.
+
+<img src="assets/preview-signal.png" width="100%" alt="Living Code Signal: editor syntax, terminal output and ANSI palette">
+
+Accent names such as `amber`, `copper` and `moss` remain available for port compatibility,
+but in Signal they are aliases of teal or neutral colors. Diagnostics are told apart by labels, signs and underlines instead of hue.
+
+<details>
+<summary>Palette</summary>
+
+**Neutrals**
+
+| | Name | Hex | OKLCH | Used for |
+|:-:|---|---|---|---|
+| <img src="assets/swatches/020405.svg" width="18" height="18" alt="#020405"> | `crust` | `#020405` | `oklch(0.1 0.01 240)` | sidebars, tab bars, status lines |
+| <img src="assets/swatches/05080b.svg" width="18" height="18" alt="#05080b"> | `base` | `#05080b` | `oklch(0.13 0.01 240)` | background |
+| <img src="assets/swatches/090e11.svg" width="18" height="18" alt="#090e11"> | `mantle` | `#090e11` | `oklch(0.16 0.01 240)` | floats, cards, popups |
+| <img src="assets/swatches/12171a.svg" width="18" height="18" alt="#12171a"> | `surface0` | `#12171a` | `oklch(0.2 0.01 240)` | line highlight, inactive tabs |
+| <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | `surface1` | `#1d2226` | `oklch(0.25 0.01 240)` | borders, ANSI black |
+| <img src="assets/swatches/2d3438.svg" width="18" height="18" alt="#2d3438"> | `surface2` | `#2d3438` | `oklch(0.32 0.012 240)` | selection |
+| <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | `overlay` | `#50565b` | `oklch(0.45 0.012 240)` | line numbers, punctuation |
+| <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> | `comment` | `#747c80` | `oklch(0.58 0.012 235)` | comments, operators |
+| <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> | `subtext` | `#9ba0a2` | `oklch(0.7023 0.0065 223.49)` | muted text, ANSI white |
+| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `text2` | `#c8cfd4` | `oklch(0.85 0.01 240)` | properties, parameters |
+| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `text` | `#e2e9ee` | `oklch(0.93 0.01 240)` | foreground |
+
+**Accent**
+
+| | Name | Hex | OKLCH | Used for |
+|:-:|---|---|---|---|
+| <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `teal` | `#00a692` | `oklch(0.65 0.15 180)` | accent · cursor · borderActive · match · modified · keyword · builtin · decorator · tag · heading · link |
+
+**ANSI**
+
+| | black | red | green | yellow | blue | magenta | cyan | white |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| normal | <img src="assets/swatches/1d2226.svg" width="18" height="18" alt="#1d2226"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/9ba0a2.svg" width="18" height="18" alt="#9ba0a2"> |
+| bright | <img src="assets/swatches/50565b.svg" width="18" height="18" alt="#50565b"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> |
+
+</details>
+
 
 ### Syntax roles
 
-| Role | Night | Signal | Frost | Paper |
+| Role | Night | Frost | Paper | Signal |
 |---|---|---|---|---|
-| keyword | <img src="assets/swatches/52d7c1.svg" width="18" height="18" alt="#52d7c1"> `mint` | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> `teal` | <img src="assets/swatches/8ad5c6.svg" width="18" height="18" alt="#8ad5c6"> `mint` | <img src="assets/swatches/0f695e.svg" width="18" height="18" alt="#0f695e"> `mint` |
-| function | <img src="assets/swatches/9ae0dd.svg" width="18" height="18" alt="#9ae0dd"> `aqua` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` | <img src="assets/swatches/b6e2df.svg" width="18" height="18" alt="#b6e2df"> `aqua` | <img src="assets/swatches/1f7074.svg" width="18" height="18" alt="#1f7074"> `aqua` |
-| type | <img src="assets/swatches/80b6d3.svg" width="18" height="18" alt="#80b6d3"> `steel` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/98bacd.svg" width="18" height="18" alt="#98bacd"> `steel` | <img src="assets/swatches/2b6991.svg" width="18" height="18" alt="#2b6991"> `steel` |
-| string | <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> `moss` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` | <img src="assets/swatches/e9c897.svg" width="18" height="18" alt="#e9c897"> `amber` | <img src="assets/swatches/8f6213.svg" width="18" height="18" alt="#8f6213"> `amber` |
-| number | <img src="assets/swatches/e18c5f.svg" width="18" height="18" alt="#e18c5f"> `copper` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` | <img src="assets/swatches/d49c80.svg" width="18" height="18" alt="#d49c80"> `copper` | <img src="assets/swatches/a04f27.svg" width="18" height="18" alt="#a04f27"> `copper` |
-| decorator | <img src="assets/swatches/bf91cd.svg" width="18" height="18" alt="#bf91cd"> `orchid` | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> `teal` | <img src="assets/swatches/bc9ec6.svg" width="18" height="18" alt="#bc9ec6"> `orchid` | <img src="assets/swatches/81558e.svg" width="18" height="18" alt="#81558e"> `orchid` |
-| property | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/2e3437.svg" width="18" height="18" alt="#2e3437"> `text2` |
-| operator | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/7d8489.svg" width="18" height="18" alt="#7d8489"> `comment` | <img src="assets/swatches/6b7378.svg" width="18" height="18" alt="#6b7378"> `comment` |
-| comment | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/7d8489.svg" width="18" height="18" alt="#7d8489"> `comment` | <img src="assets/swatches/6b7378.svg" width="18" height="18" alt="#6b7378"> `comment` |
+| keyword | <img src="assets/swatches/52d7c1.svg" width="18" height="18" alt="#52d7c1"> `mint` | <img src="assets/swatches/8ad5c6.svg" width="18" height="18" alt="#8ad5c6"> `mint` | <img src="assets/swatches/0f695e.svg" width="18" height="18" alt="#0f695e"> `mint` | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> `teal` |
+| function | <img src="assets/swatches/9ae0dd.svg" width="18" height="18" alt="#9ae0dd"> `aqua` | <img src="assets/swatches/b6e2df.svg" width="18" height="18" alt="#b6e2df"> `aqua` | <img src="assets/swatches/1f7074.svg" width="18" height="18" alt="#1f7074"> `aqua` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` |
+| type | <img src="assets/swatches/80b6d3.svg" width="18" height="18" alt="#80b6d3"> `steel` | <img src="assets/swatches/98bacd.svg" width="18" height="18" alt="#98bacd"> `steel` | <img src="assets/swatches/2b6991.svg" width="18" height="18" alt="#2b6991"> `steel` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` |
+| string | <img src="assets/swatches/8acb83.svg" width="18" height="18" alt="#8acb83"> `moss` | <img src="assets/swatches/e9c897.svg" width="18" height="18" alt="#e9c897"> `amber` | <img src="assets/swatches/8f6213.svg" width="18" height="18" alt="#8f6213"> `amber` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` |
+| number | <img src="assets/swatches/e18c5f.svg" width="18" height="18" alt="#e18c5f"> `copper` | <img src="assets/swatches/d49c80.svg" width="18" height="18" alt="#d49c80"> `copper` | <img src="assets/swatches/a04f27.svg" width="18" height="18" alt="#a04f27"> `copper` | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> `text` |
+| decorator | <img src="assets/swatches/bf91cd.svg" width="18" height="18" alt="#bf91cd"> `orchid` | <img src="assets/swatches/bc9ec6.svg" width="18" height="18" alt="#bc9ec6"> `orchid` | <img src="assets/swatches/81558e.svg" width="18" height="18" alt="#81558e"> `orchid` | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> `teal` |
+| property | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` | <img src="assets/swatches/2e3437.svg" width="18" height="18" alt="#2e3437"> `text2` | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> `text2` |
+| operator | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/7d8489.svg" width="18" height="18" alt="#7d8489"> `comment` | <img src="assets/swatches/6b7378.svg" width="18" height="18" alt="#6b7378"> `comment` | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` |
+| comment | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` | <img src="assets/swatches/7d8489.svg" width="18" height="18" alt="#7d8489"> `comment` | <img src="assets/swatches/6b7378.svg" width="18" height="18" alt="#6b7378"> `comment` | <img src="assets/swatches/747c80.svg" width="18" height="18" alt="#747c80"> `comment` |
 
 The table shows resolved roles for every flavor. The full role map (UI, diagnostics, markup) is in
 [`palette/flavors.mjs`](palette/flavors.mjs): `defaultRoles` plus each flavor's `roles` overrides.
 
-To try Signal in Neovim, use `:colorscheme living-code-signal` or set `flavor = "signal"` in the [plugin setup](#neovim).
-For other apps, choose the `living-code-signal` file in the relevant [port](#ports). Firefox currently provides Night and Paper only.
+Every port ships every flavor: pick the `living-code-<flavor>` file, or in Neovim use `:colorscheme living-code-frost`
+or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently provides Night and Paper only.
 
 ## Ports
 
@@ -269,37 +262,17 @@ Every file in `extras/`, `colors/` and `lua/living-code/palettes/` is generated.
 
 ### npm packages
 
-Install only the port you need. Each `@living-code/<port>` package contains that port’s themes, not the entire ecosystem.
-
-```sh
-pnpm add @living-code/expressive-code
-```
+Ports used from JavaScript or CSS tooling are published to npm. Each package contains only that port's files.
 
 | Port | Package |
 |---|---|
-| [Neovim](#neovim) | `@living-code/neovim` |
-| [VS Code](#vscode) | `@living-code/vscode` |
-| [Zed](#zed) | `@living-code/zed` |
-| [Helix](#helix) | `@living-code/helix` |
-| [bat · delta · Sublime Text (tmTheme)](#tmtheme) | `@living-code/tmtheme` |
-| [kitty](#kitty) | `@living-code/kitty` |
-| [Ghostty](#ghostty) | `@living-code/ghostty` |
-| [Alacritty](#alacritty) | `@living-code/alacritty` |
-| [WezTerm](#wezterm) | `@living-code/wezterm` |
-| [foot](#foot) | `@living-code/foot` |
-| [tmux](#tmux) | `@living-code/tmux` |
-| [fzf](#fzf) | `@living-code/fzf` |
-| [Starship](#starship) | `@living-code/starship` |
-| [btop](#btop) | `@living-code/btop` |
-| [lazygit](#lazygit) | `@living-code/lazygit` |
-| [Firefox](#firefox) | `@living-code/firefox` |
 | [Expressive Code](#expressive-code) | `@living-code/expressive-code` |
 | [CSS variables](#css) | `@living-code/css` |
 | [Tailwind CSS v4](#tailwind) | `@living-code/tailwind` |
 | [JSON / JavaScript](#json) | `@living-code/palette` |
-| [base16 · Stylix · tinted-theming](#base16) | `@living-code/base16` |
 
-For native apps, the theme files are installed under `node_modules/@living-code/<port>/`; apply them using the app-specific instructions below. VS Code’s extension is in the package’s `extension/` directory. Neovim’s package includes its full `lua/` and `colors/` plugin directories.
+Native apps (editors, terminals, CLI tools, Firefox) don't need a package: copy their files from [`extras/`](extras)
+or use the app's own install route, as described below.
 
 ### Editors
 
@@ -554,14 +527,14 @@ Also works with **tinted-theming** tools (`tinty`, `flavours`, base16-shell): co
 Any app can follow the theme: read [`palette.json`](palette.json) (hex, OKLCH, RGB, roles and ANSI for every flavor),
 or map these semantic roles onto the app's own color slots:
 
-| Slot | Role | Signal |
+| Slot | Role | Night |
 |---|---|---|
 | background / foreground | `bg` / `fg` | `#05080b` / `#e2e9ee` |
 | panels, sidebars | `bgDeep`, `bgAlt` | `#020405`, `#090e11` |
 | accent, cursor, focus ring | `accent` | `#00a692` |
 | selection | `selection` | `#2d3438` |
 | borders | `border` / `borderActive` | `#1d2226` / `#00a692` |
-| error / warning / info / success | `error` … | `#e2e9ee` `#c8cfd4` `#c8cfd4` `#c8cfd4` |
+| error / warning / info / success | `error` … | `#e96560` `#f0be6d` `#80b6d3` `#8acb83` |
 
 ## Recolor images
 
@@ -591,7 +564,8 @@ Output defaults to `<image>-<flavor>-<mode>.png` next to the input. Run with `--
 2. Register it in `scripts/ports/index.mjs`.
 3. `node scripts/build.mjs` regenerates everything, including this README.
 
-Scoped npm packages are built from the registered ports with `pnpm run build:packages`. Release instructions: [Publishing](docs/PUBLISHING.md).
+If the port is consumed from JavaScript or CSS, set `npm: "<name>"` on it to publish it as `@living-code/<name>`.
+Packages are built with `pnpm run build:packages`. Release instructions: [Publishing](docs/PUBLISHING.md).
 
 Regenerate the README preview images with `pnpm run screenshots`. This uses headless Chrome (`google-chrome` by default;
 set `CHROME_BIN` for another Chromium executable) and captures all four flavors from the live preview at 1280×720.

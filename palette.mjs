@@ -265,272 +265,6 @@ export const palette = {
       ]
     }
   },
-  "signal": {
-    "name": "Living Code Signal",
-    "light": false,
-    "colors": {
-      "crust": {
-        "hex": "#020405",
-        "oklch": "oklch(0.1 0.01 240)",
-        "rgb": [
-          2,
-          4,
-          5
-        ]
-      },
-      "base": {
-        "hex": "#05080b",
-        "oklch": "oklch(0.13 0.01 240)",
-        "rgb": [
-          5,
-          8,
-          11
-        ]
-      },
-      "mantle": {
-        "hex": "#090e11",
-        "oklch": "oklch(0.16 0.01 240)",
-        "rgb": [
-          9,
-          14,
-          17
-        ]
-      },
-      "surface0": {
-        "hex": "#12171a",
-        "oklch": "oklch(0.2 0.01 240)",
-        "rgb": [
-          18,
-          23,
-          26
-        ]
-      },
-      "surface1": {
-        "hex": "#1d2226",
-        "oklch": "oklch(0.25 0.01 240)",
-        "rgb": [
-          29,
-          34,
-          38
-        ]
-      },
-      "surface2": {
-        "hex": "#2d3438",
-        "oklch": "oklch(0.32 0.012 240)",
-        "rgb": [
-          45,
-          52,
-          56
-        ]
-      },
-      "overlay": {
-        "hex": "#50565b",
-        "oklch": "oklch(0.45 0.012 240)",
-        "rgb": [
-          80,
-          86,
-          91
-        ]
-      },
-      "comment": {
-        "hex": "#747c80",
-        "oklch": "oklch(0.58 0.012 235)",
-        "rgb": [
-          116,
-          124,
-          128
-        ]
-      },
-      "subtext": {
-        "hex": "#9ba0a2",
-        "oklch": "oklch(0.7023 0.0065 223.49)",
-        "rgb": [
-          155,
-          160,
-          162
-        ]
-      },
-      "text2": {
-        "hex": "#c8cfd4",
-        "oklch": "oklch(0.85 0.01 240)",
-        "rgb": [
-          200,
-          207,
-          212
-        ]
-      },
-      "text": {
-        "hex": "#e2e9ee",
-        "oklch": "oklch(0.93 0.01 240)",
-        "rgb": [
-          226,
-          233,
-          238
-        ]
-      },
-      "teal": {
-        "hex": "#00a692",
-        "oklch": "oklch(0.65 0.15 180)",
-        "rgb": [
-          0,
-          166,
-          146
-        ]
-      },
-      "mint": {
-        "hex": "#00a692",
-        "oklch": "oklch(0.65 0.15 180)",
-        "rgb": [
-          0,
-          166,
-          146
-        ]
-      },
-      "aqua": {
-        "hex": "#e2e9ee",
-        "oklch": "oklch(0.93 0.01 240)",
-        "rgb": [
-          226,
-          233,
-          238
-        ]
-      },
-      "steel": {
-        "hex": "#c8cfd4",
-        "oklch": "oklch(0.85 0.01 240)",
-        "rgb": [
-          200,
-          207,
-          212
-        ]
-      },
-      "amber": {
-        "hex": "#e2e9ee",
-        "oklch": "oklch(0.93 0.01 240)",
-        "rgb": [
-          226,
-          233,
-          238
-        ]
-      },
-      "copper": {
-        "hex": "#e2e9ee",
-        "oklch": "oklch(0.93 0.01 240)",
-        "rgb": [
-          226,
-          233,
-          238
-        ]
-      },
-      "flare": {
-        "hex": "#e2e9ee",
-        "oklch": "oklch(0.93 0.01 240)",
-        "rgb": [
-          226,
-          233,
-          238
-        ]
-      },
-      "moss": {
-        "hex": "#c8cfd4",
-        "oklch": "oklch(0.85 0.01 240)",
-        "rgb": [
-          200,
-          207,
-          212
-        ]
-      },
-      "orchid": {
-        "hex": "#00a692",
-        "oklch": "oklch(0.65 0.15 180)",
-        "rgb": [
-          0,
-          166,
-          146
-        ]
-      },
-      "rose": {
-        "hex": "#c8cfd4",
-        "oklch": "oklch(0.85 0.01 240)",
-        "rgb": [
-          200,
-          207,
-          212
-        ]
-      }
-    },
-    "roles": {
-      "bg": "base",
-      "bgAlt": "mantle",
-      "bgDeep": "crust",
-      "fg": "text",
-      "fgAlt": "text2",
-      "fgMuted": "subtext",
-      "fgSubtle": "comment",
-      "accent": "teal",
-      "cursor": "teal",
-      "selection": "surface2",
-      "lineHighlight": "surface0",
-      "border": "surface1",
-      "borderActive": "teal",
-      "lineNumber": "overlay",
-      "lineNumberActive": "text2",
-      "match": "teal",
-      "error": "text",
-      "warning": "text2",
-      "info": "text2",
-      "hint": "text2",
-      "success": "text2",
-      "added": "text2",
-      "removed": "text",
-      "modified": "teal",
-      "keyword": "teal",
-      "builtin": "teal",
-      "function": "text",
-      "string": "text",
-      "number": "text",
-      "constant": "text",
-      "escape": "text",
-      "regex": "text",
-      "type": "text2",
-      "namespace": "text2",
-      "operator": "comment",
-      "punctuation": "overlay",
-      "decorator": "teal",
-      "tag": "teal",
-      "attribute": "text2",
-      "property": "text2",
-      "variable": "text",
-      "parameter": "text2",
-      "comment": "comment",
-      "heading": "teal",
-      "link": "teal",
-      "code": "text",
-      "quote": "comment"
-    },
-    "ansi": {
-      "normal": [
-        "#1d2226",
-        "#e2e9ee",
-        "#c8cfd4",
-        "#e2e9ee",
-        "#c8cfd4",
-        "#c8cfd4",
-        "#00a692",
-        "#9ba0a2"
-      ],
-      "bright": [
-        "#50565b",
-        "#e2e9ee",
-        "#e2e9ee",
-        "#e2e9ee",
-        "#e2e9ee",
-        "#e2e9ee",
-        "#00a692",
-        "#e2e9ee"
-      ]
-    }
-  },
   "frost": {
     "name": "Living Code Frost",
     "light": false,
@@ -1060,6 +794,272 @@ export const palette = {
         "#664371",
         "#116357",
         "#12171a"
+      ]
+    }
+  },
+  "signal": {
+    "name": "Living Code Signal",
+    "light": false,
+    "colors": {
+      "crust": {
+        "hex": "#020405",
+        "oklch": "oklch(0.1 0.01 240)",
+        "rgb": [
+          2,
+          4,
+          5
+        ]
+      },
+      "base": {
+        "hex": "#05080b",
+        "oklch": "oklch(0.13 0.01 240)",
+        "rgb": [
+          5,
+          8,
+          11
+        ]
+      },
+      "mantle": {
+        "hex": "#090e11",
+        "oklch": "oklch(0.16 0.01 240)",
+        "rgb": [
+          9,
+          14,
+          17
+        ]
+      },
+      "surface0": {
+        "hex": "#12171a",
+        "oklch": "oklch(0.2 0.01 240)",
+        "rgb": [
+          18,
+          23,
+          26
+        ]
+      },
+      "surface1": {
+        "hex": "#1d2226",
+        "oklch": "oklch(0.25 0.01 240)",
+        "rgb": [
+          29,
+          34,
+          38
+        ]
+      },
+      "surface2": {
+        "hex": "#2d3438",
+        "oklch": "oklch(0.32 0.012 240)",
+        "rgb": [
+          45,
+          52,
+          56
+        ]
+      },
+      "overlay": {
+        "hex": "#50565b",
+        "oklch": "oklch(0.45 0.012 240)",
+        "rgb": [
+          80,
+          86,
+          91
+        ]
+      },
+      "comment": {
+        "hex": "#747c80",
+        "oklch": "oklch(0.58 0.012 235)",
+        "rgb": [
+          116,
+          124,
+          128
+        ]
+      },
+      "subtext": {
+        "hex": "#9ba0a2",
+        "oklch": "oklch(0.7023 0.0065 223.49)",
+        "rgb": [
+          155,
+          160,
+          162
+        ]
+      },
+      "text2": {
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
+        "rgb": [
+          200,
+          207,
+          212
+        ]
+      },
+      "text": {
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
+        "rgb": [
+          226,
+          233,
+          238
+        ]
+      },
+      "teal": {
+        "hex": "#00a692",
+        "oklch": "oklch(0.65 0.15 180)",
+        "rgb": [
+          0,
+          166,
+          146
+        ]
+      },
+      "mint": {
+        "hex": "#00a692",
+        "oklch": "oklch(0.65 0.15 180)",
+        "rgb": [
+          0,
+          166,
+          146
+        ]
+      },
+      "aqua": {
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
+        "rgb": [
+          226,
+          233,
+          238
+        ]
+      },
+      "steel": {
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
+        "rgb": [
+          200,
+          207,
+          212
+        ]
+      },
+      "amber": {
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
+        "rgb": [
+          226,
+          233,
+          238
+        ]
+      },
+      "copper": {
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
+        "rgb": [
+          226,
+          233,
+          238
+        ]
+      },
+      "flare": {
+        "hex": "#e2e9ee",
+        "oklch": "oklch(0.93 0.01 240)",
+        "rgb": [
+          226,
+          233,
+          238
+        ]
+      },
+      "moss": {
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
+        "rgb": [
+          200,
+          207,
+          212
+        ]
+      },
+      "orchid": {
+        "hex": "#00a692",
+        "oklch": "oklch(0.65 0.15 180)",
+        "rgb": [
+          0,
+          166,
+          146
+        ]
+      },
+      "rose": {
+        "hex": "#c8cfd4",
+        "oklch": "oklch(0.85 0.01 240)",
+        "rgb": [
+          200,
+          207,
+          212
+        ]
+      }
+    },
+    "roles": {
+      "bg": "base",
+      "bgAlt": "mantle",
+      "bgDeep": "crust",
+      "fg": "text",
+      "fgAlt": "text2",
+      "fgMuted": "subtext",
+      "fgSubtle": "comment",
+      "accent": "teal",
+      "cursor": "teal",
+      "selection": "surface2",
+      "lineHighlight": "surface0",
+      "border": "surface1",
+      "borderActive": "teal",
+      "lineNumber": "overlay",
+      "lineNumberActive": "text2",
+      "match": "teal",
+      "error": "text",
+      "warning": "text2",
+      "info": "text2",
+      "hint": "text2",
+      "success": "text2",
+      "added": "text2",
+      "removed": "text",
+      "modified": "teal",
+      "keyword": "teal",
+      "builtin": "teal",
+      "function": "text",
+      "string": "text",
+      "number": "text",
+      "constant": "text",
+      "escape": "text",
+      "regex": "text",
+      "type": "text2",
+      "namespace": "text2",
+      "operator": "comment",
+      "punctuation": "overlay",
+      "decorator": "teal",
+      "tag": "teal",
+      "attribute": "text2",
+      "property": "text2",
+      "variable": "text",
+      "parameter": "text2",
+      "comment": "comment",
+      "heading": "teal",
+      "link": "teal",
+      "code": "text",
+      "quote": "comment"
+    },
+    "ansi": {
+      "normal": [
+        "#1d2226",
+        "#e2e9ee",
+        "#c8cfd4",
+        "#e2e9ee",
+        "#c8cfd4",
+        "#c8cfd4",
+        "#00a692",
+        "#9ba0a2"
+      ],
+      "bright": [
+        "#50565b",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#e2e9ee",
+        "#00a692",
+        "#e2e9ee"
       ]
     }
   }
