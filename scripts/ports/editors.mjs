@@ -368,7 +368,7 @@ bat cache --build
 bat --list-themes | grep living-code
 \`\`\`
 
-Then \`--theme="living-code-night"\` in \`$(bat --config-dir)/config\`, and \`syntax-theme = living-code-night\` under \`[delta]\` in \`~/.gitconfig\`.
+Then \`--theme="living-code-night"\` in \`$(bat --config-dir)/config\`, and \`syntax-theme = living-code-night\` under \`[delta]\` in \`~/.gitconfig\`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
 **Sublime Text:** copy the \`.tmTheme\` into \`Packages/User/\` and select it in *UI: Select Color Scheme*.`,
 };

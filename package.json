@@ -16,7 +16,7 @@
     "check": "node scripts/build.mjs --check",
     "preview": "node scripts/serve.mjs",
     "recolor": "node scripts/recolor.mjs",
-    "test": "node --test scripts/recolor.test.mjs scripts/expressive-code.test.mjs scripts/npm-packages.test.mjs scripts/resolve.test.mjs scripts/preview.test.mjs"
+    "test": "node --test scripts/recolor.test.mjs scripts/expressive-code.test.mjs scripts/git.test.mjs scripts/npm-packages.test.mjs scripts/resolve.test.mjs scripts/preview.test.mjs"
   },
   "engines": { "node": ">=18" }
 }

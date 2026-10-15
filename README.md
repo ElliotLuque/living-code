@@ -235,7 +235,7 @@ Full role map (UI, diagnostics, markup) in [`palette/flavors.mjs`](palette/flavo
 
 **Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
 
-**CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit)
+**CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit) · [delta](#delta) · [Hunk](#hunk)
 
 **Browsers:** [Firefox](#firefox)
 
@@ -272,6 +272,8 @@ pnpm add @living-code/expressive-code
 | [Starship](#starship) | `@living-code/starship` |
 | [btop](#btop) | `@living-code/btop` |
 | [lazygit](#lazygit) | `@living-code/lazygit` |
+| [delta](#delta) | `@living-code/delta` |
+| [Hunk](#hunk) | `@living-code/hunk` |
 | [Firefox](#firefox) | `@living-code/firefox` |
 | [Expressive Code](#expressive-code) | `@living-code/expressive-code` |
 | [CSS variables](#css) | `@living-code/css` |
@@ -334,7 +336,7 @@ bat cache --build
 bat --list-themes | grep living-code
 ```
 
-Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-theme = living-code-night` under `[delta]` in `~/.gitconfig`.
+Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-theme = living-code-night` under `[delta]` in `~/.gitconfig`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
 **Sublime Text:** copy the `.tmTheme` into `Packages/User/` and select it in *UI: Select Color Scheme*.
 
@@ -413,6 +415,60 @@ Copy to `~/.config/btop/themes/` and pick it under *Options → Color theme*.
 #### [lazygit](https://github.com/jesseduffield/lazygit)
 
 Merge the file into `~/.config/lazygit/config.yml`, or point `LG_CONFIG_FILE` at it alongside your config.
+
+<a id="delta"></a>
+#### [delta](https://github.com/dandavison/delta)
+
+First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors (available separately as `@living-code/tmtheme`). This port adds delta's diff backgrounds, word highlights, headers and gutters.
+
+```sh
+mkdir -p ~/.config/delta
+cp extras/delta/living-code.gitconfig ~/.config/delta/
+```
+
+Include it and select a flavor in `~/.gitconfig`:
+
+```gitconfig
+[include]
+	path = ~/.config/delta/living-code.gitconfig
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = living-code-night
+```
+
+Each flavor is a delta feature: `living-code-night`, `living-code-signal`, `living-code-frost`, `living-code-paper`.
+
+<a id="hunk"></a>
+#### [Hunk](https://github.com/modem-dev/hunk)
+
+**Extension (all flavors):** install the generated extension:
+
+```sh
+mkdir -p ~/.config/hunk/extensions
+cp extras/hunk/living-code.mjs ~/.config/hunk/extensions/
+```
+
+Set the top-level `theme` in `~/.config/hunk/config.toml` (before any TOML tables):
+
+```toml
+theme = "living-code-night"
+```
+
+Or try it without installing:
+
+```sh
+hunk diff --extension ./extras/hunk/living-code.mjs --theme living-code-night
+```
+
+**Config only:** instead of the extension, merge a flavor's `.toml` file into `~/.config/hunk/config.toml` (or a repo's `.hunk/config.toml`) and set the top-level `theme` as above. Do not add duplicate theme tables. Config themes take precedence over extension themes with the same name.
+
+Available themes: `living-code-night`, `living-code-signal`, `living-code-frost`, `living-code-paper`. Syntax colors share the editor ports' scope map.
 
 ### Browsers
 

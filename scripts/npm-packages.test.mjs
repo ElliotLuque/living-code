@@ -15,8 +15,8 @@ test("scoped npm packages contain only their own port and support public imports
   const packages = await buildPackages(out);
   const byId = new Map(packages.map((pkg) => [pkg.id, pkg]));
   assert.deepEqual([...byId.keys()].sort(), [
-    "alacritty", "base16", "btop", "css", "expressive-code", "firefox", "foot", "fzf",
-    "ghostty", "helix", "kitty", "lazygit", "neovim", "palette", "starship", "tailwind",
+    "alacritty", "base16", "btop", "css", "delta", "expressive-code", "firefox", "foot", "fzf",
+    "ghostty", "helix", "hunk", "kitty", "lazygit", "neovim", "palette", "starship", "tailwind",
     "tmtheme", "tmux", "vscode", "wezterm", "zed",
   ]);
   const rootMeta = await json(new URL("../package.json", import.meta.url));
@@ -39,6 +39,17 @@ test("scoped npm packages contain only their own port and support public imports
     const readme = await readFile(join(pkg.dir, "README.md"), "utf8");
     assert.ok(readme.includes(`pnpm add ${pkg.name}`));
     assert.doesNotMatch(readme, /\b(?:npm|npx)\s+(?:install|run|exec|pack|publish|add|dlx)\b/);
+  }
+
+  assert.deepEqual(byId.get("delta").payload, ["living-code.gitconfig"]);
+  assert.deepEqual(byId.get("hunk").payload, [
+    ...["frost", "night", "paper", "signal"].map((f) => `living-code-${f}.toml`),
+    "living-code.mjs",
+  ]);
+  for (const id of ["delta", "hunk"]) {
+    const readme = await readFile(join(byId.get(id).dir, "README.md"), "utf8");
+    assert.ok(readme.includes(`node_modules/@living-code/${id}/living-code.`));
+    assert.ok(!readme.includes(`extras/${id}/`));
   }
 
   const ec = byId.get("expressive-code");

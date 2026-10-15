@@ -5,11 +5,12 @@ import { firefox } from "./browsers.mjs";
 import { css, json, tailwind } from "./web.mjs";
 import { expressiveCode } from "./expressive-code.mjs";
 import { base16Port } from "./base16.mjs";
+import { delta, hunk } from "./git.mjs";
 
 export const groups = [
   { title: "Editors", ports: [neovim, vscode, zed, helix, tmtheme] },
   { title: "Terminals", ports: [kitty, ghostty, alacritty, wezterm, foot] },
-  { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit] },
+  { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit, delta, hunk] },
   { title: "Browsers", ports: [firefox] },
   { title: "Web & code", ports: [expressiveCode, css, tailwind, json] },
   { title: "Theme systems", ports: [base16Port] },
