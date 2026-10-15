@@ -23,11 +23,6 @@
         "path": "./themes/living-code-night-color-theme.json"
       },
       {
-        "label": "Living Code Signal",
-        "uiTheme": "vs-dark",
-        "path": "./themes/living-code-signal-color-theme.json"
-      },
-      {
         "label": "Living Code Frost",
         "uiTheme": "vs-dark",
         "path": "./themes/living-code-frost-color-theme.json"
@@ -36,6 +31,11 @@
         "label": "Living Code Paper",
         "uiTheme": "vs",
         "path": "./themes/living-code-paper-color-theme.json"
+      },
+      {
+        "label": "Living Code Signal",
+        "uiTheme": "vs-dark",
+        "path": "./themes/living-code-signal-color-theme.json"
       }
     ]
   }

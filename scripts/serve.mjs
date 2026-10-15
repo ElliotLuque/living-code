@@ -8,7 +8,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const port = +(process.argv[2] || process.env.PORT || 4173);
 const types = { ".html": "text/html", ".mjs": "text/javascript", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png" };
 
-createServer(async (req, res) => {
+const server = createServer(async (req, res) => {
   let path = normalize(decodeURIComponent(new URL(req.url, "http://x").pathname)).replace(/^(\.\.[/\\])+/, "");
   if (path === "/") { res.writeHead(302, { location: "/preview/" }); return res.end(); }
   let file = join(root, path);
@@ -19,4 +19,5 @@ createServer(async (req, res) => {
   } catch {
     res.writeHead(404).end("not found");
   }
-}).listen(port, () => console.log(`Living Code preview → http://localhost:${port}/preview/`));
+});
+server.listen(port, () => console.log(`Living Code preview → http://localhost:${server.address().port}/preview/`));

@@ -75,6 +75,7 @@ export function expressiveCodeTheme(f) {
 export const expressiveCode = {
   id: "expressive-code",
   name: "Expressive Code",
+  npm: "expressive-code",
   homepage: "https://expressive-code.com",
   files: (f) => [{
     path: `extras/expressive-code/${f.slug}.json`,

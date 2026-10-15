@@ -1,8 +1,8 @@
 # Publishing npm packages
 
-The repository is a private build project. Do not publish its root package. Each registered port is published independently as `@living-code/<port>`; the JSON/JavaScript palette is `@living-code/palette`.
+The repository is a private build project. Do not publish its root package. Only ports consumed from JavaScript or CSS tooling are published, each as its own package: `@living-code/expressive-code`, `@living-code/css`, `@living-code/tailwind` and `@living-code/palette` (JSON/JavaScript). A port opts in with an `npm: "<name>"` field. Native-app ports (editors, terminals, CLI tools, Firefox) are not published to npm.
 
-All packages share the version in the root `package.json`. They contain only their own port files, a package README, and the MIT license. There are no runtime dependencies. The VS Code extension keeps its original marketplace manifest inside `extension/`, and the Neovim package includes its runtime files. Firefox packages distribute source themes, not signed add-ons; Firefox Add-ons remains the recommended installation route.
+All packages share the version in the root `package.json`. They contain only their own port files, a package README, and the MIT license. There are no runtime dependencies.
 
 ## First release
 
@@ -37,7 +37,7 @@ All packages share the version in the root `package.json`. They contain only the
    pnpm publish ./dist/npm/expressive-code --access public
    ```
 
-   Or publish all ports after reviewing them:
+   Or publish all packages after reviewing them:
 
    ```sh
    for package in dist/npm/*/; do
