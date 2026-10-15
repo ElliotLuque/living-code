@@ -8,6 +8,19 @@ import { flavorOrder, resolveFlavor } from "./resolve.mjs";
 
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
 
+test("README lists only the four JS/CSS npm packages", () => {
+  const section = readme.split("### npm packages\n")[1].split("\n### ")[0];
+  const packages = [...section.matchAll(/`(@living-code\/[^`]+)`/g)].map((match) => match[1]);
+  assert.deepEqual(packages, [
+    "@living-code/expressive-code",
+    "@living-code/css",
+    "@living-code/tailwind",
+    "@living-code/palette",
+  ]);
+  assert.match(section, /Native apps .* don't need a package/);
+  assert.doesNotMatch(readme, /@living-code\/(?:tmtheme|delta|hunk)\b/);
+});
+
 test("README shows only Signal's teal accent, not compatibility slots", () => {
   const signal = resolveFlavor("signal");
   const section = readme.split("### Living Code Signal\n")[1].split("\n### ")[0];

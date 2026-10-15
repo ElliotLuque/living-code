@@ -61,7 +61,7 @@ export const delta = {
 
 ${fs.map(deltaFeature).join("\n")}`,
   }],
-  install: `First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors (available separately as \`@living-code/tmtheme\`). This port adds delta's diff backgrounds, word highlights, headers and gutters.
+  install: `First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors. This port adds delta's diff backgrounds, word highlights, headers and gutters.
 
 \`\`\`sh
 mkdir -p ~/.config/delta

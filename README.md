@@ -266,24 +266,6 @@ Ports used from JavaScript or CSS tooling are published to npm. Each package con
 
 | Port | Package |
 |---|---|
-| [Neovim](#neovim) | `@living-code/neovim` |
-| [VS Code](#vscode) | `@living-code/vscode` |
-| [Zed](#zed) | `@living-code/zed` |
-| [Helix](#helix) | `@living-code/helix` |
-| [bat · delta · Sublime Text (tmTheme)](#tmtheme) | `@living-code/tmtheme` |
-| [kitty](#kitty) | `@living-code/kitty` |
-| [Ghostty](#ghostty) | `@living-code/ghostty` |
-| [Alacritty](#alacritty) | `@living-code/alacritty` |
-| [WezTerm](#wezterm) | `@living-code/wezterm` |
-| [foot](#foot) | `@living-code/foot` |
-| [tmux](#tmux) | `@living-code/tmux` |
-| [fzf](#fzf) | `@living-code/fzf` |
-| [Starship](#starship) | `@living-code/starship` |
-| [btop](#btop) | `@living-code/btop` |
-| [lazygit](#lazygit) | `@living-code/lazygit` |
-| [delta](#delta) | `@living-code/delta` |
-| [Hunk](#hunk) | `@living-code/hunk` |
-| [Firefox](#firefox) | `@living-code/firefox` |
 | [Expressive Code](#expressive-code) | `@living-code/expressive-code` |
 | [CSS variables](#css) | `@living-code/css` |
 | [Tailwind CSS v4](#tailwind) | `@living-code/tailwind` |
@@ -428,7 +410,7 @@ Merge the file into `~/.config/lazygit/config.yml`, or point `LG_CONFIG_FILE` at
 <a id="delta"></a>
 #### [delta](https://github.com/dandavison/delta)
 
-First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors (available separately as `@living-code/tmtheme`). This port adds delta's diff backgrounds, word highlights, headers and gutters.
+First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors. This port adds delta's diff backgrounds, word highlights, headers and gutters.
 
 ```sh
 mkdir -p ~/.config/delta
