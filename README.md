@@ -4,10 +4,11 @@
 A color scheme for editors, terminals, browsers and the web.</p>
 
 <p align="center">
-<img src="assets/preview-signal.png" width="100%" alt="Living Code Signal preview: teal keywords and focus, gray syntax and diagnostics, dark slate surfaces">
+<img src="assets/preview-night.png" width="49%" alt="Living Code Night">
+<img src="assets/preview-signal.png" width="49%" alt="Living Code Signal">
+<img src="assets/preview-frost.png" width="49%" alt="Living Code Frost">
+<img src="assets/preview-paper.png" width="49%" alt="Living Code Paper">
 </p>
-
-<p align="center"><b>Living Code Signal</b> · One teal accent. The rest is slate.</p>
 
 ## Choose a flavor
 
@@ -93,7 +94,7 @@ The default. Dark slate ground, teal structure, green strings and gray comments.
 
 One accent. Teal keywords, tags and focus; everything else uses the existing slate foreground and background ramp. No warm literals or multicolor diagnostics.
 
-The preview at the top shows Signal in the same editor and terminal scene as the other flavors.
+<img src="assets/preview-signal.png" width="100%" alt="Living Code Signal: editor syntax, terminal output and ANSI palette">
 
 <details open>
 <summary>Palette</summary>
@@ -114,20 +115,11 @@ The preview at the top shows Signal in the same editor and terminal scene as the
 | <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `text2` | `#c8cfd4` | `oklch(0.85 0.01 240)` | properties, parameters |
 | <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `text` | `#e2e9ee` | `oklch(0.93 0.01 240)` | foreground |
 
-**Accent and compatibility aliases**
+**Accent**
 
 | | Name | Hex | OKLCH | Used for |
 |:-:|---|---|---|---|
 | <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `teal` | `#00a692` | `oklch(0.65 0.15 180)` | accent · cursor · borderActive · match · modified · keyword · builtin · decorator · tag · heading · link |
-| <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `mint` | `#00a692` | `oklch(0.65 0.15 180)` | Compatibility alias of `teal`; no additional hue |
-| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `aqua` | `#e2e9ee` | `oklch(0.93 0.01 240)` | Compatibility alias of `text`; no additional hue |
-| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `steel` | `#c8cfd4` | `oklch(0.85 0.01 240)` | Compatibility alias of `text2`; no additional hue |
-| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `amber` | `#e2e9ee` | `oklch(0.93 0.01 240)` | Compatibility alias of `text`; no additional hue |
-| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `copper` | `#e2e9ee` | `oklch(0.93 0.01 240)` | Compatibility alias of `text`; no additional hue |
-| <img src="assets/swatches/e2e9ee.svg" width="18" height="18" alt="#e2e9ee"> | `flare` | `#e2e9ee` | `oklch(0.93 0.01 240)` | Compatibility alias of `text`; no additional hue |
-| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `moss` | `#c8cfd4` | `oklch(0.85 0.01 240)` | Compatibility alias of `text2`; no additional hue |
-| <img src="assets/swatches/00a692.svg" width="18" height="18" alt="#00a692"> | `orchid` | `#00a692` | `oklch(0.65 0.15 180)` | Compatibility alias of `teal`; no additional hue |
-| <img src="assets/swatches/c8cfd4.svg" width="18" height="18" alt="#c8cfd4"> | `rose` | `#c8cfd4` | `oklch(0.85 0.01 240)` | Compatibility alias of `text2`; no additional hue |
 
 **ANSI**
 

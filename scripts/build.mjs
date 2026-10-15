@@ -31,10 +31,6 @@ const sw = (hex) => `<img src="assets/swatches/${hex.slice(1)}.svg" width="18" h
 const uses = (f, name) => {
   if (USES[name]) return USES[name];
   const roles = Object.entries(f.roles).filter(([, color]) => color === name).map(([role]) => role);
-  if (f.id === "signal" && name !== "teal") {
-    const alias = [...NEUTRAL_ORDER, "teal"].find((n) => f.c(n) === f.c(name));
-    return `Compatibility alias of \`${alias}\`; no additional hue`;
-  }
   return roles.length ? roles.join(" · ") : "Available for custom accents";
 };
 const table = (f, names) => [
@@ -65,10 +61,8 @@ const readme = `<h1 align="center">Living Code</h1>
 A color scheme for editors, terminals, browsers and the web.</p>
 
 <p align="center">
-<img src="assets/preview-signal.png" width="100%" alt="Living Code Signal preview: teal keywords and focus, gray syntax and diagnostics, dark slate surfaces">
+${flavors.map((f) => `<img src="assets/preview-${f.id}.png" width="49%" alt="${f.name}">`).join("\n")}
 </p>
-
-<p align="center"><b>Living Code Signal</b> · One teal accent. The rest is slate.</p>
 
 ## Choose a flavor
 
@@ -105,7 +99,7 @@ ${flavors.map((f) => `### ${f.name}
 
 ${f.description}
 
-${f.id === "signal" ? "The preview at the top shows Signal in the same editor and terminal scene as the other flavors." : `<img src="assets/preview-${f.id}.png" width="100%" alt="${f.name}: editor syntax, terminal output and ANSI palette">`}
+<img src="assets/preview-${f.id}.png" width="100%" alt="${f.name}: editor syntax, terminal output and ANSI palette">
 
 <details${f.id === "signal" ? " open" : ""}>
 <summary>Palette</summary>
@@ -114,9 +108,9 @@ ${f.id === "signal" ? "The preview at the top shows Signal in the same editor an
 
 ${table(f, NEUTRAL_ORDER)}
 
-**${f.id === "signal" ? "Accent and compatibility aliases" : "Accents"}**
+**${f.id === "signal" ? "Accent" : "Accents"}**
 
-${table(f, ACCENT_ORDER)}
+${table(f, f.id === "signal" ? ["teal"] : ACCENT_ORDER)}
 
 **ANSI**
 

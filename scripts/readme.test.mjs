@@ -4,22 +4,33 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { oklabToOklch, rgbToOklab } from "./color.mjs";
-import { ACCENT_ORDER, NEUTRAL_ORDER, flavorOrder, resolveFlavor } from "./resolve.mjs";
+import { flavorOrder, resolveFlavor } from "./resolve.mjs";
 
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
 
-test("README describes Signal aliases using the resolved palette", () => {
+test("README shows only Signal's teal accent, not compatibility slots", () => {
   const signal = resolveFlavor("signal");
-  const section = readme.split("### Living Code Signal\n")[1].split("### Living Code Frost\n")[0];
-  assert.match(section, /Accent and compatibility aliases/);
-  for (const name of ACCENT_ORDER.filter((n) => n !== "teal")) {
-    const alias = [...NEUTRAL_ORDER, "teal"].find((n) => signal.c(n) === signal.c(name));
-    const row = section.split("\n").find((line) => line.includes(`| \`${name}\` |`));
-    assert.ok(row?.includes(`\`${signal.c(name)}\``), name);
-    assert.ok(row?.includes(`Compatibility alias of \`${alias}\``), name);
-  }
+  const section = readme.split("### Living Code Signal\n")[1].split("\n### ")[0];
+  const accents = section.split("**Accent**\n")[1]?.split("**ANSI**")[0];
+  assert.ok(accents);
+  const names = [...accents.matchAll(/\| `([^`]+)` \|/g)].map((match) => match[1]).filter((name) => !name.startsWith("#") && !name.startsWith("oklch("));
+  assert.deepEqual(names, ["teal"]);
+  assert.ok(accents.includes(`\`${signal.c("teal")}\``));
+  assert.doesNotMatch(section, /Compatibility alias/);
   assert.match(readme, /Night remains the default/);
   assert.doesNotMatch(readme, /\u2014/);
+});
+
+test("README keeps the four-flavor grid and a screenshot in every flavor section", () => {
+  const grid = [...readme.matchAll(/<p align="center">([\s\S]*?)<\/p>/g)].find((match) => match[1].includes("assets/preview-"))?.[1];
+  assert.ok(grid);
+  const images = [...grid.matchAll(/<img src="assets\/preview-([^\"]+)\.png" width="49%"/g)];
+  assert.deepEqual(images.map((match) => match[1]), flavorOrder);
+  for (const flavor of flavorOrder) {
+    const f = resolveFlavor(flavor);
+    const section = readme.split(`### ${f.name}\n`)[1].split("\n### ")[0];
+    assert.ok(section.includes(`<img src="assets/preview-${flavor}.png" width="100%"`), flavor);
+  }
 });
 
 test("README image references exist and flavor previews are 1280 by 720", async () => {
