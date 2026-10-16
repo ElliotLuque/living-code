@@ -244,7 +244,7 @@ or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently prov
 
 ## Ports
 
-**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [Sublime Text](#sublime) · [bat · delta (tmTheme)](#tmtheme)
+**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [JetBrains IDEs](#jetbrains) · [Zed](#zed) · [Helix](#helix) · [Sublime Text](#sublime) · [bat · delta (tmTheme)](#tmtheme)
 
 **Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
 
@@ -314,6 +314,21 @@ Then pick **Living Code Night**, **Frost**, **Paper** or **Signal** in *Preferen
 **Without a marketplace:** download `living-code-<version>.vsix` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run `code --install-extension living-code-<version>.vsix` (or *Extensions: Install from VSIX...*). To build it yourself: `cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies`. This README assumes the extension is published to both marketplaces.
 
 The same JSON works with **Shiki**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).
+
+<a id="jetbrains"></a>
+#### [JetBrains IDEs](https://www.jetbrains.com/ides/)
+
+One plugin, four themes, for IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, CLion, RubyMine, PhpStorm, DataGrip and Android Studio (2024.1 or newer).
+
+Build the plugin and install it from disk:
+
+```sh
+pnpm run package:jetbrains
+```
+
+This writes `dist/jetbrains/living-code-jetbrains-0.1.0.zip`. In the IDE open *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...* and pick the zip, then restart. Select **Living Code Night** (or Frost, Paper, Signal) in *Settings | Appearance & Behavior | Appearance | Theme*; the matching editor color scheme is applied with it.
+
+The sources in `extras/jetbrains/` are the plugin's layout: `META-INF/plugin.xml`, one `themes/living-code-<flavor>.theme.json` UI theme and one `themes/living-code-<flavor>.xml` editor scheme per flavor. This port has not been tested in a JetBrains IDE yet.
 
 <a id="zed"></a>
 #### [Zed](https://zed.dev)
