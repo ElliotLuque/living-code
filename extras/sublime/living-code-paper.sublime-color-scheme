@@ -1,0 +1,342 @@
+{
+  "name": "Living Code Paper",
+  "author": "Elliot Luque",
+  "variables": {
+    "crust": "#e0e5e9",
+    "base": "#f4f7f9",
+    "mantle": "#ebeff2",
+    "surface0": "#e3e9ed",
+    "surface1": "#d2d8dd",
+    "surface2": "#c2ccd3",
+    "overlay": "#92999f",
+    "comment": "#6b7378",
+    "subtext": "#50565a",
+    "text2": "#2e3437",
+    "text": "#12171a",
+    "teal": "#187d6e",
+    "mint": "#0f695e",
+    "aqua": "#1f7074",
+    "steel": "#2b6991",
+    "amber": "#8f6213",
+    "copper": "#a04f27",
+    "flare": "#a74541",
+    "moss": "#3b7a35",
+    "orchid": "#81558e",
+    "rose": "#845b6e",
+    "role_bg": "#f4f7f9",
+    "role_bgAlt": "#ebeff2",
+    "role_bgDeep": "#e0e5e9",
+    "role_fg": "#12171a",
+    "role_fgAlt": "#2e3437",
+    "role_fgMuted": "#50565a",
+    "role_fgSubtle": "#6b7378",
+    "role_accent": "#187d6e",
+    "role_cursor": "#187d6e",
+    "role_selection": "#c2ccd3",
+    "role_lineHighlight": "#e3e9ed",
+    "role_border": "#d2d8dd",
+    "role_borderActive": "#187d6e",
+    "role_lineNumber": "#92999f",
+    "role_lineNumberActive": "#8f6213",
+    "role_match": "#8f6213",
+    "role_error": "#a74541",
+    "role_warning": "#8f6213",
+    "role_info": "#2b6991",
+    "role_hint": "#0f695e",
+    "role_success": "#3b7a35",
+    "role_added": "#3b7a35",
+    "role_removed": "#a74541",
+    "role_modified": "#8f6213",
+    "role_keyword": "#0f695e",
+    "role_builtin": "#0f695e",
+    "role_function": "#1f7074",
+    "role_string": "#8f6213",
+    "role_number": "#a04f27",
+    "role_constant": "#a04f27",
+    "role_escape": "#a04f27",
+    "role_regex": "#81558e",
+    "role_type": "#2b6991",
+    "role_namespace": "#2b6991",
+    "role_operator": "#6b7378",
+    "role_punctuation": "#92999f",
+    "role_decorator": "#81558e",
+    "role_tag": "#81558e",
+    "role_attribute": "#2e3437",
+    "role_property": "#2e3437",
+    "role_variable": "#12171a",
+    "role_parameter": "#2e3437",
+    "role_comment": "#6b7378",
+    "role_heading": "#187d6e",
+    "role_link": "#1f7074",
+    "role_code": "#8f6213",
+    "role_quote": "#6b7378",
+    "tint_added": "#dae5dd",
+    "tint_removed": "#ecdede",
+    "tint_modified": "#e8e5de",
+    "selection_inactive": "#d6dde2"
+  },
+  "globals": {
+    "background": "var(role_bg)",
+    "foreground": "var(role_fg)",
+    "caret": "var(role_cursor)",
+    "block_caret": "var(role_cursor)",
+    "invisibles": "var(surface1)",
+    "line_highlight": "var(role_lineHighlight)",
+    "misspelling": "var(role_error)",
+    "fold_marker": "var(role_fgSubtle)",
+    "minimap_border": "var(role_border)",
+    "accent": "var(role_accent)",
+    "shadow": "#00000033",
+    "shadow_width": 8,
+    "gutter": "var(role_bg)",
+    "gutter_foreground": "var(role_lineNumber)",
+    "gutter_foreground_highlight": "var(role_lineNumberActive)",
+    "line_diff_width": 3,
+    "line_diff_added": "var(role_added)",
+    "line_diff_modified": "var(role_modified)",
+    "line_diff_deleted": "var(role_removed)",
+    "selection": "var(role_selection)",
+    "inactive_selection": "var(selection_inactive)",
+    "highlight": "var(role_match)",
+    "find_highlight": "var(role_match)",
+    "find_highlight_foreground": "var(role_bg)",
+    "scroll_highlight": "var(role_match)",
+    "scroll_selected_highlight": "var(role_accent)",
+    "rulers": "var(surface0)",
+    "guide": "var(surface0)",
+    "stack_guide": "var(surface1)",
+    "active_guide": "var(surface2)",
+    "brackets_options": "underline",
+    "brackets_foreground": "var(role_accent)",
+    "bracket_contents_options": "underline",
+    "bracket_contents_foreground": "var(role_fgMuted)",
+    "tags_options": "stippled_underline",
+    "tags_foreground": "var(role_accent)"
+  },
+  "rules": [
+    {
+      "name": "comment",
+      "scope": "comment, punctuation.definition.comment, string.quoted.docstring",
+      "foreground": "var(role_comment)",
+      "font_style": "italic"
+    },
+    {
+      "name": "keyword",
+      "scope": "keyword, storage.type, storage.modifier, keyword.control, keyword.operator.new, keyword.operator.expression, keyword.operator.logical.python, keyword.operator.wordlike, keyword.other, punctuation.definition.template-expression, punctuation.section.embedded",
+      "foreground": "var(role_keyword)"
+    },
+    {
+      "name": "operator",
+      "scope": "keyword.operator, storage.type.function.arrow",
+      "foreground": "var(role_operator)"
+    },
+    {
+      "name": "punctuation",
+      "scope": "punctuation, meta.brace, punctuation.definition.tag, punctuation.separator, punctuation.terminator, punctuation.accessor",
+      "foreground": "var(role_punctuation)"
+    },
+    {
+      "name": "string",
+      "scope": "string, punctuation.definition.string, string.template",
+      "foreground": "var(role_string)"
+    },
+    {
+      "name": "escape",
+      "scope": "constant.character.escape, constant.other.placeholder, constant.character.format",
+      "foreground": "var(role_escape)"
+    },
+    {
+      "name": "regex",
+      "scope": "string.regexp",
+      "foreground": "var(role_regex)"
+    },
+    {
+      "name": "number",
+      "scope": "constant.numeric, keyword.other.unit",
+      "foreground": "var(role_number)"
+    },
+    {
+      "name": "constant",
+      "scope": "constant.language, constant.other, variable.other.constant.property, support.constant, variable.other.enummember, constant.other.color",
+      "foreground": "var(role_constant)"
+    },
+    {
+      "name": "function",
+      "scope": "entity.name.function, support.function, meta.function-call.generic, variable.function, entity.name.function.member",
+      "foreground": "var(role_function)"
+    },
+    {
+      "name": "type",
+      "scope": "entity.name.type, entity.name.class, support.type, support.class, entity.other.inherited-class, storage.type.primitive, support.class.component, entity.other.attribute-name.class.css, entity.other.attribute-name.id.css, entity.name.tag.css",
+      "foreground": "var(role_type)"
+    },
+    {
+      "name": "namespace",
+      "scope": "entity.name.namespace, entity.name.type.module, entity.name.scope-resolution",
+      "foreground": "var(role_namespace)"
+    },
+    {
+      "name": "decorator",
+      "scope": "meta.decorator, entity.name.function.decorator, punctuation.decorator, storage.type.annotation, meta.attribute, entity.name.function.macro",
+      "foreground": "var(role_decorator)"
+    },
+    {
+      "name": "tag",
+      "scope": "entity.name.tag",
+      "foreground": "var(role_tag)"
+    },
+    {
+      "name": "attribute",
+      "scope": "entity.other.attribute-name",
+      "foreground": "var(role_attribute)"
+    },
+    {
+      "name": "property",
+      "scope": "variable.other.property, variable.other.object.property, support.variable.property, meta.object-literal.key, support.type.property-name, entity.name.tag.yaml, entity.name.tag.toml, support.type.property-name.json",
+      "foreground": "var(role_property)"
+    },
+    {
+      "name": "parameter",
+      "scope": "variable.parameter, meta.parameter variable",
+      "foreground": "var(role_parameter)",
+      "font_style": "italic"
+    },
+    {
+      "name": "builtin",
+      "scope": "variable.language, support.variable, variable.language.this, variable.language.self, variable.language.super",
+      "foreground": "var(role_builtin)",
+      "font_style": "italic"
+    },
+    {
+      "name": "variable",
+      "scope": "variable, meta.definition.variable, variable.other.readwrite",
+      "foreground": "var(role_variable)"
+    },
+    {
+      "name": "heading",
+      "scope": "markup.heading, entity.name.section, markup.heading punctuation.definition.heading",
+      "foreground": "var(role_heading)",
+      "font_style": "bold"
+    },
+    {
+      "name": "markup.bold",
+      "scope": "markup.bold",
+      "font_style": "bold"
+    },
+    {
+      "name": "markup.italic",
+      "scope": "markup.italic",
+      "font_style": "italic"
+    },
+    {
+      "name": "link",
+      "scope": "markup.underline.link, string.other.link, markup.link",
+      "foreground": "var(role_link)",
+      "font_style": "underline"
+    },
+    {
+      "name": "code",
+      "scope": "markup.inline.raw, markup.fenced_code, markup.raw",
+      "foreground": "var(role_code)"
+    },
+    {
+      "name": "quote",
+      "scope": "markup.quote",
+      "foreground": "var(role_quote)",
+      "font_style": "italic"
+    },
+    {
+      "name": "accent",
+      "scope": "punctuation.definition.list, markup.list punctuation.definition",
+      "foreground": "var(role_accent)"
+    },
+    {
+      "name": "added",
+      "scope": "markup.inserted, meta.diff.header.to-file, punctuation.definition.inserted",
+      "foreground": "var(role_added)"
+    },
+    {
+      "name": "removed",
+      "scope": "markup.deleted, meta.diff.header.from-file, punctuation.definition.deleted",
+      "foreground": "var(role_removed)"
+    },
+    {
+      "name": "modified",
+      "scope": "markup.changed, punctuation.definition.changed",
+      "foreground": "var(role_modified)"
+    },
+    {
+      "name": "fgSubtle",
+      "scope": "meta.diff.range, meta.diff.index, meta.separator",
+      "foreground": "var(role_fgSubtle)"
+    },
+    {
+      "name": "error",
+      "scope": "invalid, invalid.illegal",
+      "foreground": "var(role_error)"
+    },
+    {
+      "name": "warning",
+      "scope": "invalid.deprecated",
+      "foreground": "var(role_warning)"
+    },
+    {
+      "name": "type",
+      "scope": "entity.name.struct, entity.name.enum, entity.name.union, entity.name.trait, entity.name.interface, entity.name.impl",
+      "foreground": "var(role_type)"
+    },
+    {
+      "name": "constant",
+      "scope": "entity.name.constant, variable.other.constant",
+      "foreground": "var(role_constant)"
+    },
+    {
+      "name": "keyword",
+      "scope": "keyword.operator.word, punctuation.definition.keyword, punctuation.section.interpolation",
+      "foreground": "var(role_keyword)"
+    },
+    {
+      "name": "namespace",
+      "scope": "support.module",
+      "foreground": "var(role_namespace)"
+    },
+    {
+      "name": "decorator",
+      "scope": "meta.annotation, variable.annotation, punctuation.definition.annotation, meta.preprocessor, entity.name.label",
+      "foreground": "var(role_decorator)"
+    },
+    {
+      "name": "accent",
+      "scope": "entity.name.filename.find-in-files",
+      "foreground": "var(role_accent)"
+    },
+    {
+      "name": "lineNumber",
+      "scope": "constant.numeric.line-number.find-in-files",
+      "foreground": "var(role_lineNumber)"
+    },
+    {
+      "name": "markup.underline",
+      "scope": "markup.underline",
+      "font_style": "underline"
+    },
+    {
+      "name": "diff inserted",
+      "scope": "markup.inserted.diff",
+      "foreground": "var(role_added)",
+      "background": "var(tint_added)"
+    },
+    {
+      "name": "diff deleted",
+      "scope": "markup.deleted.diff",
+      "foreground": "var(role_removed)",
+      "background": "var(tint_removed)"
+    },
+    {
+      "name": "diff changed",
+      "scope": "markup.changed.diff",
+      "foreground": "var(role_modified)",
+      "background": "var(tint_modified)"
+    }
+  ]
+}
