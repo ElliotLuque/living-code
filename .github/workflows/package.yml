@@ -15,3 +15,16 @@ jobs:
           name: living-code-vsix
           path: dist/vscode/*.vsix
           if-no-files-found: error
+  sublime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Build the Sublime Text package
+        run: node scripts/package-sublime.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-code-sublime-package
+          path: dist/sublime/*.sublime-package
+          if-no-files-found: error
