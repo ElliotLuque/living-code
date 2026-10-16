@@ -6,10 +6,11 @@ import { css, json, tailwind } from "./web.mjs";
 import { expressiveCode } from "./expressive-code.mjs";
 import { base16Port } from "./base16.mjs";
 import { delta, hunk } from "./git.mjs";
+import { jetbrains } from "./jetbrains.mjs";
 import { icons } from "./icons.mjs";
 
 export const groups = [
-  { title: "Editors", ports: [neovim, vscode, zed, helix, tmtheme] },
+  { title: "Editors", ports: [neovim, vscode, zed, helix, tmtheme, jetbrains] },
   { title: "Terminals", ports: [kitty, ghostty, alacritty, wezterm, foot] },
   { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit, delta, hunk] },
   { title: "Browsers", ports: [firefox] },
