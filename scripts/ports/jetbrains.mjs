@@ -788,13 +788,15 @@ export const jetbrains = {
   all: (fs) => prefix(metaFiles(fs)),
   install: `One plugin, four themes, for IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, CLion, RubyMine, PhpStorm, DataGrip and Android Studio (2024.1 or newer).
 
-Build the plugin and install it from disk:
+In the IDE open *Settings | Plugins | Marketplace*, search for **Living Code** and click **Install**, then pick **Living Code Night** (or Frost, Paper, Signal) in *Settings | Appearance & Behavior | Appearance | Theme*; the matching editor color scheme is applied with it.
+
+**Without a marketplace:** build the plugin and install it from disk:
 
 \`\`\`sh
 pnpm run package:jetbrains
 \`\`\`
 
-This writes \`dist/jetbrains/living-code-jetbrains-${pluginVersion()}.zip\`. In the IDE open *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...* and pick the zip, then restart. Select **Living Code Night** (or Frost, Paper, Signal) in *Settings | Appearance & Behavior | Appearance | Theme*; the matching editor color scheme is applied with it.
+This writes \`dist/jetbrains/living-code-jetbrains-${pluginVersion()}.zip\`. In *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...*, pick the zip and restart. This README assumes the plugin is published to the JetBrains Marketplace.
 
 The sources in \`extras/jetbrains/\` are the plugin's layout: \`META-INF/plugin.xml\`, one \`themes/living-code-<flavor>.theme.json\` UI theme and one \`themes/living-code-<flavor>.xml\` editor scheme per flavor. This port has not been tested in a JetBrains IDE yet.`,
 };
