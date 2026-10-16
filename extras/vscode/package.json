@@ -1,19 +1,44 @@
 {
   "name": "living-code",
   "displayName": "Living Code",
-  "description": "Teal structure, amber data, on dark slate.",
+  "description": "Teal structure, amber data, on dark slate. Night, Frost, Paper and Signal color themes.",
   "version": "0.1.0",
   "publisher": "elliotluque",
   "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#05080b",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/ElliotLuque/living-code",
+  "bugs": {
+    "url": "https://github.com/ElliotLuque/living-code/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ElliotLuque/living-code"
+    "url": "https://github.com/ElliotLuque/living-code.git",
+    "directory": "extras/vscode"
   },
   "engines": {
     "vscode": "^1.70.0"
   },
   "categories": [
     "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "dark",
+    "light",
+    "oklch",
+    "slate",
+    "teal",
+    "amber",
+    "minimal",
+    "living code night",
+    "living code frost",
+    "living code paper",
+    "living code signal"
   ],
   "contributes": {
     "themes": [
