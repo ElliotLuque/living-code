@@ -6,6 +6,7 @@ import { css, json, tailwind } from "./web.mjs";
 import { expressiveCode } from "./expressive-code.mjs";
 import { base16Port } from "./base16.mjs";
 import { delta, hunk } from "./git.mjs";
+import { icons } from "./icons.mjs";
 
 export const groups = [
   { title: "Editors", ports: [neovim, vscode, zed, helix, tmtheme] },
@@ -24,5 +25,6 @@ export function generate(flavors) {
     for (const f of flavors) files.push(...p.files(f));
     if (p.all) files.push(...p.all(flavors));
   }
+  for (const f of flavors) files.push(...icons.files(f));
   return files;
 }

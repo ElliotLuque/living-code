@@ -5,3 +5,4 @@ palette.json linguist-generated
 palette.mjs linguist-generated
 assets/swatches/** linguist-generated
 README.md linguist-generated=false
+assets/icons/** linguist-generated
