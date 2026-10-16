@@ -12,6 +12,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:packages": "pnpm run build && node scripts/build-packages.mjs",
+    "package:sublime": "node scripts/package-sublime.mjs",
     "test:packages": "node --test scripts/npm-packages.test.mjs",
     "check": "node scripts/build.mjs --check",
     "preview": "node scripts/serve.mjs",
