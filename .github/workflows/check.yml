@@ -16,3 +16,5 @@ jobs:
         run: pnpm run check
       - name: Test scoped npm package contents and imports
         run: pnpm run test:packages
+      - name: Run the test suite
+        run: pnpm test

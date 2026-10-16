@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -7,6 +7,8 @@ import { oklabToOklch, rgbToOklab } from "./color.mjs";
 import { flavorOrder, resolveFlavor } from "./resolve.mjs";
 
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
+// Pixel inspection needs ImageMagick 7, an optional local tool. Ubuntu runners ship only ImageMagick 6.
+const needsMagick = { skip: spawnSync("magick", ["-version"]).status === 0 ? false : "requires ImageMagick 7 (`magick`)" };
 
 test("README lists only the four JS/CSS npm packages", () => {
   const section = readme.split("### npm packages\n")[1].split("\n### ")[0];
@@ -60,7 +62,7 @@ test("README image references exist and flavor previews are 1280 by 720", async 
   }
 });
 
-test("Signal preview image contains slate and teal, not the old multicolor palette", () => {
+test("Signal preview image contains slate and teal, not the old multicolor palette", needsMagick, () => {
   const path = fileURLToPath(new URL("../assets/preview-signal.png", import.meta.url));
   const pixels = execFileSync("magick", [path, "-depth", "8", "rgb:-"], { maxBuffer: 4 * 1024 * 1024 });
   let teal = 0, neutral = 0, samples = 0;
