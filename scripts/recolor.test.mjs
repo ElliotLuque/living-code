@@ -9,6 +9,9 @@ import { oklabToOklch, rgbToOklab } from "./color.mjs";
 import { flavorOrder, resolveFlavor } from "./resolve.mjs";
 
 const script = fileURLToPath(new URL("./recolor.mjs", import.meta.url));
+// recolor.mjs treats ImageMagick 7 as an optional local tool, so skip rather than
+// fail where `magick` is absent. Ubuntu runners ship only ImageMagick 6.
+const needsMagick = { skip: spawnSync("magick", ["-version"]).status === 0 ? false : "requires ImageMagick 7 (`magick`)" };
 const magick = (args, input) => execFileSync("magick", args, { input });
 const run = (input, output, args = []) => execFileSync(process.execPath, [script, input, "--out", output, "--smooth", "0", ...args]);
 const pixels = (path, channels = "rgb") => magick([path, "-depth", "8", `${channels}:-`]);
@@ -30,7 +33,7 @@ function swatches(dir, colors, channels = "rgb") {
   return input;
 }
 
-test("LUT balances accents over the slate ramp and protects shadows", (t) => {
+test("LUT balances accents over the slate ramp and protects shadows", needsMagick, (t) => {
   const dir = workspace(t);
   const colors = [[0, 0, 0], [255, 255, 255], [128, 128, 128], [124, 130, 134], [5, 20, 12], [0, 170, 140], [220, 160, 30]];
   const input = swatches(dir, colors);
@@ -56,7 +59,7 @@ test("LUT balances accents over the slate ramp and protects shadows", (t) => {
   assert.equal(magick([balanced, "-format", "%A", "info:"]).toString(), "Undefined");
 });
 
-test("slate-only output works for every flavor and preserves tonal ordering", (t) => {
+test("slate-only output works for every flavor and preserves tonal ordering", needsMagick, (t) => {
   const dir = workspace(t);
   const input = swatches(dir, [[0, 0, 0], [64, 64, 64], [128, 128, 128], [192, 192, 192], [255, 255, 255]]);
   for (const flavor of flavorOrder) {
@@ -70,7 +73,7 @@ test("slate-only output works for every flavor and preserves tonal ordering", (t
   }
 });
 
-test("zero strength with smoothing disabled preserves original colors", (t) => {
+test("zero strength with smoothing disabled preserves original colors", needsMagick, (t) => {
   const dir = workspace(t);
   const colors = [[0, 0, 0], [255, 255, 255], [70, 110, 130], [120, 210, 50], [0, 170, 140]];
   const input = swatches(dir, colors);
@@ -79,7 +82,7 @@ test("zero strength with smoothing disabled preserves original colors", (t) => {
   close(pixels(output), Buffer.from(colors.flat()));
 });
 
-test("every mode preserves fractional alpha", (t) => {
+test("every mode preserves fractional alpha", needsMagick, (t) => {
   const dir = workspace(t);
   const colors = [[80, 120, 140, 0], [0, 150, 140, 64], [255, 150, 50, 128], [0, 160, 150, 255]];
   const input = swatches(dir, colors, "rgba");
