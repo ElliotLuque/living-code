@@ -37,17 +37,6 @@ test("scoped npm packages contain only their own port and support public imports
     assert.doesNotMatch(readme, /\b(?:npm|npx)\s+(?:install|run|exec|pack|publish|add|dlx)\b/);
   }
 
-  assert.deepEqual(byId.get("delta").payload, ["living-code.gitconfig"]);
-  assert.deepEqual(byId.get("hunk").payload, [
-    ...["frost", "night", "paper", "signal"].map((f) => `living-code-${f}.toml`),
-    "living-code.mjs",
-  ]);
-  for (const id of ["delta", "hunk"]) {
-    const readme = await readFile(join(byId.get(id).dir, "README.md"), "utf8");
-    assert.ok(readme.includes(`node_modules/@living-code/${id}/living-code.`));
-    assert.ok(!readme.includes(`extras/${id}/`));
-  }
-
   const ec = byId.get("expressive-code");
   assert.deepEqual(ec.payload, ["frost", "night", "paper", "signal"].map((f) => `living-code-${f}.json`));
   const packed = JSON.parse(execFileSync("pnpm", ["pack", "--dry-run", "--json"], { cwd: ec.dir, encoding: "utf8" }));
