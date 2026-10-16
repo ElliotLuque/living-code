@@ -244,7 +244,7 @@ or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently prov
 
 ## Ports
 
-**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [bat · delta · Sublime Text (tmTheme)](#tmtheme)
+**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [Sublime Text](#sublime) · [bat · delta (tmTheme)](#tmtheme)
 
 **Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
 
@@ -334,8 +334,19 @@ The theme file holds all four flavors. This README assumes the extension is publ
 
 Copy to `~/.config/helix/themes/`, then `theme = "living-code-night"` in `config.toml`.
 
+<a id="sublime"></a>
+#### [Sublime Text](https://www.sublimetext.com)
+
+Targets Sublime Text 4. It uses the modern `.sublime-color-scheme` format, one file per flavor.
+
+**Package Control.** This README assumes the package is published to Package Control. Open the Command Palette and run *Package Control: Install Package*, choose **Living Code**, then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
+
+**Manual.** Copy the `.sublime-color-scheme` files from [`extras/sublime/`](extras/sublime) into `Packages/User/` (*Preferences → Browse Packages…*), then select the scheme as above. To customize, add a `Packages/User/<Scheme>.sublime-color-scheme` with the same file name and override entries under `variables` or `globals`.
+
+`pnpm run package:sublime` builds `dist/sublime/Living Code.sublime-package` from the same generator. The [bat · delta (tmTheme) port](#tmtheme) stays for bat and delta; Sublime Text should use this native scheme.
+
 <a id="tmtheme"></a>
-#### [bat · delta · Sublime Text (tmTheme)](https://github.com/sharkdp/bat)
+#### [bat · delta (tmTheme)](https://github.com/sharkdp/bat)
 
 **bat / delta**
 
@@ -348,7 +359,7 @@ bat --list-themes | grep living-code
 
 Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-theme = living-code-night` under `[delta]` in `~/.gitconfig`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
-**Sublime Text:** copy the `.tmTheme` into `Packages/User/` and select it in *UI: Select Color Scheme*.
+**Sublime Text** has its own native color scheme: use the dedicated [Sublime Text port](#sublime). The `.tmTheme` files are kept for bat and delta.
 
 ### Terminals
 
