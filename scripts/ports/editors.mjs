@@ -366,7 +366,7 @@ function plistDict(obj, indent) {
 
 export const tmtheme = {
   id: "tmtheme",
-  name: "bat · delta · Sublime Text (tmTheme)",
+  name: "bat · delta (tmTheme)",
   homepage: "https://github.com/sharkdp/bat",
   files: (f) => {
     const global = {
@@ -416,7 +416,7 @@ bat --list-themes | grep living-code
 
 Then \`--theme="living-code-night"\` in \`$(bat --config-dir)/config\`, and \`syntax-theme = living-code-night\` under \`[delta]\` in \`~/.gitconfig\`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
-**Sublime Text:** copy the \`.tmTheme\` into \`Packages/User/\` and select it in *UI: Select Color Scheme*.`,
+**Sublime Text** has its own native color scheme: use the dedicated [Sublime Text port](#sublime). The \`.tmTheme\` files are kept for bat and delta.`,
 };
 
 function uuid(seed) {
