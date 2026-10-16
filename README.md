@@ -244,7 +244,7 @@ or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently prov
 
 ## Ports
 
-**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [bat · delta · Sublime Text (tmTheme)](#tmtheme)
+**Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [Zed](#zed) · [Helix](#helix) · [bat · delta · Sublime Text (tmTheme)](#tmtheme) · [JetBrains IDEs](#jetbrains)
 
 **Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
 
@@ -330,6 +330,21 @@ bat --list-themes | grep living-code
 Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-theme = living-code-night` under `[delta]` in `~/.gitconfig`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
 **Sublime Text:** copy the `.tmTheme` into `Packages/User/` and select it in *UI: Select Color Scheme*.
+
+<a id="jetbrains"></a>
+#### [JetBrains IDEs](https://www.jetbrains.com/ides/)
+
+One plugin, four themes, for IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, CLion, RubyMine, PhpStorm, DataGrip and Android Studio (2024.1 or newer).
+
+Build the plugin and install it from disk:
+
+```sh
+pnpm run package:jetbrains
+```
+
+This writes `dist/jetbrains/living-code-jetbrains-0.1.0.zip`. In the IDE open *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...* and pick the zip, then restart. Select **Living Code Night** (or Frost, Paper, Signal) in *Settings | Appearance & Behavior | Appearance | Theme*; the matching editor color scheme is applied with it.
+
+The sources in `extras/jetbrains/` are the plugin's layout: `META-INF/plugin.xml`, one `themes/living-code-<flavor>.theme.json` UI theme and one `themes/living-code-<flavor>.xml` editor scheme per flavor. This port has not been tested in a JetBrains IDE yet.
 
 ### Terminals
 
