@@ -69,3 +69,25 @@ git push --follow-tags
 Use `minor` or `major` instead of `patch` when appropriate. Published versions cannot be overwritten. If a multi-package release is interrupted, publish only the packages that did not succeed; do not attempt to republish successful versions.
 
 Build output is in `dist/npm/` and is not committed. Building never publishes anything automatically.
+
+# Publishing to editor marketplaces
+
+Each editor port is built by CI (`package` workflow, artifacts on every push and PR) and published by hand. The generated README leads each install section with the marketplace route, so publish a channel before, or together with, merging a change that depends on it. Nothing here runs automatically: the `publish-*` workflows are `workflow_dispatch`-only and fail with a clear message when their secret is empty.
+
+## VS Code Marketplace and Open VSX
+
+Workflow: `publish-vscode.yml`. Secrets: `VSCE_PAT`, `OVSX_PAT`.
+
+1. Marketplace: create an Azure DevOps organization, then a Personal Access Token with organization "All accessible organizations" and scope **Marketplace > Manage**. Create the publisher `elliotluque` at <https://marketplace.visualstudio.com/manage> (the ID must match `publisher` in `extras/vscode/package.json`). Add the token as the repository secret `VSCE_PAT`. Docs: <https://code.visualstudio.com/api/working-with-extensions/publishing-extension>.
+2. Open VSX: create an Eclipse account with your GitHub username, log in at <https://open-vsx.org> with GitHub, link the Eclipse account and sign the Publisher Agreement, then generate a token under Settings > Access Tokens. Add it as `OVSX_PAT`. Create the namespace once, before the first publish: `npx ovsx create-namespace elliotluque -p <token>`. To get the verified badge, claim the namespace as described in the [Open VSX wiki](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions).
+3. Run the **publish-vscode** workflow from the Actions tab. Both targets are on by default; untick one to skip it.
+
+Local build: `pnpm run package:vscode` writes `dist/vscode/living-code-<version>.vsix`.
+
+## Zed
+
+Zed extensions are published by a pull request to <https://github.com/zed-industries/extensions>. There is no workflow and no secret. The extension lives in `extras/zed` (`extension.toml`, `themes/living-code.json`, `LICENSE`). The draft registry entry is in the pull request description that introduced it. Docs: <https://zed.dev/docs/extensions/developing-extensions>.
+
+## Sublime Text (Package Control)
+
+Package Control installs the GitHub archive of a semver tag, so publishing means tagging `v<version>`, then adding the entry to `repository/l.json` in <https://github.com/sublimehq/package_control_channel> through a pull request. `.gitattributes` limits that archive to the four color schemes and the license. `pnpm run package:sublime` builds `dist/sublime/Living Code.sublime-package` for release attachment and manual installs.
