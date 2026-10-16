@@ -301,14 +301,33 @@ Or pick a flavor directly: `:colorscheme living-code-signal`. Covers Tree-sitter
 <a id="vscode"></a>
 #### [VS Code](https://code.visualstudio.com)
 
-Local install: `cd extras/vscode && pnpm dlx @vscode/vsce package` and install the `.vsix`, or symlink the folder into `~/.vscode/extensions/living-code`. Then pick **Living Code Night** in *Preferences: Color Theme*.
+Open the Extensions view (`Ctrl+Shift+X`), search for **Living Code** and click **Install**, or run:
 
-The same JSON works with **Shiki** and **VSCodium**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).
+```sh
+code --install-extension elliotluque.living-code
+```
+
+Then pick **Living Code Night**, **Frost**, **Paper** or **Signal** in *Preferences: Color Theme*.
+
+**Cursor, VSCodium, Windsurf and other forks** install from [Open VSX](https://open-vsx.org/extension/elliotluque/living-code): search for **Living Code** in their Extensions view.
+
+**Without a marketplace:** download `living-code-<version>.vsix` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run `code --install-extension living-code-<version>.vsix` (or *Extensions: Install from VSIX...*). To build it yourself: `cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies`. This README assumes the extension is published to both marketplaces.
+
+The same JSON works with **Shiki**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).
 
 <a id="zed"></a>
 #### [Zed](https://zed.dev)
 
-Copy `living-code.json` to `~/.config/zed/themes/` and select it with *theme selector: toggle*.
+In Zed, open the Extensions panel (`zed: extensions`, or `cmd-shift-x` on macOS and `ctrl-shift-x` on Linux), search for **Living Code**, and click **Install**. Then pick a flavor with `theme selector: toggle` (`cmd-k cmd-t`).
+
+Without the registry: run `zed: install dev extension` and select the `extras/zed` folder of a checkout, or copy one theme file into `~/.config/zed/themes/`:
+
+```sh
+mkdir -p ~/.config/zed/themes
+cp extras/zed/themes/living-code.json ~/.config/zed/themes/
+```
+
+The theme file holds all four flavors. This README assumes the extension is published to the Zed registry.
 
 <a id="helix"></a>
 #### [Helix](https://helix-editor.com)

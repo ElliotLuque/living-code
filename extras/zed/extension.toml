@@ -1,0 +1,7 @@
+id = "living-code-theme"
+name = "Living Code"
+version = "0.1.0"
+schema_version = 1
+authors = ["Elliot Luque"]
+description = "Calm slate, living color. Night, Frost, Paper and Signal themes."
+repository = "https://github.com/ElliotLuque/living-code"
