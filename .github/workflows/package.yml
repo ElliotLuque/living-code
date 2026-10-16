@@ -28,3 +28,16 @@ jobs:
           name: living-code-sublime-package
           path: dist/sublime/*.sublime-package
           if-no-files-found: error
+  jetbrains:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Build the JetBrains plugin
+        run: node scripts/package-jetbrains.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-code-jetbrains-plugin
+          path: dist/jetbrains/*.zip
+          if-no-files-found: error
