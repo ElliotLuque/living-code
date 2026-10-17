@@ -9,11 +9,11 @@ Packaging detail and the publish workflows are in [PUBLISHING.md](PUBLISHING.md)
 | [VS Code Marketplace](#vs-code-marketplace) | ready | free | `VSCE_PAT` |
 | [Open VSX](#open-vsx) | ready | free | `OVSX_PAT` |
 | [JetBrains Marketplace](#jetbrains-marketplace) | ready | free | `JETBRAINS_MARKETPLACE_TOKEN` (later uploads only) |
-| [Zed registry](#zed-registry) | ready | free | GitHub account |
+| [Zed registry](#zed-registry) | branch ready, Elliot opens the PR | free | GitHub account |
 | [Chrome Web Store](#chrome-web-store) | ready | $5 one-time | Google account |
-| [Obsidian community themes](#obsidian-community-themes) | ready | free | GitHub account, new repo |
+| [Obsidian community themes](#obsidian-community-themes) | repo and release `1.0.0` exist, submit the form | free | GitHub account |
 | [Mirror repos](#mirror-repos) | automatic on tag | free | `MIRROR_TOKEN` |
-| [Sublime Package Control](#sublime-package-control) | needs a dedicated repo | free | GitHub account |
+| [Sublime Package Control](#sublime-package-control) | repo and tag `v0.1.1` exist, open the PR | free | GitHub account |
 
 "Ready" means the package builds in CI and the install text in the README already assumes the listing exists. Nothing is live yet except the two Firefox themes.
 
@@ -70,13 +70,13 @@ Used by Cursor, VSCodium, Windsurf and other forks.
 
 ## Zed registry
 
-- **Status:** ready.
+- **Status:** the branch `living-code-theme` is ready on the fork `ElliotLuque/extensions`. Elliot opens the pull request himself: the AI policy of `zed-industries/extensions` bans pull requests from autonomous agents, so an agent must not open it.
 - **Submit:** `extras/zed/` (`extension.toml`, `themes/living-code.json`, `LICENSE`), as a pull request to <https://github.com/zed-industries/extensions>.
 - **Rules:** <https://zed.dev/docs/extensions/publishing/overview> (every submission is reviewed; the extension's `id` is `living-code-theme`)
 - **Account / secret:** a GitHub account. No secret.
 - **Cost:** free.
 
-1. Fork `zed-industries/extensions`.
+1. The fork `ElliotLuque/extensions` already exists and its branch `living-code-theme` already holds steps 2 to 4 below; check it, then skip to step 5. The steps are kept as a record of what the branch contains.
 2. Add this repository as a submodule: `git submodule add https://github.com/ElliotLuque/living-code.git extensions/living-code-theme`, then `git add extensions/living-code-theme`.
 3. Because the extension is not at the repository root, add `path = "extras/zed"` to its entry.
 4. Add the entry to `extensions.toml`, then run `pnpm sort-extensions` in the fork:
@@ -88,7 +88,7 @@ Used by Cursor, VSCodium, Windsurf and other forks.
    version = "0.1.1"
    ```
 
-5. Open the pull request and wait for review. The `version` must equal `version` in `extras/zed/extension.toml`.
+5. Elliot opens the pull request from that branch (not an agent) and waits for review. The `version` must equal `version` in `extras/zed/extension.toml`.
 
 ## Chrome Web Store
 
@@ -106,14 +106,14 @@ Used by Cursor, VSCodium, Windsurf and other forks.
 
 ## Obsidian community themes
 
-- **Status:** ready, but it needs its own repository first.
+- **Status:** the repository <https://github.com/ElliotLuque/living-code-obsidian> exists with release `1.0.0`. What is left is step 3, the community form.
 - **Submit:** the contents of `extras/obsidian/` (`manifest.json`, `theme.css`, `README.md`, `LICENSE`, `screenshot.png`, `snippets/`) as the root of a new public repository `living-code-obsidian`. Obsidian requires these at the repository root. `screenshot.png` is a generated mock-up (regenerate with `node scripts/obsidian-screenshot.mjs`); swap in a real capture if reviewers ask.
 - **Rules:** <https://docs.obsidian.md/Themes/App+themes/Submit+your+theme>
 - **Account / secret:** a GitHub account and an Obsidian account. No secret.
 - **Cost:** free.
 
-1. Create the public repository `ElliotLuque/living-code-obsidian` and copy the contents of `extras/obsidian/` into its root, committed on the default branch.
-2. Create a GitHub release whose tag equals `version` in `manifest.json` (currently `1.0.0`, no `v` prefix), and attach `manifest.json` and `theme.css` to it as binary files.
+1. Done: the public repository <https://github.com/ElliotLuque/living-code-obsidian> holds the contents of `extras/obsidian/` at its root, on the default branch.
+2. Done for `1.0.0`: the GitHub release's tag equals `version` in `manifest.json` (currently `1.0.0`, no `v` prefix), and attach `manifest.json` and `theme.css` to it as binary files.
 3. Sign in at <https://community.obsidian.md>, link your GitHub account and choose **Add your theme**. The directory reads `manifest.json` from the default branch and runs an automated review; fix anything it reports with a new release and a higher version.
 
 **The `community-css-themes.json` route.** The older route was a pull request to <https://github.com/obsidianmd/obsidian-releases> adding an entry to `community-css-themes.json`. Obsidian's current theme docs (above) describe only the web form, so use that. If a reviewer ever asks for the legacy entry, it is:
@@ -130,13 +130,13 @@ Used by Cursor, VSCodium, Windsurf and other forks.
 
 ## Sublime Package Control
 
-- **Status:** the package builds, but Package Control's rules say the package must sit at the **repository root**, one package per repository. The color schemes live in `extras/sublime/` here, so a submission needs a dedicated repository (for example `ElliotLuque/living-code-sublime`) holding the four `.sublime-color-scheme` files at its root. Creating it needs your sign-off, so it has not been created. Decide this before step 1.
+- **Status:** Package Control needs the package at the **repository root**, one package per repository, so the color schemes in `extras/sublime/` live in the dedicated repository <https://github.com/ElliotLuque/living-code-sublime>, which exists with tag `v0.1.1`. What is left is the pull request (steps 2 onward).
 - **Submit:** the `Living Code` package, as an entry in the `repository/` folder of <https://github.com/sublimehq/package_control_channel> (the file is chosen by the first letter of the name: `l.json`) through a pull request. Package Control installs the GitHub archive of a semver tag, so the tag on the dedicated repository is the package version.
 - **Rules:** <https://packagecontrol.io/docs/submitting_a_package> (semver tags only; the entry may not contain `version`, `url` or `date`)
 - **Account / secret:** a GitHub account. No secret.
 - **Cost:** free.
 
-1. Elliot creates the public repository `ElliotLuque/living-code-sublime` first (same as `living-code-obsidian` above), with the files from `extras/sublime/` at its root, and pushes a semver tag (for example `v0.1.0`). The `details` URL below must point at this repository, never at `living-code`.
+1. Done: the public repository `ElliotLuque/living-code-sublime` holds the files from `extras/sublime/` at its root and has the semver tag `v0.1.1`. The `details` URL below must point at this repository, never at `living-code`.
 2. Fork `sublimehq/package_control_channel`.
 3. Add an entry to `repository/l.json` (keep the file's alphabetical order):
 
