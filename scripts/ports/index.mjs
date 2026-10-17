@@ -2,7 +2,7 @@ import { alacritty, foot, ghostty, kitty, wezterm } from "./terminals.mjs";
 import { btop, fzf, lazygit, starship, tmux } from "./cli.mjs";
 import { helix, neovim, tmtheme, vscode, zed } from "./editors.mjs";
 import { sublime } from "./sublime.mjs";
-import { firefox } from "./browsers.mjs";
+import { chrome, firefox } from "./browsers.mjs";
 import { css, json, tailwind } from "./web.mjs";
 import { expressiveCode } from "./expressive-code.mjs";
 import { base16Port } from "./base16.mjs";
@@ -14,7 +14,7 @@ export const groups = [
   { title: "Editors", ports: [neovim, vscode, jetbrains, zed, helix, sublime, tmtheme] },
   { title: "Terminals", ports: [kitty, ghostty, alacritty, wezterm, foot] },
   { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit, delta, hunk] },
-  { title: "Browsers", ports: [firefox] },
+  { title: "Browsers", ports: [firefox, chrome] },
   { title: "Web & code", ports: [expressiveCode, css, tailwind, json] },
   { title: "Theme systems", ports: [base16Port] },
 ];

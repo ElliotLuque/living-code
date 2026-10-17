@@ -1,4 +1,7 @@
-export const supportsFirefox = (f) => f.id === "night" || f.id === "paper";
+// Browser themes only colour backgrounds, borders and one accent. In those slots Signal is identical to Night and
+// Frost is nearly so, and both stores reject duplicate themes, so Firefox and Chrome ship Night and Paper only.
+export const supportsBrowserTheme = (f) => f.id === "night" || f.id === "paper";
+const rgbArray = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
 
 export function firefoxTheme(f) {
   const r = f.r, c = f.c;
@@ -66,7 +69,7 @@ export const firefox = {
   id: "firefox",
   name: "Firefox",
   homepage: "https://www.firefox.com",
-  files: (f) => supportsFirefox(f) ? [
+  files: (f) => supportsBrowserTheme(f) ? [
     {
       path: `extras/firefox/${f.slug}/manifest.json`,
       content: JSON.stringify(firefoxTheme(f), null, 2) + "\n",
@@ -74,8 +77,64 @@ export const firefox = {
   ] : [],
   install: `Choose **Night** for a dark browser or **Paper** for a light one.
 
-1. Find [Living Code Night](https://addons.mozilla.org/en-US/firefox/search/?q=Living%20Code%20Night&type=statictheme) or [Living Code Paper](https://addons.mozilla.org/en-US/firefox/search/?q=Living%20Code%20Paper&type=statictheme) on Firefox Add-ons.
-2. Open the theme’s listing and click **Install Theme**.
+1. Open [Living Code Night](https://addons.mozilla.org/firefox/addon/living-code-night/) or [Living Code Paper](https://addons.mozilla.org/firefox/addon/living-code-paper/) on Firefox Add-ons.
+2. Click **Install Theme**.
 
-To switch themes, open **Add-ons and themes → Themes** (\`about:addons\`) and enable your preferred variant.`, 
+To switch themes, open **Add-ons and themes → Themes** (\`about:addons\`) and enable your preferred variant.`,
+};
+
+export const CHROME_DESCRIPTIONS = {
+  night: "Dark slate ground, teal structure and gray comments. The default Living Code flavor.",
+  paper: "Warm light paper ground with teal structure. The light Living Code flavor.",
+};
+
+// Chrome keeps its theme colours as RGB arrays. Icons are the Firefox theme icons, copied byte for byte.
+export function chromeTheme(f) {
+  const r = (role) => rgbArray(f.r(role));
+  return {
+    manifest_version: 3,
+    name: f.name,
+    version: "0.1.0",
+    description: CHROME_DESCRIPTIONS[f.id],
+    icons: { "48": "icons/icon-48.png", "128": "icons/icon-128.png" },
+    theme: {
+      colors: {
+        frame: r("bgDeep"),
+        frame_inactive: r("bgDeep"),
+        frame_incognito: r("bgDeep"),
+        frame_incognito_inactive: r("bgDeep"),
+        toolbar: r("bg"),
+        tab_text: r("fg"),
+        tab_background_text: r("fgMuted"),
+        bookmark_text: r("fgAlt"),
+        toolbar_button_icon: r("fgMuted"),
+        button_background: rgbArray(f.c("surface0")),
+        omnibox_background: r("bgDeep"),
+        omnibox_text: r("fg"),
+        ntp_background: r("bg"),
+        ntp_text: r("fg"),
+        ntp_link: r("accent"),
+        ntp_section: r("bgAlt"),
+        ntp_section_text: r("fg"),
+        ntp_section_link: r("accent"),
+      },
+      tints: { buttons: [-1, -1, -1] },
+      properties: { ntp_background_alignment: "center" },
+    },
+  };
+}
+
+export const chrome = {
+  id: "chrome",
+  name: "Chrome, Brave and Chromium",
+  homepage: "https://chromewebstore.google.com/category/themes",
+  files: (f) => supportsBrowserTheme(f) ? [
+    { path: `extras/chrome/${f.slug}/manifest.json`, content: JSON.stringify(chromeTheme(f), null, 2) + "\n" },
+  ] : [],
+  install: `Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
+
+1. **Chrome Web Store:** search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**. This README assumes both themes are published to the Chrome Web Store.
+2. **Without the store:** download \`living-code-chrome-night.zip\` or \`living-code-chrome-paper.zip\` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open \`chrome://extensions\`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select \`extras/chrome/living-code-night\` or \`extras/chrome/living-code-paper\`.)
+
+To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.`,
 };

@@ -43,3 +43,21 @@ jobs:
           name: living-code-jetbrains-plugin
           path: dist/jetbrains/*.zip
           if-no-files-found: error
+  chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Zip the Chrome themes
+        run: node scripts/package-chrome.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-code-chrome-night
+          path: dist/chrome/living-code-chrome-night.zip
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-code-chrome-paper
+          path: dist/chrome/living-code-chrome-paper.zip
+          if-no-files-found: error
