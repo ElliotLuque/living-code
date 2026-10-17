@@ -12,12 +12,16 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:packages": "pnpm run build && node scripts/build-packages.mjs",
+    "package:sublime": "node scripts/package-sublime.mjs",
     "test:packages": "node --test scripts/npm-packages.test.mjs",
+    "package:jetbrains": "node scripts/package-jetbrains.mjs",
     "check": "node scripts/build.mjs --check",
     "preview": "node scripts/serve.mjs",
     "screenshots": "node scripts/screenshots.mjs",
+    "icons": "node scripts/icons.mjs",
     "recolor": "node scripts/recolor.mjs",
-    "test": "node --test scripts/recolor.test.mjs scripts/expressive-code.test.mjs scripts/git.test.mjs scripts/npm-packages.test.mjs scripts/resolve.test.mjs scripts/preview.test.mjs scripts/readme.test.mjs"
+    "test": "node --test scripts/recolor.test.mjs scripts/expressive-code.test.mjs scripts/git.test.mjs scripts/npm-packages.test.mjs scripts/resolve.test.mjs scripts/preview.test.mjs scripts/readme.test.mjs scripts/vscode.test.mjs scripts/zed.test.mjs scripts/sublime.test.mjs scripts/jetbrains.test.mjs",
+    "package:vscode": "mkdir -p dist/vscode && cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies --out ../../dist/vscode/living-code-$npm_package_version.vsix"
   },
   "engines": { "node": ">=18" }
 }

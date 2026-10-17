@@ -1,4 +1,5 @@
 import { ANSI_ORDER } from "../resolve.mjs";
+import { REPO, changelog, license, version } from "./meta.mjs";
 
 export const SCOPES = [
   { role: "comment", scope: ["comment", "punctuation.definition.comment", "string.quoted.docstring"] },
@@ -283,6 +284,32 @@ function vscodeTheme(f) {
   };
 }
 
+const RAW = `${REPO.replace("github.com", "raw.githubusercontent.com")}/main`;
+
+const vscodeReadme = (fs) => `# Living Code
+
+**Calm slate. Living color.** A color theme where the background stays quiet and the code comes alive: cool teal structure, warm amber data, on dark slate.
+
+${fs.map((f) => `![${f.name}](${RAW}/assets/preview-${f.id}.png)`).join("\n\n")}
+
+## Themes
+
+| Theme | Appearance |
+|---|---|
+| Living Code Night | Dark slate with the full palette. The default. |
+| Living Code Frost | Lifted, bluer slate with lower-chroma accents. |
+| Living Code Paper | Light theme on near-white slate. |
+| Living Code Signal | Dark slate with a single teal accent. |
+
+Pick one with *Preferences: Color Theme* (\`Ctrl+K Ctrl+T\` or \`Cmd+K Cmd+T\`).
+
+Every theme maps the same semantic roles (keyword, string, error, border...), so Living Code looks the same in your editor, terminal and browser. All text colors meet WCAG AA contrast against their background. The same theme is also available for [many other tools](${REPO}#ports).
+
+## License
+
+[MIT](LICENSE) © Elliot Luque. Source: [${REPO.replace("https://", "")}](${REPO}).
+`;
+
 export const vscode = {
   id: "vscode",
   name: "VS Code",
@@ -294,22 +321,41 @@ export const vscode = {
       content: JSON.stringify({
         name: "living-code",
         displayName: "Living Code",
-        description: "Teal structure, amber data, on dark slate.",
-        version: "0.1.0",
+        description: "Teal structure, amber data, on dark slate. Night, Frost, Paper and Signal color themes.",
+        version,
         publisher: "elliotluque",
         license: "MIT",
-        repository: { type: "git", url: "https://github.com/ElliotLuque/living-code" },
+        icon: "images/icon.png",
+        galleryBanner: { color: fs.find((f) => f.id === "night").c("base"), theme: "dark" },
+        homepage: REPO,
+        bugs: { url: `${REPO}/issues` },
+        repository: { type: "git", url: `${REPO}.git`, directory: "extras/vscode" },
         engines: { vscode: "^1.70.0" },
         categories: ["Themes"],
+        keywords: ["theme", "color-theme", "dark", "light", "oklch", "slate", "teal", "amber", "minimal", ...fs.map((f) => f.name.toLowerCase())],
         contributes: {
           themes: fs.map((f) => ({ label: f.name, uiTheme: f.light ? "vs" : "vs-dark", path: `./themes/${f.slug}-color-theme.json` })),
         },
       }, null, 2) + "\n",
     },
+    { path: "extras/vscode/README.md", content: vscodeReadme(fs) },
+    { path: "extras/vscode/CHANGELOG.md", content: changelog },
+    { path: "extras/vscode/LICENSE", content: license },
+    { path: "extras/vscode/.vscodeignore", content: ".vscodeignore\n*.vsix\n.DS_Store\n" },
   ],
-  install: `Local install: \`cd extras/vscode && pnpm dlx @vscode/vsce package\` and install the \`.vsix\`, or symlink the folder into \`~/.vscode/extensions/living-code\`. Then pick **Living Code Night** in *Preferences: Color Theme*.
+  install: `Open the Extensions view (\`Ctrl+Shift+X\`), search for **Living Code** and click **Install**, or run:
 
-The same JSON works with **Shiki** and **VSCodium**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).`,
+\`\`\`sh
+code --install-extension elliotluque.living-code
+\`\`\`
+
+Then pick **Living Code Night**, **Frost**, **Paper** or **Signal** in *Preferences: Color Theme*.
+
+**Cursor, VSCodium, Windsurf and other forks** install from [Open VSX](https://open-vsx.org/extension/elliotluque/living-code): search for **Living Code** in their Extensions view.
+
+**Without a marketplace:** once a release has been published, download \`living-code-<version>.vsix\` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run \`code --install-extension living-code-<version>.vsix\` (or *Extensions: Install from VSIX...*). To build it yourself: \`cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies\`. This README assumes the extension is published to both marketplaces.
+
+The same JSON works with **Shiki**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).`,
 };
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -320,7 +366,7 @@ function plistDict(obj, indent) {
 
 export const tmtheme = {
   id: "tmtheme",
-  name: "bat · delta · Sublime Text (tmTheme)",
+  name: "bat · delta (tmTheme)",
   homepage: "https://github.com/sharkdp/bat",
   files: (f) => {
     const global = {
@@ -370,7 +416,7 @@ bat --list-themes | grep living-code
 
 Then \`--theme="living-code-night"\` in \`$(bat --config-dir)/config\`, and \`syntax-theme = living-code-night\` under \`[delta]\` in \`~/.gitconfig\`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
-**Sublime Text:** copy the \`.tmTheme\` into \`Packages/User/\` and select it in *UI: Select Color Scheme*.`,
+**Sublime Text** has its own native color scheme: use the dedicated [Sublime Text port](#sublime). The \`.tmTheme\` files are kept for bat and delta.`,
 };
 
 function uuid(seed) {
@@ -548,10 +594,33 @@ export const zed = {
         },
       };
     };
-    return [{
-      path: "extras/zed/living-code.json",
-      content: JSON.stringify({ $schema: "https://zed.dev/schema/themes/v0.2.0.json", name: "Living Code", author: "Elliot Luque", themes: fs.map(theme) }, null, 2) + "\n",
-    }];
+    return [
+      {
+        path: "extras/zed/themes/living-code.json",
+        content: JSON.stringify({ $schema: "https://zed.dev/schema/themes/v0.2.0.json", name: "Living Code", author: "Elliot Luque", themes: fs.map(theme) }, null, 2) + "\n",
+      },
+      {
+        path: "extras/zed/extension.toml",
+        content: `id = "living-code-theme"
+name = "Living Code"
+version = "${version}"
+schema_version = 1
+authors = ["Elliot Luque"]
+description = "Calm slate, living color. Night, Frost, Paper and Signal themes."
+repository = "${REPO}"
+`,
+      },
+      { path: "extras/zed/LICENSE", content: license },
+    ];
   },
-  install: `Copy \`living-code.json\` to \`~/.config/zed/themes/\` and select it with *theme selector: toggle*.`,
+  install: `In Zed, open the Extensions panel (\`zed: extensions\`, or \`cmd-shift-x\` on macOS and \`ctrl-shift-x\` on Linux), search for **Living Code**, and click **Install**. Then pick a flavor with \`theme selector: toggle\` (\`cmd-k cmd-t\`).
+
+Without the registry: run \`zed: install dev extension\` and select the \`extras/zed\` folder of a checkout, or download the theme file into \`~/.config/zed/themes/\`:
+
+\`\`\`sh
+mkdir -p ~/.config/zed/themes
+curl -fsSL https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/zed/themes/living-code.json -o ~/.config/zed/themes/living-code.json
+\`\`\`
+
+The theme file holds all four flavors. This README assumes the extension is published to the Zed registry.`,
 };
