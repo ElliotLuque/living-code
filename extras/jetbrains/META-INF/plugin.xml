@@ -2,7 +2,7 @@
 <idea-plugin>
   <id>com.elliotluque.livingcode</id>
   <name>Living Code</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <vendor url="https://github.com/ElliotLuque/living-code">Elliot Luque</vendor>
 
   <!-- 2024.1 and newer, no upper bound. See SINCE_BUILD in scripts/ports/jetbrains.mjs. -->
