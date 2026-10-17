@@ -27,7 +27,9 @@ setw -g window-status-bell-style "fg=${f.r("warning")},bold"
 
 Then load it from \`tmux.conf\`:
 
-${fence("tmux", "source-file ~/.config/tmux/living-code-night.conf")}`,
+${fence("tmux", "source-file ~/.config/tmux/living-code-night.conf")}
+
+If you set \`XDG_CONFIG_HOME\`, use that path in the line above.`,
 };
 
 export const fzf = {
@@ -74,11 +76,11 @@ ${names.map((n) => `${n.padEnd(9)}= "${f.c(n)}"`).join("\n")}
 `,
     }];
   },
-  install: `Starship needs the \`palette = ...\` line at the top of the file and the palette tables after your own, so this puts each in place (it assumes your \`starship.toml\` has no \`palette\` line yet):
+  install: `Starship needs the \`palette = ...\` line at the top of the file and the palette table after your own settings, so this puts each in place. It is safe to run again with another \`flavor=\`: it first removes the \`palette\` line and any earlier Living Code palette table, and keeps everything else (a \`palette\` line you set yourself is replaced too). Starship reads \`$STARSHIP_CONFIG\` or \`~/.config/starship.toml\`, not \`XDG_CONFIG_HOME\`:
 
-${sh(FLAVOR_LINE, `cfg="${XDG_CONFIG}/starship.toml"; touch "$cfg"`, `p="$(curl -fsSL "${rawUrl("extras/starship/living-code-$flavor.toml")}")"`, `{ printf '%s\\n' "$p" | head -n 1; cat "$cfg"; printf '\\n'; printf '%s\\n' "$p" | tail -n +2; } > "$cfg.new" && mv "$cfg.new" "$cfg"`)}
+${sh(FLAVOR_LINE, `cfg="\${STARSHIP_CONFIG:-$HOME/.config/starship.toml}"`, `mkdir -p "$(dirname "$cfg")" && touch "$cfg"`, `p="$(curl -fsSL "${rawUrl("extras/starship/living-code-$flavor.toml")}")" && { printf '%s\\n' "$p" | head -n 1; awk 'BEGIN{top=1} /^\\[/{top=0; skip=($0 ~ /^\\[palettes\\.living_code_/)} skip{next} top && /^palette[ \\t]*=/{next} /^[ \\t]*$/{n++; next} {for(;n>0;n--) print ""; print}' "$cfg"; printf '\\n'; printf '%s\\n' "$p" | tail -n +2; } > "$cfg.new" && mv "$cfg.new" "$cfg"`)}
 
-Module styles can then use names like \`"bold teal"\` or \`"amber"\`. Set \`STARSHIP_CONFIG\` first if your config lives elsewhere.`,
+Module styles can then use names like \`"bold teal"\` or \`"amber"\`.`,
 };
 
 export const btop = {
@@ -152,7 +154,7 @@ export const lazygit = {
   }],
   install: `lazygit accepts a comma-separated list of config files, so the theme sits next to your own config without editing it. \`lazygit --print-config-dir\` finds the right folder on every OS:
 
-${sh(FLAVOR_LINE, `dir="$(lazygit --print-config-dir)"`, `touch "$dir/config.yml"`, getFile("$dir", "extras/lazygit/living-code-$flavor.yml"), `export LG_CONFIG_FILE="$dir/config.yml,$dir/living-code-$flavor.yml"`)}
+${sh(FLAVOR_LINE, `dir="$(lazygit --print-config-dir)"`, `mkdir -p "$dir" && touch "$dir/config.yml"`, getFile("$dir", "extras/lazygit/living-code-$flavor.yml"), `export LG_CONFIG_FILE="$dir/config.yml,$dir/living-code-$flavor.yml"`)}
 
 Put the \`export\` line in your shell profile to keep it. Or merge the downloaded \`theme:\` block into \`config.yml\` by hand.`,
 };

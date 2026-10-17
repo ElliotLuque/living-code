@@ -139,7 +139,7 @@ Then import it in \`alacritty.toml\`:
 
 ${fence("toml", `[general]\nimport = ["~/.config/alacritty/themes/living-code-night.toml"]`)}
 
-On Windows the folder is \`%APPDATA%\\alacritty\\themes\`.`,
+If you set \`XDG_CONFIG_HOME\`, use that path in the \`import\` line. On Windows the folder is \`%APPDATA%\\alacritty\\themes\`.`,
 };
 
 export const wezterm = {
@@ -224,5 +224,7 @@ urls=${nohash(f.r("link"))}
 
 Then include it at the top of \`foot.ini\`:
 
-${fence("ini", `[main]\ninclude=~/.config/foot/living-code-night.ini`)}`,
+${fence("ini", `[main]\ninclude=~/.config/foot/living-code-night.ini`)}
+
+If you set \`XDG_CONFIG_HOME\`, use that path in the \`include\` line.`,
 };

@@ -261,7 +261,7 @@ test("README Sublime install steps and tmTheme pointer are consistent", async ()
   assert.match(sublime.install, /Package Control: Install Package/);
   assert.match(sublime.install, /Living Code Night/);
   assert.match(sublime.install, /Packages\/User\//);
-  assert.match(sublime.install, /assumes the package is published to Package Control/);
+  assert.match(sublime.install, /Package Control, once published/);
   assert.doesNotMatch(sublime.install, /—/);
   assert.doesNotMatch(tmtheme.install, /Packages\/User/);
   assert.match(tmtheme.install, /\(#sublime\)/);

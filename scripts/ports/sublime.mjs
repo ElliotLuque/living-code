@@ -119,15 +119,17 @@ export const sublime = {
   files: (f) => [{ path: `${SUBLIME_DIR}/${f.slug}.sublime-color-scheme`, content: JSON.stringify(sublimeScheme(f), null, 2) + "\n" }],
   install: `Targets Sublime Text 4. It uses the modern \`.sublime-color-scheme\` format, one file per flavor.
 
-**Package Control.** This README assumes the package is published to Package Control. Open the Command Palette and run *Package Control: Install Package*, choose **Living Code**, then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
+Download the four color schemes into your \`Packages/User\` folder (the same folder as *Preferences → Browse Packages…*), then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
 
-**Manual.** Download the four color schemes into your \`Packages/User\` folder (the same folder as *Preferences → Browse Packages…*), then select the scheme as above. Linux:
+Linux:
 
 ${sh(`curl -fsSL --create-dirs --output-dir "${XDG_CONFIG}/sublime-text/Packages/User" -O "${rawUrl(allFlavors("extras/sublime/living-code-*.sublime-color-scheme"))}"`)}
 
 macOS:
 
 ${sh(`curl -fsSL --create-dirs --output-dir "$HOME/Library/Application Support/Sublime Text/Packages/User" -O "${rawUrl(allFlavors("extras/sublime/living-code-*.sublime-color-scheme"))}"`)}
+
+**Package Control, once published.** Package Control needs a dedicated repository for the package, which does not exist yet. When it is listed, run *Package Control: Install Package* and choose **Living Code**. Until then, use the download above.
 
 The source files are in [\`extras/sublime/\`](extras/sublime). To customize a manual install, edit the copied file. With the Package Control install, add a \`Packages/User/<Scheme>.sublime-color-scheme\` with the same file name as the package scheme and override entries under \`variables\` or \`globals\`.
 

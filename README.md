@@ -33,7 +33,7 @@ Nobody has to clone this repository. Each app installs the way it normally insta
 | [JetBrains IDEs](#jetbrains) | Marketplace: *Settings | Plugins*, search **Living Code** |
 | [Zed](#zed) | Extensions panel: search **Living Code** |
 | [Helix](#helix) | One line, see below |
-| [Sublime Text](#sublime) | Package Control: *Install Package*, **Living Code** |
+| [Sublime Text](#sublime) | One line, see below (Package Control pending a dedicated repo) |
 | [bat · delta (tmTheme)](#tmtheme) | One line, see below |
 | [kitty](#kitty) | One line, see below |
 | [Ghostty](#ghostty) | One line, see below |
@@ -406,9 +406,9 @@ On Windows the folder is `%AppData%\helix\themes`.
 
 Targets Sublime Text 4. It uses the modern `.sublime-color-scheme` format, one file per flavor.
 
-**Package Control.** This README assumes the package is published to Package Control. Open the Command Palette and run *Package Control: Install Package*, choose **Living Code**, then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
+Download the four color schemes into your `Packages/User` folder (the same folder as *Preferences → Browse Packages…*), then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
 
-**Manual.** Download the four color schemes into your `Packages/User` folder (the same folder as *Preferences → Browse Packages…*), then select the scheme as above. Linux:
+Linux:
 
 ```sh
 curl -fsSL --create-dirs --output-dir "${XDG_CONFIG_HOME:-$HOME/.config}/sublime-text/Packages/User" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/sublime/living-code-{night,frost,paper,signal}.sublime-color-scheme"
@@ -419,6 +419,8 @@ macOS:
 ```sh
 curl -fsSL --create-dirs --output-dir "$HOME/Library/Application Support/Sublime Text/Packages/User" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/sublime/living-code-{night,frost,paper,signal}.sublime-color-scheme"
 ```
+
+**Package Control, once published.** Package Control needs a dedicated repository for the package, which does not exist yet. When it is listed, run *Package Control: Install Package* and choose **Living Code**. Until then, use the download above.
 
 The source files are in [`extras/sublime/`](extras/sublime). To customize a manual install, edit the copied file. With the Package Control install, add a `Packages/User/<Scheme>.sublime-color-scheme` with the same file name as the package scheme and override entries under `variables` or `globals`.
 
@@ -484,7 +486,7 @@ Then import it in `alacritty.toml`:
 import = ["~/.config/alacritty/themes/living-code-night.toml"]
 ```
 
-On Windows the folder is `%APPDATA%\alacritty\themes`.
+If you set `XDG_CONFIG_HOME`, use that path in the `import` line. On Windows the folder is `%APPDATA%\alacritty\themes`.
 
 <a id="wezterm"></a>
 #### [WezTerm](https://wezterm.org)
@@ -513,6 +515,8 @@ Then include it at the top of `foot.ini`:
 [main]
 include=~/.config/foot/living-code-night.ini
 ```
+
+If you set `XDG_CONFIG_HOME`, use that path in the `include` line.
 
 <a id="windows-terminal"></a>
 #### [Windows Terminal](https://github.com/microsoft/terminal)
@@ -584,6 +588,8 @@ Then load it from `tmux.conf`:
 source-file ~/.config/tmux/living-code-night.conf
 ```
 
+If you set `XDG_CONFIG_HOME`, use that path in the line above.
+
 <a id="fzf"></a>
 #### [fzf](https://github.com/junegunn/fzf)
 
@@ -603,16 +609,16 @@ For fish, download `living-code-$flavor.fish` from the same folder of the reposi
 <a id="starship"></a>
 #### [Starship](https://starship.rs)
 
-Starship needs the `palette = ...` line at the top of the file and the palette tables after your own, so this puts each in place (it assumes your `starship.toml` has no `palette` line yet):
+Starship needs the `palette = ...` line at the top of the file and the palette table after your own settings, so this puts each in place. It is safe to run again with another `flavor=`: it first removes the `palette` line and any earlier Living Code palette table, and keeps everything else (a `palette` line you set yourself is replaced too). Starship reads `$STARSHIP_CONFIG` or `~/.config/starship.toml`, not `XDG_CONFIG_HOME`:
 
 ```sh
 flavor=night
-cfg="${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml"; touch "$cfg"
-p="$(curl -fsSL "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/starship/living-code-$flavor.toml")"
-{ printf '%s\n' "$p" | head -n 1; cat "$cfg"; printf '\n'; printf '%s\n' "$p" | tail -n +2; } > "$cfg.new" && mv "$cfg.new" "$cfg"
+cfg="${STARSHIP_CONFIG:-$HOME/.config/starship.toml}"
+mkdir -p "$(dirname "$cfg")" && touch "$cfg"
+p="$(curl -fsSL "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/starship/living-code-$flavor.toml")" && { printf '%s\n' "$p" | head -n 1; awk 'BEGIN{top=1} /^\[/{top=0; skip=($0 ~ /^\[palettes\.living_code_/)} skip{next} top && /^palette[ \t]*=/{next} /^[ \t]*$/{n++; next} {for(;n>0;n--) print ""; print}' "$cfg"; printf '\n'; printf '%s\n' "$p" | tail -n +2; } > "$cfg.new" && mv "$cfg.new" "$cfg"
 ```
 
-Module styles can then use names like `"bold teal"` or `"amber"`. Set `STARSHIP_CONFIG` first if your config lives elsewhere.
+Module styles can then use names like `"bold teal"` or `"amber"`.
 
 <a id="btop"></a>
 #### [btop](https://github.com/aristocratos/btop)
@@ -632,7 +638,7 @@ lazygit accepts a comma-separated list of config files, so the theme sits next t
 ```sh
 flavor=night
 dir="$(lazygit --print-config-dir)"
-touch "$dir/config.yml"
+mkdir -p "$dir" && touch "$dir/config.yml"
 curl -fsSL --create-dirs -o "$dir/living-code-$flavor.yml" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/lazygit/living-code-$flavor.yml"
 export LG_CONFIG_FILE="$dir/config.yml,$dir/living-code-$flavor.yml"
 ```
@@ -774,10 +780,10 @@ To switch themes, open **Add-ons and themes → Themes** (`about:addons`) and en
 <a id="chrome"></a>
 #### [Chrome, Brave and Chromium](https://chromewebstore.google.com/category/themes)
 
-Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
+Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
 
-1. **Chrome Web Store:** pending. Neither theme is listed yet; once they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
-2. **Without the store:** once a release has been published, download `living-code-chrome-night.zip` or `living-code-chrome-paper.zip` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select `extras/chrome/living-code-night` or `extras/chrome/living-code-paper`.)
+1. **Release zip:** download `living-code-chrome-night.zip` or `living-code-chrome-paper.zip` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select `extras/chrome/living-code-night` or `extras/chrome/living-code-paper`.)
+2. **Chrome Web Store, once listed:** Neither theme is listed yet. When they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
 
 To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.
 

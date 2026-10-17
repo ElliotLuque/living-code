@@ -135,14 +135,14 @@ Used by Cursor, VSCodium, Windsurf and other forks.
 - **Account / secret:** a GitHub account. No secret.
 - **Cost:** free.
 
-1. Create the dedicated repository with the files from `extras/sublime/` at its root, and push a semver tag (for example `v0.1.0`).
+1. Elliot creates the public repository `ElliotLuque/living-code-sublime` first (same as `living-code-obsidian` above), with the files from `extras/sublime/` at its root, and pushes a semver tag (for example `v0.1.0`). The `details` URL below must point at this repository, never at `living-code`.
 2. Fork `sublimehq/package_control_channel`.
 3. Add an entry to `repository/l.json` (keep the file's alphabetical order):
 
    ```json
    {
      "name": "Living Code",
-     "details": "https://github.com/ElliotLuque/living-code",
+     "details": "https://github.com/ElliotLuque/living-code-sublime",
      "labels": ["color scheme"],
      "releases": [{ "sublime_text": "4000 - ", "tags": true }]
    }
