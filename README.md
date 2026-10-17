@@ -240,7 +240,7 @@ The table shows resolved roles for every flavor. The full role map (UI, diagnost
 [`palette/flavors.mjs`](palette/flavors.mjs): `defaultRoles` plus each flavor's `roles` overrides.
 
 Every port ships every flavor: pick the `living-code-<flavor>` file, or in Neovim use `:colorscheme living-code-frost`
-or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently provides Night and Paper only.
+or set `flavor = "frost"` in the [plugin setup](#neovim). Browser themes (Firefox and Chrome) ship Night and Paper only. A browser theme colours just backgrounds, borders and one accent, and in those slots Frost and Signal would look the same as Night; both browser stores reject duplicate themes. If you use Frost or Signal elsewhere, Night is the closest match in the browser.
 
 ## Ports
 
@@ -250,7 +250,7 @@ or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently prov
 
 **CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit) · [delta](#delta) · [Hunk](#hunk)
 
-**Browsers:** [Firefox](#firefox)
+**Browsers:** [Firefox](#firefox) · [Chrome, Brave and Chromium](#chrome)
 
 **Web & code:** [Expressive Code](#expressive-code) · [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
 
@@ -271,7 +271,7 @@ Ports used from JavaScript or CSS tooling are published to npm. Each package con
 | [Tailwind CSS v4](#tailwind) | `@living-code/tailwind` |
 | [JSON / JavaScript](#json) | `@living-code/palette` |
 
-Native apps (editors, terminals, CLI tools, Firefox) don't need a package: copy their files from [`extras/`](extras)
+Native apps (editors, terminals, CLI tools, browsers) don't need a package: copy their files from [`extras/`](extras)
 or use the app's own install route, as described below.
 
 ### Editors
@@ -509,10 +509,20 @@ Available themes: `living-code-night`, `living-code-signal`, `living-code-frost`
 
 Choose **Night** for a dark browser or **Paper** for a light one.
 
-1. Find [Living Code Night](https://addons.mozilla.org/en-US/firefox/search/?q=Living%20Code%20Night&type=statictheme) or [Living Code Paper](https://addons.mozilla.org/en-US/firefox/search/?q=Living%20Code%20Paper&type=statictheme) on Firefox Add-ons.
-2. Open the theme’s listing and click **Install Theme**.
+1. Open [Living Code Night](https://addons.mozilla.org/firefox/addon/living-code-night/) or [Living Code Paper](https://addons.mozilla.org/firefox/addon/living-code-paper/) on Firefox Add-ons.
+2. Click **Install Theme**.
 
 To switch themes, open **Add-ons and themes → Themes** (`about:addons`) and enable your preferred variant.
+
+<a id="chrome"></a>
+#### [Chrome, Brave and Chromium](https://chromewebstore.google.com/category/themes)
+
+Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
+
+1. **Chrome Web Store:** search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**. This README assumes both themes are published to the Chrome Web Store.
+2. **Without the store:** download `living-code-chrome-night.zip` or `living-code-chrome-paper.zip` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select `extras/chrome/living-code-night` or `extras/chrome/living-code-paper`.)
+
+To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.
 
 ### Web & code
 

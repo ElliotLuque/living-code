@@ -18,10 +18,11 @@ jobs:
           pnpm run package:vscode
           node scripts/package-jetbrains.mjs
           node scripts/package-sublime.mjs
+          node scripts/package-chrome.mjs
       - name: Create the release and attach the artifacts
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
           gh release create "$TAG" --title "$TAG" --generate-notes \
-            dist/vscode/*.vsix dist/jetbrains/*.zip "dist/sublime/Living Code.sublime-package"
+            dist/vscode/*.vsix dist/jetbrains/*.zip "dist/sublime/Living Code.sublime-package" dist/chrome/*.zip

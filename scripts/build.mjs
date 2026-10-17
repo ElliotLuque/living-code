@@ -120,7 +120,7 @@ The table shows resolved roles for every flavor. The full role map (UI, diagnost
 [\`palette/flavors.mjs\`](palette/flavors.mjs): \`defaultRoles\` plus each flavor's \`roles\` overrides.
 
 Every port ships every flavor: pick the \`living-code-<flavor>\` file, or in Neovim use \`:colorscheme living-code-frost\`
-or set \`flavor = "frost"\` in the [plugin setup](#neovim). Firefox currently provides Night and Paper only.
+or set \`flavor = "frost"\` in the [plugin setup](#neovim). Browser themes (Firefox and Chrome) ship Night and Paper only. A browser theme colours just backgrounds, borders and one accent, and in those slots Frost and Signal would look the same as (or barely different from) Night; both browser stores reject duplicate themes. If you use Frost or Signal elsewhere, Night is the closest match in the browser.
 
 ## Ports
 
@@ -138,7 +138,7 @@ Ports used from JavaScript or CSS tooling are published to npm. Each package con
 |---|---|
 ${npmPorts.map((p) => `| [${p.name}](#${p.id}) | \`@living-code/${p.npm}\` |`).join("\n")}
 
-Native apps (editors, terminals, CLI tools, Firefox) don't need a package: copy their files from [\`extras/\`](extras)
+Native apps (editors, terminals, CLI tools, browsers) don't need a package: copy their files from [\`extras/\`](extras)
 or use the app's own install route, as described below.
 
 ${installs}
