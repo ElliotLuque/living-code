@@ -119,7 +119,8 @@ test("iTerm2 presets are valid plists with every required color key", () => {
     [...f.ansi.normal, ...f.ansi.bright].forEach((hex, i) => assert.deepEqual(colors[`Ansi ${i} Color`], toRgb(hex)));
     assert.deepEqual(colors["Background Color"], toRgb(f.r("bg")));
   }
-  assert.match(iterm2.install, /open ~\/Downloads\/Living-Code-\*\.itermcolors/);
+  assert.match(iterm2.install, /Living Code #1\.itermcolors/);
+  assert.match(iterm2.install, /open "\$HOME"\/Downloads\/Living\\ Code\\ \*\.itermcolors/);
 });
 
 test("Warp themes are YAML with the documented keys and the right ANSI slots", () => {
@@ -216,7 +217,11 @@ test("yazi flavors have a flavor.toml, a tmtheme.xml from the tmTheme port, and 
     assert.equal(files[1].content, tmtheme.files(f)[0].content);
     assert.match(files[1].content, /<plist version="1\.0">/);
     assert.match(files[2].content, /MIT License/);
-    assert.ok(yaziFlavor(f).includes(`bg = "${f.r("selection")}"`));
+    const toml = yaziFlavor(f);
+    assert.ok(tables.includes("indicator"));
+    assert.ok(toml.includes(`current = { fg = "${f.r("fg")}", bg = "${f.r("selection")}" }`));
+    assert.doesNotMatch(toml.split(/^\[indicator\]/m)[0], /^(preview_)?hovered\s*=/m, "hovered keys were removed from [mgr] in current yazi");
+    assert.match(toml, /\[which\]\ncols = 3\nborder = /);
   }
 });
 
@@ -244,6 +249,7 @@ test("k9s skins are YAML with the skin sections and hex colors", () => {
     for (const c of colors) assert.match(c, HEX);
   }
   assert.match(k9s.install, /skin: living-code-night/);
+  assert.match(k9s.install, /Library\/Application\\ Support\/k9s\/skins/);
 });
 
 test("eza themes are YAML using eza's section names and ANSI-independent hex colors", () => {
@@ -259,7 +265,8 @@ test("eza themes are YAML using eza's section names and ANSI-independent hex col
     assert.ok(colors.length > 60);
     for (const c of colors) assert.match(c, HEX);
   }
-  assert.match(eza.install, /~\/\.config\/eza\/theme\.yml/);
+  assert.match(eza.install, /Library\/Application Support\/eza/);
+  assert.match(eza.install, /XDG_CONFIG_HOME/);
 });
 
 test("Signal stays a single-accent flavor in the new ports", () => {

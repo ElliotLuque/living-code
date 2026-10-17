@@ -441,10 +441,10 @@ Fallback: paste the scheme objects from `extras/windows-terminal/living-code-*.j
 <a id="iterm2"></a>
 #### [iTerm2](https://iterm2.com)
 
-Download a preset and `open` it; iTerm2 imports it and names it after the file (*Living Code Night*, *Living Code Frost*, *Living Code Paper*, *Living Code Signal*):
+Download a preset and `open` it; iTerm2 imports it and names the preset after the file. The command saves the files with spaces so the presets read *Living Code Night*, *Living Code Frost*, *Living Code Paper* and *Living Code Signal*:
 
 ```sh
-curl -fsSL --output-dir ~/Downloads -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/iterm2/Living-Code-{Night,Frost,Paper,Signal}.itermcolors" && open ~/Downloads/Living-Code-*.itermcolors
+curl -fsSL -o "$HOME/Downloads/Living Code #1.itermcolors" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/iterm2/Living-Code-{Night,Frost,Paper,Signal}.itermcolors" && open "$HOME"/Downloads/Living\ Code\ *.itermcolors
 ```
 
 Then pick one under *Settings → Profiles → Colors → Color Presets*. Fallback: in that same menu choose *Import...* and select the downloaded files.
@@ -565,10 +565,10 @@ Needs fish 3.4 or newer. Download the themes, then choose one:
 
 ```fish
 curl -fsSL --create-dirs --output-dir ~/.config/fish/themes -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/fish/living-code-{night,frost,paper,signal}.theme"
-fish_config theme save living-code-night
+echo 'fish_config theme choose living-code-night' >> ~/.config/fish/config.fish
 ```
 
-`fish_config theme choose living-code-night` previews it for the current session only; `save` makes it permanent. `fish_config theme` lists the other flavors.
+Run `fish_config theme choose living-code-night` on its own to try a flavor in the current session; the `config.fish` line makes it stick. `fish_config theme save living-code-night` also works but asks for confirmation. `fish_config theme list` shows the other flavors.
 
 <a id="zellij"></a>
 #### [zellij](https://zellij.dev)
@@ -619,18 +619,26 @@ k9s:
     skin: living-code-night
 ```
 
-On macOS k9s may keep its config in `~/Library/Application Support/k9s` instead; run `k9s info` to see the directory it uses.
+On macOS, where `XDG_CONFIG_HOME` is usually unset, k9s keeps its config in `~/Library/Application Support/k9s`, so use this line instead (and edit `config.yaml` there):
+
+```sh
+curl -fsSL --create-dirs --output-dir ~/Library/Application\ Support/k9s/skins -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/k9s/living-code-{night,frost,paper,signal}.yaml"
+```
+
+`k9s info` prints the directory your install uses.
 
 <a id="eza"></a>
 #### [eza](https://eza.rocks)
 
-Needs eza 0.19 or newer. eza reads a single `theme.yml` from `$EZA_CONFIG_DIR`, or `~/.config/eza/` if that is unset, so download the flavor you want under that name:
+Needs eza 0.19 or newer. eza reads a single `theme.yml` from `$EZA_CONFIG_DIR`, or else from `${XDG_CONFIG_HOME:-~/.config}/eza/` on Linux and `~/Library/Application Support/eza/` on macOS, so download the flavor you want under that name:
 
 ```sh
-curl -fsSLo ~/.config/eza/theme.yml --create-dirs https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/eza/living-code-night.yml
+flavor=night
+dir="${EZA_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/eza}"   # macOS: dir="$HOME/Library/Application Support/eza"
+curl -fsSLo "$dir/theme.yml" --create-dirs https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/eza/living-code-$flavor.yml
 ```
 
-Swap `night` for `frost`, `paper` or `signal` to use another flavor. eza only colors what `LS_COLORS` / `EZA_COLORS` do not already set, so unset those variables if the theme seems to have no effect.
+Set `flavor` to `frost`, `paper` or `signal` to use another flavor. eza only colors what `LS_COLORS` / `EZA_COLORS` do not already set, so unset those variables if the theme seems to have no effect.
 
 ### Browsers
 
