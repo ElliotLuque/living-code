@@ -125,7 +125,7 @@ const manifest = () => JSON.stringify({
   authorUrl: "https://github.com/ElliotLuque",
 }, null, 2) + "\n";
 
-const themeReadme = () => `# Living Code for Obsidian
+export const themeReadme = () => `# Living Code for Obsidian
 
 An Obsidian theme from [Living Code](${REPO}). Dark mode is **Night** and light mode is **Paper**, so the theme follows Obsidian's *Appearance → Base color scheme*.
 

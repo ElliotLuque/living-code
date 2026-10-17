@@ -17,11 +17,11 @@ test("release.yml runs only on pushed v* tags", () => {
   assert.doesNotMatch(on, /pull_request|schedule|workflow_dispatch|branches/);
 });
 
-test("release.yml has minimal permissions and uses no secrets beyond the built-in token", () => {
+test("release.yml has minimal permissions and uses no secrets beyond the built-in token and MIRROR_TOKEN", () => {
   assert.match(release, /^permissions:\n  contents: read$/m);
   assert.equal([...release.matchAll(/contents: write/g)].length, 1);
   assert.doesNotMatch(release.replace(/contents: write/, ""), /: write\b/);
-  assert.doesNotMatch(release, /secrets\.(?!GITHUB_TOKEN)/);
+  assert.doesNotMatch(release, /secrets\.(?!GITHUB_TOKEN|MIRROR_TOKEN)/);
   assert.doesNotMatch(release, /git tag|git push|--latest=false/);
 });
 

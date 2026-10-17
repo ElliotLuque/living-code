@@ -12,6 +12,7 @@ Packaging detail and the publish workflows are in [PUBLISHING.md](PUBLISHING.md)
 | [Zed registry](#zed-registry) | ready | free | GitHub account |
 | [Chrome Web Store](#chrome-web-store) | ready | $5 one-time | Google account |
 | [Obsidian community themes](#obsidian-community-themes) | ready | free | GitHub account, new repo |
+| [Mirror repos](#mirror-repos) | automatic on tag | free | `MIRROR_TOKEN` |
 | [Sublime Package Control](#sublime-package-control) | needs a dedicated repo | free | GitHub account |
 
 "Ready" means the package builds in CI and the install text in the README already assumes the listing exists. Nothing is live yet except the two Firefox themes.
@@ -151,6 +152,27 @@ Used by Cursor, VSCodium, Windsurf and other forks.
 4. Install the ChannelRepositoryTools package, run *ChannelRepositoryTools: Test Default Channel*, and open the pull request once the tests pass.
 
 Until then the README's manual install (a one-line download into `Packages/User`) and the `Living Code.sublime-package` release asset work without Package Control.
+
+## Mirror repos
+
+Obsidian and Package Control need the files at the root of a repository, so `ElliotLuque/living-code-obsidian` and `ElliotLuque/living-code-sublime` exist. **Nobody edits them by hand.** The `mirror` job of the `release` workflow overwrites them from `living-code` on every `v*` tag. Work only in `living-code`.
+
+**One-time setup (5 minutes):**
+
+1. Open <https://github.com/settings/personal-access-tokens/new> (a fine-grained token).
+2. Name it `living-code-mirror`, pick an expiry (a year is fine), and under *Repository access* choose **Only select repositories**: `living-code-obsidian` and `living-code-sublime`, nothing else.
+3. Under *Repository permissions* set **Contents: Read and write**. Leave everything else on *No access* (Metadata: Read stays on automatically).
+4. Click *Generate token* and copy it.
+5. In `living-code`, go to *Settings > Secrets and variables > Actions > New repository secret*, name it `MIRROR_TOKEN` and paste the token.
+
+**On the next tag** (`git tag vX.Y.Z && git push origin vX.Y.Z`, as in [Releases](#releases)), after the release is built:
+
+- Each mirror is replaced with the build output: `extras/obsidian/` into `living-code-obsidian`, and `extras/sublime/` plus `LICENSE` into `living-code-sublime`. Files deleted in `living-code` are deleted there too. Each mirror gets a generated `README.md` that says it is generated and points back to `living-code`.
+- One commit per mirror, authored as `ElliotLuque`, with the message `sync from living-code vX.Y.Z (<short sha>)`. If nothing changed there is no commit, so running the same tag again changes nothing.
+- **Sublime:** the tag `vX.Y.Z` (the `version` in `package.json`) is created in `living-code-sublime`. If the tag already exists it is left alone.
+- **Obsidian:** the release is named after `version` in `extras/obsidian/manifest.json` (`OBSIDIAN_VERSION` in `scripts/ports/obsidian.mjs`, currently `1.0.0`, no `v`), with `manifest.json` and `theme.css` attached. It is created only if that release does not exist.
+- **If the Obsidian job fails:** `theme.css` changed but the version is the same as an existing release, so Obsidian users would never receive the change. Raise `OBSIDIAN_VERSION` in `scripts/ports/obsidian.mjs`, run `node scripts/build.mjs`, merge, bump `version` in `package.json` and push a new tag (the mirror sync of the failed tag was skipped for Obsidian, so nothing was published). The version must never go down: Obsidian does not update to a lower version.
+- **Without `MIRROR_TOKEN`** the job prints a `::warning::` and skips; the release itself still succeeds.
 
 ## Firefox AMO
 
