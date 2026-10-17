@@ -1,0 +1,92 @@
+# Living Code Frost: https://github.com/ElliotLuque/living-code
+k9s:
+  body:
+    fgColor: "#e2e9ee"
+    bgColor: "#0a1016"
+    logoColor: "#43a997"
+  prompt:
+    fgColor: "#e2e9ee"
+    bgColor: "#10171c"
+    suggestColor: "#7d8489"
+  info:
+    fgColor: "#bc9ec6"
+    sectionColor: "#e2e9ee"
+  dialog:
+    fgColor: "#e2e9ee"
+    bgColor: "#0a1016"
+    buttonFgColor: "#0a1016"
+    buttonBgColor: "#43a997"
+    buttonFocusFgColor: "#0a1016"
+    buttonFocusBgColor: "#e9c897"
+    labelFgColor: "#e9c897"
+    fieldFgColor: "#e2e9ee"
+  frame:
+    border:
+      fgColor: "#232a30"
+      focusColor: "#43a997"
+    menu:
+      fgColor: "#e2e9ee"
+      keyColor: "#43a997"
+      numKeyColor: "#bc9ec6"
+    crumbs:
+      fgColor: "#0a1016"
+      bgColor: "#9ba0a2"
+      activeColor: "#43a997"
+    status:
+      newColor: "#98bacd"
+      modifyColor: "#43a997"
+      addColor: "#a2cb9d"
+      errorColor: "#d68079"
+      highlightColor: "#e9c897"
+      killColor: "#7d8489"
+      completedColor: "#7d8489"
+    title:
+      fgColor: "#e2e9ee"
+      bgColor: "#0a1016"
+      highlightColor: "#e9c897"
+      counterColor: "#43a997"
+      filterColor: "#bc9ec6"
+  views:
+    charts:
+      bgColor: default
+      defaultDialColors:
+        - "#43a997"
+        - "#d68079"
+      defaultChartColors:
+        - "#43a997"
+        - "#d68079"
+      resourceColors:
+        cpu:
+          - "#43a997"
+          - "#98bacd"
+        mem:
+          - "#e9c897"
+          - "#d49c80"
+    table:
+      fgColor: "#e2e9ee"
+      bgColor: "#0a1016"
+      cursorFgColor: "#e2e9ee"
+      cursorBgColor: "#333c43"
+      markColor: "#d49c80"
+      header:
+        fgColor: "#c8cfd4"
+        bgColor: "#0a1016"
+        sorterColor: "#b6e2df"
+    xray:
+      fgColor: "#e2e9ee"
+      bgColor: "#0a1016"
+      cursorColor: "#333c43"
+      cursorTextColor: "#e2e9ee"
+      graphicColor: "#43a997"
+    yaml:
+      keyColor: "#43a997"
+      colonColor: "#50565b"
+      valueColor: "#e2e9ee"
+    logs:
+      fgColor: "#e2e9ee"
+      bgColor: "#0a1016"
+      indicator:
+        fgColor: "#e2e9ee"
+        bgColor: "#171e24"
+        toggleOnColor: "#a2cb9d"
+        toggleOffColor: "#7d8489"

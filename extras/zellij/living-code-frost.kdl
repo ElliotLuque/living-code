@@ -1,0 +1,129 @@
+// Living Code Frost: https://github.com/ElliotLuque/living-code
+themes {
+    living-code-frost {
+        text_unselected {
+            base 226 233 238
+            background 10 16 22
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        text_selected {
+            base 226 233 238
+            background 51 60 67
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        ribbon_selected {
+            base 10 16 22
+            background 67 169 151
+            emphasis_0 214 128 121
+            emphasis_1 233 200 151
+            emphasis_2 188 158 198
+            emphasis_3 152 186 205
+        }
+        ribbon_unselected {
+            base 226 233 238
+            background 35 42 48
+            emphasis_0 214 128 121
+            emphasis_1 226 233 238
+            emphasis_2 152 186 205
+            emphasis_3 188 158 198
+        }
+        table_title {
+            base 67 169 151
+            background 10 16 22
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        table_cell_selected {
+            base 226 233 238
+            background 51 60 67
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        table_cell_unselected {
+            base 226 233 238
+            background 10 16 22
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        list_selected {
+            base 226 233 238
+            background 51 60 67
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        list_unselected {
+            base 226 233 238
+            background 10 16 22
+            emphasis_0 233 200 151
+            emphasis_1 67 169 151
+            emphasis_2 162 203 157
+            emphasis_3 188 158 198
+        }
+        frame_selected {
+            base 67 169 151
+            background 10 16 22
+            emphasis_0 188 158 198
+            emphasis_1 152 186 205
+            emphasis_2 233 200 151
+            emphasis_3 162 203 157
+        }
+        frame_unselected {
+            base 35 42 48
+            background 10 16 22
+            emphasis_0 188 158 198
+            emphasis_1 152 186 205
+            emphasis_2 233 200 151
+            emphasis_3 162 203 157
+        }
+        frame_highlight {
+            base 233 200 151
+            background 10 16 22
+            emphasis_0 188 158 198
+            emphasis_1 233 200 151
+            emphasis_2 233 200 151
+            emphasis_3 233 200 151
+        }
+        exit_code_success {
+            base 162 203 157
+            background 10 16 22
+            emphasis_0 67 169 151
+            emphasis_1 188 158 198
+            emphasis_2 152 186 205
+            emphasis_3 155 160 162
+        }
+        exit_code_error {
+            base 214 128 121
+            background 10 16 22
+            emphasis_0 233 200 151
+            emphasis_1 233 200 151
+            emphasis_2 233 200 151
+            emphasis_3 233 200 151
+        }
+        multiplayer_user_colors {
+            player_1 67 169 151
+            player_2 188 158 198
+            player_3 233 200 151
+            player_4 152 186 205
+            player_5 214 128 121
+            player_6 162 203 157
+            player_7 212 156 128
+            player_8 217 186 200
+            player_9 182 226 223
+            player_10 155 160 162
+        }
+    }
+}

@@ -1,0 +1,180 @@
+# Living Code Paper: https://github.com/ElliotLuque/living-code
+filekinds:
+  normal:
+    foreground: "#12171a"
+  directory:
+    foreground: "#187d6e"
+    is_bold: true
+  symlink:
+    foreground: "#1f7074"
+  pipe:
+    foreground: "#8f6213"
+  block_device:
+    foreground: "#8f6213"
+    is_bold: true
+  char_device:
+    foreground: "#8f6213"
+    is_bold: true
+  socket:
+    foreground: "#81558e"
+  special:
+    foreground: "#81558e"
+  executable:
+    foreground: "#3b7a35"
+    is_bold: true
+  mount_point:
+    foreground: "#2b6991"
+    is_bold: true
+perms:
+  user_read:
+    foreground: "#8f6213"
+  user_write:
+    foreground: "#a74541"
+  user_execute_file:
+    foreground: "#3b7a35"
+    is_underline: true
+  user_execute_other:
+    foreground: "#3b7a35"
+  group_read:
+    foreground: "#8f6213"
+  group_write:
+    foreground: "#a74541"
+  group_execute:
+    foreground: "#3b7a35"
+  other_read:
+    foreground: "#8f6213"
+  other_write:
+    foreground: "#a74541"
+  other_execute:
+    foreground: "#3b7a35"
+  special_user_file:
+    foreground: "#81558e"
+  special_other:
+    foreground: "#81558e"
+  attribute:
+    foreground: "#50565a"
+size:
+  major:
+    foreground: "#50565a"
+  minor:
+    foreground: "#50565a"
+  number_byte:
+    foreground: "#3b7a35"
+  number_kilo:
+    foreground: "#3b7a35"
+  number_mega:
+    foreground: "#8f6213"
+  number_giga:
+    foreground: "#a04f27"
+  number_huge:
+    foreground: "#a74541"
+  unit_byte:
+    foreground: "#50565a"
+  unit_kilo:
+    foreground: "#50565a"
+  unit_mega:
+    foreground: "#50565a"
+  unit_giga:
+    foreground: "#50565a"
+  unit_huge:
+    foreground: "#50565a"
+users:
+  user_you:
+    foreground: "#8f6213"
+  user_root:
+    foreground: "#a74541"
+  user_other:
+    foreground: "#81558e"
+  group_yours:
+    foreground: "#8f6213"
+  group_other:
+    foreground: "#50565a"
+  group_root:
+    foreground: "#a74541"
+links:
+  normal:
+    foreground: "#1f7074"
+  multi_link_file:
+    foreground: "#a04f27"
+git:
+  new:
+    foreground: "#3b7a35"
+  modified:
+    foreground: "#8f6213"
+  deleted:
+    foreground: "#a74541"
+  renamed:
+    foreground: "#2b6991"
+  ignored:
+    foreground: "#6b7378"
+  conflicted:
+    foreground: "#a74541"
+git_repo:
+  branch_main:
+    foreground: "#3b7a35"
+  branch_other:
+    foreground: "#81558e"
+  git_clean:
+    foreground: "#3b7a35"
+  git_dirty:
+    foreground: "#8f6213"
+security_context:
+  selinux:
+    colon:
+      foreground: "#6b7378"
+    user:
+      foreground: "#2b6991"
+    role:
+      foreground: "#81558e"
+    typ:
+      foreground: "#8f6213"
+    range:
+      foreground: "#50565a"
+  none:
+    foreground: "#6b7378"
+file_type:
+  image:
+    foreground: "#a04f27"
+  video:
+    foreground: "#81558e"
+  music:
+    foreground: "#1f7074"
+  crypto:
+    foreground: "#a74541"
+  document:
+    foreground: "#2e3437"
+  compressed:
+    foreground: "#a74541"
+  temp:
+    foreground: "#6b7378"
+  compiled:
+    foreground: "#2b6991"
+  build:
+    foreground: "#8f6213"
+    is_bold: true
+  source:
+    foreground: "#1f7074"
+punctuation:
+  foreground: "#6b7378"
+date:
+  foreground: "#2b6991"
+inode:
+  foreground: "#50565a"
+blocks:
+  foreground: "#50565a"
+header:
+  foreground: "#2e3437"
+  is_underline: true
+octal:
+  foreground: "#a04f27"
+flags:
+  foreground: "#81558e"
+symlink_path:
+  foreground: "#1f7074"
+control_char:
+  foreground: "#a74541"
+broken_symlink:
+  foreground: "#a74541"
+broken_path_overlay:
+  foreground: "#a74541"
+  is_underline: true
