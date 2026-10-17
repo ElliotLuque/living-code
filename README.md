@@ -311,7 +311,7 @@ Then pick **Living Code Night**, **Frost**, **Paper** or **Signal** in *Preferen
 
 **Cursor, VSCodium, Windsurf and other forks** install from [Open VSX](https://open-vsx.org/extension/elliotluque/living-code): search for **Living Code** in their Extensions view.
 
-**Without a marketplace:** download `living-code-<version>.vsix` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run `code --install-extension living-code-<version>.vsix` (or *Extensions: Install from VSIX...*). To build it yourself: `cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies`. This README assumes the extension is published to both marketplaces.
+**Without a marketplace:** once a release has been published, download `living-code-<version>.vsix` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run `code --install-extension living-code-<version>.vsix` (or *Extensions: Install from VSIX...*). To build it yourself: `cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies`. This README assumes the extension is published to both marketplaces.
 
 The same JSON works with **Shiki**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).
 
@@ -322,13 +322,7 @@ One plugin, four themes, for IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, CL
 
 In the IDE open *Settings | Plugins | Marketplace*, search for **Living Code** and click **Install**, then pick **Living Code Night** (or Frost, Paper, Signal) in *Settings | Appearance & Behavior | Appearance | Theme*; the matching editor color scheme is applied with it.
 
-**Without a marketplace:** build the plugin and install it from disk:
-
-```sh
-pnpm run package:jetbrains
-```
-
-This writes `dist/jetbrains/living-code-jetbrains-0.1.0.zip`. In *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...*, pick the zip and restart. This README assumes the plugin is published to the JetBrains Marketplace.
+**Without a marketplace:** download `living-code-jetbrains-0.1.0.zip` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) (or build it with `pnpm run package:jetbrains` from a checkout, which writes it to `dist/jetbrains/`). In *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...*, pick the zip and restart. This README assumes the plugin is published to the JetBrains Marketplace.
 
 The sources in `extras/jetbrains/` are the plugin's layout: `META-INF/plugin.xml`, one `themes/living-code-<flavor>.theme.json` UI theme and one `themes/living-code-<flavor>.xml` editor scheme per flavor. This port has not been tested in a JetBrains IDE yet.
 
@@ -337,11 +331,11 @@ The sources in `extras/jetbrains/` are the plugin's layout: `META-INF/plugin.xml
 
 In Zed, open the Extensions panel (`zed: extensions`, or `cmd-shift-x` on macOS and `ctrl-shift-x` on Linux), search for **Living Code**, and click **Install**. Then pick a flavor with `theme selector: toggle` (`cmd-k cmd-t`).
 
-Without the registry: run `zed: install dev extension` and select the `extras/zed` folder of a checkout, or copy one theme file into `~/.config/zed/themes/`:
+Without the registry: run `zed: install dev extension` and select the `extras/zed` folder of a checkout, or download the theme file into `~/.config/zed/themes/`:
 
 ```sh
 mkdir -p ~/.config/zed/themes
-cp extras/zed/themes/living-code.json ~/.config/zed/themes/
+curl -fsSL https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/zed/themes/living-code.json -o ~/.config/zed/themes/living-code.json
 ```
 
 The theme file holds all four flavors. This README assumes the extension is published to the Zed registry.
@@ -358,7 +352,7 @@ Targets Sublime Text 4. It uses the modern `.sublime-color-scheme` format, one f
 
 **Package Control.** This README assumes the package is published to Package Control. Open the Command Palette and run *Package Control: Install Package*, choose **Living Code**, then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
 
-**Manual.** Copy the `.sublime-color-scheme` files from [`extras/sublime/`](extras/sublime) into `Packages/User/` (*Preferences → Browse Packages…*), then select the scheme as above. To customize, add a `Packages/User/<Scheme>.sublime-color-scheme` with the same file name and override entries under `variables` or `globals`.
+**Manual.** Copy the `.sublime-color-scheme` files from [`extras/sublime/`](extras/sublime) into `Packages/User/` (*Preferences → Browse Packages…*), then select the scheme as above. To customize a manual install, edit the copied file. With the Package Control install, add a `Packages/User/<Scheme>.sublime-color-scheme` with the same file name as the package scheme and override entries under `variables` or `globals`.
 
 `pnpm run package:sublime` builds `dist/sublime/Living Code.sublime-package` from the same generator. The [bat · delta (tmTheme) port](#tmtheme) stays for bat and delta; Sublime Text should use this native scheme.
 

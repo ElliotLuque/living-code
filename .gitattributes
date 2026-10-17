@@ -6,11 +6,3 @@ palette.mjs linguist-generated
 assets/swatches/** linguist-generated
 README.md linguist-generated=false
 assets/icons/** linguist-generated
-
-# Package Control installs the GitHub archive of a release tag. Ship only the
-# Sublime color schemes and the license, not the whole repository.
-/* export-ignore
-/LICENSE -export-ignore
-/extras -export-ignore
-/extras/* export-ignore
-/extras/sublime -export-ignore

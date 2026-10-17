@@ -120,7 +120,7 @@ export const sublime = {
 
 **Package Control.** This README assumes the package is published to Package Control. Open the Command Palette and run *Package Control: Install Package*, choose **Living Code**, then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
 
-**Manual.** Copy the \`.sublime-color-scheme\` files from [\`extras/sublime/\`](extras/sublime) into \`Packages/User/\` (*Preferences → Browse Packages…*), then select the scheme as above. To customize, add a \`Packages/User/<Scheme>.sublime-color-scheme\` with the same file name and override entries under \`variables\` or \`globals\`.
+**Manual.** Copy the \`.sublime-color-scheme\` files from [\`extras/sublime/\`](extras/sublime) into \`Packages/User/\` (*Preferences → Browse Packages…*), then select the scheme as above. To customize a manual install, edit the copied file. With the Package Control install, add a \`Packages/User/<Scheme>.sublime-color-scheme\` with the same file name as the package scheme and override entries under \`variables\` or \`globals\`.
 
 \`pnpm run package:sublime\` builds \`dist/sublime/Living Code.sublime-package\` from the same generator. The [bat · delta (tmTheme) port](#tmtheme) stays for bat and delta; Sublime Text should use this native scheme.`,
 };

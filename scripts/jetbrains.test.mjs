@@ -48,6 +48,30 @@ test("zip() is order independent and round-trips", () => {
   assert.equal(files.get("a/x.txt").toString(), "one");
 });
 
+// Zero-dependency well-formedness check: balanced tags and no bare ampersands.
+function assertWellFormedXml(xml, label) {
+  const body = xml.replace(/<\?[\s\S]*?\?>/g, "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, "");
+  const stack = [];
+  for (const m of body.matchAll(/<(\/?)([A-Za-z_][\w.:-]*)((?:[^>"']|"[^"]*"|'[^']*')*?)(\/?)>/g)) {
+    const [, close, name, , selfClose] = m;
+    if (close) assert.equal(stack.pop(), name, `${label}: unexpected </${name}>`);
+    else if (!selfClose) stack.push(name);
+  }
+  assert.deepEqual(stack, [], `${label}: unclosed tags`);
+  const text = body.replace(/<(?:[^>"']|"[^"]*"|'[^']*')*>/g, "");
+  assert.doesNotMatch(text, /[<>]/, `${label}: stray angle bracket in text`);
+  assert.doesNotMatch(body.replace(/&(amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, ""), /&/, `${label}: bare ampersand`);
+}
+
+test("the XML well-formedness helper rejects broken XML", () => {
+  assert.throws(() => assertWellFormedXml("<a><b></a>", "x"));
+  assert.throws(() => assertWellFormedXml("<a>", "x"));
+  assert.throws(() => assertWellFormedXml("<a>Tom & Jerry</a>", "x"));
+  assertWellFormedXml('<a x="1 &amp; 2"><b/><![CDATA[ a & b ]]></a>', "x");
+});
+
+test("plugin.xml is well-formed XML", () => assertWellFormedXml(pluginXml(flavors), "plugin.xml"));
+
 test("plugin.xml carries the required Marketplace fields", () => {
   const xml = pluginXml(flavors);
   assert.match(xml, /<id>com\.elliotluque\.livingcode<\/id>/);
@@ -99,6 +123,7 @@ for (const f of flavors) {
     const xml = editorScheme(f);
     assert.match(xml, new RegExp(`<scheme name="${f.name}" version="142" parent_scheme="${f.light ? "Default" : "Darcula"}">`));
     assert.ok(xml.trimEnd().endsWith("</scheme>"));
+    assertWellFormedXml(xml, `${f.slug}.xml`);
     const values = [...xml.matchAll(/<option name="(FOREGROUND|BACKGROUND|EFFECT_COLOR|ERROR_STRIPE_COLOR)" value="([^"]*)"/g)];
     assert.ok(values.length > 100);
     for (const [, k, v] of values) assert.match(v, /^[0-9a-f]{6}$/i, `${k}=${v}`);
