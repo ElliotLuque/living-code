@@ -1,6 +1,7 @@
 # Runs only when a version tag (v*) is pushed. Elliot creates the tag; nothing here creates one.
 # Builds every packaged artifact with the same scripts the `package` workflow uses and attaches them to the GitHub
-# release for that tag. Needs no secrets: the built-in GITHUB_TOKEN is enough to create a release.
+# release for that tag. The release job needs no secrets (the built-in GITHUB_TOKEN is enough). The mirror job copies the
+# Obsidian and Sublime files into their own repositories with MIRROR_TOKEN; without it the job skips with a warning.
 name: release
 on:
   push:
@@ -44,3 +45,24 @@ jobs:
             dist/chrome/*.zip \
             dist/firefox/*.xpi \
             dist/living-code-extras.zip
+
+  # Obsidian and Package Control need the files at the root of their own repository. Those repositories are written
+  # only from here (scripts/mirror.mjs); nobody edits them by hand. Without MIRROR_TOKEN the script warns and exits 0.
+  mirror:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Build the generated files
+        run: node scripts/build.mjs
+      - name: Mirror to living-code-obsidian
+        env:
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+        run: node scripts/mirror.mjs obsidian
+      - name: Mirror to living-code-sublime
+        if: ${{ !cancelled() }} # a failure in the Obsidian step must not block the Sublime mirror
+        env:
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+        run: node scripts/mirror.mjs sublime
