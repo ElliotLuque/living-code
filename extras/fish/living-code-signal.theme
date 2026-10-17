@@ -1,0 +1,41 @@
+# name: 'Living Code Signal'
+# preferred_background: 05080b
+# url: https://github.com/ElliotLuque/living-code
+
+fish_color_normal e2e9ee
+fish_color_command e2e9ee
+fish_color_keyword 00a692
+fish_color_quote e2e9ee
+fish_color_redirection 747c80
+fish_color_end 50565b
+fish_color_error e2e9ee
+fish_color_param c8cfd4
+fish_color_option c8cfd4
+fish_color_comment 747c80
+fish_color_selection e2e9ee --background=2d3438
+fish_color_operator 00a692
+fish_color_escape e2e9ee
+fish_color_autosuggestion 747c80
+fish_color_cwd c8cfd4
+fish_color_cwd_root e2e9ee
+fish_color_user c8cfd4
+fish_color_host c8cfd4
+fish_color_host_remote c8cfd4
+fish_color_status e2e9ee
+fish_color_valid_path e2e9ee --underline
+fish_color_history_current e2e9ee --bold
+fish_color_search_match e2e9ee --background=1d2226
+fish_color_cancel 747c80
+fish_pager_color_progress 747c80
+fish_pager_color_background
+fish_pager_color_prefix 00a692 --bold --underline
+fish_pager_color_completion e2e9ee
+fish_pager_color_description 9ba0a2
+fish_pager_color_selected_background --background=2d3438
+fish_pager_color_selected_prefix 00a692 --bold --underline
+fish_pager_color_selected_completion e2e9ee
+fish_pager_color_selected_description c8cfd4
+fish_pager_color_secondary_background
+fish_pager_color_secondary_prefix 00a692
+fish_pager_color_secondary_completion c8cfd4
+fish_pager_color_secondary_description 9ba0a2

@@ -1,0 +1,25 @@
+name: Living Code Signal
+accent: '#00a692'
+cursor: '#00a692'
+background: '#05080b'
+foreground: '#e2e9ee'
+details: darker
+terminal_colors:
+  normal:
+    black: '#1d2226'
+    red: '#e2e9ee'
+    green: '#c8cfd4'
+    yellow: '#e2e9ee'
+    blue: '#c8cfd4'
+    magenta: '#c8cfd4'
+    cyan: '#00a692'
+    white: '#9ba0a2'
+  bright:
+    black: '#50565b'
+    red: '#e2e9ee'
+    green: '#e2e9ee'
+    yellow: '#e2e9ee'
+    blue: '#e2e9ee'
+    magenta: '#e2e9ee'
+    cyan: '#00a692'
+    white: '#e2e9ee'

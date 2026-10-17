@@ -246,9 +246,9 @@ or set `flavor = "frost"` in the [plugin setup](#neovim). Browser themes (Firefo
 
 **Editors:** [Neovim](#neovim) · [VS Code](#vscode) · [JetBrains IDEs](#jetbrains) · [Zed](#zed) · [Helix](#helix) · [Sublime Text](#sublime) · [bat · delta (tmTheme)](#tmtheme)
 
-**Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot)
+**Terminals:** [kitty](#kitty) · [Ghostty](#ghostty) · [Alacritty](#alacritty) · [WezTerm](#wezterm) · [foot](#foot) · [Windows Terminal](#windows-terminal) · [iTerm2](#iterm2) · [Warp](#warp) · [Konsole](#konsole)
 
-**CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit) · [delta](#delta) · [Hunk](#hunk)
+**CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit) · [delta](#delta) · [Hunk](#hunk) · [fish](#fish) · [zellij](#zellij) · [yazi](#yazi) · [k9s](#k9s) · [eza](#eza)
 
 **Browsers:** [Firefox](#firefox) · [Chrome, Brave and Chromium](#chrome)
 
@@ -421,6 +421,60 @@ config.color_scheme = "Living Code Night"
 include=~/.config/foot/living-code-night.ini
 ```
 
+<a id="windows-terminal"></a>
+#### [Windows Terminal](https://github.com/microsoft/terminal)
+
+Run this in PowerShell. It saves a [JSON fragment](https://learn.microsoft.com/en-us/windows/terminal/json-fragment-extensions) that Windows Terminal loads by itself, so nothing in `settings.json` is edited:
+
+```powershell
+$d = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\Fragments\living-code"; New-Item -ItemType Directory -Force $d | Out-Null; Invoke-WebRequest https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/windows-terminal/living-code.json -OutFile "$d\living-code.json" -UseBasicParsing
+```
+
+Restart Windows Terminal. The four schemes appear in *Settings → Color schemes*; select one under a profile's *Appearance*, or set it in `settings.json`:
+
+```json
+"colorScheme": "Living Code Night"
+```
+
+Fallback: paste the scheme objects from `extras/windows-terminal/living-code-*.json` into the `schemes` array of `settings.json`.
+
+<a id="iterm2"></a>
+#### [iTerm2](https://iterm2.com)
+
+Download a preset and `open` it; iTerm2 imports it and names it after the file (*Living Code Night*, *Living Code Frost*, *Living Code Paper*, *Living Code Signal*):
+
+```sh
+curl -fsSL --output-dir ~/Downloads -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/iterm2/Living-Code-{Night,Frost,Paper,Signal}.itermcolors" && open ~/Downloads/Living-Code-*.itermcolors
+```
+
+Then pick one under *Settings → Profiles → Colors → Color Presets*. Fallback: in that same menu choose *Import...* and select the downloaded files.
+
+<a id="warp"></a>
+#### [Warp](https://www.warp.dev)
+
+Download the themes into Warp's [custom themes folder](https://docs.warp.dev/terminal/appearance/custom-themes), then pick one under *Settings → Appearance → Themes*. macOS:
+
+```sh
+curl -fsSL --create-dirs --output-dir ~/.warp/themes -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/warp/living-code-{night,frost,paper,signal}.yaml"
+```
+
+Linux:
+
+```sh
+curl -fsSL --create-dirs --output-dir "${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal/themes" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/warp/living-code-{night,frost,paper,signal}.yaml"
+```
+
+On Windows the folder is `%APPDATA%\warp\Warp\data\themes\`. If a theme does not show up straight away, restart Warp.
+
+<a id="konsole"></a>
+#### [Konsole](https://konsole.kde.org)
+
+```sh
+curl -fsSL --create-dirs --output-dir ~/.local/share/konsole -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/konsole/living-code-{night,frost,paper,signal}.colorscheme"
+```
+
+Then open *Settings → Edit Current Profile → Appearance* and select the color scheme. Konsole picks up new files in that folder without a restart.
+
 ### CLI & TUI
 
 <a id="tmux"></a>
@@ -503,6 +557,80 @@ hunk diff --extension ./extras/hunk/living-code.mjs --theme living-code-night
 **Config only:** instead of the extension, merge a flavor's `.toml` file into `~/.config/hunk/config.toml` (or a repo's `.hunk/config.toml`) and set the top-level `theme` as above. Do not add duplicate theme tables. Config themes take precedence over extension themes with the same name.
 
 Available themes: `living-code-night`, `living-code-signal`, `living-code-frost`, `living-code-paper`. Syntax colors share the editor ports' scope map.
+
+<a id="fish"></a>
+#### [fish](https://fishshell.com)
+
+Needs fish 3.4 or newer. Download the themes, then choose one:
+
+```fish
+curl -fsSL --create-dirs --output-dir ~/.config/fish/themes -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/fish/living-code-{night,frost,paper,signal}.theme"
+fish_config theme save living-code-night
+```
+
+`fish_config theme choose living-code-night` previews it for the current session only; `save` makes it permanent. `fish_config theme` lists the other flavors.
+
+<a id="zellij"></a>
+#### [zellij](https://zellij.dev)
+
+These use zellij's component-based [theme format](https://zellij.dev/documentation/themes.html), so they need a zellij release that supports it. Download the themes into the `themes` folder of your config directory, then name one in `config.kdl`:
+
+```sh
+curl -fsSL --create-dirs --output-dir ~/.config/zellij/themes -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/zellij/living-code-{night,frost,paper,signal}.kdl"
+```
+
+```kdl
+theme "living-code-night"
+```
+
+`zellij setup --check` prints the exact config directory if yours is elsewhere.
+
+<a id="yazi"></a>
+#### [yazi](https://yazi-rs.github.io)
+
+`ya pkg add` cannot install these straight from this repository. It looks for a `<name>.yazi` folder at the root of the repository (`ya pkg add owner/repo:name`), and Living Code keeps its flavors under `extras/yazi/` rather than adding folders at the root. So download the flavors by hand:
+
+```sh
+curl -fsSL --create-dirs -o "$HOME/.config/yazi/flavors/living-code-#1.yazi/#2" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/yazi/living-code-{night,frost,paper,signal}.yazi/{flavor.toml,tmtheme.xml,LICENSE}"
+```
+
+Then name them in `~/.config/yazi/theme.toml`:
+
+```toml
+[flavor]
+dark = "living-code-night"
+light = "living-code-paper"
+```
+
+On Windows the flavors folder is `%AppData%\yazi\config\flavors`.
+
+<a id="k9s"></a>
+#### [k9s](https://k9scli.io)
+
+Download the skins, then select one in `config.yaml`:
+
+```sh
+curl -fsSL --create-dirs --output-dir "${XDG_CONFIG_HOME:-$HOME/.config}/k9s/skins" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/k9s/living-code-{night,frost,paper,signal}.yaml"
+```
+
+```yaml
+k9s:
+  ui:
+    skin: living-code-night
+```
+
+On macOS k9s may keep its config in `~/Library/Application Support/k9s` instead; run `k9s info` to see the directory it uses.
+
+<a id="eza"></a>
+#### [eza](https://eza.rocks)
+
+Needs eza 0.19 or newer. eza reads a single `theme.yml` from `$EZA_CONFIG_DIR`, or `~/.config/eza/` if that is unset, so download the flavor you want under that name:
+
+```sh
+curl -fsSLo ~/.config/eza/theme.yml --create-dirs https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/eza/living-code-night.yml
+```
+
+Swap `night` for `frost`, `paper` or `signal` to use another flavor. eza only colors what `LS_COLORS` / `EZA_COLORS` do not already set, so unset those variables if the theme seems to have no effect.
 
 ### Browsers
 
