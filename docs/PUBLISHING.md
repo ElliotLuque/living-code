@@ -113,16 +113,6 @@ The manifests use the icons at 48 and 128 pixels; there is no 16 pixel icon. Aft
 
 1. Create a public GitHub repository for the theme (for example `ElliotLuque/obsidian-living-code`) and copy the contents of `extras/obsidian/` into its root.
 2. Create the GitHub release `1.0.0`. The tag must equal `version` in `manifest.json`, and `manifest.json` and `theme.css` must be attached to the release as binary files.
-3. Fork <https://github.com/obsidianmd/obsidian-releases> and append this entry to the end of `community-css-themes.json`, then open a pull request using the theme template. Automated checks run on it:
-
-   ```json
-   {
-     "name": "Living Code",
-     "author": "Elliot Luque",
-     "repo": "ElliotLuque/obsidian-living-code",
-     "screenshot": "screenshot.png",
-     "modes": ["dark", "light"]
-   }
-   ```
-
-4. Docs: <https://docs.obsidian.md/Themes/App+themes/Submit+your+theme>. Obsidian's review takes weeks, so the README keeps the manual route as the fallback.
+3. Make sure `manifest.json` is committed on the default branch of that repository (the directory reads it from the HEAD of the default branch). Sign in at <https://community.obsidian.md>, link your GitHub account, and choose **Add your theme**.
+4. Docs: <https://docs.obsidian.md/Themes/App+themes/Submit+your+theme>. The older route, a pull request to `obsidianmd/obsidian-releases` adding an entry to `community-css-themes.json`, is the legacy format and is no longer what the docs describe. Obsidian's review takes weeks, so the README keeps the manual route as the fallback.
+5. Optional: `extras/obsidian/screenshot.png` is a generated mock-up, not a capture of Obsidian. Replace it with a real screenshot before submitting if the reviewers ask for one.

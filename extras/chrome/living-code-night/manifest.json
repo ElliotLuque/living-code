@@ -39,10 +39,20 @@
         233,
         238
       ],
+      "background_tab": [
+        2,
+        4,
+        5
+      ],
       "tab_background_text": [
         155,
         160,
         162
+      ],
+      "toolbar_text": [
+        226,
+        233,
+        238
       ],
       "bookmark_text": [
         200,
@@ -80,21 +90,6 @@
         238
       ],
       "ntp_link": [
-        0,
-        166,
-        146
-      ],
-      "ntp_section": [
-        9,
-        14,
-        17
-      ],
-      "ntp_section_text": [
-        226,
-        233,
-        238
-      ],
-      "ntp_section_link": [
         0,
         166,
         146
