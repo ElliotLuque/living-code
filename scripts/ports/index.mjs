@@ -31,7 +31,7 @@ export const QUICK = {
   jetbrains: "Marketplace: *Settings | Plugins*, search **Living Code**",
   zed: "Extensions panel: search **Living Code**",
   helix: "One line, see below",
-  sublime: "Package Control: *Install Package*, **Living Code**",
+  sublime: "One line, see below (Package Control pending a dedicated repo)",
   tmtheme: "One line, see below",
   kitty: "One line, see below",
   ghostty: "One line, see below",

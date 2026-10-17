@@ -130,10 +130,10 @@ export const chrome = {
   files: (f) => supportsBrowserTheme(f) ? [
     { path: `extras/chrome/${f.slug}/manifest.json`, content: JSON.stringify(chromeTheme(f), null, 2) + "\n" },
   ] : [],
-  install: `Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
+  install: `Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
 
-1. **Chrome Web Store:** pending. Neither theme is listed yet; once they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
-2. **Without the store:** once a release has been published, download \`living-code-chrome-night.zip\` or \`living-code-chrome-paper.zip\` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open \`chrome://extensions\`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select \`extras/chrome/living-code-night\` or \`extras/chrome/living-code-paper\`.)
+1. **Release zip:** download \`living-code-chrome-night.zip\` or \`living-code-chrome-paper.zip\` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open \`chrome://extensions\`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select \`extras/chrome/living-code-night\` or \`extras/chrome/living-code-paper\`.)
+2. **Chrome Web Store, once listed:** Neither theme is listed yet. When they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
 
 To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.`,
 };
