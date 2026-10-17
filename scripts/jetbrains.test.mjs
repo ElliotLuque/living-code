@@ -144,6 +144,9 @@ test("pluginFiles() covers the jar layout the Marketplace expects", () => {
   for (const e of pluginFiles(flavors).filter((e) => e.path.endsWith(".svg"))) {
     assert.match(e.content, /^<svg [^>]*width="40" height="40"/);
   }
+  // The Marketplace page shows pluginIcon.svg, so it has to be the dark (Night) icon.
+  const icon = pluginFiles(flavors).find((e) => e.path === "META-INF/pluginIcon.svg").content;
+  assert.match(icon, /<title id="title">Living Code Night:/);
 });
 
 test("package zip is deterministic and holds living-code/lib/living-code.jar", () => {

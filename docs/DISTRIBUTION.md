@@ -21,7 +21,7 @@ Packaging detail and the publish workflows are in [PUBLISHING.md](PUBLISHING.md)
 Push a version tag and the `release` workflow builds every artifact and attaches it to a GitHub release. It needs no secrets and runs only on `v*` tags.
 
 1. Make sure `main` is green and `version` in the root `package.json` is the version to release (the tag must be `v` plus that version; the workflow fails with a clear message otherwise).
-2. `git tag v0.1.0 && git push origin v0.1.0`.
+2. `git tag v0.1.1 && git push origin v0.1.1`.
 
 Attached: `living-code-<version>.vsix`, `living-code-jetbrains-<version>.zip`, `Living Code.sublime-package`, `living-code-chrome-night.zip`, `living-code-chrome-paper.zip`, `living-code-firefox-night.xpi`, `living-code-firefox-paper.xpi` and `living-code-extras.zip` (all of `extras/`). The README fallbacks link to <https://github.com/ElliotLuque/living-code/releases/latest>.
 
@@ -84,7 +84,7 @@ Used by Cursor, VSCodium, Windsurf and other forks.
    [living-code-theme]
    submodule = "extensions/living-code-theme"
    path = "extras/zed"
-   version = "0.1.0"
+   version = "0.1.1"
    ```
 
 5. Open the pull request and wait for review. The `version` must equal `version` in `extras/zed/extension.toml`.

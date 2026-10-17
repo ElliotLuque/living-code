@@ -2,7 +2,7 @@
   "name": "living-code",
   "private": true,
   "packageManager": "pnpm@12.9.0",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A color scheme for editors, terminals and the web.",
   "type": "module",
   "license": "MIT",
