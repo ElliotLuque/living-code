@@ -5,6 +5,9 @@ import { chromePackages, zipName } from "./package-chrome.mjs";
 import { chrome, chromeTheme, firefox } from "./ports/browsers.mjs";
 import { resolveAll } from "./resolve.mjs";
 
+// Keys in Chromium's kOverwritableColorTable (browser_theme_pack.cc); Chrome drops anything else.
+const CHROMIUM_COLOR_KEYS = new Set(["frame", "frame_inactive", "frame_incognito", "frame_incognito_inactive", "toolbar", "tab_text", "tab_background_text", "background_tab", "background_tab_inactive", "background_tab_incognito", "background_tab_incognito_inactive", "bookmark_text", "toolbar_button_icon", "button_background", "omnibox_background", "omnibox_text", "ntp_background", "ntp_header", "ntp_link", "ntp_text", "toolbar_text"]);
+
 const flavors = resolveAll();
 const shipped = flavors.filter((f) => f.id === "night" || f.id === "paper");
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
@@ -27,6 +30,7 @@ for (const f of shipped) {
     assert.ok(m.description.length > 0 && m.description.length <= 132, "Chrome limits description to 132 characters");
     assert.deepEqual(Object.keys(m.icons), ["48", "128"]);
     for (const k of REQUIRED_COLORS) assert.ok(m.theme.colors[k], k);
+    for (const k of Object.keys(m.theme.colors)) assert.ok(CHROMIUM_COLOR_KEYS.has(k), `Chromium ignores ${k}`);
     for (const [k, v] of Object.entries(m.theme.colors)) assert.ok(isRgb(v), `${k} = ${JSON.stringify(v)}`);
     assert.ok(m.theme.tints.buttons.every((n) => n === -1 || (n >= 0 && n <= 1)));
     assert.equal(typeof m.theme.properties.ntp_background_alignment, "string");

@@ -105,7 +105,9 @@ export function chromeTheme(f) {
         frame_incognito_inactive: r("bgDeep"),
         toolbar: r("bg"),
         tab_text: r("fg"),
+        background_tab: r("bgDeep"),
         tab_background_text: r("fgMuted"),
+        toolbar_text: r("fg"),
         bookmark_text: r("fgAlt"),
         toolbar_button_icon: r("fgMuted"),
         button_background: rgbArray(f.c("surface0")),
@@ -114,9 +116,6 @@ export function chromeTheme(f) {
         ntp_background: r("bg"),
         ntp_text: r("fg"),
         ntp_link: r("accent"),
-        ntp_section: r("bgAlt"),
-        ntp_section_text: r("fg"),
-        ntp_section_link: r("accent"),
       },
       tints: { buttons: [-1, -1, -1] },
       properties: { ntp_background_alignment: "center" },
@@ -133,8 +132,8 @@ export const chrome = {
   ] : [],
   install: `Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
 
-1. **Chrome Web Store:** search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**. This README assumes both themes are published to the Chrome Web Store.
-2. **Without the store:** download \`living-code-chrome-night.zip\` or \`living-code-chrome-paper.zip\` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open \`chrome://extensions\`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select \`extras/chrome/living-code-night\` or \`extras/chrome/living-code-paper\`.)
+1. **Chrome Web Store:** pending. Neither theme is listed yet; once they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
+2. **Without the store:** once a release has been published, download \`living-code-chrome-night.zip\` or \`living-code-chrome-paper.zip\` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open \`chrome://extensions\`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select \`extras/chrome/living-code-night\` or \`extras/chrome/living-code-paper\`.)
 
 To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.`,
 };

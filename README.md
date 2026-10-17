@@ -521,8 +521,8 @@ To switch themes, open **Add-ons and themes → Themes** (`about:addons`) and en
 
 Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
 
-1. **Chrome Web Store:** search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**. This README assumes both themes are published to the Chrome Web Store.
-2. **Without the store:** download `living-code-chrome-night.zip` or `living-code-chrome-paper.zip` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select `extras/chrome/living-code-night` or `extras/chrome/living-code-paper`.)
+1. **Chrome Web Store:** pending. Neither theme is listed yet; once they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
+2. **Without the store:** once a release has been published, download `living-code-chrome-night.zip` or `living-code-chrome-paper.zip` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select `extras/chrome/living-code-night` or `extras/chrome/living-code-paper`.)
 
 To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.
 
@@ -541,12 +541,12 @@ Obsidian's dark mode is **Night** and its light mode is **Paper**; the theme fol
 <a id="slack"></a>
 #### [Slack](https://slack.com)
 
-Open *Preferences → Themes*, choose *Import theme*, paste one of these strings under *Paste your legacy theme colors* and apply it:
+Open your profile picture menu → *Preferences → Appearance → Custom theme*, click *Import theme* next to *Theme Colors*, choose *Paste your legacy theme colors*, paste one of these strings and click *Apply*:
 
 - **Night**: `#020405,#12171a,#00a692,#05080b,#12171a,#e2e9ee,#8acb83,#e96560`
-- **Frost**: `#050a0f,#171e24,#43a997,#0a1016,#171e24,#e2e9ee,#a2cb9d,#d68079`
+- **Frost**: `#050a0f,#171e24,#43a997,#0a1016,#171e24,#e2e9ee,#a2cb9d,#333c43`
 - **Paper**: `#e0e5e9,#e3e9ed,#187d6e,#f4f7f9,#e3e9ed,#12171a,#3b7a35,#a74541`
-- **Signal**: `#020405,#12171a,#00a692,#05080b,#12171a,#e2e9ee,#c8cfd4,#e2e9ee`
+- **Signal**: `#020405,#12171a,#00a692,#05080b,#12171a,#e2e9ee,#c8cfd4,#00a692`
 
 The eight colors are: column background, menu background hover, active item, active item text, hover item, text color, active presence, mention badge. Slack colors only its own interface, not code. These strings follow Slack's [help article](https://slack.com/help/articles/205166337-Change-your-Slack-theme) and have not been tested in a Slack client.
 

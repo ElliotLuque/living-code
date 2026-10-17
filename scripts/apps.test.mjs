@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { MIN_APP_VERSION, OBSIDIAN_VERSION, obsidian, obsidianVariables, SNIPPET_FLAVORS } from "./ports/obsidian.mjs";
-import { SLACK_SLOTS, slack, slackFlavors, slackString } from "./ports/slack.mjs";
+import { SLACK_SLOTS, hexContrastWithWhite, slack, slackFlavors, slackString } from "./ports/slack.mjs";
 import { resolveAll } from "./resolve.mjs";
 
 const flavors = resolveAll();
@@ -58,6 +58,13 @@ test("Obsidian install text names both routes", () => {
   assert.ok(readme.includes(obsidian.install));
 });
 
+test("Slack install text names the Appearance menu path", () => {
+  assert.match(slack.install, /Preferences → Appearance → Custom theme/);
+  assert.match(slack.install, /Import theme/);
+  assert.match(slack.install, /Paste your legacy theme colors/);
+  assert.doesNotMatch(slack.install, /Preferences → Themes/);
+});
+
 test("Slack strings are eight hex colors and no flavor is shipped twice", () => {
   const { unique, duplicates } = slackFlavors(flavors);
   assert.equal(unique.length + duplicates.length, flavors.length);
@@ -68,6 +75,7 @@ test("Slack strings are eight hex colors and no flavor is shipped twice", () => 
     assert.equal(parts.length, SLACK_SLOTS.length);
     for (const p of parts) assert.match(p, /^#[0-9a-f]{6}$/i);
   }
+  for (const s of strings) assert.ok(hexContrastWithWhite(s.split(",")[7]) >= 3, `mention badge in ${s}`);
   const files = slack.all(flavors);
   assert.equal(files.length, unique.length);
   for (const f of unique) assert.ok(readme.includes(slackString(f)), f.id);
