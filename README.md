@@ -614,8 +614,8 @@ Starship needs the `palette = ...` line at the top of the file and the palette t
 ```sh
 flavor=night
 cfg="${STARSHIP_CONFIG:-$HOME/.config/starship.toml}"
-mkdir -p "$(dirname "$cfg")"; t="$cfg"; while [ -L "$t" ]; do l="$(readlink "$t")"; case "$l" in /*) t="$l" ;; *) t="$(dirname "$t")/$l" ;; esac; done
-if [ -e "$t" ] && [ ! -w "$t" ]; then echo "$t is read-only, so it was left unchanged. Add the Living Code palette to its source instead." >&2; false; else touch "$t" && p="$(curl -fsSL "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/starship/living-code-$flavor.toml")" && { printf '%s\n' "$p" | head -n 1; awk 'BEGIN{top=1} /^\[/{top=0; skip=($0 ~ /^\[palettes\.living_code_/)} skip{next} top && /^palette[ \t]*=/{next} /^[ \t]*$/{n++; next} {for(;n>0;n--) print ""; print}' "$t"; printf '\n'; printf '%s\n' "$p" | tail -n +2; } > "$t.new" && cat "$t.new" > "$t" && rm "$t.new"; fi
+mkdir -p "$(dirname "$cfg")"; t="$cfg"; n=0; while [ -L "$t" ] && [ "$n" -lt 40 ]; do n=$((n+1)); l="$(readlink "$t")"; case "$l" in /*) t="$l" ;; *) t="$(dirname "$t")/$l" ;; esac; done
+if [ -L "$t" ]; then echo "$cfg is a symlink loop (more than 40 links), so it was left unchanged." >&2; false; elif [ -e "$t" ] && [ ! -w "$t" ]; then echo "$t is read-only, so it was left unchanged. Add the Living Code palette to its source instead." >&2; false; else touch "$t" && p="$(curl -fsSL "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/starship/living-code-$flavor.toml")" && { printf '%s\n' "$p" | head -n 1; awk 'BEGIN{top=1} /^\[/{top=0; skip=($0 ~ /^\[palettes\.living_code_/)} skip{next} top && /^palette[ \t]*=/{next} /^[ \t]*$/{n++; next} {for(;n>0;n--) print ""; print}' "$t"; printf '\n'; printf '%s\n' "$p" | tail -n +2; } > "$t.new" && cat "$t.new" > "$t" && rm "$t.new"; fi
 ```
 
 Module styles can then use names like `"bold teal"` or `"amber"`.

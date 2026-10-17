@@ -282,6 +282,20 @@ test("the Starship block leaves a read-only target and its link untouched", asyn
   } finally { await sb.done(); }
 });
 
+test("the Starship block stops on a symlink loop instead of hanging", async () => {
+  const sb = await sandbox();
+  try {
+    const a = join(sb.dir, "a.toml");
+    const b = join(sb.dir, "b.toml");
+    await symlink(b, a);
+    await symlink(a, b);
+    const r = sb.runRaw(shBlock(starship), { STARSHIP_CONFIG: a });
+    assert.notEqual(r.status, 0);
+    assert.match(r.stderr, /symlink loop/);
+    assert.ok(lstatSync(a).isSymbolicLink() && lstatSync(b).isSymbolicLink());
+  } finally { await sb.done(); }
+});
+
 test("the lazygit block works on a machine where lazygit has never run", async () => {
   const sb = await sandbox();
   try {

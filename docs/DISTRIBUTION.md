@@ -113,7 +113,7 @@ Used by Cursor, VSCodium, Windsurf and other forks.
 - **Cost:** free.
 
 1. Done: the public repository <https://github.com/ElliotLuque/living-code-obsidian> holds the contents of `extras/obsidian/` at its root, on the default branch.
-2. Done for `1.0.0`: the GitHub release's tag equals `version` in `manifest.json` (currently `1.0.0`, no `v` prefix), and attach `manifest.json` and `theme.css` to it as binary files.
+2. Done: release `1.0.0` (tag equals `version` in `manifest.json`, no `v` prefix) has `manifest.json` and `theme.css` attached. Later releases come from the `mirror` job (see [Mirror repos](#mirror-repos)).
 3. Sign in at <https://community.obsidian.md>, link your GitHub account and choose **Add your theme**. The directory reads `manifest.json` from the default branch and runs an automated review; fix anything it reports with a new release and a higher version.
 
 **The `community-css-themes.json` route.** The older route was a pull request to <https://github.com/obsidianmd/obsidian-releases> adding an entry to `community-css-themes.json`. Obsidian's current theme docs (above) describe only the web form, so use that. If a reviewer ever asks for the legacy entry, it is:
