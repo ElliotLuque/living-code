@@ -72,6 +72,8 @@ Build output is in `dist/npm/` and is not committed. Building never publishes an
 
 # Publishing to editor marketplaces
 
+For a channel-by-channel checklist (status, files, rules, credentials, cost and numbered steps), start with [DISTRIBUTION.md](DISTRIBUTION.md). This page has the packaging detail behind it.
+
 Each editor port is built by CI (`package` workflow, artifacts on every push and PR) and published by hand. The generated README leads each install section with the marketplace route, so publish a channel before, or together with, merging a change that depends on it. Nothing here runs automatically: the `publish-*` workflows are `workflow_dispatch`-only and fail with a clear message when their secret is empty.
 
 ## VS Code Marketplace and Open VSX
@@ -94,7 +96,7 @@ Package Control installs the GitHub archive of a semver tag, so publishing means
 
 ## GitHub releases
 
-The `release` workflow runs only when Elliot pushes a `v*` tag. It builds the `.vsix`, the JetBrains plugin zip and the `.sublime-package` and attaches them to the GitHub release for that tag. The README fallback installs (VS Code `.vsix`, JetBrains zip) download from there, so they work once the first release exists. It needs no secrets beyond the built-in `GITHUB_TOKEN`.
+The `release` workflow runs only when Elliot pushes a `v*` tag. It builds the `.vsix`, the JetBrains plugin zip, the `.sublime-package`, the Chrome zips, the Firefox `.xpi` files and `living-code-extras.zip` (all of `extras/`) and attaches them to the GitHub release for that tag. The README fallback installs (VS Code `.vsix`, JetBrains zip) download from there, so they work once the first release exists. It needs no secrets beyond the built-in `GITHUB_TOKEN`.
 
 ## Chrome Web Store
 

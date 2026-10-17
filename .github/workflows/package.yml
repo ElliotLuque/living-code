@@ -61,3 +61,29 @@ jobs:
           name: living-code-chrome-paper
           path: dist/chrome/living-code-chrome-paper.zip
           if-no-files-found: error
+  firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Zip the Firefox themes
+        run: node scripts/package-firefox.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-code-firefox
+          path: dist/firefox/*.xpi
+          if-no-files-found: error
+  extras:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Zip all of extras/
+        run: node scripts/package-extras.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-code-extras
+          path: dist/living-code-extras.zip
+          if-no-files-found: error
