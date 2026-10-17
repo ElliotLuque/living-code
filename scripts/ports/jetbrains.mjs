@@ -790,13 +790,7 @@ export const jetbrains = {
 
 In the IDE open *Settings | Plugins | Marketplace*, search for **Living Code** and click **Install**, then pick **Living Code Night** (or Frost, Paper, Signal) in *Settings | Appearance & Behavior | Appearance | Theme*; the matching editor color scheme is applied with it.
 
-**Without a marketplace:** build the plugin and install it from disk:
-
-\`\`\`sh
-pnpm run package:jetbrains
-\`\`\`
-
-This writes \`dist/jetbrains/living-code-jetbrains-${pluginVersion()}.zip\`. In *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...*, pick the zip and restart. This README assumes the plugin is published to the JetBrains Marketplace.
+**Without a marketplace:** download \`living-code-jetbrains-${pluginVersion()}.zip\` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) (or build it with \`pnpm run package:jetbrains\` from a checkout, which writes it to \`dist/jetbrains/\`). In *Settings | Plugins*, click the gear icon, choose *Install Plugin from Disk...*, pick the zip and restart. This README assumes the plugin is published to the JetBrains Marketplace.
 
 The sources in \`extras/jetbrains/\` are the plugin's layout: \`META-INF/plugin.xml\`, one \`themes/living-code-<flavor>.theme.json\` UI theme and one \`themes/living-code-<flavor>.xml\` editor scheme per flavor. This port has not been tested in a JetBrains IDE yet.`,
 };

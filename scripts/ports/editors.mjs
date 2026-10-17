@@ -353,7 +353,7 @@ Then pick **Living Code Night**, **Frost**, **Paper** or **Signal** in *Preferen
 
 **Cursor, VSCodium, Windsurf and other forks** install from [Open VSX](https://open-vsx.org/extension/elliotluque/living-code): search for **Living Code** in their Extensions view.
 
-**Without a marketplace:** download \`living-code-<version>.vsix\` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run \`code --install-extension living-code-<version>.vsix\` (or *Extensions: Install from VSIX...*). To build it yourself: \`cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies\`. This README assumes the extension is published to both marketplaces.
+**Without a marketplace:** once a release has been published, download \`living-code-<version>.vsix\` from the [latest GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and run \`code --install-extension living-code-<version>.vsix\` (or *Extensions: Install from VSIX...*). To build it yourself: \`cd extras/vscode && pnpm dlx @vscode/vsce package --no-dependencies\`. This README assumes the extension is published to both marketplaces.
 
 The same JSON works with **Shiki**. For Astro and other Expressive Code integrations, use the dedicated [Expressive Code port](#expressive-code).`,
 };
@@ -615,11 +615,11 @@ repository = "${REPO}"
   },
   install: `In Zed, open the Extensions panel (\`zed: extensions\`, or \`cmd-shift-x\` on macOS and \`ctrl-shift-x\` on Linux), search for **Living Code**, and click **Install**. Then pick a flavor with \`theme selector: toggle\` (\`cmd-k cmd-t\`).
 
-Without the registry: run \`zed: install dev extension\` and select the \`extras/zed\` folder of a checkout, or copy one theme file into \`~/.config/zed/themes/\`:
+Without the registry: run \`zed: install dev extension\` and select the \`extras/zed\` folder of a checkout, or download the theme file into \`~/.config/zed/themes/\`:
 
 \`\`\`sh
 mkdir -p ~/.config/zed/themes
-cp extras/zed/themes/living-code.json ~/.config/zed/themes/
+curl -fsSL https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/zed/themes/living-code.json -o ~/.config/zed/themes/living-code.json
 \`\`\`
 
 The theme file holds all four flavors. This README assumes the extension is published to the Zed registry.`,

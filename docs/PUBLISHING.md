@@ -90,4 +90,8 @@ Zed extensions are published by a pull request to <https://github.com/zed-indust
 
 ## Sublime Text (Package Control)
 
-Package Control installs the GitHub archive of a semver tag, so publishing means tagging `v<version>`, then adding the entry to `repository/l.json` in <https://github.com/sublimehq/package_control_channel> through a pull request. `.gitattributes` limits that archive to the four color schemes and the license. `pnpm run package:sublime` builds `dist/sublime/Living Code.sublime-package` for release attachment and manual installs.
+Package Control installs the GitHub archive of a semver tag, so publishing means tagging `v<version>`, then adding the entry to `repository/l.json` in <https://github.com/sublimehq/package_control_channel> through a pull request. The archive is the whole repository, because Package Control cannot select a subfolder of a tag archive. Restricting it with `export-ignore` in `.gitattributes` would also strip every other source archive of the repository (GitHub release "Source code" downloads, Nix and Homebrew tarballs), so that is deliberately not done. A dedicated package repository would fix it, and creating one needs Elliot's sign-off. `pnpm run package:sublime` builds `dist/sublime/Living Code.sublime-package`, which the `release` workflow attaches to the GitHub release for manual installs.
+
+## GitHub releases
+
+The `release` workflow runs only when Elliot pushes a `v*` tag. It builds the `.vsix`, the JetBrains plugin zip and the `.sublime-package` and attaches them to the GitHub release for that tag. The README fallback installs (VS Code `.vsix`, JetBrains zip) download from there, so they work once the first release exists. It needs no secrets beyond the built-in `GITHUB_TOKEN`.

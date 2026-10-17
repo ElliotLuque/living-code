@@ -1,0 +1,27 @@
+# Runs only when a v* tag is pushed (Elliot creates tags). Attaches the editor artifacts to the GitHub release.
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: pnpm/action-setup@v4
+      - name: Build the artifacts
+        run: |
+          pnpm run package:vscode
+          node scripts/package-jetbrains.mjs
+          node scripts/package-sublime.mjs
+      - name: Create the release and attach the artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" --title "$TAG" --generate-notes \
+            dist/vscode/*.vsix dist/jetbrains/*.zip "dist/sublime/Living Code.sublime-package"
