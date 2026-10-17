@@ -3,8 +3,6 @@
 
 [mgr]
 cwd = { fg = "#00a692" }
-hovered = { reversed = false, bg = "#2d3438" }
-preview_hovered = { bg = "#12171a" }
 find_keyword = { fg = "#00a692", bold = true }
 find_position = { fg = "#00a692", bold = true }
 symlink_target = { fg = "#00a692" }
@@ -17,6 +15,12 @@ count_cut = { fg = "#05080b", bg = "#e2e9ee" }
 count_selected = { fg = "#05080b", bg = "#c8cfd4" }
 border_symbol = "│"
 border_style = { fg = "#1d2226" }
+
+[indicator]
+parent = { fg = "#e2e9ee", bg = "#12171a" }
+current = { fg = "#e2e9ee", bg = "#2d3438" }
+preview = { bg = "#12171a" }
+padding = { open = "", close = "" }
 
 [tabs]
 active = { fg = "#05080b", bg = "#00a692", bold = true }
@@ -45,6 +49,7 @@ progress_error = { fg = "#e2e9ee", bg = "#1d2226" }
 
 [which]
 cols = 3
+border = { fg = "#00a692" }
 mask = { fg = "#e2e9ee", bg = "#12171a" }
 cand = { fg = "#e2e9ee" }
 rest = { fg = "#747c80" }

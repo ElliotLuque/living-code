@@ -40,9 +40,9 @@ export const fish = {
   install: `Needs fish 3.4 or newer. Download the themes, then choose one:
 
 ${fence("fish", `curl -fsSL --create-dirs --output-dir ~/.config/fish/themes -O "${rawUrl(allFlavors("extras/fish/living-code-*.theme"))}"
-fish_config theme save living-code-night`)}
+echo 'fish_config theme choose living-code-night' >> ~/.config/fish/config.fish`)}
 
-\`fish_config theme choose living-code-night\` previews it for the current session only; \`save\` makes it permanent. \`fish_config theme\` lists the other flavors.`,
+Run \`fish_config theme choose living-code-night\` on its own to try a flavor in the current session; the \`config.fish\` line makes it stick. \`fish_config theme save living-code-night\` also works but asks for confirmation. \`fish_config theme list\` shows the other flavors.`,
 };
 
 export function zellijTheme(f) {
@@ -111,8 +111,6 @@ export function yaziFlavor(f) {
 
 [mgr]
 cwd = ${s(accent)}
-hovered = { reversed = false, bg = "${sel}" }
-preview_hovered = { bg = "${surf}" }
 find_keyword = ${s(f.r("match"), null, true)}
 find_position = ${s(f.c("orchid"), null, true)}
 symlink_target = ${s(f.r("link"))}
@@ -125,6 +123,12 @@ count_cut = ${s(bg, f.r("error"))}
 count_selected = ${s(bg, f.r("warning"))}
 border_symbol = "│"
 border_style = ${s(f.r("border"))}
+
+[indicator]
+parent = { fg = "${fg}", bg = "${surf}" }
+current = { fg = "${fg}", bg = "${sel}" }
+preview = { bg = "${surf}" }
+padding = { open = "", close = "" }
 
 [tabs]
 active = ${s(bg, accent, true)}
@@ -153,6 +157,7 @@ progress_error = ${s(f.r("error"), f.c("surface1"))}
 
 [which]
 cols = 3
+border = ${s(f.r("borderActive"))}
 mask = ${s(fg, surf)}
 cand = ${s(f.r("function"))}
 rest = ${s(f.r("fgSubtle"))}
@@ -358,7 +363,11 @@ ${fence("yaml", `k9s:
   ui:
     skin: living-code-night`)}
 
-On macOS k9s may keep its config in \`~/Library/Application Support/k9s\` instead; run \`k9s info\` to see the directory it uses.`,
+On macOS, where \`XDG_CONFIG_HOME\` is usually unset, k9s keeps its config in \`~/Library/Application Support/k9s\`, so use this line instead (and edit \`config.yaml\` there):
+
+${fence("sh", `curl -fsSL --create-dirs --output-dir ~/Library/Application\\ Support/k9s/skins -O "${rawUrl(allFlavors("extras/k9s/living-code-*.yaml"))}"`)}
+
+\`k9s info\` prints the directory your install uses.`,
 };
 
 export function ezaTheme(f) {
@@ -438,9 +447,11 @@ export const eza = {
   name: "eza",
   homepage: "https://eza.rocks",
   files: (f) => [{ path: `extras/eza/${f.slug}.yml`, content: ezaYaml(f) }],
-  install: `Needs eza 0.19 or newer. eza reads a single \`theme.yml\` from \`$EZA_CONFIG_DIR\`, or \`~/.config/eza/\` if that is unset, so download the flavor you want under that name:
+  install: `Needs eza 0.19 or newer. eza reads a single \`theme.yml\` from \`$EZA_CONFIG_DIR\`, or else from \`\${XDG_CONFIG_HOME:-~/.config}/eza/\` on Linux and \`~/Library/Application Support/eza/\` on macOS, so download the flavor you want under that name:
 
-${fence("sh", `curl -fsSLo ~/.config/eza/theme.yml --create-dirs ${rawUrl("extras/eza/living-code-night.yml")}`)}
+${fence("sh", `flavor=night
+dir="\${EZA_CONFIG_DIR:-\${XDG_CONFIG_HOME:-$HOME/.config}/eza}"   # macOS: dir="$HOME/Library/Application Support/eza"
+curl -fsSLo "$dir/theme.yml" --create-dirs ${rawUrl("extras/eza/living-code-$flavor.yml")}`)}
 
-Swap \`night\` for \`frost\`, \`paper\` or \`signal\` to use another flavor. eza only colors what \`LS_COLORS\` / \`EZA_COLORS\` do not already set, so unset those variables if the theme seems to have no effect.`,
+Set \`flavor\` to \`frost\`, \`paper\` or \`signal\` to use another flavor. eza only colors what \`LS_COLORS\` / \`EZA_COLORS\` do not already set, so unset those variables if the theme seems to have no effect.`,
 };

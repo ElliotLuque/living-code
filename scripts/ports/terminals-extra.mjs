@@ -78,9 +78,9 @@ ${itermColorKeys(f).map(([k, c]) => `\t<key>${k}</key>\n${plistColor(c)}`).join(
 </plist>
 `,
   }],
-  install: `Download a preset and \`open\` it; iTerm2 imports it and names it after the file (*Living Code Night*, *Living Code Frost*, *Living Code Paper*, *Living Code Signal*):
+  install: `Download a preset and \`open\` it; iTerm2 imports it and names the preset after the file. The command saves the files with spaces so the presets read *Living Code Night*, *Living Code Frost*, *Living Code Paper* and *Living Code Signal*:
 
-${fence("sh", `curl -fsSL --output-dir ~/Downloads -O "${rawUrl("extras/iterm2/Living-Code-{Night,Frost,Paper,Signal}.itermcolors")}" && open ~/Downloads/Living-Code-*.itermcolors`)}
+${fence("sh", `curl -fsSL -o "$HOME/Downloads/Living Code #1.itermcolors" "${rawUrl("extras/iterm2/Living-Code-{Night,Frost,Paper,Signal}.itermcolors")}" && open "$HOME"/Downloads/Living\\ Code\\ *.itermcolors`)}
 
 Then pick one under *Settings → Profiles → Colors → Color Presets*. Fallback: in that same menu choose *Import...* and select the downloaded files.`,
 };
