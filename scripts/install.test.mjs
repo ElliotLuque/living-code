@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { existsSync, lstatSync, readlinkSync } from "node:fs";
+import { chmod, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -163,7 +163,8 @@ if [ -n "$out" ]; then mkdir -p "$(dirname "$out")" && cat "$src" > "$out"; else
     assert.equal(r.status, 0, `${script}\n${r.stderr}`);
     return r.stdout;
   };
-  return { dir, home, run, done: () => rm(dir, { recursive: true, force: true }) };
+  const runRaw = (script, extraEnv = {}) => spawnSync("sh", ["-c", script], { encoding: "utf8", env: { PATH: `${bin}:${process.env.PATH}`, HOME: home, ...extraEnv } });
+  return { dir, home, run, runRaw, done: () => rm(dir, { recursive: true, force: true }) };
 };
 const shBlock = (port) => shellBlocks(port.install)[0].body;
 
@@ -211,6 +212,87 @@ test("the Starship block is idempotent, switches flavor, keeps user settings and
     const custom = join(sb.dir, "custom", "s.toml");
     sb.run(block, { STARSHIP_CONFIG: custom });
     assert.equal(parseToml(await readFile(custom, "utf8"))[""].palette, '"living_code_night"');
+  } finally { await sb.done(); }
+});
+
+test("the Starship block keeps a symlinked starship.toml and edits its target", async () => {
+  const sb = await sandbox();
+  try {
+    const block = shBlock(starship);
+    const cfg = join(sb.home, ".config", "starship.toml");
+    const target = join(sb.dir, "dotfiles", "starship.toml");
+    await mkdir(join(sb.home, ".config"), { recursive: true });
+    await mkdir(join(sb.dir, "dotfiles"));
+    await writeFile(target, '[character]\nsuccess_symbol = "[>](bold green)"\n');
+    await symlink(target, cfg);
+    sb.run(block);
+    sb.run(block.replace("flavor=night", "flavor=frost"));
+    assert.ok(lstatSync(cfg).isSymbolicLink(), "the link must survive");
+    assert.equal(readlinkSync(cfg), target);
+    const doc = parseToml(await readFile(target, "utf8"));
+    assert.equal(doc[""].palette, '"living_code_frost"');
+    assert.equal(doc.character.success_symbol, '"[>](bold green)"');
+    assert.deepEqual(Object.keys(doc).filter((k) => k.startsWith("palettes.living_code_")), ["palettes.living_code_frost"]);
+    assert.ok(!existsSync(`${target}.new`) && !existsSync(`${cfg}.new`), "no temp file left behind");
+
+    // A chain of relative links.
+    const rel = join(sb.dir, "rel.toml");
+    await symlink("dotfiles/starship.toml", join(sb.dir, "hop.toml"));
+    await symlink("hop.toml", rel);
+    sb.run(block, { STARSHIP_CONFIG: rel });
+    assert.ok(lstatSync(rel).isSymbolicLink());
+    assert.equal(parseToml(await readFile(target, "utf8"))[""].palette, '"living_code_night"');
+
+    // A link whose target does not exist yet is created through the link.
+    const fresh = join(sb.dir, "dotfiles", "new.toml");
+    const dangling = join(sb.dir, "dangling.toml");
+    await symlink(fresh, dangling);
+    sb.run(block, { STARSHIP_CONFIG: dangling });
+    assert.ok(lstatSync(dangling).isSymbolicLink());
+    assert.equal(parseToml(await readFile(fresh, "utf8"))[""].palette, '"living_code_night"');
+
+    if (spawnSync("starship", ["--version"]).status === 0) {
+      const r = spawnSync("starship", ["print-config"], { encoding: "utf8", env: { ...process.env, HOME: sb.home, STARSHIP_CONFIG: cfg } });
+      assert.equal(r.status, 0, r.stderr);
+      assert.doesNotMatch(r.stderr, /warn|error/i);
+      assert.match(r.stdout, /palette = "living_code_night"/);
+    }
+  } finally { await sb.done(); }
+});
+
+test("the Starship block leaves a read-only target and its link untouched", async (t) => {
+  if (process.getuid?.() === 0) return t.skip("root can write to read-only files");
+  const sb = await sandbox();
+  try {
+    const block = shBlock(starship);
+    const cfg = join(sb.home, ".config", "starship.toml");
+    const target = join(sb.dir, "store", "starship.toml");
+    await mkdir(join(sb.home, ".config"), { recursive: true });
+    await mkdir(join(sb.dir, "store"));
+    const original = '[character]\nsuccess_symbol = "[>](bold green)"\n';
+    await writeFile(target, original);
+    await chmod(target, 0o444);
+    await symlink(target, cfg);
+    const r = sb.runRaw(block);
+    assert.notEqual(r.status, 0);
+    assert.match(r.stderr, /read-only, so it was left unchanged/);
+    assert.equal(await readFile(target, "utf8"), original);
+    assert.ok(lstatSync(cfg).isSymbolicLink());
+    assert.ok(!existsSync(`${target}.new`));
+  } finally { await sb.done(); }
+});
+
+test("the Starship block stops on a symlink loop instead of hanging", async () => {
+  const sb = await sandbox();
+  try {
+    const a = join(sb.dir, "a.toml");
+    const b = join(sb.dir, "b.toml");
+    await symlink(b, a);
+    await symlink(a, b);
+    const r = sb.runRaw(shBlock(starship), { STARSHIP_CONFIG: a });
+    assert.notEqual(r.status, 0);
+    assert.match(r.stderr, /symlink loop/);
+    assert.ok(lstatSync(a).isSymbolicLink() && lstatSync(b).isSymbolicLink());
   } finally { await sb.done(); }
 });
 
