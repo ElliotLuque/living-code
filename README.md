@@ -240,7 +240,7 @@ The table shows resolved roles for every flavor. The full role map (UI, diagnost
 [`palette/flavors.mjs`](palette/flavors.mjs): `defaultRoles` plus each flavor's `roles` overrides.
 
 Every port ships every flavor: pick the `living-code-<flavor>` file, or in Neovim use `:colorscheme living-code-frost`
-or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently provides Night and Paper only.
+or set `flavor = "frost"` in the [plugin setup](#neovim). Browser themes (Firefox and Chrome) ship Night and Paper only. A browser theme colours just backgrounds, borders and one accent, and in those slots Frost and Signal would look the same as (or barely different from) Night; both browser stores reject duplicate themes. If you use Frost or Signal elsewhere, Night is the closest match in the browser.
 
 ## Ports
 
@@ -250,7 +250,9 @@ or set `flavor = "frost"` in the [plugin setup](#neovim). Firefox currently prov
 
 **CLI & TUI:** [tmux](#tmux) · [fzf](#fzf) · [Starship](#starship) · [btop](#btop) · [lazygit](#lazygit) · [delta](#delta) · [Hunk](#hunk)
 
-**Browsers:** [Firefox](#firefox)
+**Browsers:** [Firefox](#firefox) · [Chrome, Brave and Chromium](#chrome)
+
+**Apps:** [Obsidian](#obsidian) · [Slack](#slack)
 
 **Web & code:** [Expressive Code](#expressive-code) · [CSS variables](#css) · [Tailwind CSS v4](#tailwind) · [JSON / JavaScript](#json)
 
@@ -271,7 +273,7 @@ Ports used from JavaScript or CSS tooling are published to npm. Each package con
 | [Tailwind CSS v4](#tailwind) | `@living-code/tailwind` |
 | [JSON / JavaScript](#json) | `@living-code/palette` |
 
-Native apps (editors, terminals, CLI tools, Firefox) don't need a package: copy their files from [`extras/`](extras)
+Native apps (editors, terminals, CLI tools, browsers) don't need a package: copy their files from [`extras/`](extras)
 or use the app's own install route, as described below.
 
 ### Editors
@@ -509,10 +511,44 @@ Available themes: `living-code-night`, `living-code-signal`, `living-code-frost`
 
 Choose **Night** for a dark browser or **Paper** for a light one.
 
-1. Find [Living Code Night](https://addons.mozilla.org/en-US/firefox/search/?q=Living%20Code%20Night&type=statictheme) or [Living Code Paper](https://addons.mozilla.org/en-US/firefox/search/?q=Living%20Code%20Paper&type=statictheme) on Firefox Add-ons.
-2. Open the theme’s listing and click **Install Theme**.
+1. Open [Living Code Night](https://addons.mozilla.org/firefox/addon/living-code-night/) or [Living Code Paper](https://addons.mozilla.org/firefox/addon/living-code-paper/) on Firefox Add-ons.
+2. Click **Install Theme**.
 
 To switch themes, open **Add-ons and themes → Themes** (`about:addons`) and enable your preferred variant.
+
+<a id="chrome"></a>
+#### [Chrome, Brave and Chromium](https://chromewebstore.google.com/category/themes)
+
+Choose **Night** for a dark browser or **Paper** for a light one. They are Manifest V3 themes for Chrome and Chromium; Brave installs Chrome Web Store themes too. Vivaldi does not apply Chrome themes, and Edge, Opera and Arc have not been tested.
+
+1. **Chrome Web Store:** pending. Neither theme is listed yet; once they are, search for **Living Code Night** or **Living Code Paper** and click **Add to Chrome**.
+2. **Without the store:** once a release has been published, download `living-code-chrome-night.zip` or `living-code-chrome-paper.zip` from the latest [GitHub release](https://github.com/ElliotLuque/living-code/releases/latest) and unzip it. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder. (From a checkout, select `extras/chrome/living-code-night` or `extras/chrome/living-code-paper`.)
+
+To switch themes, install the other one, or use **Settings → Appearance → Reset to default**.
+
+### Apps
+
+<a id="obsidian"></a>
+#### [Obsidian](https://obsidian.md)
+
+Obsidian's dark mode is **Night** and its light mode is **Paper**; the theme follows *Appearance → Base color scheme*.
+
+1. Open *Settings → Appearance → Themes → Manage*, search for **Living Code** and click **Install and use**. This README assumes the theme is listed in Obsidian's community themes.
+2. **Without the directory:** copy `manifest.json` and `theme.css` from [`extras/obsidian/`](extras/obsidian) into `<vault>/.obsidian/themes/Living Code/`, then pick **Living Code** under *Appearance → Themes*.
+
+**Frost and Signal** are dark flavors, so they ship as CSS snippets rather than as a Style Settings option, which would need a second plugin: copy `snippets/living-code-frost.css` or `snippets/living-code-signal.css` into `<vault>/.obsidian/snippets/` and enable it under *Appearance → CSS snippets*.
+
+<a id="slack"></a>
+#### [Slack](https://slack.com)
+
+Open your profile picture menu → *Preferences → Appearance → Custom theme*, click *Import theme* next to *Theme Colors*, choose *Paste your legacy theme colors*, paste one of these strings and click *Apply*:
+
+- **Night**: `#020405,#12171a,#00a692,#05080b,#12171a,#e2e9ee,#8acb83,#e96560`
+- **Frost**: `#050a0f,#171e24,#43a997,#0a1016,#171e24,#e2e9ee,#a2cb9d,#333c43`
+- **Paper**: `#e0e5e9,#e3e9ed,#187d6e,#f4f7f9,#e3e9ed,#12171a,#3b7a35,#a74541`
+- **Signal**: `#020405,#12171a,#00a692,#05080b,#12171a,#e2e9ee,#c8cfd4,#00a692`
+
+The eight colors are: column background, menu background hover, active item, active item text, hover item, text color, active presence, mention badge. Slack colors only its own interface, not code. These strings follow Slack's [help article](https://slack.com/help/articles/205166337-Change-your-Slack-theme) and have not been tested in a Slack client.
 
 ### Web & code
 

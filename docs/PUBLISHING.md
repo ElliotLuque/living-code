@@ -95,3 +95,24 @@ Package Control installs the GitHub archive of a semver tag, so publishing means
 ## GitHub releases
 
 The `release` workflow runs only when Elliot pushes a `v*` tag. It builds the `.vsix`, the JetBrains plugin zip and the `.sublime-package` and attaches them to the GitHub release for that tag. The README fallback installs (VS Code `.vsix`, JetBrains zip) download from there, so they work once the first release exists. It needs no secrets beyond the built-in `GITHUB_TOKEN`.
+
+## Chrome Web Store
+
+Night and Paper are separate Manifest V3 themes in `extras/chrome/living-code-night` and `extras/chrome/living-code-paper`. There is no publishing workflow: the first upload is manual. CI (`package` workflow) builds `living-code-chrome-night.zip` and `living-code-chrome-paper.zip`, and the `release` workflow attaches them to the GitHub release. Locally: `pnpm run package:chrome` writes both to `dist/chrome/`.
+
+1. Register a developer account at <https://chrome.google.com/webstore/devconsole> and pay the one-time $5 registration fee.
+2. In the dashboard click **New item**, upload `living-code-chrome-night.zip`, and fill in the listing: category *Themes*, a short description, at least one screenshot, and the privacy fields (the theme collects no data). Repeat with the Paper zip as a second item. Each is its own listing, because a theme is one item.
+3. Submit each for review. A theme has no code, so review is usually quick.
+4. Docs: <https://developer.chrome.com/docs/webstore/publish> and <https://developer.chrome.com/docs/webstore/program-policies> (the repetitive-content policy is why Frost and Signal are not offered).
+
+The manifests use the icons at 48 and 128 pixels; there is no 16 pixel icon. After the listings are live, the README's Chrome step can name them directly.
+
+## Obsidian community themes
+
+`extras/obsidian/` is laid out as the root of the theme's own repository: `manifest.json`, `theme.css`, `README.md`, `LICENSE`, `screenshot.png` (512x288, regenerate with `node scripts/obsidian-screenshot.mjs`) and `snippets/`. Obsidian requires that layout at a repository root, so the theme needs its own repository. Creating it needs Elliot's sign-off, so it has not been created.
+
+1. Create a public GitHub repository for the theme (for example `ElliotLuque/obsidian-living-code`) and copy the contents of `extras/obsidian/` into its root.
+2. Create the GitHub release `1.0.0`. The tag must equal `version` in `manifest.json`, and `manifest.json` and `theme.css` must be attached to the release as binary files.
+3. Make sure `manifest.json` is committed on the default branch of that repository (the directory reads it from the HEAD of the default branch). Sign in at <https://community.obsidian.md>, link your GitHub account, and choose **Add your theme**.
+4. Docs: <https://docs.obsidian.md/Themes/App+themes/Submit+your+theme>. The older route, a pull request to `obsidianmd/obsidian-releases` adding an entry to `community-css-themes.json`, is the legacy format and is no longer what the docs describe. Obsidian's review takes weeks, so the README keeps the manual route as the fallback.
+5. Optional: `extras/obsidian/screenshot.png` is a generated mock-up, not a capture of Obsidian. Replace it with a real screenshot before submitting if the reviewers ask for one.
