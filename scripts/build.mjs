@@ -4,7 +4,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { contrast } from "./color.mjs";
 import { ACCENT_ORDER, NEUTRAL_ORDER, resolveAll } from "./resolve.mjs";
-import { generate, groups } from "./ports/index.mjs";
+import { QUICK, generate, groups } from "./ports/index.mjs";
 import { npmPorts } from "./npm-packages.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -53,6 +53,7 @@ const roleTable = [
 ].join("\n");
 
 const portTables = groups.map((g) => `**${g.title}:** ${g.ports.map((p) => `[${p.name}](#${p.id})`).join(" · ")}`).join("\n\n");
+const quickTable = ["| App | How to install |", "|---|---|", ...groups.flatMap((g) => g.ports.map((p) => `| [${p.name}](#${p.id}) | ${QUICK[p.id]} |`))].join("\n");
 const installs = groups.map((g) => `### ${g.title}\n\n${g.ports.map((p) => `<a id="${p.id}"></a>\n#### [${p.name}](${p.homepage})\n\n${p.install}\n`).join("\n")}`).join("\n");
 
 const readme = `<h1 align="center">Living Code</h1>
@@ -75,6 +76,12 @@ Every flavor shares the same slate foundation and semantic roles. Night is the d
 | [Frost](#living-code-frost) | Lifted, bluer slate | Lower-chroma accents with amber strings and copper numbers. |
 | [Paper](#living-code-paper) | Near-white slate | Darker accents with amber strings and copper numbers. |
 | [Signal](#living-code-signal) | Dark slate, one accent | Minimal variant of Night: teal keywords and tags, everything else neutral. |
+
+## Install in 30 seconds
+
+Nobody has to clone this repository. Each app installs the way it normally installs things: a marketplace or its built-in theme list where one exists, otherwise one copy-paste command.
+
+${quickTable}
 
 ## Design
 
@@ -138,8 +145,7 @@ Ports used from JavaScript or CSS tooling are published to npm. Each package con
 |---|---|
 ${npmPorts.map((p) => `| [${p.name}](#${p.id}) | \`@living-code/${p.npm}\` |`).join("\n")}
 
-Native apps (editors, terminals, CLI tools, browsers) don't need a package: copy their files from [\`extras/\`](extras)
-or use the app's own install route, as described below.
+Native apps (editors, terminals, CLI tools, browsers) don't need a package: use the app's own install route or the one-line command in its section below. The generated files are in [\`extras/\`](extras).
 
 ${installs}
 
@@ -186,7 +192,9 @@ Output defaults to \`<image>-<flavor>-<mode>.png\` next to the input. Run with \
 3. \`node scripts/build.mjs\` regenerates everything, including this README.
 
 If the port is consumed from JavaScript or CSS, set \`npm: "<name>"\` on it to publish it as \`@living-code/<name>\`.
-Packages are built with \`pnpm run build:packages\`. Release instructions: [Publishing](docs/PUBLISHING.md).
+Packages are built with \`pnpm run build:packages\`. Release instructions: [Publishing](docs/PUBLISHING.md). Where each port is listed, and what is left to submit: [Distribution](docs/DISTRIBUTION.md).
+
+Lead a port's \`install\` text with the app's marketplace or built-in route, or with a one-line download command built from \`rawUrl\` in \`scripts/ports/util.mjs\` (never \`git clone\` or \`cp extras/...\`), and add the port to \`QUICK\` in \`scripts/ports/index.mjs\` for the table above.
 
 Regenerate the README preview images with \`pnpm run screenshots\`. This uses headless Chrome (\`google-chrome\` by default;
 set \`CHROME_BIN\` for another Chromium executable) and captures all four flavors from the live preview at 1280×720.

@@ -1,3 +1,4 @@
+import { sh, getFile, fence, rawUrl, XDG_CONFIG, FLAVOR_LINE } from "./util.mjs";
 export const tmux = {
   id: "tmux",
   name: "tmux",
@@ -22,9 +23,11 @@ set -g clock-mode-colour "${f.r("accent")}"
 setw -g window-status-bell-style "fg=${f.r("warning")},bold"
 `,
   }],
-  install: `\`\`\`tmux
-source-file ~/.config/tmux/living-code-night.conf
-\`\`\``,
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/tmux`, "extras/tmux/living-code-$flavor.conf"))}
+
+Then load it from \`tmux.conf\`:
+
+${fence("tmux", "source-file ~/.config/tmux/living-code-night.conf")}`,
 };
 
 export const fzf = {
@@ -46,7 +49,13 @@ export const fzf = {
       { path: `extras/fzf/${f.slug}.fish`, content: `set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --color=${opts}"\n` },
     ];
   },
-  install: `Source the file for your shell from \`~/.bashrc\` / \`~/.zshrc\` (\`.sh\`) or \`config.fish\` (\`.fish\`).`,
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/fzf`, "extras/fzf/living-code-$flavor.sh"))}
+
+Then source it from \`~/.bashrc\` or \`~/.zshrc\`:
+
+${fence("sh", `. "${XDG_CONFIG}/fzf/living-code-night.sh"`)}
+
+For fish, download \`living-code-$flavor.fish\` from the same folder of the repository instead and \`source\` it from \`config.fish\`. Source it after any line that sets \`FZF_DEFAULT_OPTS\`.`,
 };
 
 export const starship = {
@@ -65,7 +74,11 @@ ${names.map((n) => `${n.padEnd(9)}= "${f.c(n)}"`).join("\n")}
 `,
     }];
   },
-  install: `Append the palette to \`~/.config/starship.toml\`. Module styles can then use names like \`"bold teal"\` or \`"amber"\`.`,
+  install: `Starship needs the \`palette = ...\` line at the top of the file and the palette tables after your own, so this puts each in place (it assumes your \`starship.toml\` has no \`palette\` line yet):
+
+${sh(FLAVOR_LINE, `cfg="${XDG_CONFIG}/starship.toml"; touch "$cfg"`, `p="$(curl -fsSL "${rawUrl("extras/starship/living-code-$flavor.toml")}")"`, `{ printf '%s\\n' "$p" | head -n 1; cat "$cfg"; printf '\\n'; printf '%s\\n' "$p" | tail -n +2; } > "$cfg.new" && mv "$cfg.new" "$cfg"`)}
+
+Module styles can then use names like \`"bold teal"\` or \`"amber"\`. Set \`STARSHIP_CONFIG\` first if your config lives elsewhere.`,
 };
 
 export const btop = {
@@ -94,7 +107,9 @@ export const btop = {
       content: `${Object.entries(t).map(([k, v]) => `theme[${k}]="${v}"`).join("\n")}\n`,
     }];
   },
-  install: `Copy to \`~/.config/btop/themes/\` and pick it under *Options → Color theme*.`,
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/btop/themes`, "extras/btop/living-code-$flavor.theme"))}
+
+Then pick it under *Options → Color theme*, or set \`color_theme = "living-code-night"\` in \`btop.conf\`.`,
 };
 
 export const lazygit = {
@@ -135,5 +150,9 @@ export const lazygit = {
       "*": "${f.c("aqua")}"
 `,
   }],
-  install: `Merge the file into \`~/.config/lazygit/config.yml\`, or point \`LG_CONFIG_FILE\` at it alongside your config.`,
+  install: `lazygit accepts a comma-separated list of config files, so the theme sits next to your own config without editing it. \`lazygit --print-config-dir\` finds the right folder on every OS:
+
+${sh(FLAVOR_LINE, `dir="$(lazygit --print-config-dir)"`, `touch "$dir/config.yml"`, getFile("$dir", "extras/lazygit/living-code-$flavor.yml"), `export LG_CONFIG_FILE="$dir/config.yml,$dir/living-code-$flavor.yml"`)}
+
+Put the \`export\` line in your shell profile to keep it. Or merge the downloaded \`theme:\` block into \`config.yml\` by hand.`,
 };

@@ -1,3 +1,4 @@
+import { sh, getFile, fence, rawUrl, allFlavors, XDG_CONFIG, FLAVOR_LINE } from "./util.mjs";
 import { ANSI_ORDER } from "../resolve.mjs";
 import { REPO, changelog, license, version } from "./meta.mjs";
 
@@ -407,12 +408,7 @@ ${rules}
   },
   install: `**bat / delta**
 
-\`\`\`sh
-mkdir -p "$(bat --config-dir)/themes"
-cp extras/tmtheme/*.tmTheme "$(bat --config-dir)/themes/"
-bat cache --build
-bat --list-themes | grep living-code
-\`\`\`
+${sh(`curl -fsSL --create-dirs --output-dir "$(bat --config-dir)/themes" -O "${rawUrl(allFlavors("extras/tmtheme/living-code-*.tmTheme"))}" && bat cache --build`, "bat --list-themes | grep living-code")}
 
 Then \`--theme="living-code-night"\` in \`$(bat --config-dir)/config\`, and \`syntax-theme = living-code-night\` under \`[delta]\` in \`~/.gitconfig\`. For delta's diff backgrounds, headers and gutters, also use the dedicated [delta port](https://github.com/ElliotLuque/living-code#delta).
 
@@ -505,7 +501,13 @@ export const helix = {
       content: `${Object.entries(t).map(([k, v]) => `"${k}" = ${toml(v)}`).join("\n")}\n\n[palette]\n${Object.keys(f.colors).map((n) => `${n} = "${f.c(n)}"`).join("\n")}\n`,
     }];
   },
-  install: `Copy to \`~/.config/helix/themes/\`, then \`theme = "living-code-night"\` in \`config.toml\`.`,
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/helix/themes`, "extras/helix/living-code-$flavor.toml"))}
+
+Then set the theme in \`config.toml\`:
+
+${fence("toml", `theme = "living-code-night"`)}
+
+On Windows the folder is \`%AppData%\\helix\\themes\`.`,
 };
 
 export const neovim = {

@@ -9,3 +9,10 @@ export const rgbOf = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2),
 export const rgbSpace = (hex) => rgbOf(hex).join(" ");
 export const rgbComma = (hex) => rgbOf(hex).join(",");
 export const fence = (lang, body) => "```" + lang + "\n" + body + "\n```";
+
+// One-line install helpers. `$flavor` stays a literal shell variable in the output, so a user switches flavor by editing one line.
+export const XDG_CONFIG = "${XDG_CONFIG_HOME:-$HOME/.config}";
+export const FLAVOR_LINE = "flavor=night";
+export const sh = (...lines) => fence("sh", lines.join("\n"));
+// `curl` that downloads one repo file into `dir` under its own name.
+export const getFile = (dir, path) => `curl -fsSL --create-dirs -o "${dir}/${path.split("/").pop()}" "${rawUrl(path)}"`;

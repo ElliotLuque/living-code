@@ -22,6 +22,50 @@ Every flavor shares the same slate foundation and semantic roles. Night is the d
 | [Paper](#living-code-paper) | Near-white slate | Darker accents with amber strings and copper numbers. |
 | [Signal](#living-code-signal) | Dark slate, one accent | Minimal variant of Night: teal keywords and tags, everything else neutral. |
 
+## Install in 30 seconds
+
+Nobody has to clone this repository. Each app installs the way it normally installs things: a marketplace or its built-in theme list where one exists, otherwise one copy-paste command.
+
+| App | How to install |
+|---|---|
+| [Neovim](#neovim) | Plugin manager, see below |
+| [VS Code](#vscode) | Marketplace: `code --install-extension elliotluque.living-code` |
+| [JetBrains IDEs](#jetbrains) | Marketplace: *Settings | Plugins*, search **Living Code** |
+| [Zed](#zed) | Extensions panel: search **Living Code** |
+| [Helix](#helix) | One line, see below |
+| [Sublime Text](#sublime) | Package Control: *Install Package*, **Living Code** |
+| [bat · delta (tmTheme)](#tmtheme) | One line, see below |
+| [kitty](#kitty) | One line, see below |
+| [Ghostty](#ghostty) | One line, see below |
+| [Alacritty](#alacritty) | One line, see below |
+| [WezTerm](#wezterm) | One line, see below |
+| [foot](#foot) | One line, see below |
+| [Windows Terminal](#windows-terminal) | One PowerShell line, see below |
+| [iTerm2](#iterm2) | One line, see below |
+| [Warp](#warp) | One line, see below |
+| [Konsole](#konsole) | One line, see below |
+| [tmux](#tmux) | One line, see below |
+| [fzf](#fzf) | One line, see below |
+| [Starship](#starship) | One command block, see below |
+| [btop](#btop) | One line, see below |
+| [lazygit](#lazygit) | One command block, see below |
+| [delta](#delta) | One command block, see below |
+| [Hunk](#hunk) | One line, see below |
+| [fish](#fish) | One line, see below |
+| [zellij](#zellij) | One line, see below |
+| [yazi](#yazi) | One line, see below |
+| [k9s](#k9s) | One line, see below |
+| [eza](#eza) | One line, see below |
+| [Firefox](#firefox) | Firefox Add-ons: click **Install Theme** |
+| [Chrome, Brave and Chromium](#chrome) | Release zip today (Chrome Web Store pending), see below |
+| [Obsidian](#obsidian) | Community themes: search **Living Code** |
+| [Slack](#slack) | Paste one theme string, see below |
+| [Expressive Code](#expressive-code) | `npm i @living-code/expressive-code` |
+| [CSS variables](#css) | `npm i @living-code/css` |
+| [Tailwind CSS v4](#tailwind) | `npm i @living-code/tailwind` |
+| [JSON / JavaScript](#json) | `npm i @living-code/palette` |
+| [base16 · Stylix · tinted-theming](#base16) | Nix flake input, see below |
+
 ## Design
 
 - **The ground stays calm.** Backgrounds, panels, selections, punctuation and comments live on one slate ramp, so the eye goes to the code, not the chrome.
@@ -273,8 +317,7 @@ Ports used from JavaScript or CSS tooling are published to npm. Each package con
 | [Tailwind CSS v4](#tailwind) | `@living-code/tailwind` |
 | [JSON / JavaScript](#json) | `@living-code/palette` |
 
-Native apps (editors, terminals, CLI tools, browsers) don't need a package: copy their files from [`extras/`](extras)
-or use the app's own install route, as described below.
+Native apps (editors, terminals, CLI tools, browsers) don't need a package: use the app's own install route or the one-line command in its section below. The generated files are in [`extras/`](extras).
 
 ### Editors
 
@@ -345,7 +388,18 @@ The theme file holds all four flavors. This README assumes the extension is publ
 <a id="helix"></a>
 #### [Helix](https://helix-editor.com)
 
-Copy to `~/.config/helix/themes/`, then `theme = "living-code-night"` in `config.toml`.
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/helix/themes/living-code-$flavor.toml" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/helix/living-code-$flavor.toml"
+```
+
+Then set the theme in `config.toml`:
+
+```toml
+theme = "living-code-night"
+```
+
+On Windows the folder is `%AppData%\helix\themes`.
 
 <a id="sublime"></a>
 #### [Sublime Text](https://www.sublimetext.com)
@@ -354,7 +408,19 @@ Targets Sublime Text 4. It uses the modern `.sublime-color-scheme` format, one f
 
 **Package Control.** This README assumes the package is published to Package Control. Open the Command Palette and run *Package Control: Install Package*, choose **Living Code**, then pick *Preferences → Select Color Scheme → Living Code Night* (or *UI: Select Color Scheme*). Flavors: Night, Frost, Paper and Signal.
 
-**Manual.** Copy the `.sublime-color-scheme` files from [`extras/sublime/`](extras/sublime) into `Packages/User/` (*Preferences → Browse Packages…*), then select the scheme as above. To customize a manual install, edit the copied file. With the Package Control install, add a `Packages/User/<Scheme>.sublime-color-scheme` with the same file name as the package scheme and override entries under `variables` or `globals`.
+**Manual.** Download the four color schemes into your `Packages/User` folder (the same folder as *Preferences → Browse Packages…*), then select the scheme as above. Linux:
+
+```sh
+curl -fsSL --create-dirs --output-dir "${XDG_CONFIG_HOME:-$HOME/.config}/sublime-text/Packages/User" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/sublime/living-code-{night,frost,paper,signal}.sublime-color-scheme"
+```
+
+macOS:
+
+```sh
+curl -fsSL --create-dirs --output-dir "$HOME/Library/Application Support/Sublime Text/Packages/User" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/sublime/living-code-{night,frost,paper,signal}.sublime-color-scheme"
+```
+
+The source files are in [`extras/sublime/`](extras/sublime). To customize a manual install, edit the copied file. With the Package Control install, add a `Packages/User/<Scheme>.sublime-color-scheme` with the same file name as the package scheme and override entries under `variables` or `globals`.
 
 `pnpm run package:sublime` builds `dist/sublime/Living Code.sublime-package` from the same generator. The [bat · delta (tmTheme) port](#tmtheme) stays for bat and delta; Sublime Text should use this native scheme.
 
@@ -364,9 +430,7 @@ Targets Sublime Text 4. It uses the modern `.sublime-color-scheme` format, one f
 **bat / delta**
 
 ```sh
-mkdir -p "$(bat --config-dir)/themes"
-cp extras/tmtheme/*.tmTheme "$(bat --config-dir)/themes/"
-bat cache --build
+curl -fsSL --create-dirs --output-dir "$(bat --config-dir)/themes" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/tmtheme/living-code-{night,frost,paper,signal}.tmTheme" && bat cache --build
 bat --list-themes | grep living-code
 ```
 
@@ -379,16 +443,27 @@ Then `--theme="living-code-night"` in `$(bat --config-dir)/config`, and `syntax-
 <a id="kitty"></a>
 #### [kitty](https://sw.kovidgoyal.net/kitty/)
 
-Copy a theme into `~/.config/kitty/themes/` and run `kitten themes`, or include it directly:
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/kitty/themes/living-code-$flavor.conf" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/kitty/living-code-$flavor.conf"
+```
+
+Then include it from `kitty.conf`:
 
 ```conf
 include themes/living-code-night.conf
 ```
 
+`kitten themes` also lists it under your own themes, where you can apply it and reload every window.
+
 <a id="ghostty"></a>
 #### [Ghostty](https://ghostty.org)
 
-Copy the files to `~/.config/ghostty/themes/`, then:
+```sh
+curl -fsSL --create-dirs --output-dir "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/ghostty/living-code-{night,frost,paper,signal}"
+```
+
+Then name one in the Ghostty config, or a light and a dark one:
 
 ```conf
 theme = dark:living-code-night,light:living-code-paper
@@ -397,17 +472,28 @@ theme = dark:living-code-night,light:living-code-paper
 <a id="alacritty"></a>
 #### [Alacritty](https://alacritty.org)
 
-Copy the file to `~/.config/alacritty/themes/` and import it:
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/alacritty/themes/living-code-$flavor.toml" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/alacritty/living-code-$flavor.toml"
+```
+
+Then import it in `alacritty.toml`:
 
 ```toml
 [general]
 import = ["~/.config/alacritty/themes/living-code-night.toml"]
 ```
 
+On Windows the folder is `%APPDATA%\alacritty\themes`.
+
 <a id="wezterm"></a>
 #### [WezTerm](https://wezterm.org)
 
-Copy the files to `~/.config/wezterm/colors/`, then:
+```sh
+curl -fsSL --create-dirs --output-dir "${XDG_CONFIG_HOME:-$HOME/.config}/wezterm/colors" -O "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/wezterm/living-code-{night,frost,paper,signal}.toml"
+```
+
+Then select the scheme in `wezterm.lua`:
 
 ```lua
 config.color_scheme = "Living Code Night"
@@ -415,6 +501,13 @@ config.color_scheme = "Living Code Night"
 
 <a id="foot"></a>
 #### [foot](https://codeberg.org/dnkl/foot)
+
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/foot/living-code-$flavor.ini" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/foot/living-code-$flavor.ini"
+```
+
+Then include it at the top of `foot.ini`:
 
 ```ini
 [main]
@@ -480,6 +573,13 @@ Then open *Settings → Edit Current Profile → Appearance* and select the colo
 <a id="tmux"></a>
 #### [tmux](https://github.com/tmux/tmux)
 
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/tmux/living-code-$flavor.conf" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/tmux/living-code-$flavor.conf"
+```
+
+Then load it from `tmux.conf`:
+
 ```tmux
 source-file ~/.config/tmux/living-code-night.conf
 ```
@@ -487,22 +587,57 @@ source-file ~/.config/tmux/living-code-night.conf
 <a id="fzf"></a>
 #### [fzf](https://github.com/junegunn/fzf)
 
-Source the file for your shell from `~/.bashrc` / `~/.zshrc` (`.sh`) or `config.fish` (`.fish`).
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/fzf/living-code-$flavor.sh" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/fzf/living-code-$flavor.sh"
+```
+
+Then source it from `~/.bashrc` or `~/.zshrc`:
+
+```sh
+. "${XDG_CONFIG_HOME:-$HOME/.config}/fzf/living-code-night.sh"
+```
+
+For fish, download `living-code-$flavor.fish` from the same folder of the repository instead and `source` it from `config.fish`. Source it after any line that sets `FZF_DEFAULT_OPTS`.
 
 <a id="starship"></a>
 #### [Starship](https://starship.rs)
 
-Append the palette to `~/.config/starship.toml`. Module styles can then use names like `"bold teal"` or `"amber"`.
+Starship needs the `palette = ...` line at the top of the file and the palette tables after your own, so this puts each in place (it assumes your `starship.toml` has no `palette` line yet):
+
+```sh
+flavor=night
+cfg="${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml"; touch "$cfg"
+p="$(curl -fsSL "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/starship/living-code-$flavor.toml")"
+{ printf '%s\n' "$p" | head -n 1; cat "$cfg"; printf '\n'; printf '%s\n' "$p" | tail -n +2; } > "$cfg.new" && mv "$cfg.new" "$cfg"
+```
+
+Module styles can then use names like `"bold teal"` or `"amber"`. Set `STARSHIP_CONFIG` first if your config lives elsewhere.
 
 <a id="btop"></a>
 #### [btop](https://github.com/aristocratos/btop)
 
-Copy to `~/.config/btop/themes/` and pick it under *Options → Color theme*.
+```sh
+flavor=night
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/btop/themes/living-code-$flavor.theme" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/btop/living-code-$flavor.theme"
+```
+
+Then pick it under *Options → Color theme*, or set `color_theme = "living-code-night"` in `btop.conf`.
 
 <a id="lazygit"></a>
 #### [lazygit](https://github.com/jesseduffield/lazygit)
 
-Merge the file into `~/.config/lazygit/config.yml`, or point `LG_CONFIG_FILE` at it alongside your config.
+lazygit accepts a comma-separated list of config files, so the theme sits next to your own config without editing it. `lazygit --print-config-dir` finds the right folder on every OS:
+
+```sh
+flavor=night
+dir="$(lazygit --print-config-dir)"
+touch "$dir/config.yml"
+curl -fsSL --create-dirs -o "$dir/living-code-$flavor.yml" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/lazygit/living-code-$flavor.yml"
+export LG_CONFIG_FILE="$dir/config.yml,$dir/living-code-$flavor.yml"
+```
+
+Put the `export` line in your shell profile to keep it. Or merge the downloaded `theme:` block into `config.yml` by hand.
 
 <a id="delta"></a>
 #### [delta](https://github.com/dandavison/delta)
@@ -510,36 +645,24 @@ Merge the file into `~/.config/lazygit/config.yml`, or point `LG_CONFIG_FILE` at
 First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors. This port adds delta's diff backgrounds, word highlights, headers and gutters.
 
 ```sh
-mkdir -p ~/.config/delta
-cp extras/delta/living-code.gitconfig ~/.config/delta/
+curl -fsSL --create-dirs -o "${XDG_CONFIG_HOME:-$HOME/.config}/delta/living-code.gitconfig" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/delta/living-code.gitconfig"
+git config --global --add include.path "${XDG_CONFIG_HOME:-$HOME/.config}/delta/living-code.gitconfig"
+git config --global core.pager delta
+git config --global interactive.diffFilter "delta --color-only"
+git config --global delta.features living-code-night
 ```
 
-Include it and select a flavor in `~/.gitconfig`:
-
-```gitconfig
-[include]
-	path = ~/.config/delta/living-code.gitconfig
-
-[core]
-	pager = delta
-
-[interactive]
-	diffFilter = delta --color-only
-
-[delta]
-	features = living-code-night
-```
+That includes the file in `~/.gitconfig` and selects a flavor. Skip the `core.pager` and `diffFilter` lines if delta is already set up.
 
 Each flavor is a delta feature: `living-code-night`, `living-code-signal`, `living-code-frost`, `living-code-paper`.
 
 <a id="hunk"></a>
 #### [Hunk](https://github.com/modem-dev/hunk)
 
-**Extension (all flavors):** install the generated extension:
+**Extension (all flavors):** download the generated extension:
 
 ```sh
-mkdir -p ~/.config/hunk/extensions
-cp extras/hunk/living-code.mjs ~/.config/hunk/extensions/
+curl -fsSL --create-dirs -o "$HOME/.config/hunk/extensions/living-code.mjs" "https://raw.githubusercontent.com/ElliotLuque/living-code/main/extras/hunk/living-code.mjs"
 ```
 
 Set the top-level `theme` in `~/.config/hunk/config.toml` (before any TOML tables):
@@ -548,11 +671,7 @@ Set the top-level `theme` in `~/.config/hunk/config.toml` (before any TOML table
 theme = "living-code-night"
 ```
 
-Or try it without installing:
-
-```sh
-hunk diff --extension ./extras/hunk/living-code.mjs --theme living-code-night
-```
+To try it first, run `hunk diff --extension ~/.config/hunk/extensions/living-code.mjs --theme living-code-night`.
 
 **Config only:** instead of the extension, merge a flavor's `.toml` file into `~/.config/hunk/config.toml` (or a repo's `.hunk/config.toml`) and set the top-level `theme` as above. Do not add duplicate theme tables. Config themes take precedence over extension themes with the same name.
 
@@ -832,7 +951,9 @@ Output defaults to `<image>-<flavor>-<mode>.png` next to the input. Run with `--
 3. `node scripts/build.mjs` regenerates everything, including this README.
 
 If the port is consumed from JavaScript or CSS, set `npm: "<name>"` on it to publish it as `@living-code/<name>`.
-Packages are built with `pnpm run build:packages`. Release instructions: [Publishing](docs/PUBLISHING.md).
+Packages are built with `pnpm run build:packages`. Release instructions: [Publishing](docs/PUBLISHING.md). Where each port is listed, and what is left to submit: [Distribution](docs/DISTRIBUTION.md).
+
+Lead a port's `install` text with the app's marketplace or built-in route, or with a one-line download command built from `rawUrl` in `scripts/ports/util.mjs` (never `git clone` or `cp extras/...`), and add the port to `QUICK` in `scripts/ports/index.mjs` for the table above.
 
 Regenerate the README preview images with `pnpm run screenshots`. This uses headless Chrome (`google-chrome` by default;
 set `CHROME_BIN` for another Chromium executable) and captures all four flavors from the live preview at 1280×720.
