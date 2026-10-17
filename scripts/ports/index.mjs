@@ -7,6 +7,8 @@ import { css, json, tailwind } from "./web.mjs";
 import { expressiveCode } from "./expressive-code.mjs";
 import { base16Port } from "./base16.mjs";
 import { delta, hunk } from "./git.mjs";
+import { slack } from "./slack.mjs";
+import { obsidian } from "./obsidian.mjs";
 import { jetbrains } from "./jetbrains.mjs";
 import { icons } from "./icons.mjs";
 
@@ -15,6 +17,7 @@ export const groups = [
   { title: "Terminals", ports: [kitty, ghostty, alacritty, wezterm, foot] },
   { title: "CLI & TUI", ports: [tmux, fzf, starship, btop, lazygit, delta, hunk] },
   { title: "Browsers", ports: [firefox, chrome] },
+  { title: "Apps", ports: [obsidian, slack] },
   { title: "Web & code", ports: [expressiveCode, css, tailwind, json] },
   { title: "Theme systems", ports: [base16Port] },
 ];
