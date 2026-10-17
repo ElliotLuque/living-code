@@ -1,0 +1,23 @@
+{
+  "name": "Living Code Frost",
+  "black": "#232a30",
+  "red": "#d68079",
+  "green": "#a2cb9d",
+  "yellow": "#e9c897",
+  "blue": "#98bacd",
+  "purple": "#bc9ec6",
+  "cyan": "#43a997",
+  "white": "#9ba0a2",
+  "brightBlack": "#50565b",
+  "brightRed": "#e99e97",
+  "brightGreen": "#bfe3bb",
+  "brightYellow": "#fce0b6",
+  "brightBlue": "#b6d3e3",
+  "brightPurple": "#d4b9dc",
+  "brightCyan": "#6fbfb0",
+  "brightWhite": "#e2e9ee",
+  "background": "#0a1016",
+  "foreground": "#e2e9ee",
+  "cursorColor": "#43a997",
+  "selectionBackground": "#333c43"
+}

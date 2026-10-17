@@ -1,0 +1,23 @@
+{
+  "name": "Living Code Signal",
+  "black": "#1d2226",
+  "red": "#e2e9ee",
+  "green": "#c8cfd4",
+  "yellow": "#e2e9ee",
+  "blue": "#c8cfd4",
+  "purple": "#c8cfd4",
+  "cyan": "#00a692",
+  "white": "#9ba0a2",
+  "brightBlack": "#50565b",
+  "brightRed": "#e2e9ee",
+  "brightGreen": "#e2e9ee",
+  "brightYellow": "#e2e9ee",
+  "brightBlue": "#e2e9ee",
+  "brightPurple": "#e2e9ee",
+  "brightCyan": "#00a692",
+  "brightWhite": "#e2e9ee",
+  "background": "#05080b",
+  "foreground": "#e2e9ee",
+  "cursorColor": "#00a692",
+  "selectionBackground": "#2d3438"
+}

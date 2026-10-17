@@ -1,0 +1,25 @@
+name: Living Code Night
+accent: '#00a692'
+cursor: '#00a692'
+background: '#05080b'
+foreground: '#e2e9ee'
+details: darker
+terminal_colors:
+  normal:
+    black: '#1d2226'
+    red: '#e96560'
+    green: '#8acb83'
+    yellow: '#f0be6d'
+    blue: '#80b6d3'
+    magenta: '#bf91cd'
+    cyan: '#00a692'
+    white: '#9ba0a2'
+  bright:
+    black: '#50565b'
+    red: '#fa8880'
+    green: '#abe2a4'
+    yellow: '#ffdba5'
+    blue: '#a1cfe8'
+    magenta: '#d5ade2'
+    cyan: '#1fc1ab'
+    white: '#e2e9ee'

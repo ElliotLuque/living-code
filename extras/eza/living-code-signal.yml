@@ -1,0 +1,180 @@
+# Living Code Signal: https://github.com/ElliotLuque/living-code
+filekinds:
+  normal:
+    foreground: "#e2e9ee"
+  directory:
+    foreground: "#00a692"
+    is_bold: true
+  symlink:
+    foreground: "#00a692"
+  pipe:
+    foreground: "#c8cfd4"
+  block_device:
+    foreground: "#c8cfd4"
+    is_bold: true
+  char_device:
+    foreground: "#c8cfd4"
+    is_bold: true
+  socket:
+    foreground: "#00a692"
+  special:
+    foreground: "#00a692"
+  executable:
+    foreground: "#c8cfd4"
+    is_bold: true
+  mount_point:
+    foreground: "#c8cfd4"
+    is_bold: true
+perms:
+  user_read:
+    foreground: "#c8cfd4"
+  user_write:
+    foreground: "#e2e9ee"
+  user_execute_file:
+    foreground: "#c8cfd4"
+    is_underline: true
+  user_execute_other:
+    foreground: "#c8cfd4"
+  group_read:
+    foreground: "#c8cfd4"
+  group_write:
+    foreground: "#e2e9ee"
+  group_execute:
+    foreground: "#c8cfd4"
+  other_read:
+    foreground: "#c8cfd4"
+  other_write:
+    foreground: "#e2e9ee"
+  other_execute:
+    foreground: "#c8cfd4"
+  special_user_file:
+    foreground: "#00a692"
+  special_other:
+    foreground: "#00a692"
+  attribute:
+    foreground: "#9ba0a2"
+size:
+  major:
+    foreground: "#9ba0a2"
+  minor:
+    foreground: "#9ba0a2"
+  number_byte:
+    foreground: "#c8cfd4"
+  number_kilo:
+    foreground: "#c8cfd4"
+  number_mega:
+    foreground: "#c8cfd4"
+  number_giga:
+    foreground: "#e2e9ee"
+  number_huge:
+    foreground: "#e2e9ee"
+  unit_byte:
+    foreground: "#9ba0a2"
+  unit_kilo:
+    foreground: "#9ba0a2"
+  unit_mega:
+    foreground: "#9ba0a2"
+  unit_giga:
+    foreground: "#9ba0a2"
+  unit_huge:
+    foreground: "#9ba0a2"
+users:
+  user_you:
+    foreground: "#c8cfd4"
+  user_root:
+    foreground: "#e2e9ee"
+  user_other:
+    foreground: "#00a692"
+  group_yours:
+    foreground: "#c8cfd4"
+  group_other:
+    foreground: "#9ba0a2"
+  group_root:
+    foreground: "#e2e9ee"
+links:
+  normal:
+    foreground: "#00a692"
+  multi_link_file:
+    foreground: "#e2e9ee"
+git:
+  new:
+    foreground: "#c8cfd4"
+  modified:
+    foreground: "#00a692"
+  deleted:
+    foreground: "#e2e9ee"
+  renamed:
+    foreground: "#c8cfd4"
+  ignored:
+    foreground: "#747c80"
+  conflicted:
+    foreground: "#e2e9ee"
+git_repo:
+  branch_main:
+    foreground: "#c8cfd4"
+  branch_other:
+    foreground: "#00a692"
+  git_clean:
+    foreground: "#c8cfd4"
+  git_dirty:
+    foreground: "#c8cfd4"
+security_context:
+  selinux:
+    colon:
+      foreground: "#747c80"
+    user:
+      foreground: "#c8cfd4"
+    role:
+      foreground: "#00a692"
+    typ:
+      foreground: "#c8cfd4"
+    range:
+      foreground: "#9ba0a2"
+  none:
+    foreground: "#747c80"
+file_type:
+  image:
+    foreground: "#e2e9ee"
+  video:
+    foreground: "#00a692"
+  music:
+    foreground: "#e2e9ee"
+  crypto:
+    foreground: "#e2e9ee"
+  document:
+    foreground: "#c8cfd4"
+  compressed:
+    foreground: "#e2e9ee"
+  temp:
+    foreground: "#747c80"
+  compiled:
+    foreground: "#c8cfd4"
+  build:
+    foreground: "#c8cfd4"
+    is_bold: true
+  source:
+    foreground: "#e2e9ee"
+punctuation:
+  foreground: "#747c80"
+date:
+  foreground: "#c8cfd4"
+inode:
+  foreground: "#9ba0a2"
+blocks:
+  foreground: "#9ba0a2"
+header:
+  foreground: "#c8cfd4"
+  is_underline: true
+octal:
+  foreground: "#e2e9ee"
+flags:
+  foreground: "#00a692"
+symlink_path:
+  foreground: "#00a692"
+control_char:
+  foreground: "#e2e9ee"
+broken_symlink:
+  foreground: "#e2e9ee"
+broken_path_overlay:
+  foreground: "#e2e9ee"
+  is_underline: true

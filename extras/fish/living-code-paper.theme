@@ -1,0 +1,41 @@
+# name: 'Living Code Paper'
+# preferred_background: f4f7f9
+# url: https://github.com/ElliotLuque/living-code
+
+fish_color_normal 12171a
+fish_color_command 1f7074
+fish_color_keyword 0f695e
+fish_color_quote 8f6213
+fish_color_redirection 6b7378
+fish_color_end 92999f
+fish_color_error a74541
+fish_color_param 2e3437
+fish_color_option 2b6991
+fish_color_comment 6b7378
+fish_color_selection 12171a --background=c2ccd3
+fish_color_operator 187d6e
+fish_color_escape a04f27
+fish_color_autosuggestion 6b7378
+fish_color_cwd 2b6991
+fish_color_cwd_root a74541
+fish_color_user 3b7a35
+fish_color_host 2b6991
+fish_color_host_remote 8f6213
+fish_color_status a74541
+fish_color_valid_path 12171a --underline
+fish_color_history_current 12171a --bold
+fish_color_search_match 12171a --background=d2d8dd
+fish_color_cancel 6b7378
+fish_pager_color_progress 6b7378
+fish_pager_color_background
+fish_pager_color_prefix 187d6e --bold --underline
+fish_pager_color_completion 12171a
+fish_pager_color_description 50565a
+fish_pager_color_selected_background --background=c2ccd3
+fish_pager_color_selected_prefix 187d6e --bold --underline
+fish_pager_color_selected_completion 12171a
+fish_pager_color_selected_description 2e3437
+fish_pager_color_secondary_background
+fish_pager_color_secondary_prefix 187d6e
+fish_pager_color_secondary_completion 2e3437
+fish_pager_color_secondary_description 50565a

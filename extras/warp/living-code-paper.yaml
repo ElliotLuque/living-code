@@ -1,0 +1,25 @@
+name: Living Code Paper
+accent: '#187d6e'
+cursor: '#187d6e'
+background: '#f4f7f9'
+foreground: '#12171a'
+details: lighter
+terminal_colors:
+  normal:
+    black: '#d2d8dd'
+    red: '#a74541'
+    green: '#3b7a35'
+    yellow: '#8f6213'
+    blue: '#2b6991'
+    magenta: '#81558e'
+    cyan: '#187d6e'
+    white: '#50565a'
+  bright:
+    black: '#92999f'
+    red: '#853532'
+    green: '#2d6029'
+    yellow: '#724d0d'
+    blue: '#1f5272'
+    magenta: '#664371'
+    cyan: '#116357'
+    white: '#12171a'

@@ -1,0 +1,23 @@
+{
+  "name": "Living Code Paper",
+  "black": "#d2d8dd",
+  "red": "#a74541",
+  "green": "#3b7a35",
+  "yellow": "#8f6213",
+  "blue": "#2b6991",
+  "purple": "#81558e",
+  "cyan": "#187d6e",
+  "white": "#50565a",
+  "brightBlack": "#92999f",
+  "brightRed": "#853532",
+  "brightGreen": "#2d6029",
+  "brightYellow": "#724d0d",
+  "brightBlue": "#1f5272",
+  "brightPurple": "#664371",
+  "brightCyan": "#116357",
+  "brightWhite": "#12171a",
+  "background": "#f4f7f9",
+  "foreground": "#12171a",
+  "cursorColor": "#187d6e",
+  "selectionBackground": "#c2ccd3"
+}

@@ -1,0 +1,25 @@
+name: Living Code Frost
+accent: '#43a997'
+cursor: '#43a997'
+background: '#0a1016'
+foreground: '#e2e9ee'
+details: darker
+terminal_colors:
+  normal:
+    black: '#232a30'
+    red: '#d68079'
+    green: '#a2cb9d'
+    yellow: '#e9c897'
+    blue: '#98bacd'
+    magenta: '#bc9ec6'
+    cyan: '#43a997'
+    white: '#9ba0a2'
+  bright:
+    black: '#50565b'
+    red: '#e99e97'
+    green: '#bfe3bb'
+    yellow: '#fce0b6'
+    blue: '#b6d3e3'
+    magenta: '#d4b9dc'
+    cyan: '#6fbfb0'
+    white: '#e2e9ee'

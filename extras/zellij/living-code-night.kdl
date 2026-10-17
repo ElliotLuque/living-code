@@ -1,0 +1,129 @@
+// Living Code Night: https://github.com/ElliotLuque/living-code
+themes {
+    living-code-night {
+        text_unselected {
+            base 226 233 238
+            background 5 8 11
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        text_selected {
+            base 226 233 238
+            background 45 52 56
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        ribbon_selected {
+            base 5 8 11
+            background 0 166 146
+            emphasis_0 233 101 96
+            emphasis_1 240 190 109
+            emphasis_2 191 145 205
+            emphasis_3 128 182 211
+        }
+        ribbon_unselected {
+            base 226 233 238
+            background 29 34 38
+            emphasis_0 233 101 96
+            emphasis_1 226 233 238
+            emphasis_2 128 182 211
+            emphasis_3 191 145 205
+        }
+        table_title {
+            base 0 166 146
+            background 5 8 11
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        table_cell_selected {
+            base 226 233 238
+            background 45 52 56
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        table_cell_unselected {
+            base 226 233 238
+            background 5 8 11
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        list_selected {
+            base 226 233 238
+            background 45 52 56
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        list_unselected {
+            base 226 233 238
+            background 5 8 11
+            emphasis_0 240 190 109
+            emphasis_1 0 166 146
+            emphasis_2 138 203 131
+            emphasis_3 191 145 205
+        }
+        frame_selected {
+            base 0 166 146
+            background 5 8 11
+            emphasis_0 191 145 205
+            emphasis_1 128 182 211
+            emphasis_2 240 190 109
+            emphasis_3 138 203 131
+        }
+        frame_unselected {
+            base 29 34 38
+            background 5 8 11
+            emphasis_0 191 145 205
+            emphasis_1 128 182 211
+            emphasis_2 240 190 109
+            emphasis_3 138 203 131
+        }
+        frame_highlight {
+            base 240 190 109
+            background 5 8 11
+            emphasis_0 191 145 205
+            emphasis_1 240 190 109
+            emphasis_2 240 190 109
+            emphasis_3 240 190 109
+        }
+        exit_code_success {
+            base 138 203 131
+            background 5 8 11
+            emphasis_0 0 166 146
+            emphasis_1 191 145 205
+            emphasis_2 128 182 211
+            emphasis_3 155 160 162
+        }
+        exit_code_error {
+            base 233 101 96
+            background 5 8 11
+            emphasis_0 240 190 109
+            emphasis_1 240 190 109
+            emphasis_2 240 190 109
+            emphasis_3 240 190 109
+        }
+        multiplayer_user_colors {
+            player_1 0 166 146
+            player_2 191 145 205
+            player_3 240 190 109
+            player_4 128 182 211
+            player_5 233 101 96
+            player_6 138 203 131
+            player_7 225 140 95
+            player_8 221 174 195
+            player_9 154 224 221
+            player_10 155 160 162
+        }
+    }
+}

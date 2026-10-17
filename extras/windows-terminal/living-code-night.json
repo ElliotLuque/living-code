@@ -1,0 +1,23 @@
+{
+  "name": "Living Code Night",
+  "black": "#1d2226",
+  "red": "#e96560",
+  "green": "#8acb83",
+  "yellow": "#f0be6d",
+  "blue": "#80b6d3",
+  "purple": "#bf91cd",
+  "cyan": "#00a692",
+  "white": "#9ba0a2",
+  "brightBlack": "#50565b",
+  "brightRed": "#fa8880",
+  "brightGreen": "#abe2a4",
+  "brightYellow": "#ffdba5",
+  "brightBlue": "#a1cfe8",
+  "brightPurple": "#d5ade2",
+  "brightCyan": "#1fc1ab",
+  "brightWhite": "#e2e9ee",
+  "background": "#05080b",
+  "foreground": "#e2e9ee",
+  "cursorColor": "#00a692",
+  "selectionBackground": "#2d3438"
+}
