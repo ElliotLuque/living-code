@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- JetBrains: the plugin icon is the Night (dark) icon everywhere, including the Marketplace page.
+
 ## 0.1.0
 
 First release.

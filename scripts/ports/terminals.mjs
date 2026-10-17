@@ -1,3 +1,4 @@
+import { sh, getFile, fence, rawUrl, allFlavors, XDG_CONFIG, FLAVOR_LINE } from "./util.mjs";
 import { ANSI_ORDER } from "../resolve.mjs";
 
 const nohash = (h) => h.slice(1);
@@ -45,11 +46,13 @@ ${ANSI_ORDER.map((n, i) => `color${String(i).padEnd(3)} ${f.ansi.normal[i]}`).jo
 ${ANSI_ORDER.map((n, i) => `color${String(i + 8).padEnd(3)} ${f.ansi.bright[i]}`).join("\n")}
 `,
   }],
-  install: `Copy a theme into \`~/.config/kitty/themes/\` and run \`kitten themes\`, or include it directly:
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/kitty/themes`, "extras/kitty/living-code-$flavor.conf"))}
 
-\`\`\`conf
-include themes/living-code-night.conf
-\`\`\``,
+Then include it from \`kitty.conf\`:
+
+${fence("conf", "include themes/living-code-night.conf")}
+
+\`kitten themes\` also lists it under your own themes, where you can apply it and reload every window.`,
 };
 
 export const ghostty = {
@@ -69,11 +72,11 @@ selection-foreground = ${f.r("fg")}
 split-divider-color = ${f.r("border")}
 `,
   }],
-  install: `Copy the files to \`~/.config/ghostty/themes/\`, then:
+  install: `${sh(`curl -fsSL --create-dirs --output-dir "${XDG_CONFIG}/ghostty/themes" -O "${rawUrl(allFlavors("extras/ghostty/living-code-*"))}"`)}
 
-\`\`\`conf
-theme = dark:living-code-night,light:living-code-paper
-\`\`\``,
+Then name one in the Ghostty config, or a light and a dark one:
+
+${fence("conf", "theme = dark:living-code-night,light:living-code-paper")}`,
 };
 
 export const alacritty = {
@@ -130,12 +133,13 @@ ${block(f.ansi.bright)}
 `,
     }];
   },
-  install: `Copy the file to \`~/.config/alacritty/themes/\` and import it:
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/alacritty/themes`, "extras/alacritty/living-code-$flavor.toml"))}
 
-\`\`\`toml
-[general]
-import = ["~/.config/alacritty/themes/living-code-night.toml"]
-\`\`\``,
+Then import it in \`alacritty.toml\`:
+
+${fence("toml", `[general]\nimport = ["~/.config/alacritty/themes/living-code-night.toml"]`)}
+
+If you set \`XDG_CONFIG_HOME\`, use that path in the \`import\` line. On Windows the folder is \`%APPDATA%\\alacritty\\themes\`.`,
 };
 
 export const wezterm = {
@@ -187,11 +191,11 @@ name = "${f.name}"
 origin_url = "https://github.com/ElliotLuque/living-code"
 `,
   }],
-  install: `Copy the files to \`~/.config/wezterm/colors/\`, then:
+  install: `${sh(`curl -fsSL --create-dirs --output-dir "${XDG_CONFIG}/wezterm/colors" -O "${rawUrl(allFlavors("extras/wezterm/living-code-*.toml"))}"`)}
 
-\`\`\`lua
-config.color_scheme = "Living Code Night"
-\`\`\``,
+Then select the scheme in \`wezterm.lua\`:
+
+${fence("lua", `config.color_scheme = "Living Code Night"`)}`,
 };
 
 export const foot = {
@@ -216,8 +220,11 @@ jump-labels=${nohash(f.r("bg"))} ${nohash(f.r("accent"))}
 urls=${nohash(f.r("link"))}
 `,
   }],
-  install: `\`\`\`ini
-[main]
-include=~/.config/foot/living-code-night.ini
-\`\`\``,
+  install: `${sh(FLAVOR_LINE, getFile(`${XDG_CONFIG}/foot`, "extras/foot/living-code-$flavor.ini"))}
+
+Then include it at the top of \`foot.ini\`:
+
+${fence("ini", `[main]\ninclude=~/.config/foot/living-code-night.ini`)}
+
+If you set \`XDG_CONFIG_HOME\`, use that path in the \`include\` line.`,
 };

@@ -1,3 +1,4 @@
+import { sh, getFile, fence, XDG_CONFIG } from "./util.mjs";
 import { SCOPES } from "./editors.mjs";
 
 // Diff backgrounds: a quiet row tint, and a stronger one for changed words.
@@ -63,26 +64,9 @@ ${fs.map(deltaFeature).join("\n")}`,
   }],
   install: `First install the [tmTheme port](https://github.com/ElliotLuque/living-code#tmtheme) into bat's cache for syntax colors. This port adds delta's diff backgrounds, word highlights, headers and gutters.
 
-\`\`\`sh
-mkdir -p ~/.config/delta
-cp extras/delta/living-code.gitconfig ~/.config/delta/
-\`\`\`
+${sh(getFile(`${XDG_CONFIG}/delta`, "extras/delta/living-code.gitconfig"), `git config --global --add include.path "${XDG_CONFIG}/delta/living-code.gitconfig"`, "git config --global core.pager delta", `git config --global interactive.diffFilter "delta --color-only"`, "git config --global delta.features living-code-night")}
 
-Include it and select a flavor in \`~/.gitconfig\`:
-
-\`\`\`gitconfig
-[include]
-	path = ~/.config/delta/living-code.gitconfig
-
-[core]
-	pager = delta
-
-[interactive]
-	diffFilter = delta --color-only
-
-[delta]
-	features = living-code-night
-\`\`\`
+That includes the file in \`~/.gitconfig\` and selects a flavor. Skip the \`core.pager\` and \`diffFilter\` lines if delta is already set up.
 
 Each flavor is a delta feature: \`living-code-night\`, \`living-code-signal\`, \`living-code-frost\`, \`living-code-paper\`.`,
 };
@@ -162,24 +146,15 @@ export default function livingCode(hunk) {
 }
 `,
   }],
-  install: `**Extension (all flavors):** install the generated extension:
+  install: `**Extension (all flavors):** download the generated extension:
 
-\`\`\`sh
-mkdir -p ~/.config/hunk/extensions
-cp extras/hunk/living-code.mjs ~/.config/hunk/extensions/
-\`\`\`
+${sh(getFile("$HOME/.config/hunk/extensions", "extras/hunk/living-code.mjs"))}
 
 Set the top-level \`theme\` in \`~/.config/hunk/config.toml\` (before any TOML tables):
 
-\`\`\`toml
-theme = "living-code-night"
-\`\`\`
+${fence("toml", `theme = "living-code-night"`)}
 
-Or try it without installing:
-
-\`\`\`sh
-hunk diff --extension ./extras/hunk/living-code.mjs --theme living-code-night
-\`\`\`
+To try it first, run \`hunk diff --extension ~/.config/hunk/extensions/living-code.mjs --theme living-code-night\`.
 
 **Config only:** instead of the extension, merge a flavor's \`.toml\` file into \`~/.config/hunk/config.toml\` (or a repo's \`.hunk/config.toml\`) and set the top-level \`theme\` as above. Do not add duplicate theme tables. Config themes take precedence over extension themes with the same name.
 

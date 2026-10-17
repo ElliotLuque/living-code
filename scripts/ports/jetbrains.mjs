@@ -758,13 +758,14 @@ ${themes.join("\n")}
 `;
 }
 
-// Plugin logos are 40x40 with a transparent margin (a 32px square inside it). The Paper icon sits on a light card
-// and reads on light backgrounds; the Night icon is picked by the IDE on dark ones (the _dark suffix).
+// Plugin logos are 40x40 with a transparent margin (a 32px square inside it). Both files carry the Night icon: the
+// Marketplace page shows pluginIcon.svg, and the dark card brings its own background, so it reads on light and dark
+// UIs alike. The IDE picks the _dark file on dark themes.
 export const pluginIcons = (flavors) => {
-  const by = (id) => flavors.find((f) => f.id === id);
+  const night = iconSvg(flavors.find((f) => f.id === "night"), 40, { padding: 4 });
   return [
-    { path: "META-INF/pluginIcon.svg", content: iconSvg(by("paper"), 40, { padding: 4 }) },
-    { path: "META-INF/pluginIcon_dark.svg", content: iconSvg(by("night"), 40, { padding: 4 }) },
+    { path: "META-INF/pluginIcon.svg", content: night },
+    { path: "META-INF/pluginIcon_dark.svg", content: night },
   ];
 };
 
